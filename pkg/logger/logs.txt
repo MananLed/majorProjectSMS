@@ -6,3 +6,7 @@
 2025/08/11 10:29:23 error: crypto/bcrypt: hashedPassword is not the hash of the given password
 2025/08/11 10:29:52 error: crypto/bcrypt: hashedPassword is not the hash of the given password
 2025/08/11 10:29:52 error: crypto/bcrypt: hashedPassword is not the hash of the given password
+2025/08/11 22:10:21 error: crypto/bcrypt: hashedPassword is not the hash of the given password
+2025/08/11 22:10:21 error: crypto/bcrypt: hashedPassword is not the hash of the given password
+2025/08/11 22:25:31 error: user not found
+2025/08/11 22:25:31 error: user not found
