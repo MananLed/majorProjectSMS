@@ -1,0 +1,62 @@
+[
+ {
+  "FirstName": "Jyoti",
+  "MiddleName": "",
+  "LastName": "Deepak",
+  "MobileNumber": "4235354756",
+  "Email": "jyotideepakadmin@blossom.com",
+  "ID": "jyotideepakadmin@blossom.com",
+  "Password": "$2a$10$Q2Sovrz3dxVKuitLzIt1Le1Xkmsb2oylXeuTpq5Oh7wkjO.tCfr8q",
+  "Role": "admin"
+ },
+ {
+  "FirstName": "Dev",
+  "MiddleName": "",
+  "LastName": "Singh",
+  "MobileNumber": "4354654644",
+  "Email": "devsinghofficer@blossom.com",
+  "ID": "devsinghofficer@blossom.com",
+  "Password": "$2a$10$6tIYkprdkTkV5uvrVAWw3uhPN3MRnU2iphZ8g/cueNvqqcqR/1KvW",
+  "Role": "officer"
+ },
+ {
+  "FirstName": "Manav",
+  "MiddleName": "",
+  "LastName": "Singh",
+  "MobileNumber": "",
+  "Email": "manavsinghofficer@blossom.com",
+  "ID": "manavsinghofficer@blossom.com",
+  "Password": "$2a$10$nT.ygZvsWE.YWKfbT55pBe2oO1hem9cw2iZ2NFaggv7lSXO9eGv02",
+  "Role": "officer"
+ },
+ {
+  "FirstName": "",
+  "MiddleName": "",
+  "LastName": "",
+  "MobileNumber": "",
+  "Email": "ninjasinghofficer@blossom.com",
+  "ID": "ninjasinghofficer@blossom.com",
+  "Password": "$2a$10$OtviWMohPfY6jQmIBgadyOcm4Jc9IlzCTvFgGuh1bGLkWLfXnseU.",
+  "Role": "officer"
+ },
+ {
+  "FirstName": "Manan",
+  "MiddleName": "",
+  "LastName": "Ledw",
+  "MobileNumber": "7686776687",
+  "Email": "manan@gmail.com",
+  "ID": "manan@gmail.com",
+  "Password": "$2a$10$4uQy7u37c7e9y9oclUJgmOY4IsPLNozhx33d6EFhchk1kAEdrVDhu",
+  "Role": "resident"
+ },
+ {
+  "FirstName": "Arjun",
+  "MiddleName": "",
+  "LastName": "Singh",
+  "MobileNumber": "7687678878",
+  "Email": "arjunsingh@gmail.com",
+  "ID": "arjunsingh@gmail.com",
+  "Password": "$2a$10$kYKxTriaVtiI.A2L2x2lFOVu4oyrzCUlTp7k6Ey1xiQkyzEfnY72.",
+  "Role": "resident"
+ }
+]

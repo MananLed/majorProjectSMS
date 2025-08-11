@@ -1,0 +1,47 @@
+[
+  {
+    "RequestID": "e68037a2-0a7f-4bd5-ac39-67ab227911ae",
+    "ResidentID": "divy@gmail.com",
+    "Status": "approved",
+    "TimeSlot": "10:30 AM - 11:15 AM",
+    "StartTime": "0001-01-01T10:30:00+05:30",
+    "EndTime": "0001-01-01T11:15:00+05:30",
+    "ServiceType": "electrician"
+  },
+  {
+    "RequestID": "5ed656f3-f424-4a58-be10-a9b6c22d7db5",
+    "ResidentID": "divy@gmail.com",
+    "Status": "cancelled",
+    "TimeSlot": "9:00 AM to 9:45 AM",
+    "StartTime": "0001-01-01T09:00:00+05:30",
+    "EndTime": "0001-01-01T09:45:00+05:30",
+    "ServiceType": "electrician"
+  },
+  {
+    "RequestID": "609823a2-1cf5-486c-818a-ef5b5315b3fe",
+    "ResidentID": "divy@gmail.com",
+    "Status": "cancelled",
+    "TimeSlot": "9:00 AM to 9:45 AM",
+    "StartTime": "0001-01-01T09:00:00+05:30",
+    "EndTime": "0001-01-01T09:45:00+05:30",
+    "ServiceType": "plumber"
+  },
+  {
+    "RequestID": "d2bb718d-7da6-4825-a4f5-12cdd1f4e9ff",
+    "ResidentID": "divy@gmail.com",
+    "Status": "approved",
+    "TimeSlot": "10:30 AM to 11:15 AM",
+    "StartTime": "0001-01-01T10:30:00+05:30",
+    "EndTime": "0001-01-01T11:15:00+05:30",
+    "ServiceType": "plumber"
+  },
+  {
+    "RequestID": "e70778d2-9350-4d14-b1a5-34bb588bb9e8",
+    "ResidentID": "arjunsingh@gmail.com",
+    "Status": "pending",
+    "TimeSlot": "9:45 AM to 10:30 AM",
+    "StartTime": "0001-01-01T09:45:00+05:30",
+    "EndTime": "0001-01-01T10:30:00+05:30",
+    "ServiceType": "electrician"
+  }
+]
