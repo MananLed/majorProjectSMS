@@ -13,13 +13,14 @@ import (
 	"github.com/MananLed/majorProjectSMS/internal/utils"
 	"github.com/MananLed/majorProjectSMS/pkg/logger"
 	"github.com/fatih/color"
+	"github.com/google/uuid"
 )
 
 type ServiceRequestHandler struct {
-	ServiceRequestService *service.ServiceRequestService
+	ServiceRequestService service.ServiceRequestServiceInterface
 }
 
-func NewServiceRequestHandler(service *service.ServiceRequestService) *ServiceRequestHandler {
+func NewServiceRequestHandler(service service.ServiceRequestServiceInterface) *ServiceRequestHandler {
 	return &ServiceRequestHandler{ServiceRequestService: service}
 }
 
@@ -67,7 +68,7 @@ func (h *ServiceRequestHandler) BookServiceRequest(ctx context.Context) {
 		RequestID:   requestID,
 		ResidentID:  user.ID,
 		Status:      model.StatusPending,
-		TimeSlot:    fmt.Sprintf("%s to %s", chosenSlot.StartTime.Format("3:04 PM"), chosenSlot.EndTime.Format("3:04 PM")),
+		TimeSlot:    fmt.Sprintf("%s - %s", chosenSlot.StartTime.Format("3:04 PM"), chosenSlot.EndTime.Format("3:04 PM")),
 		StartTime:   chosenSlot.StartTime,
 		EndTime:     chosenSlot.EndTime,
 		ServiceType: model.ServiceType(serviceType),
@@ -87,8 +88,8 @@ func (h *ServiceRequestHandler) RescheduleServiceRequest(ctx context.Context) {
 
 	fmt.Print(color.YellowString("Enter Request ID to reschedule: "))
 	reqIDInput, _ := reader.ReadString('\n')
-	reqID := strings.TrimSpace(reqIDInput)
-
+	reqIDStr := strings.TrimSpace(reqIDInput)
+	reqID, err := uuid.Parse(reqIDStr)
 	user, _ := utils.GetUserFromContext(ctx)
 
 	serviceType, err := h.ServiceRequestService.GetServiceTypeByID(reqID)
@@ -132,11 +133,12 @@ func (h *ServiceRequestHandler) CancelServiceRequest(ctx context.Context) {
 	fmt.Print(color.YellowString("Enter Request ID to cancel: "))
 
 	reqIDInput, _ := reader.ReadString('\n')
-	reqID := strings.TrimSpace(reqIDInput)
+	reqIDStr := strings.TrimSpace(reqIDInput)
+	reqID, err := uuid.Parse(reqIDStr)
 
 	user, _ := utils.GetUserFromContext(ctx)
 
-	err := h.ServiceRequestService.CancelServiceRequest(user.ID, reqID)
+	err = h.ServiceRequestService.CancelServiceRequest(user.ID, reqID)
 	if err != nil {
 		color.Red("Failed to cancel request: %v", err)
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -259,9 +261,10 @@ func (h *ServiceRequestHandler) ApproveRequest(ctx context.Context) {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print(color.YellowString("Enter Request ID to approve: "))
 	reqIDInput, _ := reader.ReadString('\n')
-	reqID := strings.TrimSpace(reqIDInput)
+	reqIDStr := strings.TrimSpace(reqIDInput)
+	reqID, err := uuid.Parse(reqIDStr)
 
-	err := h.ServiceRequestService.ApproveServiceRequest(reqID)
+	err = h.ServiceRequestService.ApproveServiceRequest(reqID)
 	if err != nil {
 		color.Red("Failed to approve request: %v", err)
 		logger.LogToFile(fmt.Sprintf("error: %v", err))

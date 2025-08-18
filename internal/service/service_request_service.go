@@ -2,7 +2,6 @@ package service
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"time"
 
@@ -10,7 +9,21 @@ import (
 	"github.com/MananLed/majorProjectSMS/internal/repository"
 	"github.com/MananLed/majorProjectSMS/internal/utils"
 	"github.com/MananLed/majorProjectSMS/pkg/logger"
+	"github.com/google/uuid"
 )
+
+type ServiceRequestServiceInterface interface {
+	BookServiceRequest(req model.ServiceRequest) error
+	RescheduleServiceRequest(userID string, requestID uuid.UUID, newSlot utils.TimeSlot, newService model.ServiceType) error
+	CancelServiceRequest(userID string, requestID uuid.UUID) error
+	GetServiceRequestsByStatus(userID string, status model.Status) []model.ServiceRequest
+	GetAvailableTimeSlots(service model.ServiceType) []utils.TimeSlot
+	GetServiceTypeByID(requestID uuid.UUID) (model.ServiceType, error)
+	GetPendingRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest
+	GetApprovedRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest
+	ApproveServiceRequest(requestID uuid.UUID) error
+	DeleteServiceRequestByID(ctx context.Context) error
+}
 
 type ServiceRequestService struct {
 	Repo repository.ServiceRequestRepositoryInterface
@@ -25,110 +38,41 @@ func (s *ServiceRequestService) normalizeTime(t time.Time) time.Time {
 }
 
 func (s *ServiceRequestService) BookServiceRequest(req model.ServiceRequest) error {
-	allRequests, err := s.Repo.LoadRequests()
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return err
-	}
-
 	req.StartTime = s.normalizeTime(req.StartTime)
 	req.EndTime = s.normalizeTime(req.EndTime)
-
-	for _, r := range allRequests {
-		if r.ServiceType == req.ServiceType &&
-			s.normalizeTime(r.StartTime).Equal(req.StartTime) &&
-			s.normalizeTime(r.EndTime).Equal(req.EndTime) &&
-			r.Status != model.StatusCancelled {
-			return errors.New("time slot already booked")
-		}
-	}
-
-	allRequests = append(allRequests, req)
-	return s.Repo.SaveRequests(allRequests)
+	return s.Repo.CreateRequest(&req)
 }
 
-func (s *ServiceRequestService) RescheduleServiceRequest(userID, requestID string, newSlot utils.TimeSlot, newService model.ServiceType) error {
-	allRequests, err := s.Repo.LoadRequests()
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return err
-	}
+func (s *ServiceRequestService) RescheduleServiceRequest(userID string, requestID uuid.UUID, newSlot utils.TimeSlot, newService model.ServiceType) error {
 
 	newStart := s.normalizeTime(newSlot.StartTime)
 	newEnd := s.normalizeTime(newSlot.EndTime)
 
-	updated := false
-	for i, r := range allRequests {
-		if r.RequestID == requestID && r.ResidentID == userID {
-			if r.Status == model.StatusCancelled || r.Status == model.StatusApproved {
-				return errors.New("cannot reschedule a cancelled or approved request")
-			}
+	var updatedRequest model.ServiceRequest
 
-			allRequests[i].TimeSlot = fmt.Sprintf("%s - %s", newStart.Format("3:04 PM"), newEnd.Format("3:04 PM"))
-			allRequests[i].StartTime = newStart
-			allRequests[i].EndTime = newEnd
-			allRequests[i].ServiceType = newService
-			allRequests[i].Status = model.StatusPending
-			updated = true
-			break
-		}
-	}
+	updatedRequest.TimeSlot = fmt.Sprintf("%s - %s", newStart.Format("3:04 PM"), newEnd.Format("3:04 PM"))
+	updatedRequest.StartTime = newStart
+	updatedRequest.EndTime = newEnd
+	updatedRequest.ServiceType = newService
+	updatedRequest.Status = model.StatusPending
+	updatedRequest.ResidentID = userID
+	updatedRequest.RequestID = requestID
 
-	if !updated {
-		return errors.New("request not found")
-	}
-
-	return s.Repo.SaveRequests(allRequests)
+	return s.Repo.UpdateRequest(&updatedRequest)
 }
 
-func (s *ServiceRequestService) CancelServiceRequest(userID, requestID string) error {
-	allRequests, err := s.Repo.LoadRequests()
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return err
-	}
-
-	cancelled := false
-	for i, r := range allRequests {
-		if r.RequestID == requestID && r.ResidentID == userID {
-			if r.Status == model.StatusCancelled {
-				return errors.New("request already cancelled")
-			} else if r.Status == model.StatusApproved {
-				return errors.New("request is already approved")
-			}
-			allRequests[i].Status = model.StatusCancelled
-			cancelled = true
-			break
-		}
-	}
-
-	if !cancelled {
-		return errors.New("request not found")
-	}
-
-	return s.Repo.SaveRequests(allRequests)
+func (s *ServiceRequestService) CancelServiceRequest(userID string, requestID uuid.UUID) error {
+	return s.Repo.DeleteRequest(requestID)
 }
 
 func (s *ServiceRequestService) GetServiceRequestsByStatus(userID string, status model.Status) []model.ServiceRequest {
-	requests, err := s.Repo.LoadRequests()
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return nil
-	}
-
-	var filtered []model.ServiceRequest
-	for _, r := range requests {
-		if r.ResidentID == userID && r.Status == status {
-			filtered = append(filtered, r)
-		}
-	}
-	return filtered
+	return s.Repo.GetServiceRequestsByStatus(userID, status)
 }
 
 func (s *ServiceRequestService) GetAvailableTimeSlots(service model.ServiceType) []utils.TimeSlot {
 	booked := map[string]bool{}
 
-	requests, err := s.Repo.LoadRequests()
+	requests, err := s.Repo.GetAllRequests()
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return utils.GenerateTimeSlots()
@@ -149,94 +93,31 @@ func (s *ServiceRequestService) GetAvailableTimeSlots(service model.ServiceType)
 	return available
 }
 
-func (s *ServiceRequestService) GetServiceTypeByID(requestID string) (model.ServiceType, error) {
-	requests, err := s.Repo.LoadRequests()
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return "", errors.New("request with such ID is not present")
-	}
-
-	for _, request := range requests {
-		if request.RequestID == requestID {
-			fmt.Println(request.RequestID, requestID)
-			return request.ServiceType, nil
-		}
-	}
-	return "", errors.New("request with such ID is not present")
+func (s *ServiceRequestService) GetServiceTypeByID(requestID uuid.UUID) (model.ServiceType, error) {
+	return s.Repo.GetServiceTypeByID(requestID)
 }
 
 func (s *ServiceRequestService) GetPendingRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest {
-	requests, err := s.Repo.LoadRequests()
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return nil
-	}
-
-	var filtered []model.ServiceRequest
-	for _, r := range requests {
-		if r.ServiceType == serviceType && r.Status == model.StatusPending {
-			filtered = append(filtered, r)
-		}
-	}
-	return filtered
+	return s.Repo.GetPendingRequestsByServiceType(serviceType)
 }
 
 func (s *ServiceRequestService) GetApprovedRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest {
-	requests, err := s.Repo.LoadRequests()
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return nil
-	}
-
-	var filtered []model.ServiceRequest
-	for _, r := range requests {
-		if r.ServiceType == serviceType && r.Status == model.StatusApproved {
-			filtered = append(filtered, r)
-		}
-	}
-	return filtered
+	return s.Repo.GetApprovedRequestsByServiceType(serviceType)
 }
 
-func (s *ServiceRequestService) ApproveServiceRequest(requestID string) error {
-	requests, err := s.Repo.LoadRequests()
+func (s *ServiceRequestService) ApproveServiceRequest(requestID uuid.UUID) error {
+	req, err := s.Repo.GetRequestByID(requestID)
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return err
 	}
 
-	updated := false
-	for i, r := range requests {
-		if r.RequestID == requestID {
-			if r.Status != model.StatusPending {
-				return errors.New("only pending requests can be approved")
-			}
-			requests[i].Status = model.StatusApproved
-			updated = true
-			break
-		}
-	}
+	req.Status = model.StatusApproved
 
-	if !updated {
-		return errors.New("request ID not found")
-	}
-
-	return s.Repo.SaveRequests(requests)
+	return s.Repo.UpdateRequest(req)
 }
 
 func (s *ServiceRequestService) DeleteServiceRequestByID(ctx context.Context) error {
-	requestID := ctx.Value(utils.UserIDKey).(string)
-	requests, err := s.Repo.LoadRequests()
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return err
-	}
-	var validRequests []model.ServiceRequest
-	for _, r := range requests {
-		if r.RequestID == requestID {
-			continue
-		}
-		validRequests = append(validRequests, r)
-	}
-
-	return s.Repo.SaveRequests(validRequests)
+	residentID := ctx.Value(utils.UserIDKey).(string)
+	return s.Repo.DeleteRequestsByResidentID(residentID)
 }

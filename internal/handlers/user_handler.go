@@ -21,11 +21,11 @@ import (
 )
 
 type UserHandler struct {
-	UserService            *service.UserService
+	UserService            service.UserServiceInterface
 	ServiceReqeuestService *service.ServiceRequestService
 }
 
-func NewUserHandler(us *service.UserService, srs *service.ServiceRequestService) *UserHandler {
+func NewUserHandler(us service.UserServiceInterface, srs *service.ServiceRequestService) *UserHandler {
 	return &UserHandler{
 		UserService:            us,
 		ServiceReqeuestService: srs,
@@ -347,6 +347,9 @@ func (h *UserHandler) CreateOfficer(ctx context.Context) {
 		ID:       email,
 		Password: string(hashedPassword),
 		Role:     model.RoleOfficer,
+		FirstName: "********",
+		LastName: "*********",
+		MobileNumber: "**********",
 	}
 
 	if err := h.UserService.SignUp(newOfficer); err != nil {
@@ -387,11 +390,14 @@ func (h *UserHandler) DeleteProfile(ctx context.Context) {
 	}
 
 	err = h.UserService.DeleteProfile(ctx)
-	err = h.ServiceReqeuestService.DeleteServiceRequestByID(ctx)
 	if err != nil {
 		color.Red("Failed to delete profile: %v", err)
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 	} else {
 		color.Green("Profile deleted successfully!")
+	}
+	err = h.ServiceReqeuestService.DeleteServiceRequestByID(ctx)
+	if err != nil {
+		logger.LogToFile(fmt.Sprintf("error: %v", err))
 	}
 }

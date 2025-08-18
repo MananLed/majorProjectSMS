@@ -1,11 +1,10 @@
 package handlers
 
 import (
-	"bufio"
+
 	"context"
 	"fmt"
-	"os"
-	"strings"
+
 	"time"
 
 	"github.com/MananLed/majorProjectSMS/constants"
@@ -17,24 +16,25 @@ import (
 )
 
 type InvoiceHandler struct {
-	InvoiceService *service.InvoiceService
+	InvoiceService service.InvoiceServiceInterface
 }
 
-func NewInvoiceHandler(service *service.InvoiceService) *InvoiceHandler {
+func NewInvoiceHandler(service service.InvoiceServiceInterface) *InvoiceHandler {
 	return &InvoiceHandler{InvoiceService: service}
 }
 
+
 func (h *InvoiceHandler) IssueInvoice(ctx context.Context) {
 	user, err := utils.GetUserFromContext(ctx)
-
-	if user.Role != model.RoleAdmin {
-		color.Red("not permitted to issue invoice")
-		return
-	}
 	if err != nil {
 		fmt.Print(color.RedString("error: "))
 		fmt.Println(err)
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
+		return
+	}
+
+	if user.Role != model.RoleAdmin {
+		color.Red("not permitted to issue invoice")
 		return
 	}
 
@@ -43,14 +43,10 @@ func (h *InvoiceHandler) IssueInvoice(ctx context.Context) {
 	fmt.Scanf("%f\n", &amount)
 
 	now := time.Now()
-	year := now.Year()
-	month := now.Month()
+	year := now.Year()    
+	month := now.Month()    
 
-	yearStr := fmt.Sprintf("%d", year)
-	monthStr := month.String()
-
-	err = h.InvoiceService.GenerateInvoice(amount, monthStr, yearStr)
-
+	err = h.InvoiceService.GenerateInvoice(amount, month, year)
 	if err != nil {
 		color.Red("Failed to issue invoice: %v", err)
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -59,34 +55,23 @@ func (h *InvoiceHandler) IssueInvoice(ctx context.Context) {
 	}
 }
 
+
 func (h *InvoiceHandler) GetInvoiceByMonthAndYear() {
-	reader := bufio.NewReader(os.Stdin)
-	fmt.Print(color.YellowString("Enter the month(MM): "))
-	var monthindex int
-	fmt.Scanf("%d\n", &monthindex)
-	months := []string{
-		"January", "February", "March", "April", "May", "June",
-		"July", "August", "September", "October", "November", "December",
+	fmt.Print(color.YellowString("Enter the month (1-12): "))
+	var monthIndex int
+	fmt.Scanf("%d\n", &monthIndex)
+
+	for monthIndex < 1 || monthIndex > 12 {
+		color.Red("Invalid month, enter again: ")
+		fmt.Scanf("%d\n", &monthIndex)
 	}
+	month := time.Month(monthIndex)
 
-	for {
-		if monthindex < 1 || monthindex > 12 {
-			color.Red("invalid month, enter again")
-		} else {
-			break
-		}
-		fmt.Scanf("%d\n", &monthindex)
-	}
-
-	month := months[monthindex-1]
-	month = strings.TrimRight(month, "\r\n")
-	fmt.Print(color.YellowString("Enter the year(YYYY): "))
-
-	year, _ := reader.ReadString('\n')
-	year = strings.TrimRight(year, "\r\n")
+	var year int
+	fmt.Print(color.YellowString("Enter the year (YYYY): "))
+	fmt.Scanf("%d\n", &year)
 
 	invoice, err := h.InvoiceService.GetInvoiceByMonthAndYear(month, year)
-
 	if err != nil {
 		fmt.Print(color.RedString("error: "))
 		fmt.Println(err)
@@ -94,17 +79,15 @@ func (h *InvoiceHandler) GetInvoiceByMonthAndYear() {
 		return
 	}
 
-	color.White(constants.InvoiceFormatPrompt, invoice.ID, invoice.Amount, invoice.Month, invoice.Year)
+	color.White(constants.InvoiceFormatPrompt, invoice.ID, invoice.Amount, invoice.Month.String(), invoice.Year)
 }
 
 func (h *InvoiceHandler) GetInvoicesByYear() {
-	reader := bufio.NewReader(os.Stdin)
-	fmt.Print(color.YellowString("Enter the year(YYYY): "))
-	year, _ := reader.ReadString('\n')
-	year = strings.TrimRight(year, "\r\n")
+	var year int
+	fmt.Print(color.YellowString("Enter the year (YYYY): "))
+	fmt.Scanf("%d\n", &year)
 
 	invoices, err := h.InvoiceService.GetInvoicesByYear(year)
-
 	if err != nil {
 		color.Red("error: %v", err)
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -113,8 +96,11 @@ func (h *InvoiceHandler) GetInvoicesByYear() {
 
 	if len(invoices) > 0 {
 		color.Green("Invoices:- ")
+	} else {
+		color.Yellow("No invoices found for %d", year)
 	}
+
 	for _, invoice := range invoices {
-		color.White(constants.InvoiceFormatPrompt, invoice.ID, invoice.Amount, invoice.Month, invoice.Year)
+		color.White(constants.InvoiceFormatPrompt, invoice.ID, invoice.Amount, invoice.Month.String(), invoice.Year)
 	}
 }

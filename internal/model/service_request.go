@@ -1,6 +1,10 @@
 package model
 
-import "time"
+import (
+	"time"
+
+	"github.com/google/uuid"
+)
 
 type Status string
 
@@ -20,11 +24,11 @@ const(
 )
 
 type ServiceRequest struct {
-	RequestID   string
-	ResidentID  string
-	Status      Status
-	TimeSlot    string
-	StartTime   time.Time
-	EndTime     time.Time
-	ServiceType ServiceType
+	RequestID   uuid.UUID `json:"request_id"`
+	ResidentID  string `json:"resident_id"`
+	Status      Status `json:"status"`
+	TimeSlot    string `json:"time_slot"`
+	StartTime   time.Time `json:"start_time"`
+	EndTime     time.Time `json:"end_time"`
+	ServiceType ServiceType `json:"service_type"`
 }

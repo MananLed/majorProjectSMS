@@ -10,3 +10,16 @@
 2025/08/11 22:10:21 error: crypto/bcrypt: hashedPassword is not the hash of the given password
 2025/08/11 22:25:31 error: user not found
 2025/08/11 22:25:31 error: user not found
+2025/08/16 21:50:21 error: sql: Scan error on column index 6, name "service_type": destination not a pointer
+2025/08/16 21:52:04 error: sql: Scan error on column index 6, name "service_type": destination not a pointer
+2025/08/16 21:52:52 error: sql: Scan error on column index 6, name "service_type": destination not a pointer
+2025/08/16 21:52:52 error: sql: Scan error on column index 6, name "service_type": destination not a pointer
+2025/08/16 22:00:27 error: invalid slot choice
+2025/08/16 22:01:26 error: sql: Scan error on column index 6, name "service_type": destination not a pointer
+2025/08/16 22:01:26 error: sql: Scan error on column index 6, name "service_type": destination not a pointer
+2025/08/16 23:09:31 error: pq: new row for relation "service_requests" violates check constraint "service_requests_service_type_check"
+2025/08/16 23:09:31 error: failed to update service request: pq: new row for relation "service_requests" violates check constraint "service_requests_service_type_check"
+2025/08/16 23:10:44 error: pq: new row for relation "service_requests" violates check constraint "service_requests_service_type_check"
+2025/08/16 23:10:44 error: failed to update service request: pq: new row for relation "service_requests" violates check constraint "service_requests_service_type_check"
+2025/08/18 00:16:54 user already has a booked request
+2025/08/18 00:16:54 error: user already has a booked request

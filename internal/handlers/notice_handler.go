@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
@@ -17,23 +18,23 @@ import (
 )
 
 type NoticeHandler struct {
-	NoticeService *service.NoticeService
+	NoticeService service.NoticeServiceInterface
 }
 
-func NewNoticeHandler(service *service.NoticeService) *NoticeHandler {
+func NewNoticeHandler(service service.NoticeServiceInterface) *NoticeHandler {
 	return &NoticeHandler{NoticeService: service}
 }
 
 func (h *NoticeHandler) IssueNotice(ctx context.Context) {
 	user, err := utils.GetUserFromContext(ctx)
 
-	if user.Role == model.RoleResident {
-		color.Red("not permitted to issue notice.")
-		return
-	}
 	if err != nil {
 		color.Red("error: %v", err)
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
+		return
+	}
+	if user.Role == model.RoleResident {
+		color.Red("not permitted to issue notice.")
 		return
 	}
 	reader := bufio.NewReader(os.Stdin)
@@ -47,13 +48,9 @@ func (h *NoticeHandler) IssueNotice(ctx context.Context) {
 	}
 
 	now := time.Now()
-	year := now.Year()
-	month := now.Month()
 
-	yearStr := fmt.Sprintf("%d", year)
-	monthStr := month.String()
 
-	err = h.NoticeService.IssueNotice(content, monthStr, yearStr)
+	err = h.NoticeService.IssueNotice(content, now.Month(), now.Year())
 	if err != nil {
 		color.Red("Failed to issue notice: %v", err)
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -77,62 +74,81 @@ func (h *NoticeHandler) GetNotices() {
 
 	color.Cyan("===== All Notices =====\n\n")
 	for _, notice := range notices {
-		color.White(constants.NoticeFormatPrompt, notice.ID, notice.DateIssued, notice.Content)
+		dateStr := notice.DateIssued.Format("02-Jan-2006")
+		color.White(constants.NoticeFormatPrompt, notice.ID, dateStr, notice.Content)
 	}
 }
 
 func (h *NoticeHandler) GetNoticesByMonthYear() {
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Print(color.YellowString("Enter the month: "))
-	var monthindex int
-	fmt.Scanf("%d\n", &monthindex)
-	months := []string{
-		"January", "February", "March", "April", "May", "June",
-		"July", "August", "September", "October", "November", "December",
-	}
 
+	var monthIndex int
 	for {
-		if monthindex < 1 || monthindex > 12 {
-			color.Red("invalid month, enter again")
-		} else {
+		fmt.Print(color.YellowString("Enter the month (1-12): "))
+		_, err := fmt.Scanf("%d\n", &monthIndex)
+		if err == nil && monthIndex >= 1 && monthIndex <= 12 {
 			break
 		}
-		fmt.Scanf("%d\n", &monthindex)
+		color.Red("Invalid month. Please enter a number between 1 and 12.")
 	}
-	month := months[monthindex-1]
-	month = strings.TrimRight(month, "\r\n")
-	fmt.Print(color.YellowString("Enter the year(YYYY): "))
-	year, _ := reader.ReadString('\n')
-	year = strings.TrimRight(year, "\r\n")
 
-	notices, err := h.NoticeService.GetNoticesByMonthYear(month, year)
-	if err != nil {
-		color.Red("error: %v", err)
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
+	fmt.Print(color.YellowString("Enter the year (YYYY): "))
+	yearStr, _ := reader.ReadString('\n')
+	yearStr = strings.TrimSpace(yearStr)
+
+	year, err := strconv.Atoi(yearStr)
+	if err != nil || year < 1 {
+		color.Red("Invalid year.")
 		return
 	}
-	fmt.Println(len(notices))
-	color.Green("Notices Found:-")
+
+	notices, err := h.NoticeService.GetNoticesByMonthYear(time.Month(monthIndex), year)
+	if err != nil {
+		color.Red("Error retrieving notices: %v", err)
+		logger.LogToFile(fmt.Sprintf("Error retrieving notices: %v", err))
+		return
+	}
+
+	if len(notices) == 0 {
+		color.Yellow("No notices found for %s %d.", time.Month(monthIndex), year)
+		return
+	}
+
+	color.Green("Notices Found:")
 	for _, notice := range notices {
-		color.White(constants.NoticeFormatPrompt, notice.ID, notice.DateIssued, notice.Content)
+		dateStr := notice.DateIssued.Format("02-Jan-2006")
+		color.White(constants.NoticeFormatPrompt, notice.ID, dateStr, notice.Content)
 	}
 }
 
+
 func (h *NoticeHandler) GetNoticesByYear() {
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Print(color.YellowString("Enter the year(YYYY): "))
-	year, _ := reader.ReadString('\n')
-	year = strings.TrimRight(year, "\r\n")
-	notices, err := h.NoticeService.GetNoticesByYear(year)
+	fmt.Print(color.YellowString("Enter the year (YYYY): "))
+	yearStr, _ := reader.ReadString('\n')
+	yearStr = strings.TrimSpace(yearStr)
 
-	if err != nil {
-		color.Red("error: %v", err)
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
+	year, err := strconv.Atoi(yearStr)
+	if err != nil || year < 1 {
+		color.Red("Invalid year.")
 		return
 	}
 
-	color.Green("Notices:- ")
+	notices, err := h.NoticeService.GetNoticesByYear(year)
+	if err != nil {
+		color.Red("Error retrieving notices: %v", err)
+		logger.LogToFile(fmt.Sprintf("Error retrieving notices: %v", err))
+		return
+	}
+
+	if len(notices) == 0 {
+		color.Yellow("No notices found for year %d.", year)
+		return
+	}
+
+	color.Green("Notices:")
 	for _, notice := range notices {
-		color.White(constants.NoticeFormatPrompt, notice.ID, notice.DateIssued, notice.Content)
+		dateStr := notice.DateIssued.Format("02-Jan-2006")
+		color.White(constants.NoticeFormatPrompt, notice.ID, dateStr, notice.Content)
 	}
 }

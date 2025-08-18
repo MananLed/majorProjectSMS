@@ -13,10 +13,10 @@ import (
 )
 
 type CredentialHandler struct {
-	Service *service.CredentialService
+	Service service.CredentialServiceInterface
 }
 
-func NewCredentialHandler(s *service.CredentialService) *CredentialHandler {
+func NewCredentialHandler(s service.CredentialServiceInterface) *CredentialHandler {
 	return &CredentialHandler{Service: s}
 }
 

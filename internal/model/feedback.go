@@ -1,7 +1,12 @@
 package model
 
+import(
+	"github.com/google/uuid"
+)
+
 type Feedback struct{
-	ResidentID string 
-	Rating int32
-	Content string 
+	ID uuid.UUID  `json:"id"`
+	ResidentID string `json:"resident_id"`
+	Rating int32 `json:"rating"`
+	Content string `json:"content"`
 }

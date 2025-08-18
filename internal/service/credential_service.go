@@ -9,6 +9,11 @@ import (
 	"github.com/MananLed/majorProjectSMS/internal/utils"
 )
 
+type CredentialServiceInterface interface{
+	DeleteOfficerCredentials(ctx context.Context, officerID string) error
+	DeleteResidentCredentials(ctx context.Context, residentID string) error
+}
+
 type CredentialService struct {
 	Repo repository.CredentialRepositoryInterface
 }

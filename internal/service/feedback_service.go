@@ -5,6 +5,12 @@ import (
 	"github.com/MananLed/majorProjectSMS/internal/repository"
 )
 
+type FeedbackServiceInterface interface{
+	IssueFeedback(content string, residentID string, rating int32) error
+	GetFeedbacks() ([]model.Feedback, error)
+	GetFeedbackByID(id string) ([]model.Feedback, error)
+}
+
 type FeedbackService struct {
 	FeedbackRepo repository.FeedbackRepositoryInterface
 }

@@ -30,7 +30,7 @@ func ShowOfficerDashboard(ctx context.Context, user *model.User, uHandler *handl
 		color.Cyan("4. " + string(constants.ManageFeedbackPrompt))
 		color.Cyan("5. " + string(constants.ManageProfilePrompt))
 		color.Cyan("6. " + string(constants.AddNewOfficerPrompt))
-		color.Cyan("7. " + string(constants.LogoutPrompt))
+		color.Red("7. " + string(constants.LogoutPrompt))
 
 		for {
 			choice := utils.ReadChoice()

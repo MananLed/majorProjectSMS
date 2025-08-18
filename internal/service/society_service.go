@@ -11,6 +11,11 @@ import (
 	"github.com/MananLed/majorProjectSMS/pkg/logger"
 )
 
+type SocietyServiceInterface interface{
+	GetAllResidents(ctx context.Context) ([]model.User, error)
+	GetAllOfficers(ctx context.Context) ([]model.User, error)
+}
+
 type SocietyService struct {
 	SocietyRepo repository.SocietyRepositoryInterface
 }

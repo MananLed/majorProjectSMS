@@ -1,18 +1,19 @@
 package repository
 
 import (
-	"encoding/json"
-	"fmt"
-	"os"
-	"sync"
 
-	"github.com/MananLed/majorProjectSMS/constants"
+	"fmt"
+	"sync"
+	"database/sql"
+
 	"github.com/MananLed/majorProjectSMS/internal/model"
+	"github.com/MananLed/majorProjectSMS/internal/utils"
 	"github.com/MananLed/majorProjectSMS/pkg/logger"
 )
 
 type FeedbackRepository struct {
 	mu sync.Mutex
+	DB *sql.DB
 }
 
 type FeedbackRepositoryInterface interface {
@@ -21,64 +22,77 @@ type FeedbackRepositoryInterface interface {
 	GetAllFeedbacks() ([]model.Feedback, error)
 }
 
-func (f *FeedbackRepository) loadFeedbacks() ([]model.Feedback, error) {
-	f.mu.Lock()
-	defer f.mu.Unlock()
+func NewFeedbackRepository(db *sql.DB) *FeedbackRepository {
+	return &FeedbackRepository{DB: db}
+}
 
-	fileData, err := os.ReadFile(string(constants.FeedbackDataPath))
+func (r *FeedbackRepository) SaveFeedback(feedback model.Feedback) error {
+	feedback.ID = utils.GenerateUUID()
+
+	query := `
+		INSERT INTO feedback (id, resident_id, rating, content)
+		VALUES ($1, $2, $3, $4)
+	`
+	r.mu.Lock()
+	_, err := r.DB.Exec(query, feedback.ID, feedback.ResidentID, feedback.Rating, feedback.Content)
+	r.mu.Unlock()
+
+	if err != nil {logger.LogToFile(fmt.Sprintf("error: %v", err))}
+	return err
+}
+
+func (r *FeedbackRepository) GetFeedbacksByID(residentID string) ([]model.Feedback, error) {
+	query := `
+		SELECT id, resident_id, rating, content
+		FROM feedback
+		WHERE resident_id = $1
+	`
+
+	r.mu.Lock()
+	rows, err := r.DB.Query(query, residentID)
+	r.mu.Unlock()
+
 	if err != nil {
-		if os.IsNotExist(err) {
-			return []model.Feedback{}, nil
-		}
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return nil, err
 	}
 
+	defer rows.Close()
+
 	var feedbacks []model.Feedback
-	if err := json.Unmarshal(fileData, &feedbacks); err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return nil, err
+	for rows.Next() {
+		var f model.Feedback
+		if err := rows.Scan(&f.ID, &f.ResidentID, &f.Rating, &f.Content); err != nil {
+			return nil, err
+		}
+		feedbacks = append(feedbacks, f)
 	}
 	return feedbacks, nil
 }
 
-func (f *FeedbackRepository) GetFeedbacksByID(id string) ([]model.Feedback, error) {
-	feedbacks, err := f.loadFeedbacks()
+func (r *FeedbackRepository) GetAllFeedbacks() ([]model.Feedback, error) {
+	query := `
+		SELECT id, resident_id, rating, content
+		FROM feedback
+	`
+	r.mu.Lock()
+	rows, err := r.DB.Query(query)
+	r.mu.Unlock()
+
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return nil, err
 	}
-	var feedbackOfResident []model.Feedback
-	for _, f := range feedbacks {
-		if f.ResidentID == id {
-			feedbackOfResident = append(feedbackOfResident, f)
+	defer rows.Close()
+
+	var feedbacks []model.Feedback
+	for rows.Next() {
+		var f model.Feedback
+		if err := rows.Scan(&f.ID, &f.ResidentID, &f.Rating, &f.Content); err != nil {
+			logger.LogToFile(fmt.Sprintf("error: %v", err))
+			return nil, err
 		}
+		feedbacks = append(feedbacks, f)
 	}
-	return feedbackOfResident, nil
-}
-
-func (f *FeedbackRepository) GetAllFeedbacks() ([]model.Feedback, error) {
-	return f.loadFeedbacks()
-}
-
-func (f *FeedbackRepository) SaveFeedback(feedback model.Feedback) error {
-	feedbacks, err := f.loadFeedbacks()
-
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return err
-	}
-
-	feedbacks = append(feedbacks, feedback)
-
-	f.mu.Lock()
-	defer f.mu.Unlock()
-
-	data, err := json.MarshalIndent(feedbacks, "", " ")
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return err
-	}
-
-	return os.WriteFile(string(constants.FeedbackDataPath), data, 0644)
+	return feedbacks, nil
 }

@@ -9,14 +9,14 @@ const(
 )
 
 type User struct{
-	FirstName string
-	MiddleName string 
-	LastName string 
-	MobileNumber string
-	Email string 
-	ID string  
-	Password string
-	Role UserRole
+	FirstName string `json:"first_name"`
+	MiddleName string `json:"middle_name"`
+	LastName string `json:"last_name"`
+	MobileNumber string `json:"mobile_number"`
+	Email string `json:"email"`
+	ID string  `json:"id"`
+	Password string `json:"password"`
+	Role UserRole `json:"role"`
 }
 
 

@@ -1,13 +1,12 @@
 package repository
 
 import (
-	"encoding/json"
+	"database/sql"
 	"errors"
 	"fmt"
-	"os"
 	"sync"
+	"time"
 
-	"github.com/MananLed/majorProjectSMS/constants"
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/utils"
 	"github.com/MananLed/majorProjectSMS/pkg/logger"
@@ -15,91 +14,89 @@ import (
 
 type InvoiceRepositoryInterface interface {
 	SaveInvoice(model.Invoice) error
-	GetInvoiceByMonthAndYear(string, string) (*model.Invoice, error)
-	GetInvoicesByYear(string) ([]model.Invoice, error)
+	GetInvoiceByMonthAndYear(time.Month, int) (*model.Invoice, error)
+	GetInvoicesByYear(int) ([]model.Invoice, error)
 }
 
 type InvoiceRepository struct {
 	mu sync.Mutex
+	DB *sql.DB
 }
 
-func (r *InvoiceRepository) loadInvoices() ([]model.Invoice, error) {
-	r.mu.Lock()
-	defer r.mu.Unlock()
-
-	fileData, err := os.ReadFile(string(constants.InvoiceDataPath))
-
-	if err != nil {
-		if os.IsNotExist(err) {
-			return []model.Invoice{}, nil
-		}
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return nil, err
-	}
-
-	var invoices []model.Invoice
-
-	if err := json.Unmarshal(fileData, &invoices); err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return nil, err
-	}
-	return invoices, nil
+func NewInvoiceRepository(db *sql.DB) *InvoiceRepository {
+	return &InvoiceRepository{DB: db}
 }
 
 func (r *InvoiceRepository) SaveInvoice(invoice model.Invoice) error {
-	invoices, err := r.loadInvoices()
-
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return err
-	}
-
 	invoice.ID = utils.GenerateUUID()
-	invoices = append(invoices, invoice)
+
+	query := `
+		INSERT INTO invoices (id, month, year, amount)
+		VALUES ($1, $2, $3, $4)
+	`
 
 	r.mu.Lock()
-	defer r.mu.Unlock()
-
-	data, err := json.MarshalIndent(invoices, "", "  ")
+	_, err := r.DB.Exec(query, invoice.ID, invoice.Month, invoice.Year, invoice.Amount)
+	r.mu.Unlock()
+	
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return err
 	}
 
-	return os.WriteFile(string(constants.InvoiceDataPath), data, 0644)
+	return nil
 }
 
-func (r *InvoiceRepository) GetInvoiceByMonthAndYear(month string, year string) (*model.Invoice, error) {
-	invoices, err := r.loadInvoices()
+func (r *InvoiceRepository) GetInvoiceByMonthAndYear(month time.Month, year int) (*model.Invoice, error) {
+	var invoice model.Invoice
+
+	query := `
+		SELECT id, month, year, amount
+		FROM invoices
+		WHERE month = $1 AND year = $2
+	`
+
+	r.mu.Lock()
+	err := r.DB.QueryRow(query, int(month), year).Scan(&invoice.ID, &invoice.Month, &invoice.Year, &invoice.Amount)
+	r.mu.Unlock()
+
+	if err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return nil, errors.New("invoice not found")
+		}
+		logger.LogToFile(fmt.Sprintf("error fetching invoice: %v", err))
+		return nil, err
+	}
+
+	return &invoice, nil
+}
+
+func (r *InvoiceRepository) GetInvoicesByYear(year int) ([]model.Invoice, error) {
+	query := `
+		SELECT id, month, year, amount
+		FROM invoices
+		WHERE year = $1
+	`
+
+	r.mu.Lock()
+	rows, err := r.DB.Query(query, year)
+	r.mu.Unlock()
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return nil, err
 	}
+	defer rows.Close()
 
-	for _, i := range invoices {
-		if i.Month == month && i.Year == year {
-			return &i, nil
+	var invoices []model.Invoice
+	for rows.Next() {
+		var inv model.Invoice
+		if err := rows.Scan(&inv.ID, &inv.Month, &inv.Year, &inv.Amount); err != nil {
+			logger.LogToFile(fmt.Sprintf("error scanning invoice row: %v", err))
+			return nil, err
 		}
+		invoices = append(invoices, inv)
 	}
 
-	return nil, errors.New("invoice not found")
-}
-
-func (r *InvoiceRepository) GetInvoicesByYear(year string) ([]model.Invoice, error) {
-	invoices, err := r.loadInvoices()
-
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return nil, err
-	}
-
-	var invoicesOfYear []model.Invoice
-
-	for _, i := range invoices {
-		if i.Year == year {
-			invoicesOfYear = append(invoicesOfYear, i)
-		}
-	}
-	return invoicesOfYear, nil
+	return invoices, nil
 }

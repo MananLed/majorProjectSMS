@@ -48,6 +48,23 @@ func (m *MockUserRepo) ChangePassword(id string, newHashedPassword string) error
 	return nil
 }
 
+func (m *MockUserRepo) IsPasswordUnique(hashedPassword string) bool {
+	for _, user := range m.users {
+		if user.Password == hashedPassword {
+			return false
+		}
+	}
+	return true
+}
+
+func (m *MockUserRepo) DeleteUserByID(id string) error {
+	if _, exists := m.users[id]; !exists {
+		return errors.New("user not found")
+	}
+	delete(m.users, id)
+	return nil
+}
+
 //Tests
 
 func TestSignUp(t *testing.T) {
@@ -134,19 +151,3 @@ func TestChangePassword(t *testing.T) {
 	}
 }
 
-func (m *MockUserRepo) IsPasswordUnique(hashedPassword string) bool {
-	for _, user := range m.users {
-		if user.Password == hashedPassword {
-			return false
-		}
-	}
-	return true
-}
-
-func (m *MockUserRepo) DeleteUserByID(id string) error {
-	if _, exists := m.users[id]; !exists {
-		return errors.New("user not found")
-	}
-	delete(m.users, id)
-	return nil
-}

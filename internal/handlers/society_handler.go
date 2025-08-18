@@ -10,10 +10,10 @@ import (
 )
 
 type SocietyHandler struct {
-	SocietyService *service.SocietyService
+	SocietyService service.SocietyServiceInterface
 }
 
-func NewSocietyHandler(serve *service.SocietyService) *SocietyHandler {
+func NewSocietyHandler(serve service.SocietyServiceInterface) *SocietyHandler {
 	return &SocietyHandler{SocietyService: serve}
 }
 

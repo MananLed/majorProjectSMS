@@ -1,90 +1,100 @@
 package repository
 
 import (
-	"encoding/json"
-	"fmt"
-	"os"
+	"database/sql"
+	"sync"
 
-	"github.com/MananLed/majorProjectSMS/constants"
+	"fmt"
+
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/pkg/logger"
 	"github.com/fatih/color"
 )
 
-type SocietyRepository struct{}
+type SocietyRepository struct {
+	mu sync.Mutex
+	db *sql.DB
+}
 
 type SocietyRepositoryInterface interface {
 	GetAllResidents() ([]model.User, error)
 	GetAllOfficers() ([]model.User, error)
 }
 
-func (s *SocietyRepository) GetAllUsers() ([]model.User, error) {
-
-	data, err := os.ReadFile(string(constants.UserDataPath))
-
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return nil, err
-	}
-
-	var users []model.User
-
-	err = json.Unmarshal(data, &users)
-
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return nil, err
-	}
-
-	return users, nil
+func NewSocietyRepository(db *sql.DB) *SocietyRepository {
+	return &SocietyRepository{db: db}
 }
 
 func (s *SocietyRepository) GetAllResidents() ([]model.User, error) {
-	users, err := s.GetAllUsers()
+
+	query := `
+		SELECT id, first_name, middle_name, last_name, mobile_number, email, password, role 
+		FROM users WHERE role = $1
+	`
+
+	s.mu.Lock()
+	rows, err := s.db.Query(query, string(model.RoleResident))
+	s.mu.Unlock()
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return nil, err
+		return nil, fmt.Errorf("failed to fetch residents: %w", err)
 	}
+	defer rows.Close()
 
 	var residents []model.User
-	var count int = 0
-	for _, user := range users {
-		if user.Role == model.RoleResident {
-			count++
-			residents = append(residents, user)
+	for rows.Next() {
+		var user model.User
+		if err := rows.Scan(&user.ID, &user.FirstName, &user.MiddleName, &user.LastName, &user.MobileNumber, &user.Email, &user.Password, &user.Role); err != nil {
+			logger.LogToFile(fmt.Sprintf("error: %v", err))
+			return nil, fmt.Errorf("failed to scan resident: %w", err)
 		}
+		residents = append(residents, user)
 	}
-	if len(residents) != 0 {
-		fmt.Print(color.YellowString("Total Residents: "), count)
+
+	if len(residents) > 0 {
+		fmt.Print(color.YellowString("Total Residents: "), len(residents))
 	} else {
 		fmt.Print("There are no residents currently.")
 	}
 	fmt.Println()
+
 	return residents, nil
 }
 
 func (s *SocietyRepository) GetAllOfficers() ([]model.User, error) {
-	users, err := s.GetAllUsers()
+
+	query := `
+		SELECT id, first_name, middle_name, last_name, mobile_number, email, password, role 
+		FROM users WHERE role = $1
+	`
+
+	s.mu.Lock()
+	rows, err := s.db.Query(query, string(model.RoleOfficer))
+	s.mu.Unlock()
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return nil, err
+		return nil, fmt.Errorf("failed to fetch officers: %v", err)
 	}
+	defer rows.Close()
 
 	var officers []model.User
-	var count int = 0
-	for _, user := range users {
-		if user.Role == model.RoleOfficer {
-			count++
-			officers = append(officers, user)
+	for rows.Next() {
+		var user model.User
+		if err := rows.Scan(&user.ID, &user.FirstName, &user.MiddleName, &user.LastName, &user.MobileNumber, &user.Email, &user.Password, &user.Role); err != nil {
+			logger.LogToFile(fmt.Sprintf("error: %v", err))
+			return nil, fmt.Errorf("failed to scan resident: %w", err)
 		}
+		officers = append(officers, user)
 	}
-	if len(officers) != 0 {
-		fmt.Print(color.YellowString("Total Officers: "), count)
+
+	if len(officers) > 0 {
+		fmt.Print(color.YellowString("Total Officers: "), len(officers))
 	} else {
 		fmt.Print("There are no officers currently.")
 	}
 	fmt.Println()
+
 	return officers, nil
 }

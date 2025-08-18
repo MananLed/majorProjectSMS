@@ -14,6 +14,15 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+type UserServiceInterface interface{
+	SignUp(user model.User) error
+	Login(id string, password string) (*model.User, error)
+	UpdateProfile(user model.User) error
+	ChangePassword(ctx context.Context, currentPassword string, newPassword string) error
+	IsPasswordUnique(Password string) bool
+	DeleteProfile(ctx context.Context) error
+}
+
 type UserService struct {
 	UserRepo repository.UserRepositoryInterface
 }

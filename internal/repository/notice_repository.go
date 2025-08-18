@@ -1,12 +1,11 @@
 package repository
 
 import (
-	"encoding/json"
+	"database/sql"
 	"fmt"
-	"os"
 	"sync"
+	"time"
 
-	"github.com/MananLed/majorProjectSMS/constants"
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/utils"
 	"github.com/MananLed/majorProjectSMS/pkg/logger"
@@ -15,93 +14,120 @@ import (
 type NoticeRepositoryInterface interface {
 	SaveNotice(notice model.Notice) error
 	GetAllNotices() ([]model.Notice, error)
-	GetNoticesByMonthYear(month string, year string) ([]model.Notice, error)
-	GetNoticesByYear(year string) ([]model.Notice, error)
+	GetNoticesByMonthYear(month time.Month, year int) ([]model.Notice, error)
+	GetNoticesByYear(year int) ([]model.Notice, error)
 }
 
 type NoticeRepository struct {
+	DB *sql.DB
 	mu sync.Mutex
 }
 
-func (r *NoticeRepository) loadNotices() ([]model.Notice, error) {
-	r.mu.Lock()
-	defer r.mu.Unlock()
+func NewNoticeRepository(db *sql.DB) *NoticeRepository {
+	return &NoticeRepository{DB: db}
+}
 
-	fileData, err := os.ReadFile(string(constants.NoticeDataPath))
+func (r *NoticeRepository) SaveNotice(notice model.Notice) error {
+
+	notice.ID = utils.GenerateUUID()
+
+	query := `
+		INSERT INTO notices (id, date_issued, content, month, year)
+		VALUES ($1, $2, $3, $4, $5)
+	`
+	r.mu.Lock()
+	_, err := r.DB.Exec(query, notice.ID, notice.DateIssued, notice.Content, notice.Month, notice.Year)
+	r.mu.Unlock()
+
 	if err != nil {
-		if os.IsNotExist(err) {
-			return []model.Notice{}, nil
-		}
+		logger.LogToFile(fmt.Sprintf("error: %v", err))
+		return err
+	}
+	return nil
+}
+
+func (r *NoticeRepository) GetAllNotices() ([]model.Notice, error) {
+	query := `
+	SELECT id, date_issued, content, month, year 
+	FROM notices 
+	ORDER BY date_issued DESC
+	`
+
+	rows, err := r.DB.Query(query)
+	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return nil, err
 	}
+	defer rows.Close()
 
 	var notices []model.Notice
-	if err := json.Unmarshal(fileData, &notices); err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return nil, err
+	for rows.Next() {
+		var n model.Notice
+		if err := rows.Scan(&n.ID, &n.DateIssued, &n.Content, &n.Month, &n.Year); err != nil {
+			logger.LogToFile(fmt.Sprintf("error: %v", err))
+			return nil, err
+		}
+		notices = append(notices, n)
 	}
 
 	return notices, nil
 }
 
-func (r *NoticeRepository) SaveNotice(notice model.Notice) error {
-	notices, err := r.loadNotices()
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return err
-	}
-
-	notice.ID = utils.GenerateUUID()
-	notices = append(notices, notice)
-
+func (r *NoticeRepository) GetNoticesByMonthYear(month time.Month, year int) ([]model.Notice, error) {
+	query := `
+	SELECT id, date_issued, content, month, year 
+	FROM notices 
+	WHERE month = $1 AND year = $2 
+	ORDER BY date_issued DESC
+	`
 	r.mu.Lock()
-	defer r.mu.Unlock()
-	data, err := json.MarshalIndent(notices, "", "  ")
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return err
-	}
-
-	return os.WriteFile(string(constants.NoticeDataPath), data, 0644)
-}
-
-func (r *NoticeRepository) GetAllNotices() ([]model.Notice, error) {
-	return r.loadNotices()
-}
-
-func (r *NoticeRepository) GetNoticesByMonthYear(month string, year string) ([]model.Notice, error) {
-	notices, err := r.loadNotices()
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return nil, err
-	}
-
-	var noticesOfMonth []model.Notice
-
-	for _, n := range notices {
-		if n.Month == month && n.Year == year {
-			noticesOfMonth = append(noticesOfMonth, n)
-		}
-	}
-
-	return noticesOfMonth, nil
-}
-
-func (r *NoticeRepository) GetNoticesByYear(year string) ([]model.Notice, error) {
-	notices, err := r.loadNotices()
+	rows, err := r.DB.Query(query, month, year)
+	r.mu.Unlock()
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return nil, err
 	}
+	defer rows.Close()
 
-	var noticesYear []model.Notice
-
-	for _, notice := range notices {
-		if notice.Year == year {
-			noticesYear = append(noticesYear, notice)
+	var notices []model.Notice
+	for rows.Next() {
+		var n model.Notice
+		if err := rows.Scan(&n.ID, &n.DateIssued, &n.Content, &n.Month, &n.Year); err != nil {
+			logger.LogToFile(fmt.Sprintf("error: %v", err))
+			return nil, err
 		}
+		notices = append(notices, n)
 	}
-	return noticesYear, nil
+
+	return notices, nil
+}
+
+func (r *NoticeRepository) GetNoticesByYear(year int) ([]model.Notice, error) {
+	query := `
+	SELECT id, date_issued, content, month, year 
+	FROM notices WHERE year = $1 
+	ORDER BY date_issued DESC
+	`
+	r.mu.Lock()
+	rows, err := r.DB.Query(query, year)
+	r.mu.Unlock()
+
+	if err != nil {
+		logger.LogToFile(fmt.Sprintf("error: %v", err))
+		return nil, err
+	}
+	defer rows.Close()
+
+	var notices []model.Notice
+	for rows.Next() {
+		var n model.Notice
+		if err := rows.Scan(&n.ID, &n.DateIssued, &n.Content, &n.Month, &n.Year); err != nil {
+			logger.LogToFile(fmt.Sprintf("error: %v", err))
+			return nil, err
+		}
+		notices = append(notices, n)
+	}
+
+	return notices, nil
 }

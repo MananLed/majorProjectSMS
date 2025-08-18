@@ -16,10 +16,10 @@ import (
 )
 
 type FeedbackHandler struct {
-	FeedbackService *service.FeedbackService
+	FeedbackService service.FeedbackServiceInterface
 }
 
-func NewFeedbackHandler(service *service.FeedbackService) *FeedbackHandler {
+func NewFeedbackHandler(service service.FeedbackServiceInterface) *FeedbackHandler {
 	return &FeedbackHandler{FeedbackService: service}
 }
 
@@ -51,12 +51,13 @@ func (h *FeedbackHandler) IssueFeedback(ctx context.Context) {
 	content, _ := reader.ReadString('\n')
 	content = strings.TrimSpace(content)
 
-	if content == "" {
-		color.Red("Feedback content cannot be empty")
-		return
+	err = h.FeedbackService.IssueFeedback(content, user.ID, rating)
+	if err != nil {
+		color.Red("Failed to send feedback: %v", err)
+		logger.LogToFile(fmt.Sprintf("error: %v", err))
+	} else {
+		color.Green("Feedback sent successfully.")
 	}
-
-	h.FeedbackService.IssueFeedback(content, user.ID, rating)
 }
 
 func (h *FeedbackHandler) GetFeedbacks(ctx context.Context) {

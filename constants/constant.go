@@ -61,10 +61,10 @@ const (
 	ListInvoicesOfAYear             Prompt = "Search invoices of a Year"
 	DeleteProfilePrompt             Prompt = "Delete Profile"
 	ViewProfilePrompt               Prompt = "View Profile"
-	NoticeFormatPrompt                     = "ID: %s\t|\tDate: %s\nContent: \n %s\n\n"
-	SerivceFormatPrompt                    = "RequestID: %s Service Type: %s | ResidentID: %s | TimeSlot: %s | Status: %s\n\n"
-	FeedbackFormatPrompt                   = "ResidentID: %s | Rating: %d\nContent:-\n%s\n\n"
-	InvoiceFormatPrompt                    = "InvoiceID: %s | Amount: %f | Month: %s | Year: %s\n\n"
+	NoticeFormatPrompt                     = "ID: %v\t|\tDate: %v\nContent: \n %v\n\n"
+	SerivceFormatPrompt                    = "RequestID: %v Service Type: %v | ResidentID: %v | TimeSlot: %v | Status: %v\n\n"
+	FeedbackFormatPrompt                   = "ResidentID: %v | Rating: %v\nContent:-\n%v\n\n"
+	InvoiceFormatPrompt                    = "InvoiceID: %v | Amount: %v | Month: %v | Year: %v\n\n"
 	MainDataPath                    Path   = "../../data"
 	UserDataPath                    Path   = MainDataPath + "/users.json"
 	NoticeDataPath                  Path   = MainDataPath + "/notices.json"
@@ -72,6 +72,7 @@ const (
 	FeedbackDataPath                Path   = MainDataPath + "/feedback.json"
 	InvoiceDataPath                 Path   = MainDataPath + "/invoices.json"
 	LogFilePath                     Path   = "../../pkg/logger/logs.txt"
+	DBScriptFilePath                Path   = "../../scripts/create_all_tables.sql"
 	StartTimeOfService                     = 9
 	EndTimeOfService                       = 17
 	TimeLimitOfSlot                        = 45

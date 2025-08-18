@@ -4,10 +4,12 @@ import (
 	"bufio"
 	"context"
 	"fmt"
+	"log"
 	"os"
 	"strings"
 
 	"github.com/MananLed/majorProjectSMS/constants"
+	"github.com/MananLed/majorProjectSMS/internal/db"
 	"github.com/MananLed/majorProjectSMS/internal/handlers"
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/repository"
@@ -19,32 +21,39 @@ import (
 )
 
 func main() {
-	
-	societyRepo := &repository.SocietyRepository{}
+
+	database, err := db.InitDB()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer database.Close()
+	if err := db.RunInitialSetup(database); err != nil {log.Fatal(err)}
+
+	societyRepo := repository.NewSocietyRepository(database)
 	societyService := service.NewSocietyService(societyRepo)
 	societyHandler := handlers.NewSocietyHandler(societyService)
-	
-	credentialRepo := &repository.CredentialRepository{}
+
+	credentialRepo := repository.NewCredentialRepository(database)
 	credentialService := service.NewCredentialService(credentialRepo)
 	credentialHandler := handlers.NewCredentialHandler(credentialService)
-	
-	noticeRepo := &repository.NoticeRepository{}
+
+	noticeRepo := repository.NewNoticeRepository(database)
 	noticeService := service.NewNoticeService(noticeRepo)
 	noticeHandler := handlers.NewNoticeHandler(noticeService)
-	
-	serviceRequestRepo := &repository.ServiceRequestRepository{}
+
+	serviceRequestRepo := repository.NewServiceRequestRepository(database)
 	serviceRequestService := service.NewServiceRequestService(serviceRequestRepo)
 	serviceRequestHandler := handlers.NewServiceRequestHandler(serviceRequestService)
-	
-	feedbackRepo := &repository.FeedbackRepository{}
+
+	feedbackRepo := repository.NewFeedbackRepository(database)
 	feedbackService := service.NewFeedbackService(feedbackRepo)
 	feedbackHandler := handlers.NewFeedbackHandler(feedbackService)
-	
-	invoiceRepo := &repository.InvoiceRepository{}
+
+	invoiceRepo := repository.NewInvoiceRepository(database)
 	invoiceService := service.NewInvoiceService(invoiceRepo)
 	invoiceHandler := handlers.NewInvoiceHandler(invoiceService)
-	
-	userRepo := &repository.UserRepository{}
+
+	userRepo := repository.NewUserRepository(database)
 	userService := service.NewUserService(userRepo)
 	userHandler := handlers.NewUserHandler(userService, serviceRequestService)
 
@@ -55,7 +64,7 @@ func main() {
 		fmt.Println(constants.AppEmogiPrompt)
 		myFigure.Print()
 		fmt.Println(constants.AppEmogiPrompt)
-		
+
 		color.Cyan("1." + string(constants.SignUpPrompt))
 		color.Cyan("2." + string(constants.LoginPrompt))
 		color.Cyan("3." + string(constants.ExitPrompt))
@@ -76,7 +85,7 @@ func main() {
 
 			ctx := context.Background()
 			ctx = context.WithValue(ctx, utils.UserIDKey, user.Email)
-			ctx = context.WithValue(ctx, utils.UserRoleKey, user.Role)		
+			ctx = context.WithValue(ctx, utils.UserRoleKey, user.Role)
 			ctx = context.WithValue(ctx, utils.UserPassKey, user.Password)
 			switch user.Role {
 			case model.RoleAdmin:
