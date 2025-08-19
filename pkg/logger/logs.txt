@@ -23,3 +23,6 @@
 2025/08/16 23:10:44 error: failed to update service request: pq: new row for relation "service_requests" violates check constraint "service_requests_service_type_check"
 2025/08/18 00:16:54 user already has a booked request
 2025/08/18 00:16:54 error: user already has a booked request
+2025/08/19 11:04:09 user already has a booked request
+2025/08/19 11:04:09 error: user already has a booked request
+2025/08/19 11:08:30 Feedback sent successfully.

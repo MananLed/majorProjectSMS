@@ -15,6 +15,7 @@ import (
 	"github.com/MananLed/majorProjectSMS/internal/repository"
 	"github.com/MananLed/majorProjectSMS/internal/service"
 	"github.com/MananLed/majorProjectSMS/internal/utils"
+	"github.com/MananLed/majorProjectSMS/pkg/logger"
 
 	"github.com/common-nighthawk/go-figure"
 	"github.com/fatih/color"
@@ -25,9 +26,13 @@ func main() {
 	database, err := db.InitDB()
 	if err != nil {
 		log.Fatal(err)
+		logger.LogToFile(fmt.Sprintf("Error: %v", err))
 	}
 	defer database.Close()
-	if err := db.RunInitialSetup(database); err != nil {log.Fatal(err)}
+	if err := db.RunInitialSetup(database); err != nil {
+		log.Fatal(err)
+		logger.LogToFile(fmt.Sprintf("Error: %v", err))
+	}
 
 	societyRepo := repository.NewSocietyRepository(database)
 	societyService := service.NewSocietyService(societyRepo)

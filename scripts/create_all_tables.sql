@@ -34,9 +34,9 @@ CREATE TABLE IF NOT EXISTS invoices (
     year INT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS feedback (
+CREATE TABLE IF NOT EXISTS feedbacks (
     id UUID PRIMARY KEY,
-    resident_id TEXT NOT NULL,
+    resident_id TEXT NOT NULL REFERENCES users(id),
     rating INT NOT NULL CHECK (rating >= 1 AND rating <= 5),
     content TEXT
 );
@@ -44,5 +44,6 @@ CREATE TABLE IF NOT EXISTS feedback (
 CREATE INDEX IF NOT EXISTS idx_service_requests_resident_id
     ON service_requests (resident_id);
 
-CREATE INDEX IF NOT EXISTS idx_feedback_resident_id
-    ON feedback (resident_id);
+CREATE INDEX IF NOT EXISTS idx_feedbacks_resident_id
+    ON feedbacks (resident_id);
+

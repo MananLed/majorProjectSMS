@@ -1,3 +1,4 @@
+
 package service
 
 import (
@@ -150,4 +151,3 @@ func TestChangePassword(t *testing.T) {
 		t.Errorf("Password was not updated correctly")
 	}
 }
-
