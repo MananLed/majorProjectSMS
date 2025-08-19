@@ -22,7 +22,7 @@ type ServiceRequestRepositoryInterface interface {
 	UpdateRequest(req *model.ServiceRequest) error
 	DeleteRequest(requestID uuid.UUID) error
 	DeleteRequestsByResidentID(residentID string) error
-	GetServiceRequestsByStatus(userID string,status model.Status) []model.ServiceRequest
+	GetServiceRequestsByStatus(userID string, status model.Status) []model.ServiceRequest
 	GetServiceTypeByID(requestID uuid.UUID) (model.ServiceType, error)
 	GetPendingRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest
 	GetApprovedRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest
@@ -38,16 +38,24 @@ func (r *ServiceRequestRepository) CreateRequest(req *model.ServiceRequest) erro
 		VALUES ($1, $2, $3, $4, $5, $6, $7)
 	`
 
-	row := r.db.QueryRow(`SELECT request_id FROM service_requests WHERE resident_id = $1 and service_type = $2`, req.ResidentID, req.ServiceType)
+	var exists bool
+	err := r.db.QueryRow(
+		`SELECT EXISTS (
+		SELECT 1 FROM service_requests 
+		WHERE resident_id = $1 AND service_type = $2)`, req.ResidentID, req.ServiceType).Scan(&exists)
 
-	if row != nil{
+	if err != nil {
+		logger.LogToFile("error checking existing request: " + err.Error())
+		return err
+	}
+
+	if exists {
 		logger.LogToFile("user already has a booked request")
 		return fmt.Errorf("user already has a booked request")
 	}
 
-
 	r.mu.Lock()
-	_, err := r.db.Exec(query, req.RequestID, req.ResidentID, req.Status, req.TimeSlot, req.StartTime, req.EndTime, req.ServiceType)
+	_, err = r.db.Exec(query, req.RequestID, req.ResidentID, req.Status, req.TimeSlot, req.StartTime, req.EndTime, req.ServiceType)
 	r.mu.Unlock()
 
 	if err != nil {
@@ -143,7 +151,7 @@ func (r *ServiceRequestRepository) DeleteRequest(requestID uuid.UUID) error {
 	return nil
 }
 
-func (r *ServiceRequestRepository) DeleteRequestsByResidentID(residentID string) error{
+func (r *ServiceRequestRepository) DeleteRequestsByResidentID(residentID string) error {
 	query := `DELETE FROM service_requests WHERE resident_id = $1`
 
 	r.mu.Lock()
@@ -157,7 +165,7 @@ func (r *ServiceRequestRepository) DeleteRequestsByResidentID(residentID string)
 	return nil
 }
 
-func (r *ServiceRequestRepository) GetServiceRequestsByStatus(userID string,status model.Status) []model.ServiceRequest{
+func (r *ServiceRequestRepository) GetServiceRequestsByStatus(userID string, status model.Status) []model.ServiceRequest {
 	query := `
 		SELECT request_id, resident_id, status, time_slot, start_time, end_time, service_type
 		FROM service_requests
@@ -165,20 +173,20 @@ func (r *ServiceRequestRepository) GetServiceRequestsByStatus(userID string,stat
 	`
 
 	r.mu.Lock()
-	rows , err := r.db.Query(query, status, userID)
+	rows, err := r.db.Query(query, status, userID)
 	r.mu.Unlock()
 
-	if err != nil{
+	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error : %v", err))
 	}
 	defer rows.Close()
 
 	var requests []model.ServiceRequest
 	for rows.Next() {
-		var r model.ServiceRequest 
+		var r model.ServiceRequest
 		if err := rows.Scan(&r.RequestID, &r.ResidentID, &r.Status, &r.TimeSlot, &r.StartTime, &r.EndTime, &r.ServiceType); err != nil {
 			logger.LogToFile(fmt.Sprintf("error: %v", err))
-			
+
 		}
 		requests = append(requests, r)
 	}
@@ -198,14 +206,14 @@ func (r *ServiceRequestRepository) GetServiceTypeByID(requestID uuid.UUID) (mode
 	err := r.db.QueryRow(query, requestID).Scan(&servicetype)
 	r.mu.Unlock()
 
-	if err != nil{
+	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error : %v", err))
 		return "", fmt.Errorf("no request with such id exist: %v", err)
 	}
 
 	return servicetype, nil
 
-} 
+}
 
 func (r *ServiceRequestRepository) GetPendingRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest {
 
