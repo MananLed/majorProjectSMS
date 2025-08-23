@@ -72,6 +72,7 @@ func (h *ServiceRequestHandler) BookServiceRequest(ctx context.Context) {
 		StartTime:   chosenSlot.StartTime,
 		EndTime:     chosenSlot.EndTime,
 		ServiceType: model.ServiceType(serviceType),
+		Flat: user.Flat,
 	}
 
 	if err := h.ServiceRequestService.BookServiceRequest(request); err != nil {
@@ -95,8 +96,9 @@ func (h *ServiceRequestHandler) RescheduleServiceRequest(ctx context.Context) {
 	serviceType, err := h.ServiceRequestService.GetServiceTypeByID(reqID)
 
 	if err != nil {
-		color.Red("Error: User with such ID does not exist")
+		color.Red("Error: Request with such ID does not exist")
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
+		return
 	}
 
 	availableSlots := h.ServiceRequestService.GetAvailableTimeSlots(serviceType)
@@ -167,7 +169,7 @@ func (h *ServiceRequestHandler) printRequestsByStatus(ctx context.Context, statu
 	}
 
 	for _, r := range requests {
-		color.White(string(constants.SerivceFormatPrompt), r.RequestID, r.ServiceType, r.ResidentID, r.TimeSlot, r.Status)
+		color.White(string(constants.SerivceFormatPrompt), r.RequestID, r.Flat, r.ServiceType, r.ResidentID, r.TimeSlot, r.Status)
 	}
 }
 
@@ -207,7 +209,7 @@ func (h *ServiceRequestHandler) ViewPendingRequestsByServiceType(ctx context.Con
 	}
 
 	for _, r := range requests {
-		color.White(string(constants.SerivceFormatPrompt), r.RequestID, r.ServiceType, r.ResidentID, r.TimeSlot, r.Status)
+		color.White(string(constants.SerivceFormatPrompt), r.RequestID, r.Flat, r.ServiceType, r.ResidentID, r.TimeSlot, r.Status)
 	}
 }
 
@@ -247,7 +249,7 @@ func (h *ServiceRequestHandler) ViewApprovedRequestsByServiceType(ctx context.Co
 	}
 
 	for _, r := range requests {
-		color.White(string(constants.SerivceFormatPrompt), r.RequestID, r.ServiceType, r.ResidentID, r.TimeSlot, r.Status)
+		color.White(string(constants.SerivceFormatPrompt), r.RequestID, r.Flat, r.ServiceType, r.ResidentID, r.TimeSlot, r.Status)
 	}
 }
 

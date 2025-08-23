@@ -5,9 +5,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	"regexp"
 	"strings"
-	"unicode"
 
 	"github.com/MananLed/majorProjectSMS/constants"
 	"github.com/MananLed/majorProjectSMS/internal/model"
@@ -32,65 +30,6 @@ func NewUserHandler(us service.UserServiceInterface, srs *service.ServiceRequest
 	}
 }
 
-func PromptRequired(label string, reader *bufio.Reader) string {
-	for {
-		fmt.Print(color.YellowString(label) + ": ")
-		input, _ := reader.ReadString('\n')
-		trimmed := strings.TrimSpace(input)
-		trimmed = strings.TrimRight(trimmed, "\r\n")
-		if trimmed == "" {
-			color.Red("%s is compulsory", label)
-			continue
-		}
-		return trimmed
-	}
-}
-
-func ValidateMobileNumber(mobile string) bool {
-	mobile = strings.TrimSpace(mobile)
-
-	pattern := `^[6-9][0-9]{9}$`
-
-	re := regexp.MustCompile(pattern)
-	return re.MatchString(mobile)
-}
-
-func ValidateEmail(email string) bool {
-	re := regexp.MustCompile(`^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$`)
-	if !re.MatchString(email) {
-		color.Red("Invalid email format.")
-		return false
-	}
-	return true
-}
-
-func ValidatePassword(password string) bool {
-	var hasLower, hasDigit, hasSpecial bool
-
-	if len(password) < 12 {
-		color.Red("Password must be at least 12 characters long.")
-		return false
-	}
-
-	for _, char := range password {
-		switch {
-		case unicode.IsLower(char):
-			hasLower = true
-		case unicode.IsDigit(char):
-			hasDigit = true
-		case unicode.IsPunct(char) || unicode.IsSymbol(char):
-			hasSpecial = true
-		}
-	}
-
-	if !hasLower || !hasDigit || !hasSpecial {
-		color.Red("Password must contain at least one lowercase letter, one digit, and one special character.")
-		return false
-	}
-
-	return true
-}
-
 func (h *UserHandler) SignUp() {
 	reader := bufio.NewReader(os.Stdin)
 
@@ -99,25 +38,32 @@ func (h *UserHandler) SignUp() {
 	myFigure.Print()
 	fmt.Println(constants.SignUpEmogiPrompt)
 
-	firstName := PromptRequired(string(constants.FirstNamePrompt), reader)
+	firstName := utils.PromptRequired(string(constants.FirstNamePrompt), reader)
 
 	fmt.Print(color.YellowString(string(constants.MiddleNamePrompt)))
 	middleName, _ := reader.ReadString('\n')
 	middleName = strings.TrimSpace(middleName)
 
-	lastName := PromptRequired(string(constants.LastNamePrompt), reader)
+	lastName := utils.PromptRequired(string(constants.LastNamePrompt), reader)
 
-	email := PromptRequired(string(constants.EmailPrompt), reader)
+	email := utils.PromptRequired(string(constants.EmailPrompt), reader)
 
-	mobile := PromptRequired(string(constants.MobilePrompt), reader)
 	for {
-		if ValidateMobileNumber(mobile) {
+		if utils.ValidateEmail(email) {
 			break
 		}
-		mobile = PromptRequired(string(constants.MobilePrompt), reader)
+		email = utils.PromptRequired(string(constants.EmailPrompt), reader)
 	}
 
-	id := email
+	mobile := utils.PromptRequired(string(constants.MobilePrompt), reader)
+	for {
+		if utils.ValidateMobileNumber(mobile) {
+			break
+		}
+		mobile = utils.PromptRequired(string(constants.MobilePrompt), reader)
+	}
+
+	id := utils.GenerateUUID().String()
 
 	var passwordStr string
 	for {
@@ -130,7 +76,7 @@ func (h *UserHandler) SignUp() {
 			continue
 		}
 
-		if !ValidatePassword(passwordStr) {
+		if !utils.ValidatePassword(passwordStr) {
 			color.Red("Invalid password, enter again")
 			continue
 		}
@@ -156,6 +102,14 @@ func (h *UserHandler) SignUp() {
 
 	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(passwordStr), bcrypt.DefaultCost)
 
+	flatNo := utils.PromptRequired(string(constants.FlatNoPrompt), reader)
+	for {
+		if utils.ValidateFlatNumber(flatNo) {
+			break
+		}
+		flatNo = utils.PromptRequired(string(constants.MobilePrompt), reader)
+	}
+
 	roleStr := "FlatResident"
 
 	user := model.User{
@@ -166,6 +120,7 @@ func (h *UserHandler) SignUp() {
 		MobileNumber: strings.TrimSpace(mobile),
 		ID:           strings.TrimSpace(id),
 		Password:     string(hashedPassword),
+		Flat:         strings.TrimSpace(flatNo),
 		Role:         model.ParseRole(strings.TrimSpace(roleStr)),
 	}
 
@@ -187,13 +142,13 @@ func (h *UserHandler) Login() *model.User {
 	myFigure.Print()
 	fmt.Println(constants.LoginEmogiPrompt)
 
-	var id string
+	var emailid string
 	for {
 		fmt.Print(color.YellowString(string(constants.IDPrompt)))
 		input, _ := reader.ReadString('\n')
-		id = strings.TrimSpace(input)
+		emailid = strings.TrimSpace(input)
 
-		if id == "" {
+		if emailid == "" {
 			color.Red("ID is required")
 			continue
 		}
@@ -213,7 +168,7 @@ func (h *UserHandler) Login() *model.User {
 		break
 	}
 
-	user, err := h.UserService.Login(id, passwordStr)
+	user, err := h.UserService.Login(emailid, passwordStr)
 	if err != nil {
 		color.Red("Login failed: %v", err)
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -252,12 +207,36 @@ func (h *UserHandler) UpdateProfile(user *model.User) {
 		user.LastName = lastName
 	}
 
-	fmt.Print(color.YellowString("Update Mobile Number: "))
-	mobile, _ := reader.ReadString('\n')
-	mobile = strings.TrimSpace(mobile)
-	mobile = strings.TrimRight(mobile, "\r\n")
-	if mobile != "" && ValidateMobileNumber(mobile) {
-		user.MobileNumber = mobile
+	for {
+		fmt.Print(color.YellowString("Update Mobile Number: "))
+		mobile, _ := reader.ReadString('\n')
+		mobile = strings.TrimSpace(mobile)
+		mobile = strings.TrimRight(mobile, "\r\n")
+		if mobile == "" {
+			break
+		} else if !utils.ValidateMobileNumber(mobile) {
+			color.Red("Invalid Mobile Number, enter again")
+			continue
+		} else {
+			user.MobileNumber = mobile
+			break
+		}
+	}
+
+	for {
+		fmt.Print(color.YellowString("Update Email: "))
+		email, _ := reader.ReadString('\n')
+		email = strings.TrimSpace(email)
+		email = strings.TrimRight(email, "\r\n")
+		if email == "" {
+			break
+		} else if !utils.ValidateEmail(email) {
+			color.Red("Invalid Email, enter again")
+			continue
+		} else {
+			user.Email = email
+			break
+		}
 	}
 
 	if err := h.UserService.UpdateProfile(*user); err != nil {
@@ -283,7 +262,7 @@ func (h *UserHandler) ChangePassword(ctx context.Context) {
 		newPassword = string(passBytes)
 		newPassword = strings.TrimRight(newPassword, "\r\n")
 
-		if !ValidatePassword(newPassword) {
+		if !utils.ValidatePassword(newPassword) {
 			color.Red("Password must have at least 12 characters, one lowercase, one digit, and one special character.")
 			continue
 		}
@@ -319,7 +298,7 @@ func (h *UserHandler) CreateOfficer(ctx context.Context) {
 	}
 
 	reader := bufio.NewReader(os.Stdin)
-	email := PromptRequired("Officer Email (used as ID)", reader)
+	email := utils.PromptRequired("Officer Email (used as ID)", reader)
 
 	var passwordStr string
 	var hashedPassword []byte
@@ -330,7 +309,7 @@ func (h *UserHandler) CreateOfficer(ctx context.Context) {
 		passwordStr = string(password)
 		passwordStr = strings.TrimRight(passwordStr, "\r\n")
 
-		if !ValidatePassword(passwordStr) {
+		if !utils.ValidatePassword(passwordStr) {
 			color.Red("Invalid password format.")
 			continue
 		}
@@ -343,13 +322,14 @@ func (h *UserHandler) CreateOfficer(ctx context.Context) {
 		break
 	}
 	newOfficer := model.User{
-		Email:    email,
-		ID:       email,
-		Password: string(hashedPassword),
-		Role:     model.RoleOfficer,
-		FirstName: "********",
-		LastName: "*********",
+		Email:        email,
+		ID:           utils.GenerateUUID().String(),
+		Password:     string(hashedPassword),
+		Role:         model.RoleOfficer,
+		FirstName:    "********",
+		LastName:     "*********",
 		MobileNumber: "**********",
+		Flat: "xxx",
 	}
 
 	if err := h.UserService.SignUp(newOfficer); err != nil {
@@ -368,6 +348,7 @@ func (h *UserHandler) ViewProfile(user *model.User) {
 	fmt.Println("Email/ID:", user.Email)
 	fmt.Println("Mobile Number:", user.MobileNumber)
 	fmt.Println("Role:", user.Role)
+	if(user.Flat != "xxx") {fmt.Println("Flat:", user.Flat)}
 	color.Cyan("--------------------\n")
 }
 

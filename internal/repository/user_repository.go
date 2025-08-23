@@ -18,7 +18,7 @@ type UserRepository struct {
 
 type UserRepositoryInterface interface {
 	AddUser(user model.User) error
-	GetUserByID(id string) (*model.User, error)
+	GetUserByIDAndPassword(id string, password string) (*model.User, error)
 	UpdateUser(user model.User) error
 	ChangePassword(id string, newHashedPassword string) error
 	IsPasswordUnique(hashedPassword string) bool
@@ -32,11 +32,11 @@ func NewUserRepository(db *sql.DB) *UserRepository {
 func (r *UserRepository) AddUser(newUser model.User) error {
 	
 	query := `
-		INSERT INTO users (id, first_name, middle_name, last_name, mobile_number, email, password, role)
-		VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+		INSERT INTO users (id, first_name, middle_name, last_name, mobile_number, email, password, role, flat_no)
+		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
 	`
 	r.mu.Lock()
-	_, err := r.db.Exec(query, newUser.ID, newUser.FirstName, newUser.MiddleName, newUser.LastName, newUser.MobileNumber, newUser.Email, newUser.Password, newUser.Role)
+	_, err := r.db.Exec(query, newUser.ID, newUser.FirstName, newUser.MiddleName, newUser.LastName, newUser.MobileNumber, newUser.Email, newUser.Password, newUser.Role, newUser.Flat)
 	r.mu.Unlock()
 
 	if err != nil {
@@ -47,27 +47,39 @@ func (r *UserRepository) AddUser(newUser model.User) error {
 	return nil
 }
 
-func (r *UserRepository) GetUserByID(id string) (*model.User, error) {
-	var user model.User
-
+func (r *UserRepository) GetUserByIDAndPassword(email string, password string) (*model.User, error) {
 	query := `
-		SELECT id, first_name, middle_name, last_name, mobile_number, email, password, role
+		SELECT id, first_name, middle_name, last_name, mobile_number, email, password, role, flat_no
 		FROM users
-		WHERE id = $1
+		WHERE email = $1
 	`
 
 	r.mu.Lock()
-	err := r.db.QueryRow(query, id).Scan(&user.ID, &user.FirstName, &user.MiddleName, &user.LastName, &user.MobileNumber, &user.Email, &user.Password, &user.Role)
+	rows, err := r.db.Query(query, email)
 	r.mu.Unlock()
-
-	if err == sql.ErrNoRows {
-		return nil, errors.New("user not found")
-	} else if err != nil {
+	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return nil, err
 	}
+	defer rows.Close()
 
-	return &user, nil
+	for rows.Next() {
+		var user model.User
+		err := rows.Scan(
+			&user.ID, &user.FirstName, &user.MiddleName, &user.LastName,
+			&user.MobileNumber, &user.Email, &user.Password, &user.Role, &user.Flat,
+		)
+		if err != nil {
+			logger.LogToFile(fmt.Sprintf("Row scan error: %v", err))
+			continue
+		}
+
+		if bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)) == nil {
+			return &user, nil
+		}
+	}
+
+	return nil, errors.New("user not found or password incorrect")
 }
 
 func (r *UserRepository) UpdateUser(updatedUser model.User) error {

@@ -51,7 +51,7 @@ func (h *FeedbackHandler) IssueFeedback(ctx context.Context) {
 	content, _ := reader.ReadString('\n')
 	content = strings.TrimSpace(content)
 
-	err = h.FeedbackService.IssueFeedback(content, user.ID, rating)
+	err = h.FeedbackService.IssueFeedback(content, user.ID, user.Flat, rating)
 	if err != nil {
 		color.Red("Failed to send feedback: %v", err)
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -89,7 +89,7 @@ func (h *FeedbackHandler) GetFeedbacks(ctx context.Context) {
 	color.Cyan("===== All Feedbacks =====\n\n")
 
 	for _, feedback := range feedbacks {
-		fmt.Printf(constants.FeedbackFormatPrompt, feedback.ResidentID, feedback.Rating, feedback.Content)
+		fmt.Printf(constants.FeedbackFormatPrompt, feedback.ResidentID, feedback.Flat, feedback.Rating, feedback.Content)
 	}
 }
 
@@ -121,7 +121,7 @@ func (h *FeedbackHandler) GetFeebacksByResidentID(ctx context.Context) {
 
 	color.Green("Feedbacks of %v:-", id)
 	for _, feedback := range feedbacks {
-		fmt.Printf(constants.FeedbackFormatPrompt, feedback.ResidentID, feedback.Rating, feedback.Content)
+		fmt.Printf(constants.FeedbackFormatPrompt, feedback.ResidentID, feedback.Flat, feedback.Rating, feedback.Content)
 	}
 }
 
@@ -142,8 +142,8 @@ func (h *FeedbackHandler) GetFeebacksOfResident(ctx context.Context) {
 		return
 	}
 
-	color.Green("Feedbacks of %v:-", user.ID)
+	color.Green("Feedbacks of %v:-", user.Email)
 	for _, feedback := range feedbacks {
-		fmt.Printf(constants.FeedbackFormatPrompt, feedback.ResidentID, feedback.Rating, feedback.Content)
+		fmt.Printf(constants.FeedbackFormatPrompt, user.Email, feedback.Flat, feedback.Rating, feedback.Content)
 	}
 }

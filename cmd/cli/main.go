@@ -89,9 +89,12 @@ func main() {
 			}
 
 			ctx := context.Background()
-			ctx = context.WithValue(ctx, utils.UserIDKey, user.Email)
+			ctx = context.WithValue(ctx, utils.UserIDKey, user.ID)
 			ctx = context.WithValue(ctx, utils.UserRoleKey, user.Role)
 			ctx = context.WithValue(ctx, utils.UserPassKey, user.Password)
+			ctx = context.WithValue(ctx, utils.UserEmailKey, user.Email)
+			ctx = context.WithValue(ctx, utils.UserFlatKey, user.Flat)
+
 			switch user.Role {
 			case model.RoleAdmin:
 				ShowAdminDashboard(ctx, user, userHandler, societyHandler, credentialHandler, noticeHandler, feedbackHandler, invoiceHandler, serviceRequestHandler)

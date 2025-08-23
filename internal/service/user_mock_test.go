@@ -23,7 +23,7 @@ func (m *MockUserRepo) AddUser(user model.User) error {
 	return nil
 }
 
-func (m *MockUserRepo) GetUserByID(id string) (*model.User, error) {
+func (m *MockUserRepo) GetUserByIDAndPassword(id string, password string) (*model.User, error) {
 	user, exists := m.users[id]
 	if !exists {
 		return nil, errors.New("user not found")
@@ -145,7 +145,7 @@ func TestChangePassword(t *testing.T) {
 		t.Errorf("Change Password failed: %v", err)
 	}
 
-	updatedUser, _ := mockRepo.GetUserByID(user.ID)
+	updatedUser, _ := mockRepo.GetUserByIDAndPassword(user.ID, newPassword)
 	err = bcrypt.CompareHashAndPassword([]byte(updatedUser.Password), []byte(newPassword))
 	if err != nil {
 		t.Errorf("Password was not updated correctly")

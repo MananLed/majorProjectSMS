@@ -16,6 +16,7 @@ type User struct {
 	MobileNumber string    `json:"mobile_number"`
 	Email        string    `json:"email"`
 	ID           string    `json:"id"`
+	Flat         string    `json:"flat"`
 	Password     string    `json:"password"`
 	Role         UserRole  `json:"role"`
 }

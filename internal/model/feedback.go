@@ -7,6 +7,7 @@ import(
 type Feedback struct{
 	ID uuid.UUID  `json:"id"`
 	ResidentID string `json:"resident_id"`
+	Flat string `json:"flat"`
 	Rating int32 `json:"rating"`
 	Content string `json:"content"`
 }

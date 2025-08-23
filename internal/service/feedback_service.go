@@ -6,7 +6,7 @@ import (
 )
 
 type FeedbackServiceInterface interface{
-	IssueFeedback(content string, residentID string, rating int32) error
+	IssueFeedback(content string, residentID string,flat string, rating int32) error
 	GetFeedbacks() ([]model.Feedback, error)
 	GetFeedbackByID(id string) ([]model.Feedback, error)
 }
@@ -19,11 +19,12 @@ func NewFeedbackService(repo repository.FeedbackRepositoryInterface) *FeedbackSe
 	return &FeedbackService{FeedbackRepo: repo}
 }
 
-func (s *FeedbackService) IssueFeedback(content string, residentID string, rating int32) error {
+func (s *FeedbackService) IssueFeedback(content string, residentID string,flat string, rating int32) error {
 	feedback := model.Feedback{
 		ResidentID: residentID,
 		Rating:     rating,
 		Content:    content,
+		Flat: flat,
 	}
 
 	return s.FeedbackRepo.SaveFeedback(feedback)

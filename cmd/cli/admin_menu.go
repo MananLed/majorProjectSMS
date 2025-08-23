@@ -30,7 +30,8 @@ func ShowAdminDashboard(ctx context.Context, user *model.User, uHandler *handler
 		color.Cyan("6. " + string(constants.ManageInvoicesPrompt))
 		color.Cyan("7. " + string(constants.ManageProfilePrompt))
 		color.Cyan("8. " + string(constants.AddNewOfficerPrompt))
-		color.Red("9." + string(constants.LogoutPrompt))
+		color.Cyan("9. " + string(constants.ViewSocietyPrompt))
+		color.Red("10." + string(constants.LogoutPrompt))
 		for {
 			choice := utils.ReadChoice()
 			if choice == "" {
@@ -62,6 +63,9 @@ func ShowAdminDashboard(ctx context.Context, user *model.User, uHandler *handler
 				uHandler.CreateOfficer(ctx)
 
 			case "9":
+				model.GetNumberOfFloors()
+
+			case "10":
 				color.Red("Logging out...")
 				return
 

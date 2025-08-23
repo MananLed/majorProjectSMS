@@ -4,14 +4,16 @@ CREATE TABLE IF NOT EXISTS users (
     middle_name TEXT,
     last_name TEXT NOT NULL,
     mobile_number TEXT NOT NULL,
-    email TEXT UNIQUE NOT NULL,
+    email TEXT NOT NULL,
     password TEXT UNIQUE NOT NULL,
+    flat_no TEXT,
     role TEXT NOT NULL CHECK (role IN ('admin', 'officer', 'resident')) DEFAULT 'resident'
 );
 
 CREATE TABLE IF NOT EXISTS service_requests (
     request_id UUID PRIMARY KEY,
     resident_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    flat_no TEXT,
     status TEXT NOT NULL CHECK (status IN ('pending', 'approved', 'inProgress', 'completed', 'cancelled')) DEFAULT 'pending',
     time_slot TEXT NOT NULL,
     start_time TIMESTAMP NOT NULL,
@@ -37,6 +39,7 @@ CREATE TABLE IF NOT EXISTS invoices (
 CREATE TABLE IF NOT EXISTS feedbacks (
     id UUID PRIMARY KEY,
     resident_id TEXT NOT NULL REFERENCES users(id),
+    flat_no TEXT,
     rating INT NOT NULL CHECK (rating >= 1 AND rating <= 5),
     content TEXT
 );

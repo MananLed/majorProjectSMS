@@ -26,6 +26,7 @@ const(
 type ServiceRequest struct {
 	RequestID   uuid.UUID `json:"request_id"`
 	ResidentID  string `json:"resident_id"`
+	Flat        string `json:"flat"`
 	Status      Status `json:"status"`
 	TimeSlot    string `json:"time_slot"`
 	StartTime   time.Time `json:"start_time"`

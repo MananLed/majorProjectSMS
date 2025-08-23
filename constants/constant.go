@@ -4,6 +4,8 @@ type Prompt string
 type Path string
 
 const (
+	FlatNoPrompt                    Prompt = "Enter Flat Number: "
+	ViewSocietyPrompt               Prompt = "View Society"
 	ManageResidentPrompt            Prompt = "Manage Residents"
 	ManageOfficerPrompt             Prompt = "Manage Officers"
 	ManageServiceRequestPrompt      Prompt = "Manage Service Requests"
@@ -62,8 +64,8 @@ const (
 	DeleteProfilePrompt             Prompt = "Delete Profile"
 	ViewProfilePrompt               Prompt = "View Profile"
 	NoticeFormatPrompt                     = "ID: %v\t|\tDate: %v\nContent: \n %v\n\n"
-	SerivceFormatPrompt                    = "RequestID: %v Service Type: %v | ResidentID: %v | TimeSlot: %v | Status: %v\n\n"
-	FeedbackFormatPrompt                   = "ResidentID: %v | Rating: %v\nContent:-\n%v\n\n"
+	SerivceFormatPrompt                    = "RequestID: %v | Flat: %v | Service Type: %v | ResidentID: %v | TimeSlot: %v | Status: %v\n\n"
+	FeedbackFormatPrompt                   = "ResidentID: %v | Flat: %v | Rating: %v\nContent:-\n%v\n\n"
 	InvoiceFormatPrompt                    = "InvoiceID: %v | Amount: %v | Month: %v | Year: %v\n\n"
 	MainDataPath                    Path   = "../../data"
 	UserDataPath                    Path   = MainDataPath + "/users.json"

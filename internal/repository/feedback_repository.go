@@ -30,11 +30,11 @@ func (r *FeedbackRepository) SaveFeedback(feedback model.Feedback) error {
 	feedback.ID = utils.GenerateUUID()
 
 	query := `
-		INSERT INTO feedback (id, resident_id, rating, content)
-		VALUES ($1, $2, $3, $4)
+		INSERT INTO feedbacks (id, resident_id, rating, content, flat_no)
+		VALUES ($1, $2, $3, $4, $5)
 	`
 	r.mu.Lock()
-	_, err := r.DB.Exec(query, feedback.ID, feedback.ResidentID, feedback.Rating, feedback.Content)
+	_, err := r.DB.Exec(query, feedback.ID, feedback.ResidentID, feedback.Rating, feedback.Content, feedback.Flat)
 	r.mu.Unlock()
 
 	if err != nil {logger.LogToFile(fmt.Sprintf("error: %v", err))}
@@ -43,8 +43,8 @@ func (r *FeedbackRepository) SaveFeedback(feedback model.Feedback) error {
 
 func (r *FeedbackRepository) GetFeedbacksByID(residentID string) ([]model.Feedback, error) {
 	query := `
-		SELECT id, resident_id, rating, content
-		FROM feedback
+		SELECT id, resident_id, rating, content, flat_no
+		FROM feedbacks
 		WHERE resident_id = $1
 	`
 
@@ -62,7 +62,7 @@ func (r *FeedbackRepository) GetFeedbacksByID(residentID string) ([]model.Feedba
 	var feedbacks []model.Feedback
 	for rows.Next() {
 		var f model.Feedback
-		if err := rows.Scan(&f.ID, &f.ResidentID, &f.Rating, &f.Content); err != nil {
+		if err := rows.Scan(&f.ID, &f.ResidentID, &f.Rating, &f.Content, &f.Flat); err != nil {
 			return nil, err
 		}
 		feedbacks = append(feedbacks, f)
@@ -72,8 +72,8 @@ func (r *FeedbackRepository) GetFeedbacksByID(residentID string) ([]model.Feedba
 
 func (r *FeedbackRepository) GetAllFeedbacks() ([]model.Feedback, error) {
 	query := `
-		SELECT id, resident_id, rating, content
-		FROM feedback
+		SELECT id, resident_id, rating, content, flat_no
+		FROM feedbacks
 	`
 	r.mu.Lock()
 	rows, err := r.DB.Query(query)
@@ -88,7 +88,7 @@ func (r *FeedbackRepository) GetAllFeedbacks() ([]model.Feedback, error) {
 	var feedbacks []model.Feedback
 	for rows.Next() {
 		var f model.Feedback
-		if err := rows.Scan(&f.ID, &f.ResidentID, &f.Rating, &f.Content); err != nil {
+		if err := rows.Scan(&f.ID, &f.ResidentID, &f.Rating, &f.Content, &f.Flat); err != nil {
 			logger.LogToFile(fmt.Sprintf("error: %v", err))
 			return nil, err
 		}

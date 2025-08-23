@@ -30,3 +30,44 @@
 2025/08/19 22:32:44 error: user already has a booked request
 2025/08/19 22:39:48 user already has a booked request
 2025/08/19 22:39:48 error: user already has a booked request
+2025/08/20 23:22:29 error: user not found
+2025/08/20 23:22:29 error: user not found
+2025/08/20 23:23:12 error: user not found
+2025/08/20 23:23:12 error: user not found
+2025/08/20 23:34:00 Row scan error: sql: Scan error on column index 8, name "flat_no": converting NULL to string is unsupported
+2025/08/20 23:34:00 error: user not found or password incorrect
+2025/08/20 23:34:00 error: user not found or password incorrect
+2025/08/20 23:35:44 Row scan error: sql: Scan error on column index 8, name "flat_no": converting NULL to string is unsupported
+2025/08/20 23:35:44 error: user not found or password incorrect
+2025/08/20 23:35:44 error: user not found or password incorrect
+2025/08/20 23:36:29 Row scan error: sql: Scan error on column index 8, name "flat_no": converting NULL to string is unsupported
+2025/08/20 23:36:29 error: user not found or password incorrect
+2025/08/20 23:36:29 error: user not found or password incorrect
+2025/08/20 23:39:25 Row scan error: sql: Scan error on column index 8, name "flat_no": converting NULL to string is unsupported
+2025/08/20 23:39:25 error: user not found or password incorrect
+2025/08/20 23:39:25 error: user not found or password incorrect
+2025/08/20 23:41:22 Row scan error: sql: Scan error on column index 8, name "flat_no": converting NULL to string is unsupported
+2025/08/20 23:41:22 error: user not found or password incorrect
+2025/08/20 23:41:22 error: user not found or password incorrect
+2025/08/21 11:33:31 error: sql: expected 8 destination arguments in Scan, not 7
+2025/08/21 11:33:31 error: failed to retrieve service request: sql: expected 8 destination arguments in Scan, not 7
+2025/08/21 11:33:40 user already has a booked request
+2025/08/21 11:33:40 error: user already has a booked request
+2025/08/21 11:33:56 error: sql: expected 8 destination arguments in Scan, not 7
+2025/08/21 11:33:56 error: failed to retrieve service request: sql: expected 8 destination arguments in Scan, not 7
+2025/08/21 11:34:00 user already has a booked request
+2025/08/21 11:34:00 error: user already has a booked request
+2025/08/21 11:34:04 error: sql: expected 8 destination arguments in Scan, not 7
+2025/08/21 11:41:04 error: sql: expected 8 destination arguments in Scan, not 7
+2025/08/21 11:53:36 error: sql: expected 8 destination arguments in Scan, not 7
+2025/08/21 11:54:04 error: sql: expected 8 destination arguments in Scan, not 7
+2025/08/21 11:54:04 error: failed to retrieve service request: sql: expected 8 destination arguments in Scan, not 7
+2025/08/21 11:54:06 user already has a booked request
+2025/08/21 11:54:06 error: user already has a booked request
+2025/08/21 12:00:28 user already has a booked request
+2025/08/21 12:00:28 error: user already has a booked request
+2025/08/21 12:04:40 error: pq: relation "feedback" does not exist
+2025/08/21 12:04:40 error: pq: relation "feedback" does not exist
+2025/08/22 23:23:52 error : sql: no rows in result set
+2025/08/22 23:23:52 error: no request with such id exist: sql: no rows in result set
+2025/08/22 23:24:58 error: invalid slot choice

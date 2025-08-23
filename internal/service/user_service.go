@@ -41,16 +41,11 @@ func (us *UserService) SignUp(user model.User) error {
 }
 
 func (us *UserService) Login(id string, password string) (*model.User, error) {
-	user, err := us.UserRepo.GetUserByID(id)
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return nil, errors.New("user not found")
-	}
+	user, err := us.UserRepo.GetUserByIDAndPassword(id, password)
 
-	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password))
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		color.Red("Incorrect password.")
+		color.Red("Incorrect id or password.")
 		return nil, err
 	}
 	return user, nil

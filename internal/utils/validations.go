@@ -68,3 +68,9 @@ func ValidatePassword(password string) bool {
 
 	return true
 }
+
+func ValidateFlatNumber(flat string) bool {
+	pattern := `^[0-8]0[1-4]$`
+	matched, _ := regexp.MatchString(pattern, flat)
+	return matched
+}
