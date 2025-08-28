@@ -71,3 +71,895 @@
 2025/08/22 23:23:52 error : sql: no rows in result set
 2025/08/22 23:23:52 error: no request with such id exist: sql: no rows in result set
 2025/08/22 23:24:58 error: invalid slot choice
+2025/08/27 12:26:59 Startted POST /login from [::1]:52072
+2025/08/27 12:27:00 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 12:27:00 Completed POST /login in 444.6018ms
+2025/08/27 12:30:55 Startted GET /profile from [::1]:49206
+2025/08/27 12:30:55 user id not found
+2025/08/27 12:30:55 Completed GET /profile in 47.5845ms
+2025/08/27 12:39:42 Startted GET /profile from [::1]:55417
+2025/08/27 12:39:42 user id not found
+2025/08/27 12:39:42 Completed GET /profile in 19.1313ms
+2025/08/27 12:40:02 Startted POST /login from [::1]:55417
+2025/08/27 12:40:02 Completed POST /login in 9.3712ms
+2025/08/27 12:42:17 Startted POST /login from [::1]:49854
+2025/08/27 12:42:17 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 12:42:17 Completed POST /login in 153.5688ms
+2025/08/27 12:42:50 Startted GET /profile from [::1]:49854
+2025/08/27 12:42:50 user id not found
+2025/08/27 12:42:50 Completed GET /profile in 28.9586ms
+2025/08/27 12:51:14 Startted POST /login from [::1]:58796
+2025/08/27 12:51:14 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 12:51:14 Completed POST /login in 214.4906ms
+2025/08/27 12:51:41 Startted GET /profile from [::1]:58796
+2025/08/27 12:51:41 user id not found
+2025/08/27 12:51:41 Completed GET /profile in 21.5159ms
+2025/08/27 12:54:56 Startted GET /profile from [::1]:59604
+2025/08/27 12:54:56 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 12:54:56 user id not found
+2025/08/27 12:54:56 Completed GET /profile in 32.2601ms
+2025/08/27 12:57:26 Startted GET /profile from [::1]:64835
+2025/08/27 12:57:26 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 12:57:26 
+2025/08/27 12:57:26 user id not found
+2025/08/27 12:57:26 Completed GET /profile in 45.7581ms
+2025/08/27 13:04:49 Startted POST /login from [::1]:50906
+2025/08/27 13:04:49 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04, admin jyotideepakadmin@blossom.com xxx
+2025/08/27 13:04:49 Completed POST /login in 87.1283ms
+2025/08/27 13:06:11 Startted GET /profile from [::1]:55693
+2025/08/27 13:06:11 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 13:06:11 
+2025/08/27 13:06:11 user id not found
+2025/08/27 13:06:11 Completed GET /profile in 24.5476ms
+2025/08/27 13:08:24 Startted POST /login from [::1]:55740
+2025/08/27 13:08:24 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 13:08:24 Completed POST /login in 90.2248ms
+2025/08/27 13:08:59 Startted GET /profile from [::1]:55740
+2025/08/27 13:08:59 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 13:08:59 admin
+2025/08/27 13:08:59 jyotideepakadmin@blossom.com
+2025/08/27 13:08:59 xxx
+2025/08/27 13:08:59 users retrived successfully
+2025/08/27 13:09:00 Completed GET /profile in 44.79ms
+2025/08/27 14:50:04 Startted GET /profile from [::1]:54580
+2025/08/27 14:50:04 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 14:50:04 admin
+2025/08/27 14:50:04 jyotideepakadmin@blossom.com
+2025/08/27 14:50:04 xxx
+2025/08/27 14:50:04 error fetching user: sql: expected 0 destination arguments in Scan, not 9
+2025/08/27 14:50:04 user id not found
+2025/08/27 14:50:04 Completed GET /profile in 47.4339ms
+2025/08/27 14:50:23 Startted POST /login from [::1]:54580
+2025/08/27 14:50:23 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 14:50:23 Completed POST /login in 84.0815ms
+2025/08/27 14:50:45 Startted GET /profile from [::1]:54580
+2025/08/27 14:50:45 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 14:50:45 admin
+2025/08/27 14:50:45 jyotideepakadmin@blossom.com
+2025/08/27 14:50:45 xxx
+2025/08/27 14:50:45 error fetching user: sql: expected 0 destination arguments in Scan, not 9
+2025/08/27 14:50:45 user id not found
+2025/08/27 14:50:45 Completed GET /profile in 44.8685ms
+2025/08/27 14:55:11 Startted GET /profile from [::1]:62916
+2025/08/27 14:55:11 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 14:55:11 admin
+2025/08/27 14:55:11 jyotideepakadmin@blossom.com
+2025/08/27 14:55:11 xxx
+2025/08/27 14:55:11 users retrived successfully
+2025/08/27 14:55:11 Completed GET /profile in 41.4094ms
+2025/08/27 15:15:58 Startted POST /login from [::1]:49330
+2025/08/27 15:15:58 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 15:15:58 Completed POST /login in 86.8624ms
+2025/08/27 15:17:25 Startted GET /profile from [::1]:65316
+2025/08/27 15:17:25 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 15:17:25 admin
+2025/08/27 15:17:25 jyotideepakadmin@blossom.com
+2025/08/27 15:17:25 xxx
+2025/08/27 15:17:25 users retrived successfully
+2025/08/27 15:17:25 Completed GET /profile in 41.1233ms
+2025/08/27 15:20:38 Startted GET /officers from [::1]:51699
+2025/08/27 15:20:38 Completed GET /officers in 7.561ms
+2025/08/27 15:20:46 Startted POST /officers from [::1]:51699
+2025/08/27 15:20:46 Completed POST /officers in 7.2888ms
+2025/08/27 15:21:02 Startted POST /officers from [::1]:51699
+2025/08/27 15:21:02 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 15:21:02 admin
+2025/08/27 15:21:02 jyotideepakadmin@blossom.com
+2025/08/27 15:21:02 xxx
+2025/08/27 15:21:02 Officer created successfully
+2025/08/27 15:21:02 Completed POST /officers in 129.3217ms
+2025/08/27 15:23:42 Startted GET /society/residents from [::1]:61659
+2025/08/27 15:23:42 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 15:23:42 admin
+2025/08/27 15:23:42 jyotideepakadmin@blossom.com
+2025/08/27 15:23:42 xxx
+2025/08/27 15:23:42 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 15:23:42 admin
+2025/08/27 15:23:42 jyotideepakadmin@blossom.com
+2025/08/27 15:23:42 xxx
+2025/08/27 15:23:42 View residents successfully executed
+2025/08/27 15:23:42 Completed GET /society/residents in 70.2763ms
+2025/08/27 15:23:54 Startted GET /society/officers from [::1]:61659
+2025/08/27 15:23:54 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 15:23:54 admin
+2025/08/27 15:23:54 jyotideepakadmin@blossom.com
+2025/08/27 15:23:54 xxx
+2025/08/27 15:23:54 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 15:23:54 admin
+2025/08/27 15:23:54 jyotideepakadmin@blossom.com
+2025/08/27 15:23:54 xxx
+2025/08/27 15:23:54 View officers successfully executed
+2025/08/27 15:23:54 Completed GET /society/officers in 71.9424ms
+2025/08/27 15:24:35 Startted GET /residents from [::1]:61659
+2025/08/27 15:24:35 Completed GET /residents in 8.2648ms
+2025/08/27 15:25:00 Startted GET /society/residents from [::1]:61659
+2025/08/27 15:25:00 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 15:25:00 admin
+2025/08/27 15:25:00 jyotideepakadmin@blossom.com
+2025/08/27 15:25:00 xxx
+2025/08/27 15:25:00 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 15:25:00 admin
+2025/08/27 15:25:00 jyotideepakadmin@blossom.com
+2025/08/27 15:25:00 xxx
+2025/08/27 15:25:00 View residents successfully executed
+2025/08/27 15:25:00 Completed GET /society/residents in 74.978ms
+2025/08/27 15:25:44 Startted POST /login from [::1]:61659
+2025/08/27 15:25:44 token generated for userId:396432ce-ca0b-4bb8-b9fd-cf51210082da
+2025/08/27 15:25:44 Completed POST /login in 82.7933ms
+2025/08/27 15:28:56 Startted PATCH /profile/update from [::1]:54300
+2025/08/27 15:28:56 396432ce-ca0b-4bb8-b9fd-cf51210082da
+2025/08/27 15:28:56 officer
+2025/08/27 15:28:56 manassinghofficer@blossom.com
+2025/08/27 15:28:56 xxx
+2025/08/27 15:28:56 Invalid JSON body
+2025/08/27 15:28:56 Completed PATCH /profile/update in 48.739ms
+2025/08/27 15:29:33 Startted PATCH /profile/update from [::1]:54300
+2025/08/27 15:29:33 396432ce-ca0b-4bb8-b9fd-cf51210082da
+2025/08/27 15:29:33 officer
+2025/08/27 15:29:33 manassinghofficer@blossom.com
+2025/08/27 15:29:33 xxx
+2025/08/27 15:29:33 User updated successfully
+2025/08/27 15:29:33 Completed PATCH /profile/update in 123.772ms
+2025/08/27 15:36:41 Startted POST /login from [::1]:64677
+2025/08/27 15:36:41 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 15:36:41 Completed POST /login in 86.3977ms
+2025/08/27 15:37:00 Startted POST /login from [::1]:62077
+2025/08/27 15:37:01 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 15:37:01 Completed POST /login in 86.1466ms
+2025/08/27 15:37:37 Startted POST /officers from [::1]:62077
+2025/08/27 15:37:37 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 15:37:37 admin
+2025/08/27 15:37:37 jyotideepakadmin@blossom.com
+2025/08/27 15:37:37 xxx
+2025/08/27 15:37:37 Officer created successfully
+2025/08/27 15:37:37 Completed POST /officers in 121.237ms
+2025/08/27 15:38:25 Startted POST /login from [::1]:62077
+2025/08/27 15:38:25 token generated for userId:781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 15:38:25 Completed POST /login in 84.0766ms
+2025/08/27 15:38:58 Startted PATCH /profile/update from [::1]:62077
+2025/08/27 15:38:58 781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 15:38:58 officer
+2025/08/27 15:38:58 manassinghofficer@blossom.com
+2025/08/27 15:38:58 xxx
+2025/08/27 15:38:58 User updated successfully
+2025/08/27 15:38:58 Completed PATCH /profile/update in 53.5307ms
+2025/08/27 15:41:34 Startted PATCH /profile/update from [::1]:52204
+2025/08/27 15:41:34 781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 15:41:34 officer
+2025/08/27 15:41:34 manassinghofficer@blossom.com
+2025/08/27 15:41:34 xxx
+2025/08/27 15:41:34 User updated successfully
+2025/08/27 15:41:34 Completed PATCH /profile/update in 38.8567ms
+2025/08/27 15:42:53 Startted PATCH /profile/update from [::1]:62882
+2025/08/27 15:42:53 781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 15:42:53 officer
+2025/08/27 15:42:53 manassinghofficer@blossom.com
+2025/08/27 15:42:53 xxx
+2025/08/27 15:42:53 User updated successfully
+2025/08/27 15:42:53 Completed PATCH /profile/update in 12.6541ms
+2025/08/27 15:45:30 Startted PATCH /profile/update from [::1]:54722
+2025/08/27 15:45:30 781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 15:45:30 officer
+2025/08/27 15:45:30 manassinghofficer@blossom.com
+2025/08/27 15:45:30 xxx
+2025/08/27 15:45:30 User updated successfully
+2025/08/27 15:45:30 Completed PATCH /profile/update in 12.3542ms
+2025/08/27 15:45:52 Startted PATCH /profile/update from [::1]:54731
+2025/08/27 15:45:52 781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 15:45:52 officer
+2025/08/27 15:45:52 manassinghofficer@blossom.com
+2025/08/27 15:45:52 xxx
+2025/08/27 15:45:52 User updated successfully
+2025/08/27 15:45:52 Completed PATCH /profile/update in 13.6344ms
+2025/08/27 15:47:00 Startted PATCH /profile/update from [::1]:54192
+2025/08/27 15:47:00 781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 15:47:00 officer
+2025/08/27 15:47:00 manassinghofficer@blossom.com
+2025/08/27 15:47:00 xxx
+2025/08/27 15:47:00 User updated successfully
+2025/08/27 15:47:00 Completed PATCH /profile/update in 14.074ms
+2025/08/27 15:47:39 Startted PATCH /profile/update from [::1]:54203
+2025/08/27 15:47:39 781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 15:47:39 officer
+2025/08/27 15:47:39 manassinghofficer@blossom.com
+2025/08/27 15:47:39 xxx
+2025/08/27 15:47:39 User updated successfully
+2025/08/27 15:47:39 Completed PATCH /profile/update in 15.8368ms
+2025/08/27 15:52:03 Startted PATCH /profile/update from [::1]:58583
+2025/08/27 15:52:03 781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 15:52:03 officer
+2025/08/27 15:52:03 manassinghofficer@blossom.com
+2025/08/27 15:52:03 xxx
+2025/08/27 15:52:03 User updated successfully
+2025/08/27 15:52:03 Completed PATCH /profile/update in 14.8616ms
+2025/08/27 15:52:23 Startted GET /profile from [::1]:58583
+2025/08/27 15:52:23 781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 15:52:23 officer
+2025/08/27 15:52:23 manassinghofficer@blossom.com
+2025/08/27 15:52:23 xxx
+2025/08/27 15:52:23 users retrived successfully
+2025/08/27 15:52:23 Completed GET /profile in 12.4594ms
+2025/08/27 15:55:31 Startted PATCH /profile/password from [::1]:63377
+2025/08/27 15:55:31 781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 15:55:31 officer
+2025/08/27 15:55:31 manassinghofficer@blossom.com
+2025/08/27 15:55:31 xxx
+2025/08/27 15:55:31 error: user not found or password incorrect
+2025/08/27 15:55:31 user not found
+2025/08/27 15:55:31 Completed PATCH /profile/password in 16.3573ms
+2025/08/27 15:56:43 Startted PATCH /profile/password from [::1]:62647
+2025/08/27 15:56:43 781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 15:56:43 officer
+2025/08/27 15:56:43 manassinghofficer@blossom.com
+2025/08/27 15:56:43 xxx
+2025/08/27 15:56:43 error: user not found or password incorrect
+2025/08/27 15:56:43 user not found
+2025/08/27 15:56:43 Completed PATCH /profile/password in 13.7606ms
+2025/08/27 15:58:32 Startted PATCH /profile/password from [::1]:59952
+2025/08/27 15:58:32 781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 15:58:32 officer
+2025/08/27 15:58:32 manassinghofficer@blossom.com
+2025/08/27 15:58:32 xxx
+2025/08/27 15:58:32 User password updated successfully
+2025/08/27 15:58:32 Completed PATCH /profile/password in 413.2242ms
+2025/08/27 15:58:58 Startted POST /login from [::1]:59952
+2025/08/27 15:58:58 token generated for userId:781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 15:58:58 Completed POST /login in 72.7165ms
+2025/08/27 16:00:27 Startted DELETE /profile/delete from [::1]:58496
+2025/08/27 16:00:27 781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 16:00:27 officer
+2025/08/27 16:00:27 manassinghofficer@blossom.com
+2025/08/27 16:00:27 xxx
+2025/08/27 16:00:27 781590a9-6bb7-4b32-bd7c-2974aa24196d
+2025/08/27 16:00:27 officer
+2025/08/27 16:00:27 manassinghofficer@blossom.com
+2025/08/27 16:00:27 xxx
+2025/08/27 16:00:27 Service request of deleted user deleted successfully
+2025/08/27 16:00:27 Completed DELETE /profile/delete in 20.2593ms
+2025/08/27 16:04:49 Startted POST /signup from [::1]:52177
+2025/08/27 16:04:49 User created sucessfully
+2025/08/27 16:04:49 Completed POST /signup in 294.3668ms
+2025/08/27 16:10:08 Startted POST /signup from [::1]:55465
+2025/08/27 16:10:08 User created sucessfully
+2025/08/27 16:10:08 Completed POST /signup in 276.4631ms
+2025/08/27 16:12:47 Startted POST /signup from [::1]:55665
+2025/08/27 16:12:47 User created sucessfully
+2025/08/27 16:12:47 Completed POST /signup in 265.7117ms
+2025/08/27 16:13:57 Startted POST /login from [::1]:62023
+2025/08/27 16:13:57 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 16:13:57 Completed POST /login in 75.6968ms
+2025/08/27 16:15:27 Startted GET /notices from [::1]:53795
+2025/08/27 16:15:27 Notice fetched successfully
+2025/08/27 16:15:27 Completed GET /notices in 10.4072ms
+2025/08/27 16:18:30 Startted GET /notices/issue from [::1]:58839
+2025/08/27 16:18:30 Completed GET /notices/issue in 2.748ms
+2025/08/27 16:18:36 Startted POST /notices/issue from [::1]:58839
+2025/08/27 16:18:36 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 16:18:36 admin
+2025/08/27 16:18:36 jyotideepakadmin@blossom.com
+2025/08/27 16:18:36 xxx
+2025/08/27 16:18:36 Notice issued successfully
+2025/08/27 16:18:36 Completed POST /notices/issue in 13.1818ms
+2025/08/27 16:22:21 Startted GET /notices/month-year from [::1]:65222
+2025/08/27 16:22:21 notices retrived successfully
+2025/08/27 16:22:21 Completed GET /notices/month-year in 7.5944ms
+2025/08/27 16:22:30 Startted GET /notices/month-year from [::1]:65222
+2025/08/27 16:22:30 Invalid request
+2025/08/27 16:22:30 Completed GET /notices/month-year in 4.3579ms
+2025/08/27 16:22:39 Startted GET /notices/month-year from [::1]:65222
+2025/08/27 16:22:39 notices retrived successfully
+2025/08/27 16:22:39 Completed GET /notices/month-year in 5.3731ms
+2025/08/27 16:24:47 Startted POST /invoices/issue from [::1]:56117
+2025/08/27 16:24:47 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 16:24:47 admin
+2025/08/27 16:24:47 jyotideepakadmin@blossom.com
+2025/08/27 16:24:47 xxx
+2025/08/27 16:24:47 Invalid request
+2025/08/27 16:24:47 Completed POST /invoices/issue in 12.4771ms
+2025/08/27 16:25:12 Startted POST /invoices/issue from [::1]:56117
+2025/08/27 16:25:12 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 16:25:12 admin
+2025/08/27 16:25:12 jyotideepakadmin@blossom.com
+2025/08/27 16:25:12 xxx
+2025/08/27 16:25:12 Invoice issued successfully
+2025/08/27 16:25:12 Completed POST /invoices/issue in 14.9774ms
+2025/08/27 16:26:46 Startted GET /invoices/month-year/ from [::1]:61601
+2025/08/27 16:26:46 Completed GET /invoices/month-year/ in 2.2437ms
+2025/08/27 16:28:51 Startted GET /invoices/month-year/ from [::1]:60208
+2025/08/27 16:28:51 Completed GET /invoices/month-year/ in 2.8955ms
+2025/08/27 16:29:51 Startted GET /invoices/month-year/ from [::1]:55380
+2025/08/27 16:29:51 Completed GET /invoices/month-year/ in 733.5µs
+2025/08/27 16:30:51 Startted GET /invoices/month-year/ from [::1]:55380
+2025/08/27 16:30:51 Completed GET /invoices/month-year/ in 736.3µs
+2025/08/27 16:31:14 Startted GET /invoices/month-year/ from [::1]:55380
+2025/08/27 16:31:14 Completed GET /invoices/month-year/ in 506.6µs
+2025/08/27 16:31:16 Startted GET /invoices/month-year/ from [::1]:55380
+2025/08/27 16:31:16 Completed GET /invoices/month-year/ in 0s
+2025/08/27 16:31:18 Startted GET /invoices/month-year/ from [::1]:55380
+2025/08/27 16:31:18 Completed GET /invoices/month-year/ in 788.9µs
+2025/08/27 16:32:03 Startted GET /notices/month-year from [::1]:55380
+2025/08/27 16:32:03 notices retrived successfully
+2025/08/27 16:32:03 Completed GET /notices/month-year in 3.0572ms
+2025/08/27 16:34:44 Startted GET /invoices/month-year from [::1]:59124
+2025/08/27 16:34:44 invoice retrived successfully
+2025/08/27 16:34:44 Completed GET /invoices/month-year in 1.6884ms
+2025/08/27 16:35:07 Startted GET /invoices/month-year from [::1]:59124
+2025/08/27 16:35:07 invoices retrived successfully
+2025/08/27 16:35:07 Completed GET /invoices/month-year in 1.4636ms
+2025/08/27 16:38:04 Startted GET /feedbacks from [::1]:58614
+2025/08/27 16:38:04 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 16:38:04 admin
+2025/08/27 16:38:04 jyotideepakadmin@blossom.com
+2025/08/27 16:38:04 xxx
+2025/08/27 16:38:04 Fetched feedbacks successfully
+2025/08/27 16:38:04 Completed GET /feedbacks in 2.9815ms
+2025/08/27 16:39:34 Startted POST /feedbacks from [::1]:53865
+2025/08/27 16:39:34 Completed POST /feedbacks in 0s
+2025/08/27 16:39:44 Startted POST /feedbacks from [::1]:53865
+2025/08/27 16:39:44 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 16:39:44 admin
+2025/08/27 16:39:44 jyotideepakadmin@blossom.com
+2025/08/27 16:39:44 xxx
+2025/08/27 16:39:44 Completed POST /feedbacks in 1.7631ms
+2025/08/27 16:41:08 Startted POST /login from [::1]:52286
+2025/08/27 16:41:08 token generated for userId:f71e1a7c-a467-46cf-8d4b-02749ba257f8
+2025/08/27 16:41:08 Completed POST /login in 68.8841ms
+2025/08/27 16:42:08 Startted POST /feedbacks from [::1]:52286
+2025/08/27 16:42:08 f71e1a7c-a467-46cf-8d4b-02749ba257f8
+2025/08/27 16:42:08 resident
+2025/08/27 16:42:08 arjunsingh@gmail.com
+2025/08/27 16:42:08 403
+2025/08/27 16:42:08 Feedback issued successfully
+2025/08/27 16:42:08 Completed POST /feedbacks in 3.8801ms
+2025/08/27 16:42:39 Startted GET /feedbacks from [::1]:52286
+2025/08/27 16:42:39 f71e1a7c-a467-46cf-8d4b-02749ba257f8
+2025/08/27 16:42:39 resident
+2025/08/27 16:42:39 arjunsingh@gmail.com
+2025/08/27 16:42:39 403
+2025/08/27 16:42:39 Fetched feedbacks successfully
+2025/08/27 16:42:39 Completed GET /feedbacks in 2.4526ms
+2025/08/27 16:45:16 Startted GET //service/time-slots from [::1]:61584
+2025/08/27 16:45:16 Completed GET //service/time-slots in 536.8µs
+2025/08/27 16:45:16 Startted GET /service/time-slots from [::1]:61584
+2025/08/27 16:45:16 Time slot shown successfully
+2025/08/27 16:45:16 Completed GET /service/time-slots in 2.4156ms
+2025/08/27 16:46:06 Startted GET //service/time-slots from [::1]:61584
+2025/08/27 16:46:06 Completed GET //service/time-slots in 505.7µs
+2025/08/27 16:46:06 Startted GET /service/time-slots from [::1]:61584
+2025/08/27 16:46:06 Time slot shown successfully
+2025/08/27 16:46:06 Completed GET /service/time-slots in 1.6819ms
+2025/08/27 16:48:12 Startted GET /service/type-status from [::1]:60791
+2025/08/27 16:48:12 Completed GET /service/type-status in 531.6µs
+2025/08/27 16:48:21 Startted GET /service/type-status from [::1]:60791
+2025/08/27 16:48:21 f71e1a7c-a467-46cf-8d4b-02749ba257f8
+2025/08/27 16:48:21 resident
+2025/08/27 16:48:21 arjunsingh@gmail.com
+2025/08/27 16:48:21 403
+2025/08/27 16:48:21 Unauthorized Access
+2025/08/27 16:48:21 Completed GET /service/type-status in 2.5437ms
+2025/08/27 16:49:19 Startted POST /login from [::1]:60791
+2025/08/27 16:49:19 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 16:49:19 Completed POST /login in 69.214ms
+2025/08/27 16:49:45 Startted GET /service/type-status from [::1]:60791
+2025/08/27 16:49:45 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 16:49:45 admin
+2025/08/27 16:49:45 jyotideepakadmin@blossom.com
+2025/08/27 16:49:45 xxx
+2025/08/27 16:49:45 Requests fetched successfully
+2025/08/27 16:49:45 Completed GET /service/type-status in 2.6677ms
+2025/08/27 16:49:54 Startted GET /service/type-status from [::1]:60791
+2025/08/27 16:49:54 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 16:49:54 admin
+2025/08/27 16:49:54 jyotideepakadmin@blossom.com
+2025/08/27 16:49:54 xxx
+2025/08/27 16:49:54 Requests fetched successfully
+2025/08/27 16:49:54 Completed GET /service/type-status in 2.2033ms
+2025/08/27 16:57:14 Startted GET /service from [::1]:61273
+2025/08/27 16:57:14 Completed GET /service in 3.8111ms
+2025/08/27 16:57:22 Startted GET /service from [::1]:61273
+2025/08/27 16:57:22 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 16:57:22 admin
+2025/08/27 16:57:22 jyotideepakadmin@blossom.com
+2025/08/27 16:57:22 xxx
+2025/08/27 16:57:22 Fetched 2 requests with status approved
+2025/08/27 16:57:22 Completed GET /service in 14.8685ms
+2025/08/27 17:01:13 Startted DELETE //credentials/resident from [::1]:58304
+2025/08/27 17:01:13 Completed DELETE //credentials/resident in 2.8476ms
+2025/08/27 17:01:13 Startted GET /credentials/resident from [::1]:58304
+2025/08/27 17:01:13 Completed GET /credentials/resident in 3.1521ms
+2025/08/27 17:04:08 Startted DELETE //credentials/resident from [::1]:62331
+2025/08/27 17:04:08 Completed DELETE //credentials/resident in 2.2165ms
+2025/08/27 17:04:08 Startted GET /credentials/resident from [::1]:62331
+2025/08/27 17:04:08 Completed GET /credentials/resident in 2.3574ms
+2025/08/27 17:04:35 Startted DELETE /credentials/resident from [::1]:62331
+2025/08/27 17:04:35 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 17:04:35 admin
+2025/08/27 17:04:35 jyotideepakadmin@blossom.com
+2025/08/27 17:04:35 xxx
+2025/08/27 17:04:35 Error in deleting resident
+2025/08/27 17:04:35 Completed DELETE /credentials/resident in 13.738ms
+2025/08/27 17:08:11 Startted DELETE /credentials/resident from [::1]:55446
+2025/08/27 17:08:11 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 17:08:11 admin
+2025/08/27 17:08:11 jyotideepakadmin@blossom.com
+2025/08/27 17:08:11 xxx
+2025/08/27 17:08:11 only admin can delete credentials
+2025/08/27 17:08:11 Error in deleting resident
+2025/08/27 17:08:11 Completed DELETE /credentials/resident in 13.239ms
+2025/08/27 17:13:18 Startted DELETE /credentials/resident from [::1]:61697
+2025/08/27 17:13:18 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 17:13:18 admin
+2025/08/27 17:13:18 jyotideepakadmin@blossom.com
+2025/08/27 17:13:18 xxx
+2025/08/27 17:13:18 only admin can delete credentials
+2025/08/27 17:13:18 Error in deleting resident
+2025/08/27 17:13:18 Completed DELETE /credentials/resident in 13.7155ms
+2025/08/27 17:17:38 Startted DELETE /credentials/resident from [::1]:55563
+2025/08/27 17:17:38 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 17:17:38 admin
+2025/08/27 17:17:38 jyotideepakadmin@blossom.com
+2025/08/27 17:17:38 xxx
+2025/08/27 17:17:38 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 17:17:38 admin
+2025/08/27 17:17:38 jyotideepakadmin@blossom.com
+2025/08/27 17:17:38 xxx
+2025/08/27 17:17:38 Resident deleted successfully
+2025/08/27 17:17:38 Completed DELETE /credentials/resident in 28.9246ms
+2025/08/27 17:21:23 Startted POST /login from [::1]:49742
+2025/08/27 17:21:23 token generated for userId:f71e1a7c-a467-46cf-8d4b-02749ba257f8
+2025/08/27 17:21:23 Completed POST /login in 78.4154ms
+2025/08/27 17:33:06 Startted GET //service/time-slots from [::1]:50488
+2025/08/27 17:33:06 Completed GET //service/time-slots in 2.8481ms
+2025/08/27 17:33:06 Startted GET /service/time-slots from [::1]:50488
+2025/08/27 17:33:06 Time slot shown successfully
+2025/08/27 17:33:06 Completed GET /service/time-slots in 5.9958ms
+2025/08/27 17:33:20 Startted POST /service from [::1]:50488
+2025/08/27 17:33:20 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 17:33:20 admin
+2025/08/27 17:33:20 jyotideepakadmin@blossom.com
+2025/08/27 17:33:20 xxx
+2025/08/27 17:33:20 unauthorized person wants to view profile
+2025/08/27 17:33:20 Completed POST /service in 10.3565ms
+2025/08/27 17:38:05 Startted POST /service from [::1]:53928
+2025/08/27 17:38:05 f71e1a7c-a467-46cf-8d4b-02749ba257f8
+2025/08/27 17:38:05 resident
+2025/08/27 17:38:05 arjunsingh@gmail.com
+2025/08/27 17:38:05 403
+2025/08/27 17:38:05 Invalid request
+2025/08/27 17:38:05 Completed POST /service in 11.6367ms
+2025/08/27 17:39:50 Startted POST /service from [::1]:60988
+2025/08/27 17:39:50 f71e1a7c-a467-46cf-8d4b-02749ba257f8
+2025/08/27 17:39:50 resident
+2025/08/27 17:39:50 arjunsingh@gmail.com
+2025/08/27 17:39:50 403
+2025/08/27 17:39:50 Invalid request
+2025/08/27 17:39:50 Completed POST /service in 12.3147ms
+2025/08/27 17:40:19 Startted POST /service from [::1]:60988
+2025/08/27 17:40:19 f71e1a7c-a467-46cf-8d4b-02749ba257f8
+2025/08/27 17:40:19 resident
+2025/08/27 17:40:19 arjunsingh@gmail.com
+2025/08/27 17:40:19 403
+2025/08/27 17:40:19 user already has a booked request
+2025/08/27 17:40:19 Completed POST /service in 14.7766ms
+2025/08/27 17:41:11 Startted POST /service from [::1]:53065
+2025/08/27 17:41:11 f71e1a7c-a467-46cf-8d4b-02749ba257f8
+2025/08/27 17:41:11 resident
+2025/08/27 17:41:11 arjunsingh@gmail.com
+2025/08/27 17:41:11 403
+2025/08/27 17:41:11 user already has a booked request
+2025/08/27 17:41:11 Completed POST /service in 14.323ms
+2025/08/27 17:49:24 Startted POST /signup from [::1]:60247
+2025/08/27 17:49:25 User created sucessfully
+2025/08/27 17:49:25 Completed POST /signup in 273.4213ms
+2025/08/27 17:50:21 Startted POST /login from [::1]:60247
+2025/08/27 17:50:21 token generated for userId:901a5160-2330-411f-922c-05083709c4e3
+2025/08/27 17:50:21 Completed POST /login in 73.4198ms
+2025/08/27 17:50:47 Startted POST /service from [::1]:60247
+2025/08/27 17:50:47 901a5160-2330-411f-922c-05083709c4e3
+2025/08/27 17:50:47 resident
+2025/08/27 17:50:47 nikhilsharma@gmail.com
+2025/08/27 17:50:47 404
+2025/08/27 17:50:47 Service Request created successfully
+2025/08/27 17:50:47 Completed POST /service in 15.712ms
+2025/08/27 17:51:34 Startted GET //service/time-slots from [::1]:60247
+2025/08/27 17:51:34 Completed GET //service/time-slots in 3.0301ms
+2025/08/27 17:51:34 Startted GET /service/time-slots from [::1]:60247
+2025/08/27 17:51:34 Time slot shown successfully
+2025/08/27 17:51:34 Completed GET /service/time-slots in 5.4181ms
+2025/08/27 17:52:02 Startted GET /service/time-slots from [::1]:60247
+2025/08/27 17:52:02 Time slot shown successfully
+2025/08/27 17:52:02 Completed GET /service/time-slots in 7.7214ms
+2025/08/27 18:14:56 Startted GET /service/reschedule/441af4ea-909f-4fae-9ee9-b6137f0fda03 from [::1]:59829
+2025/08/27 18:14:56 Completed GET /service/reschedule/441af4ea-909f-4fae-9ee9-b6137f0fda03 in 2.247ms
+2025/08/27 18:15:02 Startted PATCH /service/reschedule/441af4ea-909f-4fae-9ee9-b6137f0fda03 from [::1]:59829
+2025/08/27 18:15:02 901a5160-2330-411f-922c-05083709c4e3
+2025/08/27 18:15:02 resident
+2025/08/27 18:15:02 nikhilsharma@gmail.com
+2025/08/27 18:15:02 404
+2025/08/27 18:15:02 Service Request rescheduled successfully
+2025/08/27 18:15:02 Completed PATCH /service/reschedule/441af4ea-909f-4fae-9ee9-b6137f0fda03 in 15.0347ms
+2025/08/27 18:15:30 Startted GET /service/time-slots from [::1]:59829
+2025/08/27 18:15:30 Time slot shown successfully
+2025/08/27 18:15:30 Completed GET /service/time-slots in 5.1654ms
+2025/08/27 18:17:28 Startted POST /login from [::1]:55065
+2025/08/27 18:17:28 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 18:17:28 Completed POST /login in 73.9125ms
+2025/08/27 18:19:34 Startted PATCH /service/approve/441af4ea-909f-4fae-9ee9-b6137f0fda03 from [::1]:51864
+2025/08/27 18:19:34 5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/27 18:19:34 admin
+2025/08/27 18:19:34 jyotideepakadmin@blossom.com
+2025/08/27 18:19:34 xxx
+2025/08/27 18:19:34 Service Request approved successfully
+2025/08/27 18:19:34 Completed PATCH /service/approve/441af4ea-909f-4fae-9ee9-b6137f0fda03 in 15.2447ms
+2025/08/27 22:51:33 
+2025/08/27 22:51:33 only admin can delete credentials
+2025/08/27 22:51:57 
+2025/08/27 22:51:57 only admin can delete credentials
+2025/08/27 22:52:04 
+2025/08/27 22:55:43 
+2025/08/27 22:55:43 only admin can delete credentials
+2025/08/27 22:56:50 
+2025/08/27 22:57:24 
+2025/08/27 22:58:11 
+2025/08/27 23:02:18 
+2025/08/27 23:02:18 only admin can delete credentials
+2025/08/27 23:03:06 dfjld
+2025/08/27 23:03:06 
+2025/08/27 23:03:06 only admin can delete credentials
+2025/08/27 23:06:17 dfjld
+2025/08/27 23:06:17 admin
+2025/08/27 23:06:17 dsfsl
+2025/08/27 23:06:17 xxx
+2025/08/27 23:06:23 dfjld
+2025/08/27 23:06:23 admin
+2025/08/27 23:06:23 dsfsl
+2025/08/27 23:06:23 xxx
+2025/08/27 23:06:32 dfjld
+2025/08/27 23:06:32 resident
+2025/08/27 23:06:32 dsfsl
+2025/08/27 23:06:32 xxx
+2025/08/27 23:06:32 only admin can delete credentials
+2025/08/27 23:07:08 a1
+2025/08/27 23:07:08 
+2025/08/27 23:07:08 error: user role not found in context
+2025/08/27 23:08:30 a1
+2025/08/27 23:08:30 admin
+2025/08/27 23:08:30 
+2025/08/27 23:08:30 error: user email not found in context
+2025/08/27 23:09:25 a1
+2025/08/27 23:09:25 admin
+2025/08/27 23:09:25 dlfjs
+2025/08/27 23:09:25 dslfjdsl
+2025/08/27 23:09:33 a1
+2025/08/27 23:09:33 admin
+2025/08/27 23:09:33 dlfjs
+2025/08/27 23:09:33 dslfjdsl
+2025/08/27 23:09:39 o1
+2025/08/27 23:09:39 officer
+2025/08/27 23:09:39 dlfjs
+2025/08/27 23:09:39 dslfjdsl
+2025/08/27 23:09:44 r1
+2025/08/27 23:09:44 resident
+2025/08/27 23:09:44 dlfjs
+2025/08/27 23:09:44 dslfjdsl
+2025/08/27 23:09:50 
+2025/08/27 23:09:50 error: user ID not found in context
+2025/08/27 23:27:33 error: invalid credentials
+2025/08/27 23:27:39 error: invalid credentials
+2025/08/28 01:51:23 Invalid HTTP method
+2025/08/28 01:51:33 Invalid input
+2025/08/28 01:51:42 Validation error
+2025/08/28 01:52:25 Validation error
+2025/08/28 01:52:33 Password not unique
+2025/08/28 01:52:42 Error creating user
+2025/08/28 01:52:49 User created sucessfully
+2025/08/28 01:55:53 Invalid HTTP method
+2025/08/28 01:55:53 Invalid input
+2025/08/28 01:55:53 Validation error
+2025/08/28 01:55:53 Password not unique
+2025/08/28 01:55:53 Error creating user
+2025/08/28 01:55:53 User created sucessfully
+2025/08/28 09:16:16 dfjld
+2025/08/28 09:16:16 admin
+2025/08/28 09:16:16 dsfsl
+2025/08/28 09:16:16 xxx
+2025/08/28 09:16:16 dfjld
+2025/08/28 09:16:16 admin
+2025/08/28 09:16:16 dsfsl
+2025/08/28 09:16:16 xxx
+2025/08/28 09:16:16 dfjld
+2025/08/28 09:16:16 resident
+2025/08/28 09:16:16 dsfsl
+2025/08/28 09:16:16 xxx
+2025/08/28 09:16:16 only admin can delete credentials
+2025/08/28 09:16:16 a1
+2025/08/28 09:16:16 admin
+2025/08/28 09:16:16 dlfjs
+2025/08/28 09:16:16 dslfjdsl
+2025/08/28 09:16:16 a1
+2025/08/28 09:16:16 admin
+2025/08/28 09:16:16 dlfjs
+2025/08/28 09:16:16 dslfjdsl
+2025/08/28 09:16:16 o1
+2025/08/28 09:16:16 officer
+2025/08/28 09:16:16 dlfjs
+2025/08/28 09:16:16 dslfjdsl
+2025/08/28 09:16:16 r1
+2025/08/28 09:16:16 resident
+2025/08/28 09:16:16 dlfjs
+2025/08/28 09:16:16 dslfjdsl
+2025/08/28 09:16:16 
+2025/08/28 09:16:16 error: user ID not found in context
+2025/08/28 09:16:16 error: invalid credentials
+2025/08/28 09:20:41 error: user not found
+2025/08/28 09:21:05 error: crypto/bcrypt: hashedPassword is not the hash of the given password
+2025/08/28 09:21:36 error: crypto/bcrypt: hashedSecret too short to be a bcrypted password
+2025/08/28 09:23:21 
+2025/08/28 09:23:21 error: user ID not found in context
+2025/08/28 09:23:35 
+2025/08/28 09:23:35 error: user ID not found in context
+2025/08/28 09:26:11 u1
+2025/08/28 09:26:11 
+2025/08/28 09:26:11 error: user role not found in context
+2025/08/28 09:26:45 u1
+2025/08/28 09:26:45 
+2025/08/28 09:26:45 error: user role not found in context
+2025/08/28 09:31:14 error: user ID not found in context
+2025/08/28 09:31:48 only admin can delete credentials
+2025/08/28 09:31:48 error: user ID not found in context
+2025/08/28 09:31:48 error: invalid credentials
+2025/08/28 09:31:49 error: user not found
+2025/08/28 09:31:49 error: crypto/bcrypt: hashedPassword is not the hash of the given password
+2025/08/28 09:31:49 error: crypto/bcrypt: hashedSecret too short to be a bcrypted password
+2025/08/28 09:31:49 error: user ID not found in context
+2025/08/28 09:31:49 error: user ID not found in context
+2025/08/28 09:51:19 error: user ID not found in context
+2025/08/28 09:51:31 only admin can delete credentials
+2025/08/28 09:51:31 error: user ID not found in context
+2025/08/28 09:51:31 error: user ID not found in context
+2025/08/28 09:51:31 error: invalid credentials
+2025/08/28 09:51:31 error: user not found
+2025/08/28 09:51:31 error: crypto/bcrypt: hashedPassword is not the hash of the given password
+2025/08/28 09:51:31 error: crypto/bcrypt: hashedSecret too short to be a bcrypted password
+2025/08/28 09:51:31 error: user ID not found in context
+2025/08/28 09:51:31 error: user ID not found in context
+2025/08/28 09:55:19 error: db error
+2025/08/28 09:56:18 error: not found
+2025/08/28 09:57:02 only admin can delete credentials
+2025/08/28 09:57:02 error: db error
+2025/08/28 09:57:02 error: not found
+2025/08/28 09:57:02 error: user ID not found in context
+2025/08/28 09:57:02 error: invalid credentials
+2025/08/28 09:57:02 error: user not found
+2025/08/28 09:57:03 error: crypto/bcrypt: hashedPassword is not the hash of the given password
+2025/08/28 09:57:03 error: crypto/bcrypt: hashedSecret too short to be a bcrypted password
+2025/08/28 09:57:03 error: user ID not found in context
+2025/08/28 09:57:03 error: user ID not found in context
+2025/08/28 10:09:40 Startted GET /login from [::1]:50496
+2025/08/28 10:09:40 Completed GET /login in 4.4931ms
+2025/08/28 10:10:08 Startted POST /login from [::1]:50496
+2025/08/28 10:10:08 token generated for userId:901a5160-2330-411f-922c-05083709c4e3
+2025/08/28 10:10:08 Completed POST /login in 113.3572ms
+2025/08/28 10:11:51 Startted POST /login from [::1]:50175
+2025/08/28 10:11:51 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/28 10:11:51 Completed POST /login in 95.2191ms
+2025/08/28 10:12:53 Startted POST /login from [::1]:60861
+2025/08/28 10:12:53 error: user not found or password incorrect
+2025/08/28 10:12:53 Invalid email or password
+2025/08/28 10:12:53 Completed POST /login in 98.3925ms
+2025/08/28 10:13:14 Startted POST /login from [::1]:60861
+2025/08/28 10:13:14 error: user not found or password incorrect
+2025/08/28 10:13:14 Invalid email or password
+2025/08/28 10:13:14 Completed POST /login in 100.6671ms
+2025/08/28 11:39:58 Startted POST /login from [::1]:56266
+2025/08/28 11:39:58 error: user not found or password incorrect
+2025/08/28 11:39:58 Invalid email or password
+2025/08/28 11:39:58 Completed POST /login in 70.0054ms
+2025/08/28 11:40:07 Startted POST /login from [::1]:56266
+2025/08/28 11:40:07 error: user not found or password incorrect
+2025/08/28 11:40:07 Invalid email or password
+2025/08/28 11:40:07 Completed POST /login in 68.2731ms
+2025/08/28 11:40:15 Startted POST /login from [::1]:56266
+2025/08/28 11:40:15 error: user not found or password incorrect
+2025/08/28 11:40:15 Invalid email or password
+2025/08/28 11:40:15 Completed POST /login in 68.2078ms
+2025/08/28 11:40:20 Startted POST /login from [::1]:56266
+2025/08/28 11:40:20 error: user not found or password incorrect
+2025/08/28 11:40:20 Invalid email or password
+2025/08/28 11:40:20 Completed POST /login in 68.5595ms
+2025/08/28 11:45:11 Startted POST /login from [::1]:56896
+2025/08/28 11:45:11 token generated for userId:34dc094d-8bad-470c-a41c-ff4f46c89a36
+2025/08/28 11:45:11 Completed POST /login in 69.0177ms
+2025/08/28 16:32:01 only admin can delete credentials
+2025/08/28 16:32:01 error: db error
+2025/08/28 16:32:01 error: not found
+2025/08/28 16:32:01 error: user ID not found in context
+2025/08/28 16:32:01 error: invalid credentials
+2025/08/28 16:32:01 error: user not found
+2025/08/28 16:32:01 Invalid HTTP method
+2025/08/28 16:32:01 Invalid input
+2025/08/28 16:32:01 Validation error
+2025/08/28 16:32:01 Password not unique
+2025/08/28 16:32:01 error: crypto/bcrypt: hashedPassword is not the hash of the given password
+2025/08/28 16:32:01 error: crypto/bcrypt: hashedSecret too short to be a bcrypted password
+2025/08/28 16:32:01 error: user ID not found in context
+2025/08/28 16:32:01 error: user ID not found in context
+2025/08/28 16:32:01 Error creating user
+2025/08/28 16:32:01 User created sucessfully
+2025/08/28 16:39:28 only admin can delete credentials
+2025/08/28 16:39:28 error: db error
+2025/08/28 16:39:28 error: not found
+2025/08/28 16:39:28 error: user ID not found in context
+2025/08/28 16:39:28 error: invalid credentials
+2025/08/28 16:39:28 Invalid HTTP method
+2025/08/28 16:39:28 Invalid input
+2025/08/28 16:39:28 Validation error
+2025/08/28 16:39:28 Password not unique
+2025/08/28 16:39:28 error: user not found
+2025/08/28 16:39:28 Error creating user
+2025/08/28 16:39:28 User created sucessfully
+2025/08/28 16:39:28 error: crypto/bcrypt: hashedPassword is not the hash of the given password
+2025/08/28 16:39:28 error: crypto/bcrypt: hashedSecret too short to be a bcrypted password
+2025/08/28 16:39:28 error: user ID not found in context
+2025/08/28 16:39:28 error: user ID not found in context
+2025/08/28 17:36:34 token generated for userId:123
+2025/08/28 17:36:58 Invalid email or password
+2025/08/28 17:37:16 token generated for userId:123
+2025/08/28 17:37:24 Invalid Input
+2025/08/28 17:37:31 Invalid HTTP method
+2025/08/28 17:45:04 Invalid HTTP method
+2025/08/28 17:45:17 user id not found
+2025/08/28 17:45:25 users retrived successfully
+2025/08/28 17:48:24 Invalid HTTP method
+2025/08/28 17:48:29 Invalid HTTP method
+2025/08/28 17:48:30 Invalid HTTP method
+2025/08/28 17:48:48 user not found
+2025/08/28 17:49:06 Invalid HTTP method
+2025/08/28 17:49:12 user not found
+2025/08/28 17:49:22 Invalid JSON body
+2025/08/28 17:54:31 Failed to update user: db error
+2025/08/28 17:54:47 User updated successfully
+2025/08/28 17:56:21 Invalid HTTP method
+2025/08/28 17:56:31 user not found
+2025/08/28 17:56:40 Invalid request
+2025/08/28 17:56:57 unauthorized user changing password
+2025/08/28 17:57:05 User password updated successfully
+2025/08/28 18:05:56 Invalid HTTP method
+2025/08/28 18:06:02 user not found
+2025/08/28 18:06:11 Error deleting user
+2025/08/28 18:06:18 Service request of deleted user deleted successfully
+2025/08/28 18:10:07 Officer created successfully
+2025/08/28 18:10:21 Invalid request
+2025/08/28 18:10:28 unauthorized person wants to view profile
+2025/08/28 18:10:35 Invalid HTTP method
+2025/08/28 22:53:20 Officer created successfully
+2025/08/28 22:57:41 Invalid HTTP method
+2025/08/28 22:57:49 unauthorized person wants to view list of residents
+2025/08/28 22:58:00 Failed to fetch residents
+2025/08/28 22:58:09 View residents successfully executed
+2025/08/28 23:00:39 Invalid HTTP method
+2025/08/28 23:00:46 unauthorized person wants to view list of officers
+2025/08/28 23:01:00 Failed to fetch officers
+2025/08/28 23:01:08 Failed to fetch officers
+2025/08/28 23:01:18 View officers successfully executed
+2025/08/28 23:06:25 Invalid HTTP method
+2025/08/28 23:06:26 Invalid HTTP method
+2025/08/28 23:06:35 unauthorized person trying to delete officer
+2025/08/28 23:06:54 ID missing while deleting officer
+2025/08/28 23:07:03 Error in deleting officer
+2025/08/28 23:07:11 Officer deleted successfully
+2025/08/28 23:10:02 Resident deleted successfully
+2025/08/28 23:10:09 Error in deleting resident
+2025/08/28 23:10:15 ID missing while deleting resident
+2025/08/28 23:10:23 unauthorized person trying to delete resident
+2025/08/28 23:10:30 Invalid HTTP method
+2025/08/28 23:16:07 Invalid HTTP method
+2025/08/28 23:16:14 unauthorized person wants to issue invoice
+2025/08/28 23:16:21 Invalid request
+2025/08/28 23:16:21 Invalid request
+2025/08/28 23:16:28 Failed to issue notice: db error
+2025/08/28 23:16:38 Notice issued successfully
+2025/08/28 23:18:44 Failed to fetch notices: db error
+2025/08/28 23:18:52 Notice fetched successfully
+2025/08/28 23:22:47 Invalid HTTP method
+2025/08/28 23:22:54 Invalid request
+2025/08/28 23:23:00 Invalid request
+2025/08/28 23:23:15 Invalid request
+2025/08/28 23:23:21 Notices not found
+2025/08/28 23:23:27 notices retrived successfully
+2025/08/28 23:23:33 Invalid request
+2025/08/28 23:23:39 Invalid request
+2025/08/28 23:26:10 notices not found
+2025/08/28 23:26:17 notices retrived successfully
+2025/08/28 23:35:25 Invalid HTTP method
+2025/08/28 23:35:31 unauthorized person wants to issue invoice
+2025/08/28 23:35:38 unauthorized person wants to issue invoice
+2025/08/28 23:35:44 Invalid request
+2025/08/28 23:35:51 unauthorized person wants to issue invoice
+2025/08/28 23:37:03 Invalid request
+2025/08/28 23:37:12 unauthorized person wants to issue invoice
+2025/08/28 23:37:37 Invalid request
+2025/08/28 23:39:02 unauthorized person wants to issue invoice
+2025/08/28 23:41:38 Failed to generate invoice: failed to generate
+2025/08/28 23:42:11 Invalid request
+2025/08/28 23:43:36 Invoice issued successfully
+2025/08/28 23:50:43 Invalid HTTP method
+2025/08/28 23:50:57 Fetched feedbacks successfully
+2025/08/28 23:51:03 Failed to fetch feedbacks
+2025/08/28 23:51:10 Fetched feedbacks successfully
+2025/08/28 23:51:17 Fetched feedbacks successfully
+2025/08/28 23:51:25 Failed to fetch feedbacks
+2025/08/28 23:52:56 Fetched feedbacks successfully
+2025/08/28 23:53:04 Fetched feedbacks successfully
+2025/08/28 23:53:46 Unauthorized
+2025/08/28 23:57:37 Invalid HTTP method
+2025/08/28 23:58:03 Invalid JSON body
+2025/08/28 23:58:14 Invalid rating
+2025/08/28 23:58:24 Invalid rating
+2025/08/28 23:58:32 Failed to issue feedback: failed
+2025/08/28 23:58:42 Feedback issued successfully
+2025/08/29 00:06:41 Time slot shown successfully
+2025/08/29 00:06:49 Invalid HTTP method
+2025/08/29 00:06:56 Invalid request
+2025/08/29 00:07:02 Time slot shown successfully
+2025/08/29 00:07:09 Time slot shown successfully
+2025/08/29 00:10:06 unauthorized person wants to book request
+2025/08/29 00:13:08 Service Request created successfully
+2025/08/29 00:13:14 Invalid HTTP method
+2025/08/29 00:13:19 unauthorized person wants to book request
+2025/08/29 00:13:24 unauthorized person wants to book request
+2025/08/29 00:13:30 Invalid request
+2025/08/29 00:13:37 Invalid request
+2025/08/29 00:13:43 Invalid request
+2025/08/29 00:26:03 Invalid HTTP method
+2025/08/29 00:26:11 user not found
+2025/08/29 00:27:39 Service Request rescheduled successfully
+2025/08/29 00:31:31 Invalid HTTP method
+2025/08/29 00:31:47 user not found
+2025/08/29 00:32:02 Missing request ID
+2025/08/29 00:32:20 Missing request ID
+2025/08/29 00:32:29 Missing request ID
+2025/08/29 00:32:43 Missing request ID
+2025/08/29 00:32:52 Missing request ID
+2025/08/29 00:34:17 Failed to cancel the request
+2025/08/29 00:34:23 Service Request cancelled successfully
+2025/08/29 00:36:55 Invalid HTTP method
+2025/08/29 00:37:02 user not found
+2025/08/29 00:37:16 Unauthorized Access
+2025/08/29 00:37:24 Invalid Path
+2025/08/29 00:37:32 Invalid Request ID
+2025/08/29 00:37:47 Service Request approved successfully
+2025/08/29 00:39:58 Invalid HTTP method
+2025/08/29 00:40:04 user not found
+2025/08/29 00:40:11 Missing Status
+2025/08/29 00:40:17 Fetched 1 requests with status pending
+2025/08/29 00:40:24 Missing ID
+2025/08/29 00:40:30 Fetched 1 requests with status approved
+2025/08/29 00:43:13 Method not allowed
+2025/08/29 00:43:20 User not found
+2025/08/29 00:43:26 Unauthorized Access
+2025/08/29 00:43:33 Invalid Request
+2025/08/29 00:43:39 Requests fetched successfully
+2025/08/29 00:43:46 Requests fetched successfully
+2025/08/29 00:43:52 Requests fetched successfully
+2025/08/29 00:44:00 Requests fetched successfully

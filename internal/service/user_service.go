@@ -1,3 +1,4 @@
+//go:generate mockgen -source=user_service.go -destination=../mocks/user_mock_service.go -package=mocks
 package service
 
 import (
@@ -18,9 +19,10 @@ type UserServiceInterface interface{
 	SignUp(user model.User) error
 	Login(id string, password string) (*model.User, error)
 	UpdateProfile(user model.User) error
-	ChangePassword(ctx context.Context, currentPassword string, newPassword string) error
+	ChangePassword(user *model.User, currentPassword string, newPassword string) error
 	IsPasswordUnique(Password string) bool
 	DeleteProfile(ctx context.Context) error
+	GetUserByID(ctx context.Context) (*model.User, error)
 }
 
 type UserService struct {
@@ -55,14 +57,9 @@ func (us *UserService) UpdateProfile(user model.User) error {
 	return us.UserRepo.UpdateUser(user)
 }
 
-func (us *UserService) ChangePassword(ctx context.Context, currentPassword string, newPassword string) error {
-	user, err := utils.GetUserFromContext(ctx)
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		color.Red("Unauthorized access.")
-		return err
-	}
-	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(currentPassword))
+func (us *UserService) ChangePassword(user *model.User, currentPassword string, newPassword string) error {
+
+	err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(currentPassword))
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return errors.New("current password is incorrect")
@@ -92,4 +89,13 @@ func (us *UserService) DeleteProfile(ctx context.Context) error {
 		return err
 	}
 	return us.UserRepo.DeleteUserByID(user.ID)
+}
+
+func (us *UserService) GetUserByID(ctx context.Context) (*model.User, error) {
+	user, err := utils.GetUserFromContext(ctx)
+	if err != nil {
+		logger.LogToFile(fmt.Sprintf("error: %v", err))
+		return nil, err
+	}
+	return us.UserRepo.GetUserByID(user.ID)
 }

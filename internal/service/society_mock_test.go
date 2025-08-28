@@ -35,7 +35,9 @@ func (m *MockSocietyRepo) GetAllOfficers() ([]model.User, error) {
 func ctxWithUser(user *model.User) context.Context {
 	ctx := context.Background()
 	ctx = context.WithValue(ctx, utils.UserIDKey, user.ID)
-	ctx = context.WithValue(ctx, utils.UserRoleKey, user.Role)
+	ctx = context.WithValue(ctx, utils.UserRoleKey, string(user.Role))
+	ctx = context.WithValue(ctx, utils.UserEmailKey, "dlfjs")
+	ctx = context.WithValue(ctx, utils.UserFlatKey, "dslfjdsl")
 	return ctx
 }
 

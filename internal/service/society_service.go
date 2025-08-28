@@ -1,4 +1,4 @@
-
+//go:generate mockgen -source=society_service.go -destination=../mocks/society_mock_service.go -package=mocks
 package service
 
 import (

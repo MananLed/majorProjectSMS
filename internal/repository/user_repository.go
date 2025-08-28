@@ -23,6 +23,7 @@ type UserRepositoryInterface interface {
 	ChangePassword(id string, newHashedPassword string) error
 	IsPasswordUnique(hashedPassword string) bool
 	DeleteUserByID(id string) error
+	GetUserByID(id string) (*model.User, error)
 }
 
 func NewUserRepository(db *sql.DB) *UserRepository {
@@ -179,4 +180,27 @@ func (r *UserRepository) DeleteUserByID(id string) error {
 		return errors.New("user not found")
 	}
 	return nil
+}
+
+func (r *UserRepository) GetUserByID(id string) (*model.User, error) {
+	var user model.User 
+
+	query := `
+		SELECT id, first_name, middle_name, last_name, mobile_number, email, password, role, flat_no
+		FROM users
+		WHERE id = $1
+	`
+	r.mu.Lock()
+	err := r.db.QueryRow(query, id).Scan(&user.ID, &user.FirstName, &user.MiddleName, &user.LastName, &user.MobileNumber, &user.Email, &user.Password, &user.Role, &user.Flat)
+	r.mu.Unlock()
+
+	if err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return nil, errors.New("user not found")
+		}
+		logger.LogToFile(fmt.Sprintf("error fetching user: %v", err))
+		return nil, err
+	}
+
+	return &user, nil
 }

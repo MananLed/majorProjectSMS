@@ -13,14 +13,9 @@ func GetUserFromContext(ctx context.Context) (*model.User, error) {
 		return nil, errors.New("user ID not found in context")
 	}
 
-	role, ok := ctx.Value(UserRoleKey).(model.UserRole)
+	role, ok := ctx.Value(UserRoleKey).(string)
 	if !ok {
 		return nil, errors.New("user role not found in context")
-	}
-
-	password, ok := ctx.Value(UserPassKey).(string)
-	if !ok {
-		return nil, errors.New("user password not found in context")
 	}
 
 	email, ok := ctx.Value(UserEmailKey).(string)
@@ -29,15 +24,13 @@ func GetUserFromContext(ctx context.Context) (*model.User, error) {
 	}
 
 	flat, ok := ctx.Value(UserFlatKey).(string)
-
 	if !ok {
 		return nil, errors.New("user flat not found in context")
 	}
 
 	return &model.User{
 		ID:       id,
-		Role:     role,
-		Password: string(password),
+		Role:     model.UserRole(role),
 		Email:    email,
 		Flat:     flat,
 	}, nil

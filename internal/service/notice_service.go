@@ -1,3 +1,4 @@
+//go:generate mockgen -source=notice_service.go -destination=../mocks/notice_mock_service.go -package=mocks
 package service
 
 import (

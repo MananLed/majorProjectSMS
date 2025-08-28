@@ -1,3 +1,4 @@
+//go:generate mockgen -source=invoice_service.go -destination=../mocks/invoice_mock_service.go -package=mocks
 package service
 
 import (

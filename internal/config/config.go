@@ -1,5 +1,6 @@
 package config
 
+
 var (
 	Host     = "localhost"
 	Port     = 5432
@@ -7,3 +8,6 @@ var (
 	Password = "root"
 	Dbname   = "upkeepz"
 )
+
+const PortForAPI = ":8080"
+

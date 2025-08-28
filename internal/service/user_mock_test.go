@@ -1,4 +1,3 @@
-
 package service
 
 import (
@@ -27,6 +26,9 @@ func (m *MockUserRepo) GetUserByIDAndPassword(id string, password string) (*mode
 	user, exists := m.users[id]
 	if !exists {
 		return nil, errors.New("user not found")
+	}
+	if user.Password != password {
+		return nil, errors.New("invalid credentials")
 	}
 	return &user, nil
 }
@@ -66,6 +68,14 @@ func (m *MockUserRepo) DeleteUserByID(id string) error {
 	return nil
 }
 
+func (m *MockUserRepo) GetUserByID(id string) (*model.User, error) {
+	if _, exists := m.users[id]; !exists {
+		return nil, errors.New("user not found")
+	}
+	user := m.users[id]
+	return &user, nil
+}
+
 //Tests
 
 func TestSignUp(t *testing.T) {
@@ -88,11 +98,10 @@ func TestSignUp(t *testing.T) {
 func TestLogin(t *testing.T) {
 	mockRepo := &MockUserRepo{users: make(map[string]model.User)}
 	service := NewUserService(mockRepo)
-	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte("nin"), bcrypt.DefaultCost)
 	user := model.User{
-	ID:       "man",
-	Password: string(hashedPassword),
-}
+		ID:       "man",
+		Password: "nin",
+	}
 
 	_ = service.SignUp(user)
 
@@ -107,11 +116,10 @@ func TestLoginFailWrongPassword(t *testing.T) {
 	mockRepo := &MockUserRepo{users: make(map[string]model.User)}
 	service := NewUserService(mockRepo)
 
-	user := model.User{ID: "man", Password: "nin"}
-
+	user := model.User{ID: "mansi", Password: "nint"}
 	_ = service.SignUp(user)
 
-	_, err := service.Login("man", "sin")
+	_, err := service.Login("mansi", "sint")
 
 	if err == nil {
 		t.Error("expected login to fail due to wrong password")
@@ -133,21 +141,149 @@ func TestChangePassword(t *testing.T) {
 
 	mockRepo.AddUser(user)
 
-	ctx := context.Background()
-	ctx = context.WithValue(ctx, utils.UserIDKey, user.ID)
-	ctx = context.WithValue(ctx, utils.UserRoleKey, user.Role)
-	ctx = context.WithValue(ctx, utils.UserPassKey, user.Password)
-
 	newPassword := "new123"
 
-	err := service.ChangePassword(ctx, rawPassword, newPassword)
+	err := service.ChangePassword(&user, rawPassword, newPassword)
 	if err != nil {
 		t.Errorf("Change Password failed: %v", err)
 	}
 
-	updatedUser, _ := mockRepo.GetUserByIDAndPassword(user.ID, newPassword)
+	updatedUser, _ := mockRepo.GetUserByID(user.ID)
 	err = bcrypt.CompareHashAndPassword([]byte(updatedUser.Password), []byte(newPassword))
 	if err != nil {
 		t.Errorf("Password was not updated correctly")
 	}
+}
+
+func TestSignUp_Failure(t *testing.T) {
+	mockRepo := &MockUserRepo{users: make(map[string]model.User)}
+	service := NewUserService(mockRepo)
+
+	user := model.User{ID: "", Password: ""}
+
+	err := service.SignUp(user)
+	if err == nil {
+		t.Error("expected signup to fail for empty ID/password")
+	}
+}
+
+func TestLoginFailUserNotFound(t *testing.T) {
+	mockRepo := &MockUserRepo{users: make(map[string]model.User)}
+	service := NewUserService(mockRepo)
+
+	_, err := service.Login("ghost", "pass")
+	if err == nil {
+		t.Error("expected login to fail for non-existent user")
+	}
+}
+
+func TestChangePassword_WrongCurrentPassword(t *testing.T) {
+	mockRepo := &MockUserRepo{users: make(map[string]model.User)}
+	service := NewUserService(mockRepo)
+
+	hashed, _ := bcrypt.GenerateFromPassword([]byte("correct123"), bcrypt.DefaultCost)
+	user := model.User{ID: "man@example.com", Password: string(hashed)}
+	mockRepo.AddUser(user)
+
+	err := service.ChangePassword(&user, "wrong123", "new123")
+	if err == nil {
+		t.Error("expected error for wrong current password")
+	}
+}
+
+func TestChangePassword_DuplicatePassword(t *testing.T) {
+	mockRepo := &MockUserRepo{users: make(map[string]model.User)}
+	service := NewUserService(mockRepo)
+
+	existing := model.User{ID: "exist", Password: "duplicate"}
+	mockRepo.AddUser(existing)
+
+	user := model.User{ID: "u1", Password: "old"}
+	mockRepo.AddUser(user)
+
+	err := service.ChangePassword(&user, "old", "duplicate")
+	if err == nil {
+		t.Error("expected error for duplicate password")
+	}
+}
+
+func TestUpdateProfile_Success(t *testing.T) {
+	mockRepo := &MockUserRepo{users: make(map[string]model.User)}
+	service := NewUserService(mockRepo)
+
+	user := model.User{ID: "man", Password: "nin"}
+	mockRepo.AddUser(user)
+
+	updated := model.User{ID: "man", Password: "newpass"}
+	err := service.UpdateProfile(updated)
+	if err != nil {
+		t.Errorf("expected update to succeed, got %v", err)
+	}
+}
+
+func TestUpdateProfile_Failure(t *testing.T) {
+	mockRepo := &MockUserRepo{users: make(map[string]model.User)}
+	service := NewUserService(mockRepo)
+
+	user := model.User{ID: "ghost", Password: "xxx"}
+	err := service.UpdateProfile(user)
+	if err == nil {
+		t.Error("expected update to fail for non-existent user")
+	}
+}
+
+func TestDeleteProfile_Success(t *testing.T) {
+	mockRepo := &MockUserRepo{users: make(map[string]model.User)}
+	service := NewUserService(mockRepo)
+
+	user := model.User{ID: "u1", Password: "p1", Email: "dlfj", Flat: "sldjf", Role: model.RoleResident}
+	mockRepo.AddUser(user)
+
+	ctx := context.WithValue(context.Background(), utils.UserIDKey, user.ID)
+	ctx = context.WithValue(ctx, utils.UserEmailKey, user.Email)
+	ctx = context.WithValue(ctx, utils.UserFlatKey, user.Flat)
+	ctx = context.WithValue(ctx, utils.UserRoleKey, "resident")
+	err := service.DeleteProfile(ctx)
+	if err != nil {
+		t.Errorf("expected delete to succeed, got %v", err)
+	}
+}
+
+func TestDeleteProfile_Failure(t *testing.T) {
+	mockRepo := &MockUserRepo{users: make(map[string]model.User)}
+	service := NewUserService(mockRepo)
+
+	ctx := context.Background()
+	err := service.DeleteProfile(ctx)
+	if err == nil {
+		t.Error("expected delete to fail due to missing user in context")
+	}
+}
+
+func TestGetUserByID_Success(t *testing.T) {
+    mockRepo := &MockUserRepo{users: make(map[string]model.User)}
+    service := NewUserService(mockRepo)
+
+    user := model.User{ID: "u1", Password: "p1", Email: "dlf", Flat: "djf"}
+    mockRepo.AddUser(user)
+
+    ctx := context.WithValue(context.Background(), utils.UserIDKey, user.ID)
+	ctx = context.WithValue(ctx, utils.UserEmailKey, user.Email)
+	ctx = context.WithValue(ctx, utils.UserFlatKey, user.Flat)
+	ctx = context.WithValue(ctx, utils.UserRoleKey, "resident")
+    got, err := service.GetUserByID(ctx)
+    if err != nil || got.ID != "u1" {
+        t.Errorf("expected to get user u1, got %v, err: %v", got, err)
+    }
+}
+
+func TestGetUserByID_Failure(t *testing.T) {
+    mockRepo := &MockUserRepo{users: make(map[string]model.User)}
+    service := NewUserService(mockRepo)
+
+    ctx := context.Background()
+    _, err := service.GetUserByID(ctx)
+    if err == nil {
+        t.Error("expected failure when no user in context")
+    }
 }

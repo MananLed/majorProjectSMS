@@ -47,7 +47,10 @@ func TestDeleteResident(t *testing.T) {
 
 	service := NewCredentialService(mockRepo)
 
-	ctx := context.WithValue(context.Background(), utils.UserRoleKey, model.RoleAdmin)
+	ctx := context.WithValue(context.Background(), utils.UserRoleKey, string(model.RoleAdmin))
+	ctx = context.WithValue(ctx, utils.UserEmailKey, "dsfsl")
+	ctx = context.WithValue(ctx, utils.UserFlatKey, "xxx")
+	ctx = context.WithValue(ctx, utils.UserIDKey, "dfjld")
 
 	err := service.DeleteResidentCredentials(ctx, resident.ID)
 	if err != nil {
@@ -80,7 +83,10 @@ func TestDeleteOfficerCredentials(t *testing.T) {
 
 	service := NewCredentialService(mockRepo)
 
-	ctx := context.WithValue(context.Background(), utils.UserRoleKey, model.RoleAdmin)
+	ctx := context.WithValue(context.Background(), utils.UserRoleKey, string(model.RoleAdmin))
+	ctx = context.WithValue(ctx, utils.UserEmailKey, "dsfsl")
+	ctx = context.WithValue(ctx, utils.UserFlatKey, "xxx")
+	ctx = context.WithValue(ctx, utils.UserIDKey, "dfjld")
 
 	err := service.DeleteOfficerCredentials(ctx, officer.ID)
 	if err != nil {
@@ -103,7 +109,10 @@ func TestDeleteResidentCredentialsUnauthorized(t *testing.T) {
 
 	service := NewCredentialService(mockRepo)
 
-	ctx := context.WithValue(context.Background(), utils.UserRoleKey, model.RoleResident)
+	ctx := context.WithValue(context.Background(), utils.UserRoleKey, string(model.RoleResident))
+	ctx = context.WithValue(ctx, utils.UserEmailKey, "dsfsl")
+	ctx = context.WithValue(ctx, utils.UserFlatKey, "xxx")
+	ctx = context.WithValue(ctx, utils.UserIDKey, "dfjld")
 
 	err := service.DeleteResidentCredentials(ctx, "resident@gmail.com")
 	if err == nil || err.Error() != "unauthorized: only admin can delete credentials" {
