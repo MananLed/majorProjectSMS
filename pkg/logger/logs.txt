@@ -963,3 +963,3183 @@
 2025/08/29 00:43:46 Requests fetched successfully
 2025/08/29 00:43:52 Requests fetched successfully
 2025/08/29 00:44:00 Requests fetched successfully
+2025/08/29 01:41:24 ID missing while deleting officer
+2025/08/29 02:32:25 error: db error
+2025/08/29 02:32:35 error: delete failed
+2025/08/29 03:03:21 error: query failed
+2025/08/29 03:03:36 error: unsupported scan type
+2025/08/29 03:03:43 error: query failed
+2025/08/29 03:03:50 error: unsupported scan type
+2025/08/29 03:13:53 error: insert failed
+2025/08/29 03:17:09 error: insert failed
+2025/08/29 09:15:43 only admin can delete credentials
+2025/08/29 09:15:43 error: db error
+2025/08/29 09:15:43 error: not found
+2025/08/29 09:15:44 error: user ID not found in context
+2025/08/29 09:15:44 error: invalid credentials
+2025/08/29 09:15:44 error: user not found
+2025/08/29 09:15:44 error: crypto/bcrypt: hashedPassword is not the hash of the given password
+2025/08/29 09:15:44 error: crypto/bcrypt: hashedSecret too short to be a bcrypted password
+2025/08/29 09:15:44 error: user ID not found in context
+2025/08/29 09:15:44 error: user ID not found in context
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 unauthorized person trying to delete officer
+2025/08/29 09:15:44 ID missing while deleting officer
+2025/08/29 09:15:44 Error in deleting officer
+2025/08/29 09:15:44 Officer deleted successfully
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 unauthorized person trying to delete resident
+2025/08/29 09:15:44 ID missing while deleting resident
+2025/08/29 09:15:44 Error in deleting resident
+2025/08/29 09:15:44 Resident deleted successfully
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 Fetched feedbacks successfully
+2025/08/29 09:15:44 Failed to fetch feedbacks
+2025/08/29 09:15:44 Fetched feedbacks successfully
+2025/08/29 09:15:44 Fetched feedbacks successfully
+2025/08/29 09:15:44 Failed to fetch feedbacks
+2025/08/29 09:15:44 Fetched feedbacks successfully
+2025/08/29 09:15:44 Unauthorized
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 Invalid JSON body
+2025/08/29 09:15:44 Invalid rating
+2025/08/29 09:15:44 Invalid rating
+2025/08/29 09:15:44 Failed to issue feedback: failed
+2025/08/29 09:15:44 Feedback issued successfully
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 unauthorized person wants to issue invoice
+2025/08/29 09:15:44 unauthorized person wants to issue invoice
+2025/08/29 09:15:44 Invalid request
+2025/08/29 09:15:44 Invalid request
+2025/08/29 09:15:44 Failed to generate invoice: failed to generate
+2025/08/29 09:15:44 Invoice issued successfully
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 unauthorized person wants to issue invoice
+2025/08/29 09:15:44 Invalid request
+2025/08/29 09:15:44 Invalid request
+2025/08/29 09:15:44 Failed to issue notice: db error
+2025/08/29 09:15:44 Notice issued successfully
+2025/08/29 09:15:44 Failed to fetch notices: db error
+2025/08/29 09:15:44 Notice fetched successfully
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 Invalid request
+2025/08/29 09:15:44 Invalid request
+2025/08/29 09:15:44 Invalid request
+2025/08/29 09:15:44 Notices not found
+2025/08/29 09:15:44 notices retrived successfully
+2025/08/29 09:15:44 Invalid request
+2025/08/29 09:15:44 Invalid request
+2025/08/29 09:15:44 notices not found
+2025/08/29 09:15:44 notices retrived successfully
+2025/08/29 09:15:44 Time slot shown successfully
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 Invalid request
+2025/08/29 09:15:44 Time slot shown successfully
+2025/08/29 09:15:44 Time slot shown successfully
+2025/08/29 09:15:44 Service Request created successfully
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 unauthorized person wants to book request
+2025/08/29 09:15:44 unauthorized person wants to book request
+2025/08/29 09:15:44 Invalid request
+2025/08/29 09:15:44 Invalid request
+2025/08/29 09:15:44 Invalid request
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 user not found
+2025/08/29 09:15:44 Service Request rescheduled successfully
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 user not found
+2025/08/29 09:15:44 Missing request ID
+2025/08/29 09:15:44 Invalid request ID
+2025/08/29 09:15:44 Failed to cancel the request
+2025/08/29 09:15:44 Service Request cancelled successfully
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 user not found
+2025/08/29 09:15:44 Unauthorized Access
+2025/08/29 09:15:44 Invalid Path
+2025/08/29 09:15:44 Invalid Request ID
+2025/08/29 09:15:44 Service Request approved successfully
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 user not found
+2025/08/29 09:15:44 Missing Status
+2025/08/29 09:15:44 Fetched 1 requests with status pending
+2025/08/29 09:15:44 Missing ID
+2025/08/29 09:15:44 Fetched 1 requests with status approved
+2025/08/29 09:15:44 Method not allowed
+2025/08/29 09:15:44 User not found
+2025/08/29 09:15:44 Unauthorized Access
+2025/08/29 09:15:44 Invalid Request
+2025/08/29 09:15:44 Requests fetched successfully
+2025/08/29 09:15:44 Requests fetched successfully
+2025/08/29 09:15:44 Requests fetched successfully
+2025/08/29 09:15:44 Requests fetched successfully
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 unauthorized person wants to view list of residents
+2025/08/29 09:15:44 Failed to fetch residents
+2025/08/29 09:15:44 View residents successfully executed
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 unauthorized person wants to view list of officers
+2025/08/29 09:15:44 Failed to fetch officers
+2025/08/29 09:15:44 View officers successfully executed
+2025/08/29 09:15:44 Invalid HTTP method
+2025/08/29 09:15:44 Invalid input
+2025/08/29 09:15:44 Validation error
+2025/08/29 09:15:44 Password not unique
+2025/08/29 09:15:45 Error creating user
+2025/08/29 09:15:45 User created sucessfully
+2025/08/29 09:15:45 Invalid HTTP method
+2025/08/29 09:15:45 Invalid Input
+2025/08/29 09:15:45 Invalid email or password
+2025/08/29 09:15:45 token generated for userId:123
+2025/08/29 09:15:45 Invalid HTTP method
+2025/08/29 09:15:45 user id not found
+2025/08/29 09:15:45 users retrived successfully
+2025/08/29 09:15:45 Invalid HTTP method
+2025/08/29 09:15:45 user not found
+2025/08/29 09:15:45 Invalid JSON body
+2025/08/29 09:15:45 Failed to update user: db error
+2025/08/29 09:15:45 User updated successfully
+2025/08/29 09:15:45 Invalid HTTP method
+2025/08/29 09:15:45 user not found
+2025/08/29 09:15:45 Invalid request
+2025/08/29 09:15:45 unauthorized user changing password
+2025/08/29 09:15:45 User password updated successfully
+2025/08/29 09:15:45 Invalid HTTP method
+2025/08/29 09:15:45 user not found
+2025/08/29 09:15:45 Error deleting user
+2025/08/29 09:15:45 Service request of deleted user deleted successfully
+2025/08/29 09:15:45 Invalid HTTP method
+2025/08/29 09:15:45 unauthorized person wants to view profile
+2025/08/29 09:15:45 Invalid request
+2025/08/29 09:15:45 Officer created successfully
+2025/08/29 09:16:05 only admin can delete credentials
+2025/08/29 09:16:05 error: db error
+2025/08/29 09:16:05 error: not found
+2025/08/29 09:16:05 error: user ID not found in context
+2025/08/29 09:16:05 error: invalid credentials
+2025/08/29 09:16:05 Invalid HTTP method
+2025/08/29 09:16:05 unauthorized person trying to delete officer
+2025/08/29 09:16:05 ID missing while deleting officer
+2025/08/29 09:16:05 Error in deleting officer
+2025/08/29 09:16:05 Officer deleted successfully
+2025/08/29 09:16:05 Invalid HTTP method
+2025/08/29 09:16:05 unauthorized person trying to delete resident
+2025/08/29 09:16:05 ID missing while deleting resident
+2025/08/29 09:16:05 Error in deleting resident
+2025/08/29 09:16:05 Resident deleted successfully
+2025/08/29 09:16:05 Invalid HTTP method
+2025/08/29 09:16:05 Fetched feedbacks successfully
+2025/08/29 09:16:05 Failed to fetch feedbacks
+2025/08/29 09:16:05 Fetched feedbacks successfully
+2025/08/29 09:16:05 Fetched feedbacks successfully
+2025/08/29 09:16:05 Failed to fetch feedbacks
+2025/08/29 09:16:05 Fetched feedbacks successfully
+2025/08/29 09:16:05 Unauthorized
+2025/08/29 09:16:05 Invalid HTTP method
+2025/08/29 09:16:05 Invalid JSON body
+2025/08/29 09:16:05 Invalid rating
+2025/08/29 09:16:05 Invalid rating
+2025/08/29 09:16:05 Failed to issue feedback: failed
+2025/08/29 09:16:05 Feedback issued successfully
+2025/08/29 09:16:05 Invalid HTTP method
+2025/08/29 09:16:05 unauthorized person wants to issue invoice
+2025/08/29 09:16:05 unauthorized person wants to issue invoice
+2025/08/29 09:16:05 Invalid request
+2025/08/29 09:16:05 Invalid request
+2025/08/29 09:16:05 Failed to generate invoice: failed to generate
+2025/08/29 09:16:05 Invoice issued successfully
+2025/08/29 09:16:05 Invalid HTTP method
+2025/08/29 09:16:05 unauthorized person wants to issue invoice
+2025/08/29 09:16:05 Invalid request
+2025/08/29 09:16:05 Invalid request
+2025/08/29 09:16:06 Failed to issue notice: db error
+2025/08/29 09:16:06 Notice issued successfully
+2025/08/29 09:16:06 Failed to fetch notices: db error
+2025/08/29 09:16:06 Notice fetched successfully
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 Invalid request
+2025/08/29 09:16:06 Invalid request
+2025/08/29 09:16:06 Invalid request
+2025/08/29 09:16:06 Notices not found
+2025/08/29 09:16:06 error: user not found
+2025/08/29 09:16:06 notices retrived successfully
+2025/08/29 09:16:06 Invalid request
+2025/08/29 09:16:06 Invalid request
+2025/08/29 09:16:06 notices not found
+2025/08/29 09:16:06 notices retrived successfully
+2025/08/29 09:16:06 Time slot shown successfully
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 Invalid request
+2025/08/29 09:16:06 Time slot shown successfully
+2025/08/29 09:16:06 Time slot shown successfully
+2025/08/29 09:16:06 Service Request created successfully
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 unauthorized person wants to book request
+2025/08/29 09:16:06 unauthorized person wants to book request
+2025/08/29 09:16:06 Invalid request
+2025/08/29 09:16:06 Invalid request
+2025/08/29 09:16:06 Invalid request
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 user not found
+2025/08/29 09:16:06 Service Request rescheduled successfully
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 user not found
+2025/08/29 09:16:06 Missing request ID
+2025/08/29 09:16:06 Invalid request ID
+2025/08/29 09:16:06 Failed to cancel the request
+2025/08/29 09:16:06 Service Request cancelled successfully
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 user not found
+2025/08/29 09:16:06 Unauthorized Access
+2025/08/29 09:16:06 Invalid Path
+2025/08/29 09:16:06 Invalid Request ID
+2025/08/29 09:16:06 Service Request approved successfully
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 user not found
+2025/08/29 09:16:06 Missing Status
+2025/08/29 09:16:06 Fetched 1 requests with status pending
+2025/08/29 09:16:06 Missing ID
+2025/08/29 09:16:06 Fetched 1 requests with status approved
+2025/08/29 09:16:06 Method not allowed
+2025/08/29 09:16:06 User not found
+2025/08/29 09:16:06 Unauthorized Access
+2025/08/29 09:16:06 Invalid Request
+2025/08/29 09:16:06 Requests fetched successfully
+2025/08/29 09:16:06 Requests fetched successfully
+2025/08/29 09:16:06 Requests fetched successfully
+2025/08/29 09:16:06 Requests fetched successfully
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 unauthorized person wants to view list of residents
+2025/08/29 09:16:06 Failed to fetch residents
+2025/08/29 09:16:06 View residents successfully executed
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 unauthorized person wants to view list of officers
+2025/08/29 09:16:06 Failed to fetch officers
+2025/08/29 09:16:06 View officers successfully executed
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 Invalid input
+2025/08/29 09:16:06 Validation error
+2025/08/29 09:16:06 Password not unique
+2025/08/29 09:16:06 error: crypto/bcrypt: hashedPassword is not the hash of the given password
+2025/08/29 09:16:06 error: crypto/bcrypt: hashedSecret too short to be a bcrypted password
+2025/08/29 09:16:06 error: user ID not found in context
+2025/08/29 09:16:06 error: user ID not found in context
+2025/08/29 09:16:06 Error creating user
+2025/08/29 09:16:06 User created sucessfully
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 Invalid Input
+2025/08/29 09:16:06 Invalid email or password
+2025/08/29 09:16:06 token generated for userId:123
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 user id not found
+2025/08/29 09:16:06 users retrived successfully
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 user not found
+2025/08/29 09:16:06 Invalid JSON body
+2025/08/29 09:16:06 Failed to update user: db error
+2025/08/29 09:16:06 User updated successfully
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 user not found
+2025/08/29 09:16:06 Invalid request
+2025/08/29 09:16:06 unauthorized user changing password
+2025/08/29 09:16:06 User password updated successfully
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 user not found
+2025/08/29 09:16:06 Error deleting user
+2025/08/29 09:16:06 Service request of deleted user deleted successfully
+2025/08/29 09:16:06 Invalid HTTP method
+2025/08/29 09:16:06 unauthorized person wants to view profile
+2025/08/29 09:16:06 Invalid request
+2025/08/29 09:16:06 Officer created successfully
+2025/08/29 09:31:48 only admin can delete credentials
+2025/08/29 09:31:48 error: db error
+2025/08/29 09:31:48 error: not found
+2025/08/29 09:31:48 error: user ID not found in context
+2025/08/29 09:31:48 error: invalid credentials
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 unauthorized person trying to delete officer
+2025/08/29 09:31:49 ID missing while deleting officer
+2025/08/29 09:31:49 Error in deleting officer
+2025/08/29 09:31:49 Officer deleted successfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 unauthorized person trying to delete resident
+2025/08/29 09:31:49 ID missing while deleting resident
+2025/08/29 09:31:49 Error in deleting resident
+2025/08/29 09:31:49 Resident deleted successfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 Fetched feedbacks successfully
+2025/08/29 09:31:49 Failed to fetch feedbacks
+2025/08/29 09:31:49 Fetched feedbacks successfully
+2025/08/29 09:31:49 Fetched feedbacks successfully
+2025/08/29 09:31:49 Failed to fetch feedbacks
+2025/08/29 09:31:49 Fetched feedbacks successfully
+2025/08/29 09:31:49 Unauthorized
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 Invalid JSON body
+2025/08/29 09:31:49 Invalid rating
+2025/08/29 09:31:49 Invalid rating
+2025/08/29 09:31:49 Failed to issue feedback: failed
+2025/08/29 09:31:49 Feedback issued successfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 unauthorized person wants to issue invoice
+2025/08/29 09:31:49 unauthorized person wants to issue invoice
+2025/08/29 09:31:49 Invalid request
+2025/08/29 09:31:49 error: user not found
+2025/08/29 09:31:49 Invalid request
+2025/08/29 09:31:49 Failed to generate invoice: failed to generate
+2025/08/29 09:31:49 Invoice issued successfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 unauthorized person wants to issue invoice
+2025/08/29 09:31:49 Invalid request
+2025/08/29 09:31:49 Invalid request
+2025/08/29 09:31:49 Failed to issue notice: db error
+2025/08/29 09:31:49 Notice issued successfully
+2025/08/29 09:31:49 Failed to fetch notices: db error
+2025/08/29 09:31:49 Notice fetched successfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 Invalid request
+2025/08/29 09:31:49 Invalid request
+2025/08/29 09:31:49 Invalid request
+2025/08/29 09:31:49 Notices not found
+2025/08/29 09:31:49 notices retrived successfully
+2025/08/29 09:31:49 Invalid request
+2025/08/29 09:31:49 Invalid request
+2025/08/29 09:31:49 notices not found
+2025/08/29 09:31:49 notices retrived successfully
+2025/08/29 09:31:49 Time slot shown successfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 Invalid request
+2025/08/29 09:31:49 Time slot shown successfully
+2025/08/29 09:31:49 Time slot shown successfully
+2025/08/29 09:31:49 Service Request created successfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 unauthorized person wants to book request
+2025/08/29 09:31:49 unauthorized person wants to book request
+2025/08/29 09:31:49 Invalid request
+2025/08/29 09:31:49 Invalid request
+2025/08/29 09:31:49 Invalid request
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 user not found
+2025/08/29 09:31:49 Service Request rescheduled successfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 user not found
+2025/08/29 09:31:49 Missing request ID
+2025/08/29 09:31:49 Invalid request ID
+2025/08/29 09:31:49 Failed to cancel the request
+2025/08/29 09:31:49 Service Request cancelled successfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 user not found
+2025/08/29 09:31:49 Unauthorized Access
+2025/08/29 09:31:49 Invalid Path
+2025/08/29 09:31:49 Invalid Request ID
+2025/08/29 09:31:49 Service Request approved successfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 user not found
+2025/08/29 09:31:49 Missing Status
+2025/08/29 09:31:49 Fetched 1 requests with status pending
+2025/08/29 09:31:49 Missing ID
+2025/08/29 09:31:49 Fetched 1 requests with status approved
+2025/08/29 09:31:49 Method not allowed
+2025/08/29 09:31:49 User not found
+2025/08/29 09:31:49 Unauthorized Access
+2025/08/29 09:31:49 Invalid Request
+2025/08/29 09:31:49 Requests fetched successfully
+2025/08/29 09:31:49 Requests fetched successfully
+2025/08/29 09:31:49 Requests fetched successfully
+2025/08/29 09:31:49 Requests fetched successfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 unauthorized person wants to view list of residents
+2025/08/29 09:31:49 error: crypto/bcrypt: hashedPassword is not the hash of the given password
+2025/08/29 09:31:49 Failed to fetch residents
+2025/08/29 09:31:49 error: crypto/bcrypt: hashedSecret too short to be a bcrypted password
+2025/08/29 09:31:49 error: user ID not found in context
+2025/08/29 09:31:49 error: user ID not found in context
+2025/08/29 09:31:49 View residents successfully executed
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 unauthorized person wants to view list of officers
+2025/08/29 09:31:49 Failed to fetch officers
+2025/08/29 09:31:49 View officers successfully executed
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 Invalid input
+2025/08/29 09:31:49 Validation error
+2025/08/29 09:31:49 Password not unique
+2025/08/29 09:31:49 Error creating user
+2025/08/29 09:31:49 User created sucessfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 Invalid Input
+2025/08/29 09:31:49 Invalid email or password
+2025/08/29 09:31:49 token generated for userId:123
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 user id not found
+2025/08/29 09:31:49 users retrived successfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 user not found
+2025/08/29 09:31:49 Invalid JSON body
+2025/08/29 09:31:49 Failed to update user: db error
+2025/08/29 09:31:49 User updated successfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 user not found
+2025/08/29 09:31:49 Invalid request
+2025/08/29 09:31:49 unauthorized user changing password
+2025/08/29 09:31:49 User password updated successfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 user not found
+2025/08/29 09:31:49 Error deleting user
+2025/08/29 09:31:49 Service request of deleted user deleted successfully
+2025/08/29 09:31:49 Invalid HTTP method
+2025/08/29 09:31:49 unauthorized person wants to view profile
+2025/08/29 09:31:49 Invalid request
+2025/08/29 09:31:49 Officer created successfully
+2025/08/29 09:44:14 Invalid HTTP method
+2025/08/29 09:44:14 unauthorized person trying to delete officer
+2025/08/29 09:44:14 ID missing while deleting officer
+2025/08/29 09:44:14 Error in deleting officer
+2025/08/29 09:44:14 Officer deleted successfully
+2025/08/29 09:44:14 Invalid HTTP method
+2025/08/29 09:44:14 unauthorized person trying to delete resident
+2025/08/29 09:44:14 ID missing while deleting resident
+2025/08/29 09:44:14 Error in deleting resident
+2025/08/29 09:44:14 Resident deleted successfully
+2025/08/29 09:44:14 Invalid HTTP method
+2025/08/29 09:44:14 Fetched feedbacks successfully
+2025/08/29 09:44:14 Failed to fetch feedbacks
+2025/08/29 09:44:14 Fetched feedbacks successfully
+2025/08/29 09:44:14 Fetched feedbacks successfully
+2025/08/29 09:44:14 Failed to fetch feedbacks
+2025/08/29 09:44:14 Fetched feedbacks successfully
+2025/08/29 09:44:14 Unauthorized
+2025/08/29 09:44:14 Invalid HTTP method
+2025/08/29 09:44:14 Invalid JSON body
+2025/08/29 09:44:14 Invalid rating
+2025/08/29 09:44:14 Invalid rating
+2025/08/29 09:44:14 Failed to issue feedback: failed
+2025/08/29 09:44:14 Feedback issued successfully
+2025/08/29 09:44:14 Invalid HTTP method
+2025/08/29 09:44:14 unauthorized person wants to issue invoice
+2025/08/29 09:44:14 unauthorized person wants to issue invoice
+2025/08/29 09:44:14 Invalid request
+2025/08/29 09:44:14 Invalid request
+2025/08/29 09:44:14 Failed to generate invoice: failed to generate
+2025/08/29 09:44:14 Invoice issued successfully
+2025/08/29 09:44:14 Invalid HTTP method
+2025/08/29 09:44:14 unauthorized person wants to issue invoice
+2025/08/29 09:44:14 Invalid request
+2025/08/29 09:44:14 Invalid request
+2025/08/29 09:44:14 Failed to issue notice: db error
+2025/08/29 09:44:14 Notice issued successfully
+2025/08/29 09:44:14 Failed to fetch notices: db error
+2025/08/29 09:44:14 Notice fetched successfully
+2025/08/29 09:44:14 Invalid HTTP method
+2025/08/29 09:44:14 Invalid request
+2025/08/29 09:44:14 Invalid request
+2025/08/29 09:44:14 Invalid request
+2025/08/29 09:44:14 Notices not found
+2025/08/29 09:44:14 notices retrived successfully
+2025/08/29 09:44:14 Invalid request
+2025/08/29 09:44:14 Invalid request
+2025/08/29 09:44:14 notices not found
+2025/08/29 09:44:14 notices retrived successfully
+2025/08/29 09:44:14 Time slot shown successfully
+2025/08/29 09:44:14 Invalid HTTP method
+2025/08/29 09:44:14 Invalid request
+2025/08/29 09:44:14 Time slot shown successfully
+2025/08/29 09:44:14 Time slot shown successfully
+2025/08/29 09:44:14 Service Request created successfully
+2025/08/29 09:44:14 Invalid HTTP method
+2025/08/29 09:44:15 unauthorized person wants to book request
+2025/08/29 09:44:15 unauthorized person wants to book request
+2025/08/29 09:44:15 Invalid request
+2025/08/29 09:44:15 Invalid request
+2025/08/29 09:44:15 Invalid request
+2025/08/29 09:44:15 Invalid HTTP method
+2025/08/29 09:44:15 user not found
+2025/08/29 09:44:15 Service Request rescheduled successfully
+2025/08/29 09:44:15 Invalid HTTP method
+2025/08/29 09:44:15 user not found
+2025/08/29 09:44:15 Missing request ID
+2025/08/29 09:44:15 Invalid request ID
+2025/08/29 09:44:15 Failed to cancel the request
+2025/08/29 09:44:15 Service Request cancelled successfully
+2025/08/29 09:44:15 Invalid HTTP method
+2025/08/29 09:44:15 user not found
+2025/08/29 09:44:15 Unauthorized Access
+2025/08/29 09:44:15 Invalid Path
+2025/08/29 09:44:15 Invalid Request ID
+2025/08/29 09:44:15 Service Request approved successfully
+2025/08/29 09:44:15 Invalid HTTP method
+2025/08/29 09:44:15 user not found
+2025/08/29 09:44:15 Missing Status
+2025/08/29 09:44:15 Fetched 1 requests with status pending
+2025/08/29 09:44:15 Missing ID
+2025/08/29 09:44:15 Fetched 1 requests with status approved
+2025/08/29 09:44:15 Method not allowed
+2025/08/29 09:44:15 User not found
+2025/08/29 09:44:15 Unauthorized Access
+2025/08/29 09:44:15 Invalid Request
+2025/08/29 09:44:15 Requests fetched successfully
+2025/08/29 09:44:15 Requests fetched successfully
+2025/08/29 09:44:15 Requests fetched successfully
+2025/08/29 09:44:15 Requests fetched successfully
+2025/08/29 09:44:15 Invalid HTTP method
+2025/08/29 09:44:15 unauthorized person wants to view list of residents
+2025/08/29 09:44:15 Failed to fetch residents
+2025/08/29 09:44:15 View residents successfully executed
+2025/08/29 09:44:15 Invalid HTTP method
+2025/08/29 09:44:15 unauthorized person wants to view list of officers
+2025/08/29 09:44:15 Failed to fetch officers
+2025/08/29 09:44:15 View officers successfully executed
+2025/08/29 09:44:15 Invalid HTTP method
+2025/08/29 09:44:15 Invalid input
+2025/08/29 09:44:15 Validation error
+2025/08/29 09:44:15 Password not unique
+2025/08/29 09:44:15 Error creating user
+2025/08/29 09:44:15 User created sucessfully
+2025/08/29 09:44:15 Invalid HTTP method
+2025/08/29 09:44:15 Invalid Input
+2025/08/29 09:44:15 Invalid email or password
+2025/08/29 09:44:15 token generated for userId:123
+2025/08/29 09:44:15 Invalid HTTP method
+2025/08/29 09:44:15 user id not found
+2025/08/29 09:44:15 users retrived successfully
+2025/08/29 09:44:15 Invalid HTTP method
+2025/08/29 09:44:15 user not found
+2025/08/29 09:44:15 Invalid JSON body
+2025/08/29 09:44:15 Failed to update user: db error
+2025/08/29 09:44:15 User updated successfully
+2025/08/29 09:44:15 Invalid HTTP method
+2025/08/29 09:44:15 user not found
+2025/08/29 09:44:15 Invalid request
+2025/08/29 09:44:15 unauthorized user changing password
+2025/08/29 09:44:15 User password updated successfully
+2025/08/29 09:44:15 Invalid HTTP method
+2025/08/29 09:44:15 user not found
+2025/08/29 09:44:15 Error deleting user
+2025/08/29 09:44:15 Service request of deleted user deleted successfully
+2025/08/29 09:44:15 Invalid HTTP method
+2025/08/29 09:44:15 unauthorized person wants to view profile
+2025/08/29 09:44:15 Invalid request
+2025/08/29 09:44:15 Officer created successfully
+2025/08/29 09:44:16 only admin can delete credentials
+2025/08/29 09:44:16 error: db error
+2025/08/29 09:44:16 error: not found
+2025/08/29 09:44:16 error: user ID not found in context
+2025/08/29 09:44:16 error: invalid credentials
+2025/08/29 09:44:17 error: user not found
+2025/08/29 09:44:17 error: crypto/bcrypt: hashedPassword is not the hash of the given password
+2025/08/29 09:44:17 error: crypto/bcrypt: hashedSecret too short to be a bcrypted password
+2025/08/29 09:44:17 error: user ID not found in context
+2025/08/29 09:44:17 error: user ID not found in context
+2025/08/29 23:45:55 Startted POST /login from [::1]:51643
+2025/08/29 23:45:55 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/29 23:45:55 Completed POST /login in 82.9459ms
+2025/08/29 23:52:40 error: db error
+2025/08/29 23:52:45 error: delete error
+2025/08/29 23:56:58 error: insert failed
+2025/08/29 23:57:47 error: db error
+2025/08/29 23:58:39 error: db error
+2025/08/29 23:58:45 error: sql: Scan error on column index 2, name "rating": converting driver.Value type string ("bad-int") to a int32: invalid syntax
+2025/08/30 00:01:17 error: insert failed
+2025/08/30 00:01:36 error fetching invoice: sql: Scan error on column index 0, name "id": Scan: invalid UUID length: 8
+2025/08/30 00:02:33 error: db error
+2025/08/30 00:02:42 error scanning invoice row: sql: Scan error on column index 0, name "id": Scan: invalid UUID length: 8
+2025/08/30 00:07:13 error: insert failed
+2025/08/30 00:07:32 error: db error
+2025/08/30 00:07:38 error: sql: Scan error on column index 0, name "id": Scan: invalid UUID length: 8
+2025/08/30 00:07:58 error: db error
+2025/08/30 00:08:04 error: sql: Scan error on column index 0, name "id": Scan: invalid UUID length: 8
+2025/08/30 00:08:25 error: db error
+2025/08/30 00:08:32 error: sql: Scan error on column index 0, name "id": Scan: invalid UUID length: 8
+2025/08/30 00:33:52 error checking existing request: canceling query due to user request
+2025/08/30 00:33:52 user already has a booked request
+2025/08/30 00:33:52 error: canceling query due to user request
+2025/08/30 00:52:07 error: db failure
+2025/08/30 00:52:13 error: sql: Scan error on column index 0, name "request_id": Scan: unable to scan type int64 into UUID
+2025/08/30 00:53:40 error: db failure
+2025/08/30 00:53:46 error: sql: Scan error on column index 0, name "request_id": Scan: unable to scan type int64 into UUID
+2025/08/30 00:55:03 error : sql: no rows in result set
+2025/08/30 00:55:14 error : db failure
+2025/08/30 00:56:29 error : query failed
+2025/08/30 00:56:47 error: sql: Scan error on column index 0, name "request_id": Scan: invalid UUID length: 10
+2025/08/30 00:57:05 error : sql: no rows in result set
+2025/08/30 00:57:13 error : db failure
+2025/08/30 00:57:26 error : query failed
+2025/08/30 00:58:58 error: sql: Scan error on column index 0, name "request_id": Scan: invalid UUID length: 10
+2025/08/30 00:59:13 error : query failed
+2025/08/30 00:59:26 error: sql: Scan error on column index 0, name "request_id": Scan: invalid UUID length: 10
+2025/08/30 01:02:24 error: sql: Scan error on column index 0, name "request_id": Scan: invalid UUID length: 10
+2025/08/30 01:04:43 error : delete failed
+2025/08/30 01:05:37 error : delete failed
+2025/08/30 01:06:43 error: update failed
+2025/08/30 01:13:21 error: db error
+2025/08/30 01:13:37 error: sql: Scan error on column index 0, name "request_id": Scan: invalid UUID length: 10
+2025/08/30 01:16:47 error: query failed
+2025/08/30 01:17:02 error: sql: Scan error on column index 0, name "request_id": Scan: invalid UUID length: 10
+2025/08/30 01:17:23 error checking existing request: canceling query due to user request
+2025/08/30 01:17:23 user already has a booked request
+2025/08/30 01:17:24 error: canceling query due to user request
+2025/08/30 01:20:33 error: query failed
+2025/08/30 01:21:02 error: query failed
+2025/08/30 01:22:21 error: sql: expected 3 destination arguments in Scan, not 8
+2025/08/30 01:23:20 error: sql: expected 2 destination arguments in Scan, not 8
+2025/08/30 01:26:29 error: insert failed
+2025/08/30 01:26:58 error: db error
+2025/08/30 01:29:03 error: db error
+2025/08/30 01:29:03 error: delete error
+2025/08/30 01:29:03 error: insert failed
+2025/08/30 01:29:03 error: db error
+2025/08/30 01:29:03 error: db error
+2025/08/30 01:29:03 error: sql: Scan error on column index 2, name "rating": converting driver.Value type string ("bad-int") to a int32: invalid syntax
+2025/08/30 01:29:03 error: insert failed
+2025/08/30 01:29:03 error fetching invoice: sql: Scan error on column index 0, name "id": Scan: invalid UUID length: 8
+2025/08/30 01:29:03 error: db error
+2025/08/30 01:29:03 error scanning invoice row: sql: Scan error on column index 0, name "id": Scan: invalid UUID length: 8
+2025/08/30 01:29:03 error: insert failed
+2025/08/30 01:29:03 error: db error
+2025/08/30 01:29:03 error: sql: Scan error on column index 0, name "id": Scan: invalid UUID length: 8
+2025/08/30 01:29:03 error: db error
+2025/08/30 01:29:03 error: sql: Scan error on column index 0, name "id": Scan: invalid UUID length: 8
+2025/08/30 01:29:03 error: db error
+2025/08/30 01:29:03 error: sql: Scan error on column index 0, name "id": Scan: invalid UUID length: 8
+2025/08/30 01:29:04 error checking existing request: canceling query due to user request
+2025/08/30 01:29:04 user already has a booked request
+2025/08/30 01:29:04 error: canceling query due to user request
+2025/08/30 01:29:04 error: query failed
+2025/08/30 01:29:04 error: sql: Scan error on column index 0, name "request_id": Scan: invalid UUID length: 10
+2025/08/30 01:29:04 error: db error
+2025/08/30 01:29:04 error: sql: Scan error on column index 0, name "request_id": Scan: invalid UUID length: 10
+2025/08/30 01:29:04 error: update failed
+2025/08/30 01:29:04 error : delete failed
+2025/08/30 01:29:04 error : delete failed
+2025/08/30 01:29:04 error : query failed
+2025/08/30 01:29:04 error: sql: Scan error on column index 0, name "request_id": Scan: invalid UUID length: 10
+2025/08/30 01:29:04 error : sql: no rows in result set
+2025/08/30 01:29:04 error : db failure
+2025/08/30 01:29:04 error: db failure
+2025/08/30 01:29:04 error: sql: Scan error on column index 0, name "request_id": Scan: unable to scan type int64 into UUID
+2025/08/30 01:29:04 error: db failure
+2025/08/30 01:29:04 error: sql: Scan error on column index 0, name "request_id": Scan: unable to scan type int64 into UUID
+2025/08/30 01:29:04 error: query failed
+2025/08/30 01:29:04 error: sql: expected 2 destination arguments in Scan, not 8
+2025/08/30 01:29:04 error: query failed
+2025/08/30 01:29:04 error: sql: expected 3 destination arguments in Scan, not 8
+2025/08/30 01:29:04 error: insert failed
+2025/08/30 01:29:04 error: db error
+2025/08/30 01:29:04 only admin can delete credentials
+2025/08/30 01:29:04 error: db error
+2025/08/30 01:29:04 error: not found
+2025/08/30 01:29:04 error: user ID not found in context
+2025/08/30 01:29:04 error: invalid credentials
+2025/08/30 01:29:04 Invalid HTTP method
+2025/08/30 01:29:04 unauthorized person trying to delete officer
+2025/08/30 01:29:04 ID missing while deleting officer
+2025/08/30 01:29:04 Error in deleting officer
+2025/08/30 01:29:04 Officer deleted successfully
+2025/08/30 01:29:04 Invalid HTTP method
+2025/08/30 01:29:04 unauthorized person trying to delete resident
+2025/08/30 01:29:04 ID missing while deleting resident
+2025/08/30 01:29:04 Error in deleting resident
+2025/08/30 01:29:04 Resident deleted successfully
+2025/08/30 01:29:04 Invalid HTTP method
+2025/08/30 01:29:04 Fetched feedbacks successfully
+2025/08/30 01:29:04 Failed to fetch feedbacks
+2025/08/30 01:29:04 Fetched feedbacks successfully
+2025/08/30 01:29:04 Fetched feedbacks successfully
+2025/08/30 01:29:04 Failed to fetch feedbacks
+2025/08/30 01:29:04 Fetched feedbacks successfully
+2025/08/30 01:29:04 Unauthorized
+2025/08/30 01:29:04 Invalid HTTP method
+2025/08/30 01:29:04 Invalid JSON body
+2025/08/30 01:29:04 Invalid rating
+2025/08/30 01:29:04 Invalid rating
+2025/08/30 01:29:04 Failed to issue feedback: failed
+2025/08/30 01:29:04 Feedback issued successfully
+2025/08/30 01:29:04 Invalid HTTP method
+2025/08/30 01:29:04 unauthorized person wants to issue invoice
+2025/08/30 01:29:04 unauthorized person wants to issue invoice
+2025/08/30 01:29:04 Invalid request
+2025/08/30 01:29:04 Invalid request
+2025/08/30 01:29:04 Failed to generate invoice: failed to generate
+2025/08/30 01:29:04 Invoice issued successfully
+2025/08/30 01:29:04 Invalid HTTP method
+2025/08/30 01:29:04 unauthorized person wants to issue invoice
+2025/08/30 01:29:04 Invalid request
+2025/08/30 01:29:04 Invalid request
+2025/08/30 01:29:04 Failed to issue notice: db error
+2025/08/30 01:29:04 Notice issued successfully
+2025/08/30 01:29:04 Failed to fetch notices: db error
+2025/08/30 01:29:04 Notice fetched successfully
+2025/08/30 01:29:04 Invalid HTTP method
+2025/08/30 01:29:04 Invalid request
+2025/08/30 01:29:04 Invalid request
+2025/08/30 01:29:04 Invalid request
+2025/08/30 01:29:04 Notices not found
+2025/08/30 01:29:04 notices retrived successfully
+2025/08/30 01:29:04 Invalid request
+2025/08/30 01:29:04 Invalid request
+2025/08/30 01:29:05 notices not found
+2025/08/30 01:29:05 notices retrived successfully
+2025/08/30 01:29:05 Time slot shown successfully
+2025/08/30 01:29:05 Invalid HTTP method
+2025/08/30 01:29:05 Invalid request
+2025/08/30 01:29:05 Time slot shown successfully
+2025/08/30 01:29:05 Time slot shown successfully
+2025/08/30 01:29:05 Service Request created successfully
+2025/08/30 01:29:05 Invalid HTTP method
+2025/08/30 01:29:05 unauthorized person wants to book request
+2025/08/30 01:29:05 unauthorized person wants to book request
+2025/08/30 01:29:05 Invalid request
+2025/08/30 01:29:05 Invalid request
+2025/08/30 01:29:05 Invalid request
+2025/08/30 01:29:05 Invalid HTTP method
+2025/08/30 01:29:05 user not found
+2025/08/30 01:29:05 Service Request rescheduled successfully
+2025/08/30 01:29:05 Invalid HTTP method
+2025/08/30 01:29:05 user not found
+2025/08/30 01:29:05 Missing request ID
+2025/08/30 01:29:05 Invalid request ID
+2025/08/30 01:29:05 Failed to cancel the request
+2025/08/30 01:29:05 Service Request cancelled successfully
+2025/08/30 01:29:05 Invalid HTTP method
+2025/08/30 01:29:05 user not found
+2025/08/30 01:29:05 Unauthorized Access
+2025/08/30 01:29:05 Invalid Path
+2025/08/30 01:29:05 Invalid Request ID
+2025/08/30 01:29:05 Service Request approved successfully
+2025/08/30 01:29:05 Invalid HTTP method
+2025/08/30 01:29:05 user not found
+2025/08/30 01:29:05 error: user not found
+2025/08/30 01:29:05 Missing Status
+2025/08/30 01:29:05 Fetched 1 requests with status pending
+2025/08/30 01:29:05 Missing ID
+2025/08/30 01:29:05 Fetched 1 requests with status approved
+2025/08/30 01:29:05 Method not allowed
+2025/08/30 01:29:05 User not found
+2025/08/30 01:29:05 Unauthorized Access
+2025/08/30 01:29:05 Invalid Request
+2025/08/30 01:29:05 Requests fetched successfully
+2025/08/30 01:29:05 Requests fetched successfully
+2025/08/30 01:29:05 Requests fetched successfully
+2025/08/30 01:29:05 Requests fetched successfully
+2025/08/30 01:29:05 Invalid HTTP method
+2025/08/30 01:29:05 unauthorized person wants to view list of residents
+2025/08/30 01:29:05 Failed to fetch residents
+2025/08/30 01:29:05 View residents successfully executed
+2025/08/30 01:29:05 Invalid HTTP method
+2025/08/30 01:29:05 unauthorized person wants to view list of officers
+2025/08/30 01:29:05 Failed to fetch officers
+2025/08/30 01:29:05 View officers successfully executed
+2025/08/30 01:29:05 Invalid HTTP method
+2025/08/30 01:29:05 Invalid input
+2025/08/30 01:29:05 Validation error
+2025/08/30 01:29:05 Password not unique
+2025/08/30 01:29:05 Error creating user
+2025/08/30 01:29:05 error: crypto/bcrypt: hashedPassword is not the hash of the given password
+2025/08/30 01:29:05 error: crypto/bcrypt: hashedSecret too short to be a bcrypted password
+2025/08/30 01:29:05 error: user ID not found in context
+2025/08/30 01:29:05 error: user ID not found in context
+2025/08/30 01:29:05 User created sucessfully
+2025/08/30 01:29:05 Invalid HTTP method
+2025/08/30 01:29:05 Invalid Input
+2025/08/30 01:29:05 Invalid email or password
+2025/08/30 01:29:05 token generated for userId:123
+2025/08/30 01:29:05 Invalid HTTP method
+2025/08/30 01:29:05 user id not found
+2025/08/30 01:29:05 users retrived successfully
+2025/08/30 01:29:05 Invalid HTTP method
+2025/08/30 01:29:05 user not found
+2025/08/30 01:29:05 Invalid JSON body
+2025/08/30 01:29:05 Failed to update user: db error
+2025/08/30 01:29:05 User updated successfully
+2025/08/30 01:29:05 Invalid HTTP method
+2025/08/30 01:29:05 user not found
+2025/08/30 01:29:05 Invalid request
+2025/08/30 01:29:05 unauthorized user changing password
+2025/08/30 01:29:05 User password updated successfully
+2025/08/30 01:29:05 Invalid HTTP method
+2025/08/30 01:29:05 user not found
+2025/08/30 01:29:05 Error deleting user
+2025/08/30 01:29:05 Service request of deleted user deleted successfully
+2025/08/30 01:29:05 Invalid HTTP method
+2025/08/30 01:29:05 unauthorized person wants to view profile
+2025/08/30 01:29:05 Invalid request
+2025/08/30 01:29:05 Officer created successfully
+2025/08/30 02:00:18 only admin can delete credentials
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 unauthorized person trying to delete officer
+2025/08/30 02:00:18 ID missing while deleting officer
+2025/08/30 02:00:18 Error in deleting officer
+2025/08/30 02:00:18 error: db error
+2025/08/30 02:00:18 Officer deleted successfully
+2025/08/30 02:00:18 error: not found
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 error: user ID not found in context
+2025/08/30 02:00:18 unauthorized person trying to delete resident
+2025/08/30 02:00:18 error: invalid credentials
+2025/08/30 02:00:18 ID missing while deleting resident
+2025/08/30 02:00:18 Error in deleting resident
+2025/08/30 02:00:18 Resident deleted successfully
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 Fetched feedbacks successfully
+2025/08/30 02:00:18 Failed to fetch feedbacks
+2025/08/30 02:00:18 Fetched feedbacks successfully
+2025/08/30 02:00:18 error: db error
+2025/08/30 02:00:18 error: delete error
+2025/08/30 02:00:18 Fetched feedbacks successfully
+2025/08/30 02:00:18 Failed to fetch feedbacks
+2025/08/30 02:00:18 error: insert failed
+2025/08/30 02:00:18 Fetched feedbacks successfully
+2025/08/30 02:00:18 error: db error
+2025/08/30 02:00:18 Unauthorized
+2025/08/30 02:00:18 error: db error
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 error: sql: Scan error on column index 2, name "rating": converting driver.Value type string ("bad-int") to a int32: invalid syntax
+2025/08/30 02:00:18 error: insert failed
+2025/08/30 02:00:18 Invalid JSON body
+2025/08/30 02:00:18 Invalid rating
+2025/08/30 02:00:18 error fetching invoice: sql: Scan error on column index 0, name "id": Scan: invalid UUID length: 8
+2025/08/30 02:00:18 Invalid rating
+2025/08/30 02:00:18 Failed to issue feedback: failed
+2025/08/30 02:00:18 error: db error
+2025/08/30 02:00:18 Feedback issued successfully
+2025/08/30 02:00:18 error scanning invoice row: sql: Scan error on column index 0, name "id": Scan: invalid UUID length: 8
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 error: insert failed
+2025/08/30 02:00:18 unauthorized person wants to issue invoice
+2025/08/30 02:00:18 error: db error
+2025/08/30 02:00:18 unauthorized person wants to issue invoice
+2025/08/30 02:00:18 error: sql: Scan error on column index 0, name "id": Scan: invalid UUID length: 8
+2025/08/30 02:00:18 Invalid request
+2025/08/30 02:00:18 error: db error
+2025/08/30 02:00:18 error: sql: Scan error on column index 0, name "id": Scan: invalid UUID length: 8
+2025/08/30 02:00:18 Invalid request
+2025/08/30 02:00:18 Failed to generate invoice: failed to generate
+2025/08/30 02:00:18 Invoice issued successfully
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 unauthorized person wants to issue invoice
+2025/08/30 02:00:18 error: db error
+2025/08/30 02:00:18 Invalid request
+2025/08/30 02:00:18 error: sql: Scan error on column index 0, name "id": Scan: invalid UUID length: 8
+2025/08/30 02:00:18 Invalid request
+2025/08/30 02:00:18 error checking existing request: canceling query due to user request
+2025/08/30 02:00:18 Failed to issue notice: db error
+2025/08/30 02:00:18 user already has a booked request
+2025/08/30 02:00:18 Notice issued successfully
+2025/08/30 02:00:18 error: canceling query due to user request
+2025/08/30 02:00:18 Failed to fetch notices: db error
+2025/08/30 02:00:18 error: query failed
+2025/08/30 02:00:18 Notice fetched successfully
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 Invalid request
+2025/08/30 02:00:18 Invalid request
+2025/08/30 02:00:18 error: sql: Scan error on column index 0, name "request_id": Scan: invalid UUID length: 10
+2025/08/30 02:00:18 Invalid request
+2025/08/30 02:00:18 error: db error
+2025/08/30 02:00:18 Notices not found
+2025/08/30 02:00:18 error: sql: Scan error on column index 0, name "request_id": Scan: invalid UUID length: 10
+2025/08/30 02:00:18 notices retrived successfully
+2025/08/30 02:00:18 Invalid request
+2025/08/30 02:00:18 error: update failed
+2025/08/30 02:00:18 Invalid request
+2025/08/30 02:00:18 error : delete failed
+2025/08/30 02:00:18 notices not found
+2025/08/30 02:00:18 error : delete failed
+2025/08/30 02:00:18 notices retrived successfully
+2025/08/30 02:00:18 error : query failed
+2025/08/30 02:00:18 Time slot shown successfully
+2025/08/30 02:00:18 error: sql: Scan error on column index 0, name "request_id": Scan: invalid UUID length: 10
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 error : sql: no rows in result set
+2025/08/30 02:00:18 error : db failure
+2025/08/30 02:00:18 Invalid request
+2025/08/30 02:00:18 Time slot shown successfully
+2025/08/30 02:00:18 error: db failure
+2025/08/30 02:00:18 error: sql: Scan error on column index 0, name "request_id": Scan: unable to scan type int64 into UUID
+2025/08/30 02:00:18 Time slot shown successfully
+2025/08/30 02:00:18 Service Request created successfully
+2025/08/30 02:00:18 error: db failure
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 error: sql: Scan error on column index 0, name "request_id": Scan: unable to scan type int64 into UUID
+2025/08/30 02:00:18 unauthorized person wants to book request
+2025/08/30 02:00:18 error: query failed
+2025/08/30 02:00:18 unauthorized person wants to book request
+2025/08/30 02:00:18 error: sql: expected 2 destination arguments in Scan, not 8
+2025/08/30 02:00:18 error: query failed
+2025/08/30 02:00:18 error: sql: expected 3 destination arguments in Scan, not 8
+2025/08/30 02:00:18 error: insert failed
+2025/08/30 02:00:18 Invalid request
+2025/08/30 02:00:18 Invalid request
+2025/08/30 02:00:18 Invalid request
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 user not found
+2025/08/30 02:00:18 Service Request rescheduled successfully
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 user not found
+2025/08/30 02:00:18 Missing request ID
+2025/08/30 02:00:18 Invalid request ID
+2025/08/30 02:00:18 Failed to cancel the request
+2025/08/30 02:00:18 Service Request cancelled successfully
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 user not found
+2025/08/30 02:00:18 Unauthorized Access
+2025/08/30 02:00:18 Invalid Path
+2025/08/30 02:00:18 Invalid Request ID
+2025/08/30 02:00:18 Service Request approved successfully
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 user not found
+2025/08/30 02:00:18 Missing Status
+2025/08/30 02:00:18 Fetched 1 requests with status pending
+2025/08/30 02:00:18 Missing ID
+2025/08/30 02:00:18 Fetched 1 requests with status approved
+2025/08/30 02:00:18 Method not allowed
+2025/08/30 02:00:18 User not found
+2025/08/30 02:00:18 Unauthorized Access
+2025/08/30 02:00:18 Invalid Request
+2025/08/30 02:00:18 Requests fetched successfully
+2025/08/30 02:00:18 error: user not found
+2025/08/30 02:00:18 Requests fetched successfully
+2025/08/30 02:00:18 Requests fetched successfully
+2025/08/30 02:00:18 Requests fetched successfully
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 unauthorized person wants to view list of residents
+2025/08/30 02:00:18 Failed to fetch residents
+2025/08/30 02:00:18 View residents successfully executed
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 unauthorized person wants to view list of officers
+2025/08/30 02:00:18 Failed to fetch officers
+2025/08/30 02:00:18 View officers successfully executed
+2025/08/30 02:00:18 Invalid HTTP method
+2025/08/30 02:00:18 Invalid input
+2025/08/30 02:00:18 Validation error
+2025/08/30 02:00:18 Password not unique
+2025/08/30 02:00:18 Error creating user
+2025/08/30 02:00:18 error: crypto/bcrypt: hashedPassword is not the hash of the given password
+2025/08/30 02:00:18 error: crypto/bcrypt: hashedSecret too short to be a bcrypted password
+2025/08/30 02:00:19 error: user ID not found in context
+2025/08/30 02:00:19 error: user ID not found in context
+2025/08/30 02:00:19 error: db error
+2025/08/30 02:00:19 User created sucessfully
+2025/08/30 02:00:19 Invalid HTTP method
+2025/08/30 02:00:19 Invalid Input
+2025/08/30 02:00:19 Invalid email or password
+2025/08/30 02:00:19 token generated for userId:123
+2025/08/30 02:00:19 Invalid HTTP method
+2025/08/30 02:00:19 user id not found
+2025/08/30 02:00:19 users retrived successfully
+2025/08/30 02:00:19 Invalid HTTP method
+2025/08/30 02:00:19 user not found
+2025/08/30 02:00:19 Invalid JSON body
+2025/08/30 02:00:19 Failed to update user: db error
+2025/08/30 02:00:19 User updated successfully
+2025/08/30 02:00:19 Invalid HTTP method
+2025/08/30 02:00:19 user not found
+2025/08/30 02:00:19 Invalid request
+2025/08/30 02:00:19 unauthorized user changing password
+2025/08/30 02:00:19 User password updated successfully
+2025/08/30 02:00:19 Invalid HTTP method
+2025/08/30 02:00:19 user not found
+2025/08/30 02:00:19 Error deleting user
+2025/08/30 02:00:19 Service request of deleted user deleted successfully
+2025/08/30 02:00:19 Invalid HTTP method
+2025/08/30 02:00:19 unauthorized person wants to view profile
+2025/08/30 02:00:19 Invalid request
+2025/08/30 02:00:19 Officer created successfully
+2025/08/31 01:58:38 Startted POST /signup  from [::1]:54467
+2025/08/31 01:58:38 Completed POST /signup  in 3.7379ms
+2025/08/31 02:01:57 Startted POST /signup  from [::1]:53055
+2025/08/31 02:01:57 Completed POST /signup  in 7.4316ms
+2025/08/31 02:02:50 Startted POST /login from [::1]:53055
+2025/08/31 02:02:50 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 02:02:50 Completed POST /login in 112.0836ms
+2025/08/31 02:04:29 Startted POST /signup  from [::1]:50441
+2025/08/31 02:04:29 Completed POST /signup  in 2.8565ms
+2025/08/31 02:08:57 Startted POST /signup  from [::1]:61521
+2025/08/31 02:08:57 Completed POST /signup  in 1.0893ms
+2025/08/31 02:10:37 Startted GET /signup  from [::1]:53802
+2025/08/31 02:10:37 Completed GET /signup  in 599.9µs
+2025/08/31 02:14:32 Startted POST /signup  from [::1]:50763
+2025/08/31 02:14:32 Completed POST /signup  in 558.6µs
+2025/08/31 02:24:59 Startted POST /signup from [::1]:58750
+2025/08/31 02:24:59 User created sucessfully
+2025/08/31 02:24:59 Completed POST /signup in 465.5605ms
+2025/08/31 02:26:01 Startted POST /login from [::1]:63402
+2025/08/31 02:26:01 token generated for userId:ff6c329d-866d-49a4-8e95-0acace8c95c5
+2025/08/31 02:26:01 Completed POST /login in 104.0816ms
+2025/08/31 02:26:34 Startted GET /profile from [::1]:63402
+2025/08/31 02:26:34 Completed GET /profile in 590.1µs
+2025/08/31 02:28:00 Startted POST /login from [::1]:49688
+2025/08/31 02:28:00 token generated for userId:ff6c329d-866d-49a4-8e95-0acace8c95c5
+2025/08/31 02:28:00 Completed POST /login in 102.4122ms
+2025/08/31 02:28:17 Startted GET /profile from [::1]:49688
+2025/08/31 02:28:17 users retrived successfully
+2025/08/31 02:28:17 Completed GET /profile in 3.4456ms
+2025/08/31 02:28:52 Startted PATCH /profile/update from [::1]:49688
+2025/08/31 02:28:52 User updated successfully
+2025/08/31 02:28:52 Completed PATCH /profile/update in 8.3553ms
+2025/08/31 02:29:32 Startted PATCH /profile/password from [::1]:49688
+2025/08/31 02:29:33 User password updated successfully
+2025/08/31 02:29:33 Completed PATCH /profile/password in 625.6489ms
+2025/08/31 02:30:13 Startted POST /login from [::1]:49688
+2025/08/31 02:30:13 token generated for userId:ff6c329d-866d-49a4-8e95-0acace8c95c5
+2025/08/31 02:30:13 Completed POST /login in 90.4053ms
+2025/08/31 02:30:58 Startted GET /service/time-slots from [::1]:49688
+2025/08/31 02:30:58 Time slot shown successfully
+2025/08/31 02:30:58 Completed GET /service/time-slots in 8.6859ms
+2025/08/31 02:32:29 Startted GET /service/time-slots from [::1]:50245
+2025/08/31 02:32:29 Time slot shown successfully
+2025/08/31 02:32:29 Completed GET /service/time-slots in 1.1165ms
+2025/08/31 02:33:08 Startted POST /service from [::1]:50245
+2025/08/31 02:33:08 Service Request created successfully
+2025/08/31 02:33:08 Completed POST /service in 9.2305ms
+2025/08/31 02:36:05 Startted GET /service/time-slots from [::1]:54002
+2025/08/31 02:36:05 Time slot shown successfully
+2025/08/31 02:36:05 Completed GET /service/time-slots in 1.7901ms
+2025/08/31 02:36:24 Startted POST /service from [::1]:54002
+2025/08/31 02:36:24 Service Request created successfully
+2025/08/31 02:36:24 Completed POST /service in 3.9188ms
+2025/08/31 02:37:24 Startted GET /service/time-slots from [::1]:54002
+2025/08/31 02:37:24 Time slot shown successfully
+2025/08/31 02:37:24 Completed GET /service/time-slots in 2.3037ms
+2025/08/31 02:38:21 Startted PATCH /service/reschedule/04b0797e-1c41-4095-8b85-c98c58361672 from [::1]:54002
+2025/08/31 02:38:21 Service Request rescheduled successfully
+2025/08/31 02:38:21 Completed PATCH /service/reschedule/04b0797e-1c41-4095-8b85-c98c58361672 in 3.9228ms
+2025/08/31 02:39:30 Startted GET /service/time-slots from [::1]:61796
+2025/08/31 02:39:30 Time slot shown successfully
+2025/08/31 02:39:30 Completed GET /service/time-slots in 1.6686ms
+2025/08/31 02:40:54 Startted POST /service from [::1]:59804
+2025/08/31 02:40:54 Service Request created successfully
+2025/08/31 02:40:54 Completed POST /service in 2.0147ms
+2025/08/31 02:41:12 Startted GET /service from [::1]:59804
+2025/08/31 02:41:12 Fetched 2 requests with status pending
+2025/08/31 02:41:12 Completed GET /service in 1.0914ms
+2025/08/31 02:41:37 Startted DELETE /service/cancel/1d6de6b5-e697-48c2-9a67-c3a8430b1562 from [::1]:59804
+2025/08/31 02:41:37 Service Request cancelled successfully
+2025/08/31 02:41:37 Completed DELETE /service/cancel/1d6de6b5-e697-48c2-9a67-c3a8430b1562 in 2.093ms
+2025/08/31 02:42:06 Startted GET /notices from [::1]:59804
+2025/08/31 02:42:06 Notice fetched successfully
+2025/08/31 02:42:06 Completed GET /notices in 5.7105ms
+2025/08/31 02:42:17 Startted GET /notices/month-year from [::1]:59804
+2025/08/31 02:42:17 notices retrived successfully
+2025/08/31 02:42:17 Completed GET /notices/month-year in 2.2754ms
+2025/08/31 02:42:28 Startted GET /notices/month-year from [::1]:59804
+2025/08/31 02:42:28 notices retrived successfully
+2025/08/31 02:42:28 Completed GET /notices/month-year in 1.2338ms
+2025/08/31 02:42:53 Startted GET /invoices/month-year from [::1]:59804
+2025/08/31 02:42:53 invoices retrived successfully
+2025/08/31 02:42:53 Completed GET /invoices/month-year in 3.4743ms
+2025/08/31 02:43:05 Startted GET /inovices/month-year from [::1]:59804
+2025/08/31 02:43:05 Completed GET /inovices/month-year in 996.4µs
+2025/08/31 02:43:26 Startted GET /invoices/month-year from [::1]:59804
+2025/08/31 02:43:26 invoice retrived successfully
+2025/08/31 02:43:26 Completed GET /invoices/month-year in 1.7015ms
+2025/08/31 02:45:04 Startted POST /login from [::1]:50436
+2025/08/31 02:45:04 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 02:45:04 Completed POST /login in 90.5368ms
+2025/08/31 02:46:12 Startted POST /officers from [::1]:50466
+2025/08/31 02:46:12 Officer created successfully
+2025/08/31 02:46:12 Completed POST /officers in 90.5544ms
+2025/08/31 02:46:30 Startted GET /society/residents from [::1]:50466
+2025/08/31 02:46:30 View residents successfully executed
+2025/08/31 02:46:30 Completed GET /society/residents in 1.7262ms
+2025/08/31 02:46:43 Startted GET /society/officers from [::1]:50466
+2025/08/31 02:46:43 View officers successfully executed
+2025/08/31 02:46:43 Completed GET /society/officers in 1.8057ms
+2025/08/31 02:48:34 Startted PATCH /service/approve/04b0797e-1c41-4095-8b85-c98c58361672 from [::1]:61284
+2025/08/31 02:48:34 Service Request approved successfully
+2025/08/31 02:48:34 Completed PATCH /service/approve/04b0797e-1c41-4095-8b85-c98c58361672 in 2.634ms
+2025/08/31 02:48:49 Startted GET /service/type-status from [::1]:61284
+2025/08/31 02:48:49 Requests fetched successfully
+2025/08/31 02:48:49 Completed GET /service/type-status in 1.8038ms
+2025/08/31 02:49:35 Startted GET /feedbacks from [::1]:61284
+2025/08/31 02:49:35 Fetched feedbacks successfully
+2025/08/31 02:49:35 Completed GET /feedbacks in 3.7143ms
+2025/08/31 02:50:48 Startted GET /feedbacks from [::1]:59736
+2025/08/31 02:50:48 Fetched feedbacks successfully
+2025/08/31 02:50:48 Completed GET /feedbacks in 1.1629ms
+2025/08/31 02:50:58 Startted GET /feedbacks from [::1]:59736
+2025/08/31 02:50:59 Fetched feedbacks successfully
+2025/08/31 02:50:59 Completed GET /feedbacks in 6.9339ms
+2025/08/31 02:51:30 Startted DELETE /credentials/officer from [::1]:59736
+2025/08/31 02:51:30 Officer deleted successfully
+2025/08/31 02:51:30 Completed DELETE /credentials/officer in 4.0779ms
+2025/08/31 02:52:35 Startted POST /login from [::1]:60446
+2025/08/31 02:52:35 token generated for userId:ff6c329d-866d-49a4-8e95-0acace8c95c5
+2025/08/31 02:52:35 Completed POST /login in 95.8677ms
+2025/08/31 02:53:00 Startted DELETE /profile from [::1]:60446
+2025/08/31 02:53:00 Service request of deleted user deleted successfully
+2025/08/31 02:53:00 Completed DELETE /profile in 2.9424ms
+2025/08/31 03:15:47 Invalid HTTP method
+2025/08/31 15:14:55 Startted POST /signup from [::1]:58910
+2025/08/31 15:14:56 User created sucessfully
+2025/08/31 15:14:56 Completed POST /signup in 463.5088ms
+2025/08/31 15:17:59 Startted POST /login from [::1]:64841
+2025/08/31 15:18:00 token generated for userId:b5063abc-fb07-451e-b4ff-476995eaa1c8
+2025/08/31 15:18:00 Completed POST /login in 101.8169ms
+2025/08/31 15:19:44 Startted GET /profile from [::1]:59431
+2025/08/31 15:19:44 users retrived successfully
+2025/08/31 15:19:44 Completed GET /profile in 7.651ms
+2025/08/31 15:22:26 Startted PATCH /profile/update from [::1]:60196
+2025/08/31 15:22:26 User updated successfully
+2025/08/31 15:22:26 Completed PATCH /profile/update in 17.4602ms
+2025/08/31 15:24:38 Startted PATCH /profile/password from [::1]:60393
+2025/08/31 15:24:39 User password updated successfully
+2025/08/31 15:24:39 Completed PATCH /profile/password in 623.721ms
+2025/08/31 15:25:45 Startted POST /login from [::1]:60434
+2025/08/31 15:25:45 token generated for userId:b5063abc-fb07-451e-b4ff-476995eaa1c8
+2025/08/31 15:25:45 Completed POST /login in 97.9751ms
+2025/08/31 15:27:08 Startted GET /service/time-slots from [::1]:65430
+2025/08/31 15:27:08 Time slot shown successfully
+2025/08/31 15:27:08 Completed GET /service/time-slots in 11.6446ms
+2025/08/31 15:31:38 Startted POST /service from [::1]:49717
+2025/08/31 15:31:38 Service Request created successfully
+2025/08/31 15:31:38 Completed POST /service in 11.9989ms
+2025/08/31 15:33:43 Startted GET /service/time-slots from [::1]:56053
+2025/08/31 15:33:43 Time slot shown successfully
+2025/08/31 15:33:43 Completed GET /service/time-slots in 10.6337ms
+2025/08/31 15:34:41 Startted PATCH /service/reschedule/fdd659d5-3a84-42ad-8c1a-5a0cbae5477c from [::1]:56053
+2025/08/31 15:34:41 Service Request rescheduled successfully
+2025/08/31 15:34:41 Completed PATCH /service/reschedule/fdd659d5-3a84-42ad-8c1a-5a0cbae5477c in 94.9863ms
+2025/08/31 15:37:22 Startted POST /service from [::1]:58714
+2025/08/31 15:37:22 Service Request created successfully
+2025/08/31 15:37:22 Completed POST /service in 10.1012ms
+2025/08/31 15:38:19 Startted GET /service from [::1]:58714
+2025/08/31 15:38:19 Fetched 2 requests with status pending
+2025/08/31 15:38:19 Completed GET /service in 15.1557ms
+2025/08/31 15:40:51 Startted DELETE /service/cancel/153b156f-a92a-4fcc-8e99-09894c4ae42c from [::1]:61084
+2025/08/31 15:40:51 Service Request cancelled successfully
+2025/08/31 15:40:51 Completed DELETE /service/cancel/153b156f-a92a-4fcc-8e99-09894c4ae42c in 7.6288ms
+2025/08/31 15:42:06 Startted GET /notices from [::1]:58570
+2025/08/31 15:42:06 Notice fetched successfully
+2025/08/31 15:42:06 Completed GET /notices in 11.7878ms
+2025/08/31 15:43:12 Startted GET /notices/month-year from [::1]:58596
+2025/08/31 15:43:12 notices retrived successfully
+2025/08/31 15:43:12 Completed GET /notices/month-year in 10.8168ms
+2025/08/31 15:46:31 Startted GET /notices/month-year from [::1]:64602
+2025/08/31 15:46:31 notices retrived successfully
+2025/08/31 15:46:31 Completed GET /notices/month-year in 10.6357ms
+2025/08/31 15:49:06 Startted GET /invoices/month-year from [::1]:63940
+2025/08/31 15:49:06 invoices retrived successfully
+2025/08/31 15:49:06 Completed GET /invoices/month-year in 15.3976ms
+2025/08/31 15:50:37 Startted GET /invoices/month-year from [::1]:60587
+2025/08/31 15:50:37 invoices retrived successfully
+2025/08/31 15:50:37 Completed GET /invoices/month-year in 8.3825ms
+2025/08/31 15:53:09 Startted GET /invoices/month-year from [::1]:53082
+2025/08/31 15:53:09 invoice retrived successfully
+2025/08/31 15:53:09 Completed GET /invoices/month-year in 9.8116ms
+2025/08/31 16:00:17 Startted POST /login from [::1]:62983
+2025/08/31 16:00:17 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 16:00:17 Completed POST /login in 99.0843ms
+2025/08/31 16:00:34 Startted POST /officers from [::1]:62983
+2025/08/31 16:00:34 Officer created successfully
+2025/08/31 16:00:34 Completed POST /officers in 113.6518ms
+2025/08/31 16:02:18 Startted GET /society/residents from [::1]:52658
+2025/08/31 16:02:18 View residents successfully executed
+2025/08/31 16:02:18 Completed GET /society/residents in 9.5632ms
+2025/08/31 16:05:09 Startted GET /society/officers from [::1]:53199
+2025/08/31 16:05:09 View officers successfully executed
+2025/08/31 16:05:09 Completed GET /society/officers in 5.757ms
+2025/08/31 16:08:44 Startted PATCH /service/approve/fdd659d5-3a84-42ad-8c1a-5a0cbae5477c from [::1]:63814
+2025/08/31 16:08:44 Service Request approved successfully
+2025/08/31 16:08:44 Completed PATCH /service/approve/fdd659d5-3a84-42ad-8c1a-5a0cbae5477c in 11.8268ms
+2025/08/31 16:10:54 Startted GET /service/type-status from [::1]:57731
+2025/08/31 16:10:54 Requests fetched successfully
+2025/08/31 16:10:54 Completed GET /service/type-status in 13.6557ms
+2025/08/31 16:19:33 Startted GET /feedbacks from [::1]:53001
+2025/08/31 16:19:33 Fetched feedbacks successfully
+2025/08/31 16:19:33 Completed GET /feedbacks in 6.8565ms
+2025/08/31 16:24:36 Startted GET /feedbacks from [::1]:61544
+2025/08/31 16:24:36 Fetched feedbacks successfully
+2025/08/31 16:24:36 Completed GET /feedbacks in 9.3595ms
+2025/08/31 16:25:22 Startted GET /feedbacks from [::1]:61544
+2025/08/31 16:25:22 Fetched feedbacks successfully
+2025/08/31 16:25:22 Completed GET /feedbacks in 5.9515ms
+2025/08/31 16:26:18 Startted DELETE /credentials/officer from [::1]:61544
+2025/08/31 16:26:18 Officer deleted successfully
+2025/08/31 16:26:18 Completed DELETE /credentials/officer in 19.1633ms
+2025/08/31 16:28:31 Startted POST /login from [::1]:57528
+2025/08/31 16:28:31 token generated for userId:b5063abc-fb07-451e-b4ff-476995eaa1c8
+2025/08/31 16:28:31 Completed POST /login in 96.7283ms
+2025/08/31 16:29:01 Startted DELETE /profile from [::1]:57528
+2025/08/31 16:29:01 Service request of deleted user deleted successfully
+2025/08/31 16:29:01 Completed DELETE /profile in 7.4665ms
+2025/08/31 16:33:29 Startted POST /signup from [::1]:60307
+2025/08/31 16:33:29 User created sucessfully
+2025/08/31 16:33:29 Completed POST /signup in 444.5066ms
+2025/08/31 16:33:42 Startted POST /login from [::1]:60307
+2025/08/31 16:33:42 token generated for userId:db6f23ff-5856-476d-968e-95f6b8aded63
+2025/08/31 16:33:42 Completed POST /login in 99.7395ms
+2025/08/31 16:33:50 Startted GET /profile from [::1]:60307
+2025/08/31 16:33:50 users retrived successfully
+2025/08/31 16:33:50 Completed GET /profile in 6.7542ms
+2025/08/31 16:33:58 Startted PATCH /profile/update from [::1]:60307
+2025/08/31 16:33:58 User updated successfully
+2025/08/31 16:33:58 Completed PATCH /profile/update in 6.3703ms
+2025/08/31 16:34:05 Startted PATCH /profile/password from [::1]:60307
+2025/08/31 16:34:06 User password updated successfully
+2025/08/31 16:34:06 Completed PATCH /profile/password in 624.2944ms
+2025/08/31 16:34:14 Startted POST /login from [::1]:60307
+2025/08/31 16:34:15 token generated for userId:db6f23ff-5856-476d-968e-95f6b8aded63
+2025/08/31 16:34:15 Completed POST /login in 97.2621ms
+2025/08/31 16:34:24 Startted GET /service/time-slots from [::1]:60307
+2025/08/31 16:34:24 Time slot shown successfully
+2025/08/31 16:34:24 Completed GET /service/time-slots in 7.2879ms
+2025/08/31 16:34:32 Startted POST /service from [::1]:60307
+2025/08/31 16:34:32 Service Request created successfully
+2025/08/31 16:34:32 Completed POST /service in 8.2927ms
+2025/08/31 16:34:39 Startted GET /service/time-slots from [::1]:60307
+2025/08/31 16:34:39 Time slot shown successfully
+2025/08/31 16:34:39 Completed GET /service/time-slots in 6.2035ms
+2025/08/31 16:34:47 Startted PATCH /service/reschedule/b7ac9f5d-ed2a-460d-a101-daf210542e46 from [::1]:60307
+2025/08/31 16:34:47 Service Request rescheduled successfully
+2025/08/31 16:34:47 Completed PATCH /service/reschedule/b7ac9f5d-ed2a-460d-a101-daf210542e46 in 8.4053ms
+2025/08/31 16:34:54 Startted GET /service/time-slots from [::1]:60307
+2025/08/31 16:34:54 Time slot shown successfully
+2025/08/31 16:34:54 Completed GET /service/time-slots in 6.7352ms
+2025/08/31 16:35:02 Startted POST /service from [::1]:60307
+2025/08/31 16:35:02 Service Request created successfully
+2025/08/31 16:35:02 Completed POST /service in 9.5039ms
+2025/08/31 16:35:11 Startted GET /service from [::1]:60307
+2025/08/31 16:35:11 Fetched 2 requests with status pending
+2025/08/31 16:35:11 Completed GET /service in 8.5056ms
+2025/08/31 16:35:18 Startted DELETE /service/cancel/7d7bb48f-c5f9-47c7-a216-7bd85ebf2b6c from [::1]:60307
+2025/08/31 16:35:18 Service Request cancelled successfully
+2025/08/31 16:35:18 Completed DELETE /service/cancel/7d7bb48f-c5f9-47c7-a216-7bd85ebf2b6c in 6.7689ms
+2025/08/31 16:35:24 Startted GET /notices from [::1]:60307
+2025/08/31 16:35:24 Notice fetched successfully
+2025/08/31 16:35:24 Completed GET /notices in 7.0865ms
+2025/08/31 16:35:31 Startted GET /notices/month-year from [::1]:60307
+2025/08/31 16:35:31 notices retrived successfully
+2025/08/31 16:35:31 Completed GET /notices/month-year in 6.2002ms
+2025/08/31 16:35:38 Startted GET /notices/month-year from [::1]:60307
+2025/08/31 16:35:38 notices retrived successfully
+2025/08/31 16:35:38 Completed GET /notices/month-year in 6.1651ms
+2025/08/31 16:35:46 Startted GET /invoices/month-year from [::1]:60307
+2025/08/31 16:35:46 invoices retrived successfully
+2025/08/31 16:35:46 Completed GET /invoices/month-year in 7.534ms
+2025/08/31 16:35:53 Startted GET /invoices/month-year from [::1]:60307
+2025/08/31 16:35:53 invoice retrived successfully
+2025/08/31 16:35:53 Completed GET /invoices/month-year in 6.3502ms
+2025/08/31 16:36:49 Startted POST /login from [::1]:60307
+2025/08/31 16:36:50 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 16:36:50 Completed POST /login in 93.0651ms
+2025/08/31 16:36:56 Startted POST /officers from [::1]:60307
+2025/08/31 16:36:56 Officer created successfully
+2025/08/31 16:36:56 Completed POST /officers in 113.2402ms
+2025/08/31 16:37:41 Startted GET /society/residents from [::1]:60307
+2025/08/31 16:37:41 View residents successfully executed
+2025/08/31 16:37:41 Completed GET /society/residents in 9.6223ms
+2025/08/31 16:37:49 Startted GET /society/officers from [::1]:60307
+2025/08/31 16:37:49 View officers successfully executed
+2025/08/31 16:37:49 Completed GET /society/officers in 7.6939ms
+2025/08/31 16:37:58 Startted PATCH /service/approve/b7ac9f5d-ed2a-460d-a101-daf210542e46 from [::1]:60307
+2025/08/31 16:37:58 Service Request approved successfully
+2025/08/31 16:37:58 Completed PATCH /service/approve/b7ac9f5d-ed2a-460d-a101-daf210542e46 in 7.8177ms
+2025/08/31 16:38:05 Startted GET /service/type-status from [::1]:60307
+2025/08/31 16:38:05 Requests fetched successfully
+2025/08/31 16:38:05 Completed GET /service/type-status in 6.9843ms
+2025/08/31 16:38:15 Startted GET /feedbacks from [::1]:60307
+2025/08/31 16:38:15 Fetched feedbacks successfully
+2025/08/31 16:38:15 Completed GET /feedbacks in 5.9491ms
+2025/08/31 16:38:22 Startted GET /feedbacks from [::1]:60307
+2025/08/31 16:38:22 Fetched feedbacks successfully
+2025/08/31 16:38:22 Completed GET /feedbacks in 10.0116ms
+2025/08/31 16:38:29 Startted DELETE /credentials/officer from [::1]:60307
+2025/08/31 16:38:29 Error in deleting officer
+2025/08/31 16:38:29 Completed DELETE /credentials/officer in 7.0076ms
+2025/08/31 16:39:47 Startted DELETE /credentials/officer from [::1]:57584
+2025/08/31 16:39:47 Officer deleted successfully
+2025/08/31 16:39:47 Completed DELETE /credentials/officer in 11.568ms
+2025/08/31 16:40:00 Startted POST /login from [::1]:57584
+2025/08/31 16:40:00 token generated for userId:db6f23ff-5856-476d-968e-95f6b8aded63
+2025/08/31 16:40:00 Completed POST /login in 211.3169ms
+2025/08/31 16:40:09 Startted DELETE /profile from [::1]:57584
+2025/08/31 16:40:09 Service request of deleted user deleted successfully
+2025/08/31 16:40:09 Completed DELETE /profile in 10.4661ms
+2025/08/31 16:49:30 Startted POST /signup from [::1]:65025
+2025/08/31 16:49:31 User created sucessfully
+2025/08/31 16:49:31 Completed POST /signup in 447.6556ms
+2025/08/31 16:49:39 Startted POST /login from [::1]:65025
+2025/08/31 16:49:39 token generated for userId:eff49d09-600e-485f-a871-a6946d6dce45
+2025/08/31 16:49:39 Completed POST /login in 101.4861ms
+2025/08/31 16:49:45 Startted GET /profile from [::1]:65025
+2025/08/31 16:49:45 users retrived successfully
+2025/08/31 16:49:45 Completed GET /profile in 6.6765ms
+2025/08/31 16:49:53 Startted PATCH /profile/update from [::1]:65025
+2025/08/31 16:49:53 User updated successfully
+2025/08/31 16:49:53 Completed PATCH /profile/update in 12.466ms
+2025/08/31 16:50:04 Startted PATCH /profile/password from [::1]:65025
+2025/08/31 16:50:05 User password updated successfully
+2025/08/31 16:50:05 Completed PATCH /profile/password in 626.5889ms
+2025/08/31 16:50:12 Startted POST /login from [::1]:65025
+2025/08/31 16:50:12 token generated for userId:eff49d09-600e-485f-a871-a6946d6dce45
+2025/08/31 16:50:12 Completed POST /login in 97.0336ms
+2025/08/31 16:50:18 Startted GET /service/time-slots from [::1]:65025
+2025/08/31 16:50:18 Time slot shown successfully
+2025/08/31 16:50:18 Completed GET /service/time-slots in 6.8849ms
+2025/08/31 16:50:24 Startted POST /service from [::1]:65025
+2025/08/31 16:50:24 Service Request created successfully
+2025/08/31 16:50:24 Completed POST /service in 8.3511ms
+2025/08/31 16:50:31 Startted GET /service/time-slots from [::1]:65025
+2025/08/31 16:50:31 Time slot shown successfully
+2025/08/31 16:50:31 Completed GET /service/time-slots in 7.1653ms
+2025/08/31 16:50:37 Startted PATCH /service/reschedule/c535913e-28a4-47e0-b9ca-7732f02559be from [::1]:65025
+2025/08/31 16:50:37 Service Request rescheduled successfully
+2025/08/31 16:50:37 Completed PATCH /service/reschedule/c535913e-28a4-47e0-b9ca-7732f02559be in 8.1552ms
+2025/08/31 16:50:45 Startted GET /service/time-slots from [::1]:65025
+2025/08/31 16:50:45 Time slot shown successfully
+2025/08/31 16:50:45 Completed GET /service/time-slots in 7.2571ms
+2025/08/31 16:50:51 Startted POST /service from [::1]:65025
+2025/08/31 16:50:51 Service Request created successfully
+2025/08/31 16:50:51 Completed POST /service in 9.4445ms
+2025/08/31 16:50:58 Startted GET /service from [::1]:65025
+2025/08/31 16:50:58 Fetched 2 requests with status pending
+2025/08/31 16:50:58 Completed GET /service in 10.7ms
+2025/08/31 16:51:04 Startted DELETE /service/cancel/0ef16009-cbfd-445a-bd74-b32071aa87ff from [::1]:65025
+2025/08/31 16:51:04 Service Request cancelled successfully
+2025/08/31 16:51:04 Completed DELETE /service/cancel/0ef16009-cbfd-445a-bd74-b32071aa87ff in 8.5065ms
+2025/08/31 16:51:10 Startted GET /notices from [::1]:65025
+2025/08/31 16:51:10 Notice fetched successfully
+2025/08/31 16:51:10 Completed GET /notices in 7.5977ms
+2025/08/31 16:51:16 Startted GET /notices/month-year from [::1]:65025
+2025/08/31 16:51:16 notices retrived successfully
+2025/08/31 16:51:16 Completed GET /notices/month-year in 6.538ms
+2025/08/31 16:51:23 Startted GET /notices/month-year from [::1]:65025
+2025/08/31 16:51:23 notices retrived successfully
+2025/08/31 16:51:23 Completed GET /notices/month-year in 8.6067ms
+2025/08/31 16:51:29 Startted GET /invoices/month-year from [::1]:65025
+2025/08/31 16:51:29 invoices retrived successfully
+2025/08/31 16:51:29 Completed GET /invoices/month-year in 6.7648ms
+2025/08/31 16:51:35 Startted GET /invoices/month-year from [::1]:65025
+2025/08/31 16:51:35 invoice retrived successfully
+2025/08/31 16:51:35 Completed GET /invoices/month-year in 5.4638ms
+2025/08/31 16:51:42 Startted POST /login from [::1]:65025
+2025/08/31 16:51:42 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 16:51:42 Completed POST /login in 106.8617ms
+2025/08/31 16:51:48 Startted POST /officers from [::1]:65025
+2025/08/31 16:51:48 Officer created successfully
+2025/08/31 16:51:48 Completed POST /officers in 105.3023ms
+2025/08/31 16:51:58 Startted GET /society/residents from [::1]:65025
+2025/08/31 16:51:58 View residents successfully executed
+2025/08/31 16:51:58 Completed GET /society/residents in 10.5549ms
+2025/08/31 16:52:04 Startted GET /society/officers from [::1]:65025
+2025/08/31 16:52:04 View officers successfully executed
+2025/08/31 16:52:04 Completed GET /society/officers in 8.3415ms
+2025/08/31 16:52:10 Startted PATCH /service/approve/c535913e-28a4-47e0-b9ca-7732f02559be from [::1]:65025
+2025/08/31 16:52:10 Service Request approved successfully
+2025/08/31 16:52:10 Completed PATCH /service/approve/c535913e-28a4-47e0-b9ca-7732f02559be in 8.0534ms
+2025/08/31 16:52:16 Startted GET /service/type-status from [::1]:65025
+2025/08/31 16:52:16 Requests fetched successfully
+2025/08/31 16:52:16 Completed GET /service/type-status in 6.2313ms
+2025/08/31 16:52:22 Startted GET /feedbacks from [::1]:65025
+2025/08/31 16:52:23 Fetched feedbacks successfully
+2025/08/31 16:52:23 Completed GET /feedbacks in 7.4932ms
+2025/08/31 16:52:29 Startted GET /feedbacks from [::1]:65025
+2025/08/31 16:52:29 Fetched feedbacks successfully
+2025/08/31 16:52:29 Completed GET /feedbacks in 8.9398ms
+2025/08/31 16:52:35 Startted DELETE /credentials/officer from [::1]:65025
+2025/08/31 16:52:35 Officer deleted successfully
+2025/08/31 16:52:35 Completed DELETE /credentials/officer in 10.0738ms
+2025/08/31 16:52:42 Startted POST /login from [::1]:65025
+2025/08/31 16:52:42 token generated for userId:eff49d09-600e-485f-a871-a6946d6dce45
+2025/08/31 16:52:42 Completed POST /login in 97.7228ms
+2025/08/31 16:52:48 Startted DELETE /profile from [::1]:65025
+2025/08/31 16:52:48 Service request of deleted user deleted successfully
+2025/08/31 16:52:48 Completed DELETE /profile in 9.3881ms
+2025/08/31 17:16:42 Startted POST /signup from [::1]:64296
+2025/08/31 17:16:42 User created sucessfully
+2025/08/31 17:16:42 Completed POST /signup in 454.8143ms
+2025/08/31 17:16:42 Startted POST /login from [::1]:64296
+2025/08/31 17:16:42 token generated for userId:732229ec-8ca4-42b6-ae8e-6a92e7b06e79
+2025/08/31 17:16:42 Completed POST /login in 95.4929ms
+2025/08/31 17:16:43 Startted GET /profile from [::1]:64296
+2025/08/31 17:16:43 users retrived successfully
+2025/08/31 17:16:43 Completed GET /profile in 6.0826ms
+2025/08/31 17:16:43 Startted PATCH /profile/update from [::1]:64296
+2025/08/31 17:16:43 User updated successfully
+2025/08/31 17:16:43 Completed PATCH /profile/update in 11.7005ms
+2025/08/31 17:16:43 Startted PATCH /profile/password from [::1]:64296
+2025/08/31 17:16:43 User password updated successfully
+2025/08/31 17:16:43 Completed PATCH /profile/password in 575.8134ms
+2025/08/31 17:16:43 Startted POST /login from [::1]:64296
+2025/08/31 17:16:43 token generated for userId:732229ec-8ca4-42b6-ae8e-6a92e7b06e79
+2025/08/31 17:16:43 Completed POST /login in 102.3409ms
+2025/08/31 17:16:44 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:16:44 Time slot shown successfully
+2025/08/31 17:16:44 Completed GET /service/time-slots in 5.7554ms
+2025/08/31 17:16:44 Startted POST /service from [::1]:64296
+2025/08/31 17:16:44 Service Request created successfully
+2025/08/31 17:16:44 Completed POST /service in 9.426ms
+2025/08/31 17:16:44 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:16:44 Time slot shown successfully
+2025/08/31 17:16:44 Completed GET /service/time-slots in 6.0808ms
+2025/08/31 17:16:44 Startted PATCH /service/reschedule/95c08a4c-9cc2-4c33-bf67-ada3a343d181 from [::1]:64296
+2025/08/31 17:16:44 Service Request rescheduled successfully
+2025/08/31 17:16:44 Completed PATCH /service/reschedule/95c08a4c-9cc2-4c33-bf67-ada3a343d181 in 7.9405ms
+2025/08/31 17:16:44 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:16:44 Time slot shown successfully
+2025/08/31 17:16:44 Completed GET /service/time-slots in 6.6138ms
+2025/08/31 17:16:44 Startted POST /service from [::1]:64296
+2025/08/31 17:16:44 Service Request created successfully
+2025/08/31 17:16:44 Completed POST /service in 163.0241ms
+2025/08/31 17:16:44 Startted GET /service from [::1]:64296
+2025/08/31 17:16:44 Fetched 2 requests with status pending
+2025/08/31 17:16:44 Completed GET /service in 12.8697ms
+2025/08/31 17:16:44 Startted DELETE /service/cancel/d6d55b95-3601-4cc1-b42a-b342c2c98115 from [::1]:64296
+2025/08/31 17:16:44 Service Request cancelled successfully
+2025/08/31 17:16:44 Completed DELETE /service/cancel/d6d55b95-3601-4cc1-b42a-b342c2c98115 in 7.8688ms
+2025/08/31 17:16:44 Startted GET /notices from [::1]:64296
+2025/08/31 17:16:44 Notice fetched successfully
+2025/08/31 17:16:44 Completed GET /notices in 5.9641ms
+2025/08/31 17:16:45 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:16:45 notices retrived successfully
+2025/08/31 17:16:45 Completed GET /notices/month-year in 6.3737ms
+2025/08/31 17:16:45 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:16:45 notices retrived successfully
+2025/08/31 17:16:45 Completed GET /notices/month-year in 22.0438ms
+2025/08/31 17:16:45 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:16:45 invoices retrived successfully
+2025/08/31 17:16:45 Completed GET /invoices/month-year in 13.539ms
+2025/08/31 17:16:45 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:16:45 invoice retrived successfully
+2025/08/31 17:16:45 Completed GET /invoices/month-year in 12.6922ms
+2025/08/31 17:16:45 Startted POST /login from [::1]:64296
+2025/08/31 17:16:45 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:16:45 Completed POST /login in 99.5477ms
+2025/08/31 17:16:45 Startted POST /officers from [::1]:64296
+2025/08/31 17:16:45 Officer created successfully
+2025/08/31 17:16:45 Completed POST /officers in 95.6831ms
+2025/08/31 17:16:45 Startted GET /society/residents from [::1]:64296
+2025/08/31 17:16:45 View residents successfully executed
+2025/08/31 17:16:45 Completed GET /society/residents in 8.3036ms
+2025/08/31 17:16:45 Startted GET /society/officers from [::1]:64296
+2025/08/31 17:16:45 View officers successfully executed
+2025/08/31 17:16:45 Completed GET /society/officers in 23.1301ms
+2025/08/31 17:16:46 Startted PATCH /service/approve/95c08a4c-9cc2-4c33-bf67-ada3a343d181 from [::1]:64296
+2025/08/31 17:16:46 Service Request approved successfully
+2025/08/31 17:16:46 Completed PATCH /service/approve/95c08a4c-9cc2-4c33-bf67-ada3a343d181 in 9.0732ms
+2025/08/31 17:16:46 Startted GET /service/type-status from [::1]:64296
+2025/08/31 17:16:46 Requests fetched successfully
+2025/08/31 17:16:46 Completed GET /service/type-status in 7.8938ms
+2025/08/31 17:16:46 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:16:46 Fetched feedbacks successfully
+2025/08/31 17:16:46 Completed GET /feedbacks in 5.9003ms
+2025/08/31 17:16:46 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:16:46 Fetched feedbacks successfully
+2025/08/31 17:16:46 Completed GET /feedbacks in 6.3025ms
+2025/08/31 17:16:46 Startted DELETE /credentials/officer from [::1]:64296
+2025/08/31 17:16:46 Officer deleted successfully
+2025/08/31 17:16:46 Completed DELETE /credentials/officer in 7.0153ms
+2025/08/31 17:16:46 Startted POST /login from [::1]:64296
+2025/08/31 17:16:46 token generated for userId:732229ec-8ca4-42b6-ae8e-6a92e7b06e79
+2025/08/31 17:16:46 Completed POST /login in 104.0519ms
+2025/08/31 17:16:46 Startted DELETE /profile from [::1]:64296
+2025/08/31 17:16:46 Service request of deleted user deleted successfully
+2025/08/31 17:16:46 Completed DELETE /profile in 7.1374ms
+2025/08/31 17:16:46 Startted POST /signup from [::1]:64296
+2025/08/31 17:16:47 User created sucessfully
+2025/08/31 17:16:47 Completed POST /signup in 474.296ms
+2025/08/31 17:16:47 Startted POST /login from [::1]:64296
+2025/08/31 17:16:47 token generated for userId:503c7b26-823f-434d-aeee-4194770dec42
+2025/08/31 17:16:47 Completed POST /login in 95.3114ms
+2025/08/31 17:16:47 Startted GET /profile from [::1]:64296
+2025/08/31 17:16:47 users retrived successfully
+2025/08/31 17:16:47 Completed GET /profile in 7.3167ms
+2025/08/31 17:16:47 Startted PATCH /profile/update from [::1]:64296
+2025/08/31 17:16:47 User updated successfully
+2025/08/31 17:16:47 Completed PATCH /profile/update in 7.6242ms
+2025/08/31 17:16:47 Startted PATCH /profile/password from [::1]:64296
+2025/08/31 17:16:48 User password updated successfully
+2025/08/31 17:16:48 Completed PATCH /profile/password in 601.5336ms
+2025/08/31 17:16:48 Startted POST /login from [::1]:64296
+2025/08/31 17:16:48 token generated for userId:503c7b26-823f-434d-aeee-4194770dec42
+2025/08/31 17:16:48 Completed POST /login in 92.7807ms
+2025/08/31 17:16:48 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:16:48 Time slot shown successfully
+2025/08/31 17:16:48 Completed GET /service/time-slots in 5.6036ms
+2025/08/31 17:16:48 Startted POST /service from [::1]:64296
+2025/08/31 17:16:48 Service Request created successfully
+2025/08/31 17:16:48 Completed POST /service in 6.2222ms
+2025/08/31 17:16:48 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:16:48 Time slot shown successfully
+2025/08/31 17:16:48 Completed GET /service/time-slots in 5.794ms
+2025/08/31 17:16:48 Startted PATCH /service/reschedule/2654b52a-2be8-4641-a1f9-cdfa267a1f4b from [::1]:64296
+2025/08/31 17:16:48 Service Request rescheduled successfully
+2025/08/31 17:16:48 Completed PATCH /service/reschedule/2654b52a-2be8-4641-a1f9-cdfa267a1f4b in 6.4631ms
+2025/08/31 17:16:48 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:16:48 Time slot shown successfully
+2025/08/31 17:16:48 Completed GET /service/time-slots in 7.8498ms
+2025/08/31 17:16:49 Startted POST /service from [::1]:64296
+2025/08/31 17:16:49 Service Request created successfully
+2025/08/31 17:16:49 Completed POST /service in 6.8896ms
+2025/08/31 17:16:49 Startted GET /service from [::1]:64296
+2025/08/31 17:16:49 Fetched 2 requests with status pending
+2025/08/31 17:16:49 Completed GET /service in 8.4158ms
+2025/08/31 17:16:49 Startted DELETE /service/cancel/2c2a25d1-78ce-4d99-97f2-a2a74ad737da from [::1]:64296
+2025/08/31 17:16:49 Service Request cancelled successfully
+2025/08/31 17:16:49 Completed DELETE /service/cancel/2c2a25d1-78ce-4d99-97f2-a2a74ad737da in 8.2667ms
+2025/08/31 17:16:49 Startted GET /notices from [::1]:64296
+2025/08/31 17:16:49 Notice fetched successfully
+2025/08/31 17:16:49 Completed GET /notices in 6.3553ms
+2025/08/31 17:16:49 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:16:49 notices retrived successfully
+2025/08/31 17:16:49 Completed GET /notices/month-year in 11.5852ms
+2025/08/31 17:16:49 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:16:49 notices retrived successfully
+2025/08/31 17:16:49 Completed GET /notices/month-year in 25.936ms
+2025/08/31 17:16:49 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:16:49 invoices retrived successfully
+2025/08/31 17:16:49 Completed GET /invoices/month-year in 8.9694ms
+2025/08/31 17:16:49 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:16:49 invoice retrived successfully
+2025/08/31 17:16:49 Completed GET /invoices/month-year in 7.2872ms
+2025/08/31 17:16:49 Startted POST /login from [::1]:64296
+2025/08/31 17:16:49 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:16:49 Completed POST /login in 115.1634ms
+2025/08/31 17:16:50 Startted POST /officers from [::1]:64296
+2025/08/31 17:16:50 Officer created successfully
+2025/08/31 17:16:50 Completed POST /officers in 113.2965ms
+2025/08/31 17:16:50 Startted GET /society/residents from [::1]:64296
+2025/08/31 17:16:50 View residents successfully executed
+2025/08/31 17:16:50 Completed GET /society/residents in 178.8055ms
+2025/08/31 17:16:50 Startted GET /society/officers from [::1]:64296
+2025/08/31 17:16:50 View officers successfully executed
+2025/08/31 17:16:50 Completed GET /society/officers in 6.1468ms
+2025/08/31 17:16:50 Startted PATCH /service/approve/2654b52a-2be8-4641-a1f9-cdfa267a1f4b from [::1]:64296
+2025/08/31 17:16:50 Service Request approved successfully
+2025/08/31 17:16:50 Completed PATCH /service/approve/2654b52a-2be8-4641-a1f9-cdfa267a1f4b in 24.5225ms
+2025/08/31 17:16:50 Startted GET /service/type-status from [::1]:64296
+2025/08/31 17:16:50 Requests fetched successfully
+2025/08/31 17:16:50 Completed GET /service/type-status in 11.2611ms
+2025/08/31 17:16:50 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:16:50 Fetched feedbacks successfully
+2025/08/31 17:16:50 Completed GET /feedbacks in 7.9914ms
+2025/08/31 17:16:51 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:16:51 Fetched feedbacks successfully
+2025/08/31 17:16:51 Completed GET /feedbacks in 5.9878ms
+2025/08/31 17:16:51 Startted DELETE /credentials/officer from [::1]:64296
+2025/08/31 17:16:51 Officer deleted successfully
+2025/08/31 17:16:51 Completed DELETE /credentials/officer in 9.4151ms
+2025/08/31 17:16:51 Startted POST /login from [::1]:64296
+2025/08/31 17:16:51 token generated for userId:503c7b26-823f-434d-aeee-4194770dec42
+2025/08/31 17:16:51 Completed POST /login in 122.8985ms
+2025/08/31 17:16:51 Startted DELETE /profile from [::1]:64296
+2025/08/31 17:16:51 Service request of deleted user deleted successfully
+2025/08/31 17:16:51 Completed DELETE /profile in 16.906ms
+2025/08/31 17:16:51 Startted POST /signup from [::1]:64296
+2025/08/31 17:16:51 User created sucessfully
+2025/08/31 17:16:51 Completed POST /signup in 439.4734ms
+2025/08/31 17:16:52 Startted POST /login from [::1]:64296
+2025/08/31 17:16:52 token generated for userId:cfa6dd86-b5e3-4574-a9fb-7802140352b6
+2025/08/31 17:16:52 Completed POST /login in 139.1327ms
+2025/08/31 17:16:52 Startted GET /profile from [::1]:64296
+2025/08/31 17:16:52 users retrived successfully
+2025/08/31 17:16:52 Completed GET /profile in 7.1141ms
+2025/08/31 17:16:52 Startted PATCH /profile/update from [::1]:64296
+2025/08/31 17:16:52 User updated successfully
+2025/08/31 17:16:52 Completed PATCH /profile/update in 8.8919ms
+2025/08/31 17:16:52 Startted PATCH /profile/password from [::1]:64296
+2025/08/31 17:16:53 User password updated successfully
+2025/08/31 17:16:53 Completed PATCH /profile/password in 612.8393ms
+2025/08/31 17:16:53 Startted POST /login from [::1]:64296
+2025/08/31 17:16:53 token generated for userId:cfa6dd86-b5e3-4574-a9fb-7802140352b6
+2025/08/31 17:16:53 Completed POST /login in 105.9758ms
+2025/08/31 17:16:53 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:16:53 Time slot shown successfully
+2025/08/31 17:16:53 Completed GET /service/time-slots in 5.1151ms
+2025/08/31 17:16:53 Startted POST /service from [::1]:64296
+2025/08/31 17:16:53 Service Request created successfully
+2025/08/31 17:16:53 Completed POST /service in 6.7648ms
+2025/08/31 17:16:53 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:16:53 Time slot shown successfully
+2025/08/31 17:16:53 Completed GET /service/time-slots in 9.7531ms
+2025/08/31 17:16:53 Startted PATCH /service/reschedule/2ea8142d-1b4e-4772-8fa3-fc1e5b355b6f from [::1]:64296
+2025/08/31 17:16:53 Service Request rescheduled successfully
+2025/08/31 17:16:53 Completed PATCH /service/reschedule/2ea8142d-1b4e-4772-8fa3-fc1e5b355b6f in 7.103ms
+2025/08/31 17:16:53 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:16:53 Time slot shown successfully
+2025/08/31 17:16:53 Completed GET /service/time-slots in 5.6794ms
+2025/08/31 17:16:53 Startted POST /service from [::1]:64296
+2025/08/31 17:16:53 Service Request created successfully
+2025/08/31 17:16:53 Completed POST /service in 8.4994ms
+2025/08/31 17:16:53 Startted GET /service from [::1]:64296
+2025/08/31 17:16:53 Fetched 2 requests with status pending
+2025/08/31 17:16:53 Completed GET /service in 6.3297ms
+2025/08/31 17:16:54 Startted DELETE /service/cancel/40ac7f4e-da36-4d98-9674-c89ef643084f from [::1]:64296
+2025/08/31 17:16:54 Service Request cancelled successfully
+2025/08/31 17:16:54 Completed DELETE /service/cancel/40ac7f4e-da36-4d98-9674-c89ef643084f in 7.3444ms
+2025/08/31 17:16:54 Startted GET /notices from [::1]:64296
+2025/08/31 17:16:54 Notice fetched successfully
+2025/08/31 17:16:54 Completed GET /notices in 5.5722ms
+2025/08/31 17:16:54 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:16:54 notices retrived successfully
+2025/08/31 17:16:54 Completed GET /notices/month-year in 6.7245ms
+2025/08/31 17:16:54 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:16:54 notices retrived successfully
+2025/08/31 17:16:54 Completed GET /notices/month-year in 6.964ms
+2025/08/31 17:16:54 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:16:54 invoices retrived successfully
+2025/08/31 17:16:54 Completed GET /invoices/month-year in 6.7911ms
+2025/08/31 17:16:54 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:16:54 invoice retrived successfully
+2025/08/31 17:16:54 Completed GET /invoices/month-year in 6.1625ms
+2025/08/31 17:16:54 Startted POST /login from [::1]:64296
+2025/08/31 17:16:54 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:16:54 Completed POST /login in 99.1933ms
+2025/08/31 17:16:54 Startted POST /officers from [::1]:64296
+2025/08/31 17:16:54 Officer created successfully
+2025/08/31 17:16:54 Completed POST /officers in 118.61ms
+2025/08/31 17:16:54 Startted GET /society/residents from [::1]:64296
+2025/08/31 17:16:54 View residents successfully executed
+2025/08/31 17:16:54 Completed GET /society/residents in 8.8114ms
+2025/08/31 17:16:55 Startted GET /society/officers from [::1]:64296
+2025/08/31 17:16:55 View officers successfully executed
+2025/08/31 17:16:55 Completed GET /society/officers in 7.1179ms
+2025/08/31 17:16:55 Startted PATCH /service/approve/2ea8142d-1b4e-4772-8fa3-fc1e5b355b6f from [::1]:64296
+2025/08/31 17:16:55 Service Request approved successfully
+2025/08/31 17:16:55 Completed PATCH /service/approve/2ea8142d-1b4e-4772-8fa3-fc1e5b355b6f in 7.7325ms
+2025/08/31 17:16:55 Startted GET /service/type-status from [::1]:64296
+2025/08/31 17:16:55 Requests fetched successfully
+2025/08/31 17:16:55 Completed GET /service/type-status in 9.0293ms
+2025/08/31 17:16:55 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:16:55 Fetched feedbacks successfully
+2025/08/31 17:16:55 Completed GET /feedbacks in 7.0208ms
+2025/08/31 17:16:55 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:16:55 Fetched feedbacks successfully
+2025/08/31 17:16:55 Completed GET /feedbacks in 8.115ms
+2025/08/31 17:16:55 Startted DELETE /credentials/officer from [::1]:64296
+2025/08/31 17:16:55 Officer deleted successfully
+2025/08/31 17:16:55 Completed DELETE /credentials/officer in 10.8205ms
+2025/08/31 17:16:55 Startted POST /login from [::1]:64296
+2025/08/31 17:16:55 token generated for userId:cfa6dd86-b5e3-4574-a9fb-7802140352b6
+2025/08/31 17:16:55 Completed POST /login in 105.946ms
+2025/08/31 17:16:55 Startted DELETE /profile from [::1]:64296
+2025/08/31 17:16:55 Service request of deleted user deleted successfully
+2025/08/31 17:16:55 Completed DELETE /profile in 129.0057ms
+2025/08/31 17:16:56 Startted POST /signup from [::1]:64296
+2025/08/31 17:16:56 User created sucessfully
+2025/08/31 17:16:56 Completed POST /signup in 476.5872ms
+2025/08/31 17:16:56 Startted POST /login from [::1]:64296
+2025/08/31 17:16:56 token generated for userId:dcd5d4d8-04b3-4936-b689-95ecd3d9f6da
+2025/08/31 17:16:56 Completed POST /login in 94.5133ms
+2025/08/31 17:16:56 Startted GET /profile from [::1]:64296
+2025/08/31 17:16:56 users retrived successfully
+2025/08/31 17:16:56 Completed GET /profile in 5.4593ms
+2025/08/31 17:16:56 Startted PATCH /profile/update from [::1]:64296
+2025/08/31 17:16:56 User updated successfully
+2025/08/31 17:16:56 Completed PATCH /profile/update in 7.7961ms
+2025/08/31 17:16:56 Startted PATCH /profile/password from [::1]:64296
+2025/08/31 17:16:57 User password updated successfully
+2025/08/31 17:16:57 Completed PATCH /profile/password in 623.7658ms
+2025/08/31 17:16:57 Startted POST /login from [::1]:64296
+2025/08/31 17:16:57 token generated for userId:dcd5d4d8-04b3-4936-b689-95ecd3d9f6da
+2025/08/31 17:16:57 Completed POST /login in 108.9017ms
+2025/08/31 17:16:57 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:16:57 Time slot shown successfully
+2025/08/31 17:16:57 Completed GET /service/time-slots in 10.2759ms
+2025/08/31 17:16:57 Startted POST /service from [::1]:64296
+2025/08/31 17:16:57 Service Request created successfully
+2025/08/31 17:16:57 Completed POST /service in 7.3748ms
+2025/08/31 17:16:58 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:16:58 Time slot shown successfully
+2025/08/31 17:16:58 Completed GET /service/time-slots in 5.6153ms
+2025/08/31 17:16:58 Startted PATCH /service/reschedule/44d3e657-a403-4e01-beef-4138845d54e5 from [::1]:64296
+2025/08/31 17:16:58 Service Request rescheduled successfully
+2025/08/31 17:16:58 Completed PATCH /service/reschedule/44d3e657-a403-4e01-beef-4138845d54e5 in 24.7738ms
+2025/08/31 17:16:58 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:16:58 Time slot shown successfully
+2025/08/31 17:16:58 Completed GET /service/time-slots in 7.5169ms
+2025/08/31 17:16:58 Startted POST /service from [::1]:64296
+2025/08/31 17:16:58 Service Request created successfully
+2025/08/31 17:16:58 Completed POST /service in 8.4774ms
+2025/08/31 17:16:58 Startted GET /service from [::1]:64296
+2025/08/31 17:16:58 Fetched 2 requests with status pending
+2025/08/31 17:16:58 Completed GET /service in 6.9833ms
+2025/08/31 17:16:58 Startted DELETE /service/cancel/6b3896e4-febf-45b3-8afc-686c07e184fd from [::1]:64296
+2025/08/31 17:16:58 Service Request cancelled successfully
+2025/08/31 17:16:58 Completed DELETE /service/cancel/6b3896e4-febf-45b3-8afc-686c07e184fd in 5.8598ms
+2025/08/31 17:16:58 Startted GET /notices from [::1]:64296
+2025/08/31 17:16:58 Notice fetched successfully
+2025/08/31 17:16:58 Completed GET /notices in 6.3132ms
+2025/08/31 17:16:58 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:16:58 notices retrived successfully
+2025/08/31 17:16:58 Completed GET /notices/month-year in 8.3468ms
+2025/08/31 17:16:58 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:16:58 notices retrived successfully
+2025/08/31 17:16:58 Completed GET /notices/month-year in 6.8749ms
+2025/08/31 17:16:58 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:16:58 invoices retrived successfully
+2025/08/31 17:16:58 Completed GET /invoices/month-year in 5.7099ms
+2025/08/31 17:16:58 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:16:58 invoice retrived successfully
+2025/08/31 17:16:58 Completed GET /invoices/month-year in 8.6261ms
+2025/08/31 17:16:59 Startted POST /login from [::1]:64296
+2025/08/31 17:16:59 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:16:59 Completed POST /login in 102.1054ms
+2025/08/31 17:16:59 Startted POST /officers from [::1]:64296
+2025/08/31 17:16:59 Officer created successfully
+2025/08/31 17:16:59 Completed POST /officers in 94.9157ms
+2025/08/31 17:16:59 Startted GET /society/residents from [::1]:64296
+2025/08/31 17:16:59 View residents successfully executed
+2025/08/31 17:16:59 Completed GET /society/residents in 7.4505ms
+2025/08/31 17:16:59 Startted GET /society/officers from [::1]:64296
+2025/08/31 17:16:59 View officers successfully executed
+2025/08/31 17:16:59 Completed GET /society/officers in 6.7705ms
+2025/08/31 17:16:59 Startted PATCH /service/approve/44d3e657-a403-4e01-beef-4138845d54e5 from [::1]:64296
+2025/08/31 17:16:59 Service Request approved successfully
+2025/08/31 17:16:59 Completed PATCH /service/approve/44d3e657-a403-4e01-beef-4138845d54e5 in 7.2392ms
+2025/08/31 17:16:59 Startted GET /service/type-status from [::1]:64296
+2025/08/31 17:16:59 Requests fetched successfully
+2025/08/31 17:16:59 Completed GET /service/type-status in 7.2154ms
+2025/08/31 17:16:59 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:16:59 Fetched feedbacks successfully
+2025/08/31 17:16:59 Completed GET /feedbacks in 5.2127ms
+2025/08/31 17:16:59 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:16:59 Fetched feedbacks successfully
+2025/08/31 17:16:59 Completed GET /feedbacks in 5.6264ms
+2025/08/31 17:16:59 Startted DELETE /credentials/officer from [::1]:64296
+2025/08/31 17:16:59 Officer deleted successfully
+2025/08/31 17:16:59 Completed DELETE /credentials/officer in 7.7994ms
+2025/08/31 17:17:00 Startted POST /login from [::1]:64296
+2025/08/31 17:17:00 token generated for userId:dcd5d4d8-04b3-4936-b689-95ecd3d9f6da
+2025/08/31 17:17:00 Completed POST /login in 109.9521ms
+2025/08/31 17:17:00 Startted DELETE /profile from [::1]:64296
+2025/08/31 17:17:00 Service request of deleted user deleted successfully
+2025/08/31 17:17:00 Completed DELETE /profile in 6.6838ms
+2025/08/31 17:17:00 Startted POST /signup from [::1]:64296
+2025/08/31 17:17:01 User created sucessfully
+2025/08/31 17:17:01 Completed POST /signup in 731.4742ms
+2025/08/31 17:17:01 Startted POST /login from [::1]:64296
+2025/08/31 17:17:01 token generated for userId:9b86218b-77d4-4c87-ac0e-65d4e0342332
+2025/08/31 17:17:01 Completed POST /login in 182.9146ms
+2025/08/31 17:17:01 Startted GET /profile from [::1]:64296
+2025/08/31 17:17:01 users retrived successfully
+2025/08/31 17:17:01 Completed GET /profile in 8.7888ms
+2025/08/31 17:17:01 Startted PATCH /profile/update from [::1]:64296
+2025/08/31 17:17:01 User updated successfully
+2025/08/31 17:17:01 Completed PATCH /profile/update in 26.4283ms
+2025/08/31 17:17:01 Startted PATCH /profile/password from [::1]:64296
+2025/08/31 17:17:02 User password updated successfully
+2025/08/31 17:17:02 Completed PATCH /profile/password in 670.354ms
+2025/08/31 17:17:02 Startted POST /login from [::1]:64296
+2025/08/31 17:17:02 token generated for userId:9b86218b-77d4-4c87-ac0e-65d4e0342332
+2025/08/31 17:17:02 Completed POST /login in 92.6471ms
+2025/08/31 17:17:02 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:02 Time slot shown successfully
+2025/08/31 17:17:02 Completed GET /service/time-slots in 7.8145ms
+2025/08/31 17:17:02 Startted POST /service from [::1]:64296
+2025/08/31 17:17:02 Service Request created successfully
+2025/08/31 17:17:02 Completed POST /service in 7.4331ms
+2025/08/31 17:17:02 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:02 Time slot shown successfully
+2025/08/31 17:17:02 Completed GET /service/time-slots in 5.466ms
+2025/08/31 17:17:02 Startted PATCH /service/reschedule/7f818f8a-1515-4503-98ab-4737ad54c4b3 from [::1]:64296
+2025/08/31 17:17:02 Service Request rescheduled successfully
+2025/08/31 17:17:02 Completed PATCH /service/reschedule/7f818f8a-1515-4503-98ab-4737ad54c4b3 in 10.451ms
+2025/08/31 17:17:02 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:02 Time slot shown successfully
+2025/08/31 17:17:02 Completed GET /service/time-slots in 7.6563ms
+2025/08/31 17:17:03 Startted POST /service from [::1]:64296
+2025/08/31 17:17:03 Service Request created successfully
+2025/08/31 17:17:03 Completed POST /service in 9.683ms
+2025/08/31 17:17:03 Startted GET /service from [::1]:64296
+2025/08/31 17:17:03 Fetched 2 requests with status pending
+2025/08/31 17:17:03 Completed GET /service in 8.1375ms
+2025/08/31 17:17:03 Startted DELETE /service/cancel/bc90379d-2476-49e0-b183-07bef54874ed from [::1]:64296
+2025/08/31 17:17:03 Service Request cancelled successfully
+2025/08/31 17:17:03 Completed DELETE /service/cancel/bc90379d-2476-49e0-b183-07bef54874ed in 7.0283ms
+2025/08/31 17:17:03 Startted GET /notices from [::1]:64296
+2025/08/31 17:17:03 Notice fetched successfully
+2025/08/31 17:17:03 Completed GET /notices in 5.5881ms
+2025/08/31 17:17:03 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:17:03 notices retrived successfully
+2025/08/31 17:17:03 Completed GET /notices/month-year in 7.072ms
+2025/08/31 17:17:03 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:17:03 notices retrived successfully
+2025/08/31 17:17:03 Completed GET /notices/month-year in 6.3511ms
+2025/08/31 17:17:03 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:17:03 invoices retrived successfully
+2025/08/31 17:17:03 Completed GET /invoices/month-year in 5.5817ms
+2025/08/31 17:17:03 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:17:03 invoice retrived successfully
+2025/08/31 17:17:03 Completed GET /invoices/month-year in 5.944ms
+2025/08/31 17:17:03 Startted POST /login from [::1]:64296
+2025/08/31 17:17:03 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:17:03 Completed POST /login in 97.7214ms
+2025/08/31 17:17:04 Startted POST /officers from [::1]:64296
+2025/08/31 17:17:04 Officer created successfully
+2025/08/31 17:17:04 Completed POST /officers in 100.4001ms
+2025/08/31 17:17:04 Startted GET /society/residents from [::1]:64296
+2025/08/31 17:17:04 View residents successfully executed
+2025/08/31 17:17:04 Completed GET /society/residents in 21.1268ms
+2025/08/31 17:17:04 Startted GET /society/officers from [::1]:64296
+2025/08/31 17:17:04 View officers successfully executed
+2025/08/31 17:17:04 Completed GET /society/officers in 8.0969ms
+2025/08/31 17:17:04 Startted PATCH /service/approve/7f818f8a-1515-4503-98ab-4737ad54c4b3 from [::1]:64296
+2025/08/31 17:17:04 Service Request approved successfully
+2025/08/31 17:17:04 Completed PATCH /service/approve/7f818f8a-1515-4503-98ab-4737ad54c4b3 in 7.0528ms
+2025/08/31 17:17:04 Startted GET /service/type-status from [::1]:64296
+2025/08/31 17:17:04 Requests fetched successfully
+2025/08/31 17:17:04 Completed GET /service/type-status in 7.5055ms
+2025/08/31 17:17:04 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:17:04 Fetched feedbacks successfully
+2025/08/31 17:17:04 Completed GET /feedbacks in 6.8593ms
+2025/08/31 17:17:04 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:17:04 Fetched feedbacks successfully
+2025/08/31 17:17:04 Completed GET /feedbacks in 6.1553ms
+2025/08/31 17:17:04 Startted DELETE /credentials/officer from [::1]:64296
+2025/08/31 17:17:04 Officer deleted successfully
+2025/08/31 17:17:04 Completed DELETE /credentials/officer in 7.1982ms
+2025/08/31 17:17:04 Startted POST /login from [::1]:64296
+2025/08/31 17:17:04 token generated for userId:9b86218b-77d4-4c87-ac0e-65d4e0342332
+2025/08/31 17:17:04 Completed POST /login in 94.7436ms
+2025/08/31 17:17:04 Startted DELETE /profile from [::1]:64296
+2025/08/31 17:17:05 Service request of deleted user deleted successfully
+2025/08/31 17:17:05 Completed DELETE /profile in 6.8253ms
+2025/08/31 17:17:05 Startted POST /signup from [::1]:64296
+2025/08/31 17:17:05 User created sucessfully
+2025/08/31 17:17:05 Completed POST /signup in 670.9952ms
+2025/08/31 17:17:05 Startted POST /login from [::1]:64296
+2025/08/31 17:17:05 token generated for userId:68f36d43-e0f5-4ca9-a398-9526f7581e79
+2025/08/31 17:17:05 Completed POST /login in 92.9179ms
+2025/08/31 17:17:06 Startted GET /profile from [::1]:64296
+2025/08/31 17:17:06 users retrived successfully
+2025/08/31 17:17:06 Completed GET /profile in 6.6027ms
+2025/08/31 17:17:06 Startted PATCH /profile/update from [::1]:64296
+2025/08/31 17:17:06 User updated successfully
+2025/08/31 17:17:06 Completed PATCH /profile/update in 6.3705ms
+2025/08/31 17:17:06 Startted PATCH /profile/password from [::1]:64296
+2025/08/31 17:17:06 User password updated successfully
+2025/08/31 17:17:06 Completed PATCH /profile/password in 610.3862ms
+2025/08/31 17:17:06 Startted POST /login from [::1]:64296
+2025/08/31 17:17:07 token generated for userId:68f36d43-e0f5-4ca9-a398-9526f7581e79
+2025/08/31 17:17:07 Completed POST /login in 101.3276ms
+2025/08/31 17:17:07 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:07 Time slot shown successfully
+2025/08/31 17:17:07 Completed GET /service/time-slots in 12.5562ms
+2025/08/31 17:17:07 Startted POST /service from [::1]:64296
+2025/08/31 17:17:07 Service Request created successfully
+2025/08/31 17:17:07 Completed POST /service in 7.9083ms
+2025/08/31 17:17:07 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:07 Time slot shown successfully
+2025/08/31 17:17:07 Completed GET /service/time-slots in 6.463ms
+2025/08/31 17:17:07 Startted PATCH /service/reschedule/bee8f855-3c24-4eff-ae28-6ed486d48d91 from [::1]:64296
+2025/08/31 17:17:07 Service Request rescheduled successfully
+2025/08/31 17:17:07 Completed PATCH /service/reschedule/bee8f855-3c24-4eff-ae28-6ed486d48d91 in 7.0419ms
+2025/08/31 17:17:07 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:07 Time slot shown successfully
+2025/08/31 17:17:07 Completed GET /service/time-slots in 6.4826ms
+2025/08/31 17:17:07 Startted POST /service from [::1]:64296
+2025/08/31 17:17:07 Service Request created successfully
+2025/08/31 17:17:07 Completed POST /service in 6.8871ms
+2025/08/31 17:17:07 Startted GET /service from [::1]:64296
+2025/08/31 17:17:07 Fetched 2 requests with status pending
+2025/08/31 17:17:07 Completed GET /service in 5.8892ms
+2025/08/31 17:17:07 Startted DELETE /service/cancel/b7534b32-7ada-4ab6-9a3e-7129253c0af0 from [::1]:64296
+2025/08/31 17:17:07 Service Request cancelled successfully
+2025/08/31 17:17:07 Completed DELETE /service/cancel/b7534b32-7ada-4ab6-9a3e-7129253c0af0 in 8.7141ms
+2025/08/31 17:17:07 Startted GET /notices from [::1]:64296
+2025/08/31 17:17:07 Notice fetched successfully
+2025/08/31 17:17:07 Completed GET /notices in 6.2117ms
+2025/08/31 17:17:07 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:17:07 notices retrived successfully
+2025/08/31 17:17:07 Completed GET /notices/month-year in 8.14ms
+2025/08/31 17:17:08 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:17:08 notices retrived successfully
+2025/08/31 17:17:08 Completed GET /notices/month-year in 6.5975ms
+2025/08/31 17:17:08 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:17:08 invoices retrived successfully
+2025/08/31 17:17:08 Completed GET /invoices/month-year in 7.4661ms
+2025/08/31 17:17:08 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:17:08 invoice retrived successfully
+2025/08/31 17:17:08 Completed GET /invoices/month-year in 6.8761ms
+2025/08/31 17:17:08 Startted POST /login from [::1]:64296
+2025/08/31 17:17:08 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:17:08 Completed POST /login in 98.8376ms
+2025/08/31 17:17:08 Startted POST /officers from [::1]:64296
+2025/08/31 17:17:08 Officer created successfully
+2025/08/31 17:17:08 Completed POST /officers in 99.0051ms
+2025/08/31 17:17:08 Startted GET /society/residents from [::1]:64296
+2025/08/31 17:17:08 View residents successfully executed
+2025/08/31 17:17:08 Completed GET /society/residents in 8.7836ms
+2025/08/31 17:17:08 Startted GET /society/officers from [::1]:64296
+2025/08/31 17:17:08 View officers successfully executed
+2025/08/31 17:17:08 Completed GET /society/officers in 9.4044ms
+2025/08/31 17:17:08 Startted PATCH /service/approve/bee8f855-3c24-4eff-ae28-6ed486d48d91 from [::1]:64296
+2025/08/31 17:17:08 Service Request approved successfully
+2025/08/31 17:17:08 Completed PATCH /service/approve/bee8f855-3c24-4eff-ae28-6ed486d48d91 in 9.587ms
+2025/08/31 17:17:08 Startted GET /service/type-status from [::1]:64296
+2025/08/31 17:17:08 Requests fetched successfully
+2025/08/31 17:17:08 Completed GET /service/type-status in 9.3912ms
+2025/08/31 17:17:09 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:17:09 Fetched feedbacks successfully
+2025/08/31 17:17:09 Completed GET /feedbacks in 6.9119ms
+2025/08/31 17:17:09 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:17:09 Fetched feedbacks successfully
+2025/08/31 17:17:09 Completed GET /feedbacks in 7.6944ms
+2025/08/31 17:17:09 Startted DELETE /credentials/officer from [::1]:64296
+2025/08/31 17:17:09 Officer deleted successfully
+2025/08/31 17:17:09 Completed DELETE /credentials/officer in 7.1851ms
+2025/08/31 17:17:09 Startted POST /login from [::1]:64296
+2025/08/31 17:17:09 token generated for userId:68f36d43-e0f5-4ca9-a398-9526f7581e79
+2025/08/31 17:17:09 Completed POST /login in 132.3819ms
+2025/08/31 17:17:09 Startted DELETE /profile from [::1]:64296
+2025/08/31 17:17:09 Service request of deleted user deleted successfully
+2025/08/31 17:17:09 Completed DELETE /profile in 29.6812ms
+2025/08/31 17:17:09 Startted POST /signup from [::1]:64296
+2025/08/31 17:17:10 User created sucessfully
+2025/08/31 17:17:10 Completed POST /signup in 712.5878ms
+2025/08/31 17:17:10 Startted POST /login from [::1]:64296
+2025/08/31 17:17:10 token generated for userId:449aa023-28a7-4891-a432-06c3fd848339
+2025/08/31 17:17:10 Completed POST /login in 92.6615ms
+2025/08/31 17:17:10 Startted GET /profile from [::1]:64296
+2025/08/31 17:17:10 users retrived successfully
+2025/08/31 17:17:10 Completed GET /profile in 6.4746ms
+2025/08/31 17:17:10 Startted PATCH /profile/update from [::1]:64296
+2025/08/31 17:17:10 User updated successfully
+2025/08/31 17:17:10 Completed PATCH /profile/update in 6.7971ms
+2025/08/31 17:17:10 Startted PATCH /profile/password from [::1]:64296
+2025/08/31 17:17:11 User password updated successfully
+2025/08/31 17:17:11 Completed PATCH /profile/password in 587.7294ms
+2025/08/31 17:17:11 Startted POST /login from [::1]:64296
+2025/08/31 17:17:11 token generated for userId:449aa023-28a7-4891-a432-06c3fd848339
+2025/08/31 17:17:11 Completed POST /login in 99.5451ms
+2025/08/31 17:17:11 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:11 Time slot shown successfully
+2025/08/31 17:17:11 Completed GET /service/time-slots in 6.7989ms
+2025/08/31 17:17:11 Startted POST /service from [::1]:64296
+2025/08/31 17:17:11 Service Request created successfully
+2025/08/31 17:17:11 Completed POST /service in 7.4177ms
+2025/08/31 17:17:11 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:11 Time slot shown successfully
+2025/08/31 17:17:11 Completed GET /service/time-slots in 6.0099ms
+2025/08/31 17:17:12 Startted PATCH /service/reschedule/bf87dc1b-4a31-4215-bd48-98482e2cf801 from [::1]:64296
+2025/08/31 17:17:12 Service Request rescheduled successfully
+2025/08/31 17:17:12 Completed PATCH /service/reschedule/bf87dc1b-4a31-4215-bd48-98482e2cf801 in 6.6331ms
+2025/08/31 17:17:12 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:12 Time slot shown successfully
+2025/08/31 17:17:12 Completed GET /service/time-slots in 6.9682ms
+2025/08/31 17:17:12 Startted POST /service from [::1]:64296
+2025/08/31 17:17:12 Service Request created successfully
+2025/08/31 17:17:12 Completed POST /service in 8.4702ms
+2025/08/31 17:17:12 Startted GET /service from [::1]:64296
+2025/08/31 17:17:12 Fetched 2 requests with status pending
+2025/08/31 17:17:12 Completed GET /service in 6.9844ms
+2025/08/31 17:17:12 Startted DELETE /service/cancel/8b0464a0-691a-42ca-bb99-cf7baaa8b3ef from [::1]:64296
+2025/08/31 17:17:12 Service Request cancelled successfully
+2025/08/31 17:17:12 Completed DELETE /service/cancel/8b0464a0-691a-42ca-bb99-cf7baaa8b3ef in 8.2409ms
+2025/08/31 17:17:12 Startted GET /notices from [::1]:64296
+2025/08/31 17:17:12 Notice fetched successfully
+2025/08/31 17:17:12 Completed GET /notices in 8.9411ms
+2025/08/31 17:17:12 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:17:12 notices retrived successfully
+2025/08/31 17:17:12 Completed GET /notices/month-year in 5.8193ms
+2025/08/31 17:17:12 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:17:12 notices retrived successfully
+2025/08/31 17:17:12 Completed GET /notices/month-year in 5.582ms
+2025/08/31 17:17:12 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:17:12 invoices retrived successfully
+2025/08/31 17:17:12 Completed GET /invoices/month-year in 7.5689ms
+2025/08/31 17:17:12 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:17:12 invoice retrived successfully
+2025/08/31 17:17:12 Completed GET /invoices/month-year in 6.7021ms
+2025/08/31 17:17:12 Startted POST /login from [::1]:64296
+2025/08/31 17:17:13 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:17:13 Completed POST /login in 152.5576ms
+2025/08/31 17:17:13 Startted POST /officers from [::1]:64296
+2025/08/31 17:17:13 Officer created successfully
+2025/08/31 17:17:13 Completed POST /officers in 97.5135ms
+2025/08/31 17:17:13 Startted GET /society/residents from [::1]:64296
+2025/08/31 17:17:13 View residents successfully executed
+2025/08/31 17:17:13 Completed GET /society/residents in 9.7903ms
+2025/08/31 17:17:13 Startted GET /society/officers from [::1]:64296
+2025/08/31 17:17:13 View officers successfully executed
+2025/08/31 17:17:13 Completed GET /society/officers in 5.553ms
+2025/08/31 17:17:13 Startted PATCH /service/approve/bf87dc1b-4a31-4215-bd48-98482e2cf801 from [::1]:64296
+2025/08/31 17:17:13 Service Request approved successfully
+2025/08/31 17:17:13 Completed PATCH /service/approve/bf87dc1b-4a31-4215-bd48-98482e2cf801 in 6.7232ms
+2025/08/31 17:17:13 Startted GET /service/type-status from [::1]:64296
+2025/08/31 17:17:13 Requests fetched successfully
+2025/08/31 17:17:13 Completed GET /service/type-status in 6.5769ms
+2025/08/31 17:17:13 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:17:13 Fetched feedbacks successfully
+2025/08/31 17:17:13 Completed GET /feedbacks in 5.2802ms
+2025/08/31 17:17:13 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:17:13 Fetched feedbacks successfully
+2025/08/31 17:17:13 Completed GET /feedbacks in 7.8695ms
+2025/08/31 17:17:13 Startted DELETE /credentials/officer from [::1]:64296
+2025/08/31 17:17:13 Officer deleted successfully
+2025/08/31 17:17:13 Completed DELETE /credentials/officer in 8.6394ms
+2025/08/31 17:17:14 Startted POST /login from [::1]:64296
+2025/08/31 17:17:14 token generated for userId:449aa023-28a7-4891-a432-06c3fd848339
+2025/08/31 17:17:14 Completed POST /login in 127.1114ms
+2025/08/31 17:17:14 Startted DELETE /profile from [::1]:64296
+2025/08/31 17:17:14 Service request of deleted user deleted successfully
+2025/08/31 17:17:14 Completed DELETE /profile in 247.089ms
+2025/08/31 17:17:14 Startted POST /signup from [::1]:64296
+2025/08/31 17:17:15 User created sucessfully
+2025/08/31 17:17:15 Completed POST /signup in 443.6581ms
+2025/08/31 17:17:15 Startted POST /login from [::1]:64296
+2025/08/31 17:17:15 token generated for userId:b341f65d-54f4-4a34-b37c-4d0b4d26860a
+2025/08/31 17:17:15 Completed POST /login in 100.2416ms
+2025/08/31 17:17:15 Startted GET /profile from [::1]:64296
+2025/08/31 17:17:15 users retrived successfully
+2025/08/31 17:17:15 Completed GET /profile in 6.8882ms
+2025/08/31 17:17:15 Startted PATCH /profile/update from [::1]:64296
+2025/08/31 17:17:15 User updated successfully
+2025/08/31 17:17:15 Completed PATCH /profile/update in 7.4481ms
+2025/08/31 17:17:15 Startted PATCH /profile/password from [::1]:64296
+2025/08/31 17:17:16 User password updated successfully
+2025/08/31 17:17:16 Completed PATCH /profile/password in 595.4754ms
+2025/08/31 17:17:16 Startted POST /login from [::1]:64296
+2025/08/31 17:17:16 token generated for userId:b341f65d-54f4-4a34-b37c-4d0b4d26860a
+2025/08/31 17:17:16 Completed POST /login in 89.6096ms
+2025/08/31 17:17:16 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:16 Time slot shown successfully
+2025/08/31 17:17:16 Completed GET /service/time-slots in 18.1736ms
+2025/08/31 17:17:16 Startted POST /service from [::1]:64296
+2025/08/31 17:17:16 Service Request created successfully
+2025/08/31 17:17:16 Completed POST /service in 7.6658ms
+2025/08/31 17:17:16 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:16 Time slot shown successfully
+2025/08/31 17:17:16 Completed GET /service/time-slots in 11.554ms
+2025/08/31 17:17:16 Startted PATCH /service/reschedule/8752ebe7-1113-4794-8968-2a55ec4bd2c3 from [::1]:64296
+2025/08/31 17:17:16 Service Request rescheduled successfully
+2025/08/31 17:17:16 Completed PATCH /service/reschedule/8752ebe7-1113-4794-8968-2a55ec4bd2c3 in 26.7841ms
+2025/08/31 17:17:16 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:16 Time slot shown successfully
+2025/08/31 17:17:16 Completed GET /service/time-slots in 7.5571ms
+2025/08/31 17:17:16 Startted POST /service from [::1]:64296
+2025/08/31 17:17:16 Service Request created successfully
+2025/08/31 17:17:16 Completed POST /service in 8.014ms
+2025/08/31 17:17:17 Startted GET /service from [::1]:64296
+2025/08/31 17:17:17 Fetched 2 requests with status pending
+2025/08/31 17:17:17 Completed GET /service in 6.3132ms
+2025/08/31 17:17:17 Startted DELETE /service/cancel/d09abd0e-9a34-4d5f-9da1-5d2bbae3c880 from [::1]:64296
+2025/08/31 17:17:17 Service Request cancelled successfully
+2025/08/31 17:17:17 Completed DELETE /service/cancel/d09abd0e-9a34-4d5f-9da1-5d2bbae3c880 in 26.1595ms
+2025/08/31 17:17:17 Startted GET /notices from [::1]:64296
+2025/08/31 17:17:17 Notice fetched successfully
+2025/08/31 17:17:17 Completed GET /notices in 4.7795ms
+2025/08/31 17:17:17 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:17:17 notices retrived successfully
+2025/08/31 17:17:17 Completed GET /notices/month-year in 6.0589ms
+2025/08/31 17:17:17 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:17:17 notices retrived successfully
+2025/08/31 17:17:17 Completed GET /notices/month-year in 6.9698ms
+2025/08/31 17:17:17 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:17:17 invoices retrived successfully
+2025/08/31 17:17:17 Completed GET /invoices/month-year in 6.5563ms
+2025/08/31 17:17:17 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:17:17 invoice retrived successfully
+2025/08/31 17:17:17 Completed GET /invoices/month-year in 7.8513ms
+2025/08/31 17:17:17 Startted POST /login from [::1]:64296
+2025/08/31 17:17:17 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:17:17 Completed POST /login in 108.0498ms
+2025/08/31 17:17:17 Startted POST /officers from [::1]:64296
+2025/08/31 17:17:18 Officer created successfully
+2025/08/31 17:17:18 Completed POST /officers in 105.7867ms
+2025/08/31 17:17:18 Startted GET /society/residents from [::1]:64296
+2025/08/31 17:17:18 View residents successfully executed
+2025/08/31 17:17:18 Completed GET /society/residents in 6.2251ms
+2025/08/31 17:17:18 Startted GET /society/officers from [::1]:64296
+2025/08/31 17:17:18 View officers successfully executed
+2025/08/31 17:17:18 Completed GET /society/officers in 5.9428ms
+2025/08/31 17:17:18 Startted PATCH /service/approve/8752ebe7-1113-4794-8968-2a55ec4bd2c3 from [::1]:64296
+2025/08/31 17:17:18 Service Request approved successfully
+2025/08/31 17:17:18 Completed PATCH /service/approve/8752ebe7-1113-4794-8968-2a55ec4bd2c3 in 14.5481ms
+2025/08/31 17:17:18 Startted GET /service/type-status from [::1]:64296
+2025/08/31 17:17:18 Requests fetched successfully
+2025/08/31 17:17:18 Completed GET /service/type-status in 16.5626ms
+2025/08/31 17:17:18 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:17:18 Fetched feedbacks successfully
+2025/08/31 17:17:18 Completed GET /feedbacks in 164.3952ms
+2025/08/31 17:17:18 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:17:18 Fetched feedbacks successfully
+2025/08/31 17:17:18 Completed GET /feedbacks in 5.472ms
+2025/08/31 17:17:18 Startted DELETE /credentials/officer from [::1]:64296
+2025/08/31 17:17:18 Officer deleted successfully
+2025/08/31 17:17:18 Completed DELETE /credentials/officer in 8.7967ms
+2025/08/31 17:17:19 Startted POST /login from [::1]:64296
+2025/08/31 17:17:19 token generated for userId:b341f65d-54f4-4a34-b37c-4d0b4d26860a
+2025/08/31 17:17:19 Completed POST /login in 99.0991ms
+2025/08/31 17:17:19 Startted DELETE /profile from [::1]:64296
+2025/08/31 17:17:19 Service request of deleted user deleted successfully
+2025/08/31 17:17:19 Completed DELETE /profile in 7.7313ms
+2025/08/31 17:17:19 Startted POST /signup from [::1]:64296
+2025/08/31 17:17:19 User created sucessfully
+2025/08/31 17:17:19 Completed POST /signup in 446.045ms
+2025/08/31 17:17:19 Startted POST /login from [::1]:64296
+2025/08/31 17:17:19 token generated for userId:0bfdc31e-d867-4a8c-8a54-9571eed08f8a
+2025/08/31 17:17:19 Completed POST /login in 93.9652ms
+2025/08/31 17:17:20 Startted GET /profile from [::1]:64296
+2025/08/31 17:17:20 users retrived successfully
+2025/08/31 17:17:20 Completed GET /profile in 6.8131ms
+2025/08/31 17:17:20 Startted PATCH /profile/update from [::1]:64296
+2025/08/31 17:17:20 User updated successfully
+2025/08/31 17:17:20 Completed PATCH /profile/update in 7.7632ms
+2025/08/31 17:17:20 Startted PATCH /profile/password from [::1]:64296
+2025/08/31 17:17:20 User password updated successfully
+2025/08/31 17:17:20 Completed PATCH /profile/password in 615.267ms
+2025/08/31 17:17:20 Startted POST /login from [::1]:64296
+2025/08/31 17:17:21 token generated for userId:0bfdc31e-d867-4a8c-8a54-9571eed08f8a
+2025/08/31 17:17:21 Completed POST /login in 96.8024ms
+2025/08/31 17:17:21 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:21 Time slot shown successfully
+2025/08/31 17:17:21 Completed GET /service/time-slots in 5.8723ms
+2025/08/31 17:17:21 Startted POST /service from [::1]:64296
+2025/08/31 17:17:21 Service Request created successfully
+2025/08/31 17:17:21 Completed POST /service in 7.1997ms
+2025/08/31 17:17:21 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:21 Time slot shown successfully
+2025/08/31 17:17:21 Completed GET /service/time-slots in 5.0399ms
+2025/08/31 17:17:21 Startted PATCH /service/reschedule/16e63cf6-ca32-4623-a002-1bf3719941e9 from [::1]:64296
+2025/08/31 17:17:21 Service Request rescheduled successfully
+2025/08/31 17:17:21 Completed PATCH /service/reschedule/16e63cf6-ca32-4623-a002-1bf3719941e9 in 9.6143ms
+2025/08/31 17:17:21 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:21 Time slot shown successfully
+2025/08/31 17:17:21 Completed GET /service/time-slots in 7.0334ms
+2025/08/31 17:17:21 Startted POST /service from [::1]:64296
+2025/08/31 17:17:21 Service Request created successfully
+2025/08/31 17:17:21 Completed POST /service in 7.4099ms
+2025/08/31 17:17:21 Startted GET /service from [::1]:64296
+2025/08/31 17:17:21 Fetched 2 requests with status pending
+2025/08/31 17:17:21 Completed GET /service in 7.1923ms
+2025/08/31 17:17:21 Startted DELETE /service/cancel/8b384404-4a8e-4ae4-b1f2-a233b37f02a8 from [::1]:64296
+2025/08/31 17:17:21 Service Request cancelled successfully
+2025/08/31 17:17:21 Completed DELETE /service/cancel/8b384404-4a8e-4ae4-b1f2-a233b37f02a8 in 10.797ms
+2025/08/31 17:17:21 Startted GET /notices from [::1]:64296
+2025/08/31 17:17:21 Notice fetched successfully
+2025/08/31 17:17:21 Completed GET /notices in 5.8315ms
+2025/08/31 17:17:21 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:17:21 notices retrived successfully
+2025/08/31 17:17:21 Completed GET /notices/month-year in 7.0927ms
+2025/08/31 17:17:22 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:17:22 notices retrived successfully
+2025/08/31 17:17:22 Completed GET /notices/month-year in 5.8953ms
+2025/08/31 17:17:22 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:17:22 invoices retrived successfully
+2025/08/31 17:17:22 Completed GET /invoices/month-year in 9.6069ms
+2025/08/31 17:17:22 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:17:22 invoice retrived successfully
+2025/08/31 17:17:22 Completed GET /invoices/month-year in 7.2271ms
+2025/08/31 17:17:22 Startted POST /login from [::1]:64296
+2025/08/31 17:17:22 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:17:22 Completed POST /login in 95.7851ms
+2025/08/31 17:17:22 Startted POST /officers from [::1]:64296
+2025/08/31 17:17:22 Officer created successfully
+2025/08/31 17:17:22 Completed POST /officers in 303.9639ms
+2025/08/31 17:17:22 Startted GET /society/residents from [::1]:64296
+2025/08/31 17:17:22 View residents successfully executed
+2025/08/31 17:17:22 Completed GET /society/residents in 6.5437ms
+2025/08/31 17:17:22 Startted GET /society/officers from [::1]:64296
+2025/08/31 17:17:22 View officers successfully executed
+2025/08/31 17:17:22 Completed GET /society/officers in 6.9546ms
+2025/08/31 17:17:23 Startted PATCH /service/approve/16e63cf6-ca32-4623-a002-1bf3719941e9 from [::1]:64296
+2025/08/31 17:17:23 Service Request approved successfully
+2025/08/31 17:17:23 Completed PATCH /service/approve/16e63cf6-ca32-4623-a002-1bf3719941e9 in 7.125ms
+2025/08/31 17:17:23 Startted GET /service/type-status from [::1]:64296
+2025/08/31 17:17:23 Requests fetched successfully
+2025/08/31 17:17:23 Completed GET /service/type-status in 8.3338ms
+2025/08/31 17:17:23 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:17:23 Fetched feedbacks successfully
+2025/08/31 17:17:23 Completed GET /feedbacks in 5.4961ms
+2025/08/31 17:17:23 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:17:23 Fetched feedbacks successfully
+2025/08/31 17:17:23 Completed GET /feedbacks in 5.6499ms
+2025/08/31 17:17:23 Startted DELETE /credentials/officer from [::1]:64296
+2025/08/31 17:17:23 Officer deleted successfully
+2025/08/31 17:17:23 Completed DELETE /credentials/officer in 10.5641ms
+2025/08/31 17:17:23 Startted POST /login from [::1]:64296
+2025/08/31 17:17:23 token generated for userId:0bfdc31e-d867-4a8c-8a54-9571eed08f8a
+2025/08/31 17:17:23 Completed POST /login in 99.5258ms
+2025/08/31 17:17:23 Startted DELETE /profile from [::1]:64296
+2025/08/31 17:17:23 Service request of deleted user deleted successfully
+2025/08/31 17:17:23 Completed DELETE /profile in 7.4285ms
+2025/08/31 17:17:23 Startted POST /signup from [::1]:64296
+2025/08/31 17:17:24 User created sucessfully
+2025/08/31 17:17:24 Completed POST /signup in 440.119ms
+2025/08/31 17:17:24 Startted POST /login from [::1]:64296
+2025/08/31 17:17:24 token generated for userId:6c165695-2463-450f-97df-acbcd791348f
+2025/08/31 17:17:24 Completed POST /login in 98.6565ms
+2025/08/31 17:17:24 Startted GET /profile from [::1]:64296
+2025/08/31 17:17:24 users retrived successfully
+2025/08/31 17:17:24 Completed GET /profile in 5.9774ms
+2025/08/31 17:17:24 Startted PATCH /profile/update from [::1]:64296
+2025/08/31 17:17:24 User updated successfully
+2025/08/31 17:17:24 Completed PATCH /profile/update in 9.3776ms
+2025/08/31 17:17:24 Startted PATCH /profile/password from [::1]:64296
+2025/08/31 17:17:25 User password updated successfully
+2025/08/31 17:17:25 Completed PATCH /profile/password in 597.0897ms
+2025/08/31 17:17:25 Startted POST /login from [::1]:64296
+2025/08/31 17:17:25 token generated for userId:6c165695-2463-450f-97df-acbcd791348f
+2025/08/31 17:17:25 Completed POST /login in 90.0477ms
+2025/08/31 17:17:25 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:25 Time slot shown successfully
+2025/08/31 17:17:25 Completed GET /service/time-slots in 6.6365ms
+2025/08/31 17:17:25 Startted POST /service from [::1]:64296
+2025/08/31 17:17:25 Service Request created successfully
+2025/08/31 17:17:25 Completed POST /service in 8.1932ms
+2025/08/31 17:17:25 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:25 Time slot shown successfully
+2025/08/31 17:17:25 Completed GET /service/time-slots in 7.1002ms
+2025/08/31 17:17:25 Startted PATCH /service/reschedule/0c72dbcf-b6eb-4d2d-8412-dc5d7b71cf63 from [::1]:64296
+2025/08/31 17:17:25 Service Request rescheduled successfully
+2025/08/31 17:17:25 Completed PATCH /service/reschedule/0c72dbcf-b6eb-4d2d-8412-dc5d7b71cf63 in 8.2474ms
+2025/08/31 17:17:25 Startted GET /service/time-slots from [::1]:64296
+2025/08/31 17:17:26 Time slot shown successfully
+2025/08/31 17:17:26 Completed GET /service/time-slots in 6.7336ms
+2025/08/31 17:17:26 Startted POST /service from [::1]:64296
+2025/08/31 17:17:26 Service Request created successfully
+2025/08/31 17:17:26 Completed POST /service in 7.6153ms
+2025/08/31 17:17:26 Startted GET /service from [::1]:64296
+2025/08/31 17:17:26 Fetched 2 requests with status pending
+2025/08/31 17:17:26 Completed GET /service in 5.7289ms
+2025/08/31 17:17:26 Startted DELETE /service/cancel/cf810595-10d9-413d-9159-8092b9a017d6 from [::1]:64296
+2025/08/31 17:17:26 Service Request cancelled successfully
+2025/08/31 17:17:26 Completed DELETE /service/cancel/cf810595-10d9-413d-9159-8092b9a017d6 in 114.4248ms
+2025/08/31 17:17:26 Startted GET /notices from [::1]:64296
+2025/08/31 17:17:26 Notice fetched successfully
+2025/08/31 17:17:26 Completed GET /notices in 20.7844ms
+2025/08/31 17:17:26 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:17:26 notices retrived successfully
+2025/08/31 17:17:26 Completed GET /notices/month-year in 6.4136ms
+2025/08/31 17:17:26 Startted GET /notices/month-year from [::1]:64296
+2025/08/31 17:17:26 notices retrived successfully
+2025/08/31 17:17:26 Completed GET /notices/month-year in 15.0036ms
+2025/08/31 17:17:26 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:17:26 invoices retrived successfully
+2025/08/31 17:17:26 Completed GET /invoices/month-year in 5.534ms
+2025/08/31 17:17:26 Startted GET /invoices/month-year from [::1]:64296
+2025/08/31 17:17:26 invoice retrived successfully
+2025/08/31 17:17:26 Completed GET /invoices/month-year in 8.2428ms
+2025/08/31 17:17:27 Startted POST /login from [::1]:64296
+2025/08/31 17:17:27 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:17:27 Completed POST /login in 98.3139ms
+2025/08/31 17:17:27 Startted POST /officers from [::1]:64296
+2025/08/31 17:17:27 Officer created successfully
+2025/08/31 17:17:27 Completed POST /officers in 176.6028ms
+2025/08/31 17:17:27 Startted GET /society/residents from [::1]:64296
+2025/08/31 17:17:27 View residents successfully executed
+2025/08/31 17:17:27 Completed GET /society/residents in 6.2404ms
+2025/08/31 17:17:27 Startted GET /society/officers from [::1]:64296
+2025/08/31 17:17:27 View officers successfully executed
+2025/08/31 17:17:27 Completed GET /society/officers in 6.7192ms
+2025/08/31 17:17:27 Startted PATCH /service/approve/0c72dbcf-b6eb-4d2d-8412-dc5d7b71cf63 from [::1]:64296
+2025/08/31 17:17:27 Service Request approved successfully
+2025/08/31 17:17:27 Completed PATCH /service/approve/0c72dbcf-b6eb-4d2d-8412-dc5d7b71cf63 in 9.235ms
+2025/08/31 17:17:27 Startted GET /service/type-status from [::1]:64296
+2025/08/31 17:17:27 Requests fetched successfully
+2025/08/31 17:17:27 Completed GET /service/type-status in 5.8168ms
+2025/08/31 17:17:27 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:17:27 Fetched feedbacks successfully
+2025/08/31 17:17:27 Completed GET /feedbacks in 7.616ms
+2025/08/31 17:17:27 Startted GET /feedbacks from [::1]:64296
+2025/08/31 17:17:27 Fetched feedbacks successfully
+2025/08/31 17:17:27 Completed GET /feedbacks in 6.5699ms
+2025/08/31 17:17:28 Startted DELETE /credentials/officer from [::1]:64296
+2025/08/31 17:17:28 Officer deleted successfully
+2025/08/31 17:17:28 Completed DELETE /credentials/officer in 11.0605ms
+2025/08/31 17:17:28 Startted POST /login from [::1]:64296
+2025/08/31 17:17:28 token generated for userId:6c165695-2463-450f-97df-acbcd791348f
+2025/08/31 17:17:28 Completed POST /login in 100.7721ms
+2025/08/31 17:17:28 Startted DELETE /profile from [::1]:64296
+2025/08/31 17:17:28 Service request of deleted user deleted successfully
+2025/08/31 17:17:28 Completed DELETE /profile in 6.7532ms
+2025/08/31 17:23:12 Startted POST /signup from [::1]:55264
+2025/08/31 17:23:12 User created sucessfully
+2025/08/31 17:23:12 Completed POST /signup in 469.3845ms
+2025/08/31 17:23:12 Startted POST /login from [::1]:55264
+2025/08/31 17:23:12 token generated for userId:d2722e48-b64a-4f97-84c5-c520c7b5d010
+2025/08/31 17:23:12 Completed POST /login in 97.7246ms
+2025/08/31 17:23:12 Startted GET /profile from [::1]:55264
+2025/08/31 17:23:12 users retrived successfully
+2025/08/31 17:23:12 Completed GET /profile in 7.7763ms
+2025/08/31 17:23:13 Startted PATCH /profile/update from [::1]:55264
+2025/08/31 17:23:13 User updated successfully
+2025/08/31 17:23:13 Completed PATCH /profile/update in 7.6986ms
+2025/08/31 17:23:13 Startted PATCH /profile/password from [::1]:55264
+2025/08/31 17:23:13 User password updated successfully
+2025/08/31 17:23:13 Completed PATCH /profile/password in 630.5166ms
+2025/08/31 17:23:13 Startted POST /login from [::1]:55264
+2025/08/31 17:23:13 token generated for userId:d2722e48-b64a-4f97-84c5-c520c7b5d010
+2025/08/31 17:23:13 Completed POST /login in 103.6161ms
+2025/08/31 17:23:14 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:14 Time slot shown successfully
+2025/08/31 17:23:14 Completed GET /service/time-slots in 7.1258ms
+2025/08/31 17:23:14 Startted POST /service from [::1]:55264
+2025/08/31 17:23:14 Service Request created successfully
+2025/08/31 17:23:14 Completed POST /service in 7.4347ms
+2025/08/31 17:23:14 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:14 Time slot shown successfully
+2025/08/31 17:23:14 Completed GET /service/time-slots in 6.0711ms
+2025/08/31 17:23:14 Startted PATCH /service/reschedule/4a1453f1-d8c3-476f-98b9-8979f094e059 from [::1]:55264
+2025/08/31 17:23:14 Service Request rescheduled successfully
+2025/08/31 17:23:14 Completed PATCH /service/reschedule/4a1453f1-d8c3-476f-98b9-8979f094e059 in 8.2385ms
+2025/08/31 17:23:14 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:14 Time slot shown successfully
+2025/08/31 17:23:14 Completed GET /service/time-slots in 7.9557ms
+2025/08/31 17:23:14 Startted POST /service from [::1]:55264
+2025/08/31 17:23:14 Service Request created successfully
+2025/08/31 17:23:14 Completed POST /service in 197.7794ms
+2025/08/31 17:23:14 Startted GET /service from [::1]:55264
+2025/08/31 17:23:14 Fetched 2 requests with status pending
+2025/08/31 17:23:14 Completed GET /service in 5.8136ms
+2025/08/31 17:23:14 Startted DELETE /service/cancel/48083dd5-4b7f-4d28-87df-02f7c11220a1 from [::1]:55264
+2025/08/31 17:23:14 Service Request cancelled successfully
+2025/08/31 17:23:14 Completed DELETE /service/cancel/48083dd5-4b7f-4d28-87df-02f7c11220a1 in 7.5373ms
+2025/08/31 17:23:15 Startted GET /notices from [::1]:55264
+2025/08/31 17:23:15 Notice fetched successfully
+2025/08/31 17:23:15 Completed GET /notices in 7.2886ms
+2025/08/31 17:23:15 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:15 notices retrived successfully
+2025/08/31 17:23:15 Completed GET /notices/month-year in 7.4177ms
+2025/08/31 17:23:15 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:15 notices retrived successfully
+2025/08/31 17:23:15 Completed GET /notices/month-year in 10.2548ms
+2025/08/31 17:23:15 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:15 invoices retrived successfully
+2025/08/31 17:23:15 Completed GET /invoices/month-year in 6.9554ms
+2025/08/31 17:23:15 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:15 invoice retrived successfully
+2025/08/31 17:23:15 Completed GET /invoices/month-year in 5.3864ms
+2025/08/31 17:23:15 Startted POST /login from [::1]:55264
+2025/08/31 17:23:15 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:23:15 Completed POST /login in 98.2149ms
+2025/08/31 17:23:15 Startted POST /officers from [::1]:55264
+2025/08/31 17:23:15 Officer created successfully
+2025/08/31 17:23:15 Completed POST /officers in 100.9427ms
+2025/08/31 17:23:15 Startted GET /society/residents from [::1]:55264
+2025/08/31 17:23:15 View residents successfully executed
+2025/08/31 17:23:15 Completed GET /society/residents in 7.7158ms
+2025/08/31 17:23:15 Startted GET /society/officers from [::1]:55264
+2025/08/31 17:23:15 View officers successfully executed
+2025/08/31 17:23:15 Completed GET /society/officers in 8.5532ms
+2025/08/31 17:23:16 Startted PATCH /service/approve/4a1453f1-d8c3-476f-98b9-8979f094e059 from [::1]:55264
+2025/08/31 17:23:16 Service Request approved successfully
+2025/08/31 17:23:16 Completed PATCH /service/approve/4a1453f1-d8c3-476f-98b9-8979f094e059 in 8.0499ms
+2025/08/31 17:23:16 Startted GET /service/type-status from [::1]:55264
+2025/08/31 17:23:16 Requests fetched successfully
+2025/08/31 17:23:16 Completed GET /service/type-status in 7.3237ms
+2025/08/31 17:23:16 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:16 Fetched feedbacks successfully
+2025/08/31 17:23:16 Completed GET /feedbacks in 5.3465ms
+2025/08/31 17:23:16 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:16 Fetched feedbacks successfully
+2025/08/31 17:23:16 Completed GET /feedbacks in 7.5533ms
+2025/08/31 17:23:16 Startted DELETE /credentials/officer from [::1]:55264
+2025/08/31 17:23:16 Officer deleted successfully
+2025/08/31 17:23:16 Completed DELETE /credentials/officer in 8.9273ms
+2025/08/31 17:23:16 Startted POST /login from [::1]:55264
+2025/08/31 17:23:16 token generated for userId:d2722e48-b64a-4f97-84c5-c520c7b5d010
+2025/08/31 17:23:16 Completed POST /login in 106.4287ms
+2025/08/31 17:23:16 Startted DELETE /profile from [::1]:55264
+2025/08/31 17:23:16 Service request of deleted user deleted successfully
+2025/08/31 17:23:16 Completed DELETE /profile in 10.7209ms
+2025/08/31 17:23:16 Startted POST /signup from [::1]:55264
+2025/08/31 17:23:17 User created sucessfully
+2025/08/31 17:23:17 Completed POST /signup in 453.3005ms
+2025/08/31 17:23:17 Startted POST /login from [::1]:55264
+2025/08/31 17:23:17 token generated for userId:ee476f62-7ff2-4aee-9799-abdf4293f4a2
+2025/08/31 17:23:17 Completed POST /login in 97.4656ms
+2025/08/31 17:23:17 Startted GET /profile from [::1]:55264
+2025/08/31 17:23:17 users retrived successfully
+2025/08/31 17:23:17 Completed GET /profile in 5.6683ms
+2025/08/31 17:23:17 Startted PATCH /profile/update from [::1]:55264
+2025/08/31 17:23:17 User updated successfully
+2025/08/31 17:23:17 Completed PATCH /profile/update in 8.0788ms
+2025/08/31 17:23:17 Startted PATCH /profile/password from [::1]:55264
+2025/08/31 17:23:18 User password updated successfully
+2025/08/31 17:23:18 Completed PATCH /profile/password in 627.8608ms
+2025/08/31 17:23:18 Startted POST /login from [::1]:55264
+2025/08/31 17:23:18 token generated for userId:ee476f62-7ff2-4aee-9799-abdf4293f4a2
+2025/08/31 17:23:18 Completed POST /login in 90.8844ms
+2025/08/31 17:23:18 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:18 Time slot shown successfully
+2025/08/31 17:23:18 Completed GET /service/time-slots in 5.8063ms
+2025/08/31 17:23:18 Startted POST /service from [::1]:55264
+2025/08/31 17:23:18 Service Request created successfully
+2025/08/31 17:23:18 Completed POST /service in 174.2259ms
+2025/08/31 17:23:19 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:19 Time slot shown successfully
+2025/08/31 17:23:19 Completed GET /service/time-slots in 9.2336ms
+2025/08/31 17:23:19 Startted PATCH /service/reschedule/5fa4b45e-27f1-46e6-a677-943f4843ef95 from [::1]:55264
+2025/08/31 17:23:19 Service Request rescheduled successfully
+2025/08/31 17:23:19 Completed PATCH /service/reschedule/5fa4b45e-27f1-46e6-a677-943f4843ef95 in 4.9404ms
+2025/08/31 17:23:19 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:19 Time slot shown successfully
+2025/08/31 17:23:19 Completed GET /service/time-slots in 13.779ms
+2025/08/31 17:23:19 Startted POST /service from [::1]:55264
+2025/08/31 17:23:19 Service Request created successfully
+2025/08/31 17:23:19 Completed POST /service in 8.5049ms
+2025/08/31 17:23:19 Startted GET /service from [::1]:55264
+2025/08/31 17:23:19 Fetched 2 requests with status pending
+2025/08/31 17:23:19 Completed GET /service in 5.2245ms
+2025/08/31 17:23:19 Startted DELETE /service/cancel/d49b0de7-c567-4214-8fad-ba77b6302a51 from [::1]:55264
+2025/08/31 17:23:19 Service Request cancelled successfully
+2025/08/31 17:23:19 Completed DELETE /service/cancel/d49b0de7-c567-4214-8fad-ba77b6302a51 in 8.9439ms
+2025/08/31 17:23:19 Startted GET /notices from [::1]:55264
+2025/08/31 17:23:19 Notice fetched successfully
+2025/08/31 17:23:19 Completed GET /notices in 6.5977ms
+2025/08/31 17:23:19 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:19 notices retrived successfully
+2025/08/31 17:23:19 Completed GET /notices/month-year in 6.7284ms
+2025/08/31 17:23:19 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:19 notices retrived successfully
+2025/08/31 17:23:19 Completed GET /notices/month-year in 7.0832ms
+2025/08/31 17:23:19 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:19 invoices retrived successfully
+2025/08/31 17:23:19 Completed GET /invoices/month-year in 6.0947ms
+2025/08/31 17:23:19 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:19 invoice retrived successfully
+2025/08/31 17:23:19 Completed GET /invoices/month-year in 6.8312ms
+2025/08/31 17:23:20 Startted POST /login from [::1]:55264
+2025/08/31 17:23:20 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:23:20 Completed POST /login in 98.0596ms
+2025/08/31 17:23:20 Startted POST /officers from [::1]:55264
+2025/08/31 17:23:20 Officer created successfully
+2025/08/31 17:23:20 Completed POST /officers in 120.7539ms
+2025/08/31 17:23:20 Startted GET /society/residents from [::1]:55264
+2025/08/31 17:23:20 View residents successfully executed
+2025/08/31 17:23:20 Completed GET /society/residents in 6.2854ms
+2025/08/31 17:23:20 Startted GET /society/officers from [::1]:55264
+2025/08/31 17:23:20 View officers successfully executed
+2025/08/31 17:23:20 Completed GET /society/officers in 6.9252ms
+2025/08/31 17:23:20 Startted PATCH /service/approve/5fa4b45e-27f1-46e6-a677-943f4843ef95 from [::1]:55264
+2025/08/31 17:23:20 Service Request approved successfully
+2025/08/31 17:23:20 Completed PATCH /service/approve/5fa4b45e-27f1-46e6-a677-943f4843ef95 in 9.3004ms
+2025/08/31 17:23:20 Startted GET /service/type-status from [::1]:55264
+2025/08/31 17:23:20 Requests fetched successfully
+2025/08/31 17:23:20 Completed GET /service/type-status in 7.5006ms
+2025/08/31 17:23:20 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:20 Fetched feedbacks successfully
+2025/08/31 17:23:20 Completed GET /feedbacks in 6.7311ms
+2025/08/31 17:23:20 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:20 Fetched feedbacks successfully
+2025/08/31 17:23:20 Completed GET /feedbacks in 6.7151ms
+2025/08/31 17:23:21 Startted DELETE /credentials/officer from [::1]:55264
+2025/08/31 17:23:21 Officer deleted successfully
+2025/08/31 17:23:21 Completed DELETE /credentials/officer in 8.8896ms
+2025/08/31 17:23:21 Startted POST /login from [::1]:55264
+2025/08/31 17:23:21 token generated for userId:ee476f62-7ff2-4aee-9799-abdf4293f4a2
+2025/08/31 17:23:21 Completed POST /login in 101.0905ms
+2025/08/31 17:23:21 Startted DELETE /profile from [::1]:55264
+2025/08/31 17:23:21 Service request of deleted user deleted successfully
+2025/08/31 17:23:21 Completed DELETE /profile in 8.116ms
+2025/08/31 17:23:21 Startted POST /signup from [::1]:55264
+2025/08/31 17:23:21 User created sucessfully
+2025/08/31 17:23:21 Completed POST /signup in 459.4973ms
+2025/08/31 17:23:21 Startted POST /login from [::1]:55264
+2025/08/31 17:23:22 token generated for userId:e5071b1c-22f0-4872-b41f-f5c6ff8a9392
+2025/08/31 17:23:22 Completed POST /login in 96.9881ms
+2025/08/31 17:23:22 Startted GET /profile from [::1]:55264
+2025/08/31 17:23:22 users retrived successfully
+2025/08/31 17:23:22 Completed GET /profile in 5.6822ms
+2025/08/31 17:23:22 Startted PATCH /profile/update from [::1]:55264
+2025/08/31 17:23:22 User updated successfully
+2025/08/31 17:23:22 Completed PATCH /profile/update in 7.2766ms
+2025/08/31 17:23:22 Startted PATCH /profile/password from [::1]:55264
+2025/08/31 17:23:22 User password updated successfully
+2025/08/31 17:23:22 Completed PATCH /profile/password in 660.7047ms
+2025/08/31 17:23:23 Startted POST /login from [::1]:55264
+2025/08/31 17:23:23 token generated for userId:e5071b1c-22f0-4872-b41f-f5c6ff8a9392
+2025/08/31 17:23:23 Completed POST /login in 290.2635ms
+2025/08/31 17:23:23 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:23 Time slot shown successfully
+2025/08/31 17:23:23 Completed GET /service/time-slots in 6.4226ms
+2025/08/31 17:23:23 Startted POST /service from [::1]:55264
+2025/08/31 17:23:23 Service Request created successfully
+2025/08/31 17:23:23 Completed POST /service in 7.4365ms
+2025/08/31 17:23:23 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:23 Time slot shown successfully
+2025/08/31 17:23:23 Completed GET /service/time-slots in 9.182ms
+2025/08/31 17:23:23 Startted PATCH /service/reschedule/70dde8f7-3b73-498f-a23c-aebb32925502 from [::1]:55264
+2025/08/31 17:23:23 Service Request rescheduled successfully
+2025/08/31 17:23:23 Completed PATCH /service/reschedule/70dde8f7-3b73-498f-a23c-aebb32925502 in 8.2275ms
+2025/08/31 17:23:23 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:23 Time slot shown successfully
+2025/08/31 17:23:23 Completed GET /service/time-slots in 8.7338ms
+2025/08/31 17:23:23 Startted POST /service from [::1]:55264
+2025/08/31 17:23:23 Service Request created successfully
+2025/08/31 17:23:23 Completed POST /service in 6.7048ms
+2025/08/31 17:23:24 Startted GET /service from [::1]:55264
+2025/08/31 17:23:24 Fetched 2 requests with status pending
+2025/08/31 17:23:24 Completed GET /service in 8.2933ms
+2025/08/31 17:23:24 Startted DELETE /service/cancel/869d8d51-c275-4aed-a7ae-9d1edcee3788 from [::1]:55264
+2025/08/31 17:23:24 Service Request cancelled successfully
+2025/08/31 17:23:24 Completed DELETE /service/cancel/869d8d51-c275-4aed-a7ae-9d1edcee3788 in 6.0681ms
+2025/08/31 17:23:24 Startted GET /notices from [::1]:55264
+2025/08/31 17:23:24 Notice fetched successfully
+2025/08/31 17:23:24 Completed GET /notices in 6.8336ms
+2025/08/31 17:23:24 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:24 notices retrived successfully
+2025/08/31 17:23:24 Completed GET /notices/month-year in 7.0357ms
+2025/08/31 17:23:24 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:24 notices retrived successfully
+2025/08/31 17:23:24 Completed GET /notices/month-year in 6.3135ms
+2025/08/31 17:23:24 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:24 invoices retrived successfully
+2025/08/31 17:23:24 Completed GET /invoices/month-year in 7.9758ms
+2025/08/31 17:23:24 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:24 invoice retrived successfully
+2025/08/31 17:23:24 Completed GET /invoices/month-year in 6.8014ms
+2025/08/31 17:23:24 Startted POST /login from [::1]:55264
+2025/08/31 17:23:24 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:23:24 Completed POST /login in 98.4937ms
+2025/08/31 17:23:24 Startted POST /officers from [::1]:55264
+2025/08/31 17:23:25 Officer created successfully
+2025/08/31 17:23:25 Completed POST /officers in 101.2926ms
+2025/08/31 17:23:25 Startted GET /society/residents from [::1]:55264
+2025/08/31 17:23:25 View residents successfully executed
+2025/08/31 17:23:25 Completed GET /society/residents in 7.7558ms
+2025/08/31 17:23:25 Startted GET /society/officers from [::1]:55264
+2025/08/31 17:23:25 View officers successfully executed
+2025/08/31 17:23:25 Completed GET /society/officers in 8.2449ms
+2025/08/31 17:23:25 Startted PATCH /service/approve/70dde8f7-3b73-498f-a23c-aebb32925502 from [::1]:55264
+2025/08/31 17:23:25 Service Request approved successfully
+2025/08/31 17:23:25 Completed PATCH /service/approve/70dde8f7-3b73-498f-a23c-aebb32925502 in 7.229ms
+2025/08/31 17:23:25 Startted GET /service/type-status from [::1]:55264
+2025/08/31 17:23:25 Requests fetched successfully
+2025/08/31 17:23:25 Completed GET /service/type-status in 8.7759ms
+2025/08/31 17:23:25 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:25 Fetched feedbacks successfully
+2025/08/31 17:23:25 Completed GET /feedbacks in 5.8815ms
+2025/08/31 17:23:25 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:25 Fetched feedbacks successfully
+2025/08/31 17:23:25 Completed GET /feedbacks in 8.7898ms
+2025/08/31 17:23:25 Startted DELETE /credentials/officer from [::1]:55264
+2025/08/31 17:23:25 Officer deleted successfully
+2025/08/31 17:23:25 Completed DELETE /credentials/officer in 8.4445ms
+2025/08/31 17:23:25 Startted POST /login from [::1]:55264
+2025/08/31 17:23:25 token generated for userId:e5071b1c-22f0-4872-b41f-f5c6ff8a9392
+2025/08/31 17:23:25 Completed POST /login in 104.8702ms
+2025/08/31 17:23:25 Startted DELETE /profile from [::1]:55264
+2025/08/31 17:23:25 Service request of deleted user deleted successfully
+2025/08/31 17:23:25 Completed DELETE /profile in 7.6795ms
+2025/08/31 17:23:26 Startted POST /signup from [::1]:55264
+2025/08/31 17:23:26 User created sucessfully
+2025/08/31 17:23:26 Completed POST /signup in 472.6364ms
+2025/08/31 17:23:26 Startted POST /login from [::1]:55264
+2025/08/31 17:23:26 token generated for userId:26f35dad-f718-4028-bd21-193d5234f5ff
+2025/08/31 17:23:26 Completed POST /login in 96.9329ms
+2025/08/31 17:23:26 Startted GET /profile from [::1]:55264
+2025/08/31 17:23:26 users retrived successfully
+2025/08/31 17:23:26 Completed GET /profile in 5.7945ms
+2025/08/31 17:23:26 Startted PATCH /profile/update from [::1]:55264
+2025/08/31 17:23:26 User updated successfully
+2025/08/31 17:23:26 Completed PATCH /profile/update in 7.4576ms
+2025/08/31 17:23:26 Startted PATCH /profile/password from [::1]:55264
+2025/08/31 17:23:27 User password updated successfully
+2025/08/31 17:23:27 Completed PATCH /profile/password in 847.7939ms
+2025/08/31 17:23:27 Startted POST /login from [::1]:55264
+2025/08/31 17:23:27 token generated for userId:26f35dad-f718-4028-bd21-193d5234f5ff
+2025/08/31 17:23:27 Completed POST /login in 99.069ms
+2025/08/31 17:23:28 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:28 Time slot shown successfully
+2025/08/31 17:23:28 Completed GET /service/time-slots in 6.7333ms
+2025/08/31 17:23:28 Startted POST /service from [::1]:55264
+2025/08/31 17:23:28 Service Request created successfully
+2025/08/31 17:23:28 Completed POST /service in 6.8285ms
+2025/08/31 17:23:28 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:28 Time slot shown successfully
+2025/08/31 17:23:28 Completed GET /service/time-slots in 6.1174ms
+2025/08/31 17:23:28 Startted PATCH /service/reschedule/27a3d859-4e60-4c44-9066-c3e9669063f3 from [::1]:55264
+2025/08/31 17:23:28 Service Request rescheduled successfully
+2025/08/31 17:23:28 Completed PATCH /service/reschedule/27a3d859-4e60-4c44-9066-c3e9669063f3 in 6.9857ms
+2025/08/31 17:23:28 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:28 Time slot shown successfully
+2025/08/31 17:23:28 Completed GET /service/time-slots in 7.2871ms
+2025/08/31 17:23:28 Startted POST /service from [::1]:55264
+2025/08/31 17:23:28 Service Request created successfully
+2025/08/31 17:23:28 Completed POST /service in 7.5193ms
+2025/08/31 17:23:28 Startted GET /service from [::1]:55264
+2025/08/31 17:23:28 Fetched 2 requests with status pending
+2025/08/31 17:23:28 Completed GET /service in 13.6258ms
+2025/08/31 17:23:28 Startted DELETE /service/cancel/d42ed998-40a5-4006-ab6e-c7a7a3670360 from [::1]:55264
+2025/08/31 17:23:28 Service Request cancelled successfully
+2025/08/31 17:23:28 Completed DELETE /service/cancel/d42ed998-40a5-4006-ab6e-c7a7a3670360 in 6.8019ms
+2025/08/31 17:23:28 Startted GET /notices from [::1]:55264
+2025/08/31 17:23:28 Notice fetched successfully
+2025/08/31 17:23:28 Completed GET /notices in 6.9548ms
+2025/08/31 17:23:28 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:28 notices retrived successfully
+2025/08/31 17:23:28 Completed GET /notices/month-year in 6.4249ms
+2025/08/31 17:23:29 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:29 notices retrived successfully
+2025/08/31 17:23:29 Completed GET /notices/month-year in 6.4194ms
+2025/08/31 17:23:29 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:29 invoices retrived successfully
+2025/08/31 17:23:29 Completed GET /invoices/month-year in 7.3435ms
+2025/08/31 17:23:29 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:29 invoice retrived successfully
+2025/08/31 17:23:29 Completed GET /invoices/month-year in 6.6118ms
+2025/08/31 17:23:29 Startted POST /login from [::1]:55264
+2025/08/31 17:23:29 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:23:29 Completed POST /login in 100.2029ms
+2025/08/31 17:23:29 Startted POST /officers from [::1]:55264
+2025/08/31 17:23:29 Officer created successfully
+2025/08/31 17:23:29 Completed POST /officers in 105.9323ms
+2025/08/31 17:23:29 Startted GET /society/residents from [::1]:55264
+2025/08/31 17:23:29 View residents successfully executed
+2025/08/31 17:23:29 Completed GET /society/residents in 8.5379ms
+2025/08/31 17:23:29 Startted GET /society/officers from [::1]:55264
+2025/08/31 17:23:29 View officers successfully executed
+2025/08/31 17:23:29 Completed GET /society/officers in 8.7143ms
+2025/08/31 17:23:29 Startted PATCH /service/approve/27a3d859-4e60-4c44-9066-c3e9669063f3 from [::1]:55264
+2025/08/31 17:23:29 Service Request approved successfully
+2025/08/31 17:23:29 Completed PATCH /service/approve/27a3d859-4e60-4c44-9066-c3e9669063f3 in 8.6458ms
+2025/08/31 17:23:29 Startted GET /service/type-status from [::1]:55264
+2025/08/31 17:23:29 Requests fetched successfully
+2025/08/31 17:23:29 Completed GET /service/type-status in 5.7473ms
+2025/08/31 17:23:30 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:30 Fetched feedbacks successfully
+2025/08/31 17:23:30 Completed GET /feedbacks in 8.8792ms
+2025/08/31 17:23:30 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:30 Fetched feedbacks successfully
+2025/08/31 17:23:30 Completed GET /feedbacks in 6.5833ms
+2025/08/31 17:23:30 Startted DELETE /credentials/officer from [::1]:55264
+2025/08/31 17:23:30 Officer deleted successfully
+2025/08/31 17:23:30 Completed DELETE /credentials/officer in 7.1822ms
+2025/08/31 17:23:30 Startted POST /login from [::1]:55264
+2025/08/31 17:23:30 token generated for userId:26f35dad-f718-4028-bd21-193d5234f5ff
+2025/08/31 17:23:30 Completed POST /login in 97.5784ms
+2025/08/31 17:23:30 Startted DELETE /profile from [::1]:55264
+2025/08/31 17:23:30 Service request of deleted user deleted successfully
+2025/08/31 17:23:30 Completed DELETE /profile in 9.1914ms
+2025/08/31 17:23:30 Startted POST /signup from [::1]:55264
+2025/08/31 17:23:31 User created sucessfully
+2025/08/31 17:23:31 Completed POST /signup in 470.1714ms
+2025/08/31 17:23:31 Startted POST /login from [::1]:55264
+2025/08/31 17:23:31 token generated for userId:b9e7a724-3a6d-421e-915b-5cc736d2ea4f
+2025/08/31 17:23:31 Completed POST /login in 98.3112ms
+2025/08/31 17:23:31 Startted GET /profile from [::1]:55264
+2025/08/31 17:23:31 users retrived successfully
+2025/08/31 17:23:31 Completed GET /profile in 221.7681ms
+2025/08/31 17:23:31 Startted PATCH /profile/update from [::1]:55264
+2025/08/31 17:23:31 User updated successfully
+2025/08/31 17:23:31 Completed PATCH /profile/update in 24.9699ms
+2025/08/31 17:23:31 Startted PATCH /profile/password from [::1]:55264
+2025/08/31 17:23:32 User password updated successfully
+2025/08/31 17:23:32 Completed PATCH /profile/password in 633.5085ms
+2025/08/31 17:23:32 Startted POST /login from [::1]:55264
+2025/08/31 17:23:32 token generated for userId:b9e7a724-3a6d-421e-915b-5cc736d2ea4f
+2025/08/31 17:23:32 Completed POST /login in 95.636ms
+2025/08/31 17:23:32 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:32 Time slot shown successfully
+2025/08/31 17:23:32 Completed GET /service/time-slots in 4.9651ms
+2025/08/31 17:23:32 Startted POST /service from [::1]:55264
+2025/08/31 17:23:32 Service Request created successfully
+2025/08/31 17:23:32 Completed POST /service in 12.2996ms
+2025/08/31 17:23:32 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:32 Time slot shown successfully
+2025/08/31 17:23:32 Completed GET /service/time-slots in 5.7159ms
+2025/08/31 17:23:32 Startted PATCH /service/reschedule/c1038aa1-d51d-454f-ae65-71932ed55c95 from [::1]:55264
+2025/08/31 17:23:33 Service Request rescheduled successfully
+2025/08/31 17:23:33 Completed PATCH /service/reschedule/c1038aa1-d51d-454f-ae65-71932ed55c95 in 7.8539ms
+2025/08/31 17:23:33 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:33 Time slot shown successfully
+2025/08/31 17:23:33 Completed GET /service/time-slots in 5.549ms
+2025/08/31 17:23:33 Startted POST /service from [::1]:55264
+2025/08/31 17:23:33 Service Request created successfully
+2025/08/31 17:23:33 Completed POST /service in 10.1144ms
+2025/08/31 17:23:33 Startted GET /service from [::1]:55264
+2025/08/31 17:23:33 Fetched 2 requests with status pending
+2025/08/31 17:23:33 Completed GET /service in 7.2058ms
+2025/08/31 17:23:33 Startted DELETE /service/cancel/1c59d8d1-e861-474d-8fc7-dbbb71fbf2a2 from [::1]:55264
+2025/08/31 17:23:33 Service Request cancelled successfully
+2025/08/31 17:23:33 Completed DELETE /service/cancel/1c59d8d1-e861-474d-8fc7-dbbb71fbf2a2 in 6.045ms
+2025/08/31 17:23:33 Startted GET /notices from [::1]:55264
+2025/08/31 17:23:33 Notice fetched successfully
+2025/08/31 17:23:33 Completed GET /notices in 7.4983ms
+2025/08/31 17:23:33 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:33 notices retrived successfully
+2025/08/31 17:23:33 Completed GET /notices/month-year in 6.0754ms
+2025/08/31 17:23:33 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:33 notices retrived successfully
+2025/08/31 17:23:33 Completed GET /notices/month-year in 5.8122ms
+2025/08/31 17:23:33 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:33 invoices retrived successfully
+2025/08/31 17:23:33 Completed GET /invoices/month-year in 7.2284ms
+2025/08/31 17:23:33 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:33 invoice retrived successfully
+2025/08/31 17:23:33 Completed GET /invoices/month-year in 14.8072ms
+2025/08/31 17:23:33 Startted POST /login from [::1]:55264
+2025/08/31 17:23:34 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:23:34 Completed POST /login in 98.1061ms
+2025/08/31 17:23:34 Startted POST /officers from [::1]:55264
+2025/08/31 17:23:34 Officer created successfully
+2025/08/31 17:23:34 Completed POST /officers in 100.0724ms
+2025/08/31 17:23:34 Startted GET /society/residents from [::1]:55264
+2025/08/31 17:23:34 View residents successfully executed
+2025/08/31 17:23:34 Completed GET /society/residents in 7.1884ms
+2025/08/31 17:23:34 Startted GET /society/officers from [::1]:55264
+2025/08/31 17:23:34 View officers successfully executed
+2025/08/31 17:23:34 Completed GET /society/officers in 7.2817ms
+2025/08/31 17:23:34 Startted PATCH /service/approve/c1038aa1-d51d-454f-ae65-71932ed55c95 from [::1]:55264
+2025/08/31 17:23:34 Service Request approved successfully
+2025/08/31 17:23:34 Completed PATCH /service/approve/c1038aa1-d51d-454f-ae65-71932ed55c95 in 8.3273ms
+2025/08/31 17:23:34 Startted GET /service/type-status from [::1]:55264
+2025/08/31 17:23:34 Requests fetched successfully
+2025/08/31 17:23:34 Completed GET /service/type-status in 5.9864ms
+2025/08/31 17:23:34 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:34 Fetched feedbacks successfully
+2025/08/31 17:23:34 Completed GET /feedbacks in 6.5629ms
+2025/08/31 17:23:34 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:34 Fetched feedbacks successfully
+2025/08/31 17:23:34 Completed GET /feedbacks in 5.9387ms
+2025/08/31 17:23:34 Startted DELETE /credentials/officer from [::1]:55264
+2025/08/31 17:23:34 Officer deleted successfully
+2025/08/31 17:23:34 Completed DELETE /credentials/officer in 9.3569ms
+2025/08/31 17:23:34 Startted POST /login from [::1]:55264
+2025/08/31 17:23:35 token generated for userId:b9e7a724-3a6d-421e-915b-5cc736d2ea4f
+2025/08/31 17:23:35 Completed POST /login in 111.0548ms
+2025/08/31 17:23:35 Startted DELETE /profile from [::1]:55264
+2025/08/31 17:23:35 Service request of deleted user deleted successfully
+2025/08/31 17:23:35 Completed DELETE /profile in 6.4115ms
+2025/08/31 17:23:35 Startted POST /signup from [::1]:55264
+2025/08/31 17:23:35 User created sucessfully
+2025/08/31 17:23:35 Completed POST /signup in 711.3891ms
+2025/08/31 17:23:36 Startted POST /login from [::1]:55264
+2025/08/31 17:23:36 token generated for userId:20cea795-76fe-44e8-885b-8a0beb93e750
+2025/08/31 17:23:36 Completed POST /login in 95.5607ms
+2025/08/31 17:23:36 Startted GET /profile from [::1]:55264
+2025/08/31 17:23:36 users retrived successfully
+2025/08/31 17:23:36 Completed GET /profile in 9.8681ms
+2025/08/31 17:23:36 Startted PATCH /profile/update from [::1]:55264
+2025/08/31 17:23:36 User updated successfully
+2025/08/31 17:23:36 Completed PATCH /profile/update in 8.2915ms
+2025/08/31 17:23:36 Startted PATCH /profile/password from [::1]:55264
+2025/08/31 17:23:37 User password updated successfully
+2025/08/31 17:23:37 Completed PATCH /profile/password in 640.8543ms
+2025/08/31 17:23:37 Startted POST /login from [::1]:55264
+2025/08/31 17:23:37 token generated for userId:20cea795-76fe-44e8-885b-8a0beb93e750
+2025/08/31 17:23:37 Completed POST /login in 95.8239ms
+2025/08/31 17:23:37 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:37 Time slot shown successfully
+2025/08/31 17:23:37 Completed GET /service/time-slots in 5.7877ms
+2025/08/31 17:23:37 Startted POST /service from [::1]:55264
+2025/08/31 17:23:37 Service Request created successfully
+2025/08/31 17:23:37 Completed POST /service in 7.3618ms
+2025/08/31 17:23:37 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:37 Time slot shown successfully
+2025/08/31 17:23:37 Completed GET /service/time-slots in 6.4478ms
+2025/08/31 17:23:37 Startted PATCH /service/reschedule/0eabe535-0d55-4afa-af23-f44ed10b752e from [::1]:55264
+2025/08/31 17:23:37 Service Request rescheduled successfully
+2025/08/31 17:23:37 Completed PATCH /service/reschedule/0eabe535-0d55-4afa-af23-f44ed10b752e in 7.9503ms
+2025/08/31 17:23:37 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:37 Time slot shown successfully
+2025/08/31 17:23:37 Completed GET /service/time-slots in 7.5698ms
+2025/08/31 17:23:37 Startted POST /service from [::1]:55264
+2025/08/31 17:23:37 Service Request created successfully
+2025/08/31 17:23:37 Completed POST /service in 7.7894ms
+2025/08/31 17:23:37 Startted GET /service from [::1]:55264
+2025/08/31 17:23:37 Fetched 2 requests with status pending
+2025/08/31 17:23:37 Completed GET /service in 7.7204ms
+2025/08/31 17:23:38 Startted DELETE /service/cancel/d09ebf09-30a4-43a3-bf03-d0f1f113bfe4 from [::1]:55264
+2025/08/31 17:23:38 Service Request cancelled successfully
+2025/08/31 17:23:38 Completed DELETE /service/cancel/d09ebf09-30a4-43a3-bf03-d0f1f113bfe4 in 7.3442ms
+2025/08/31 17:23:38 Startted GET /notices from [::1]:55264
+2025/08/31 17:23:38 Notice fetched successfully
+2025/08/31 17:23:38 Completed GET /notices in 5.2655ms
+2025/08/31 17:23:38 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:38 notices retrived successfully
+2025/08/31 17:23:38 Completed GET /notices/month-year in 7.8398ms
+2025/08/31 17:23:38 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:38 notices retrived successfully
+2025/08/31 17:23:38 Completed GET /notices/month-year in 6.7077ms
+2025/08/31 17:23:38 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:38 invoices retrived successfully
+2025/08/31 17:23:38 Completed GET /invoices/month-year in 7.3893ms
+2025/08/31 17:23:38 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:38 invoice retrived successfully
+2025/08/31 17:23:38 Completed GET /invoices/month-year in 8.4401ms
+2025/08/31 17:23:38 Startted POST /login from [::1]:55264
+2025/08/31 17:23:38 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:23:38 Completed POST /login in 98.834ms
+2025/08/31 17:23:38 Startted POST /officers from [::1]:55264
+2025/08/31 17:23:38 Officer created successfully
+2025/08/31 17:23:38 Completed POST /officers in 100.0768ms
+2025/08/31 17:23:38 Startted GET /society/residents from [::1]:55264
+2025/08/31 17:23:38 View residents successfully executed
+2025/08/31 17:23:38 Completed GET /society/residents in 6.4481ms
+2025/08/31 17:23:39 Startted GET /society/officers from [::1]:55264
+2025/08/31 17:23:39 View officers successfully executed
+2025/08/31 17:23:39 Completed GET /society/officers in 11.7368ms
+2025/08/31 17:23:39 Startted PATCH /service/approve/0eabe535-0d55-4afa-af23-f44ed10b752e from [::1]:55264
+2025/08/31 17:23:39 Service Request approved successfully
+2025/08/31 17:23:39 Completed PATCH /service/approve/0eabe535-0d55-4afa-af23-f44ed10b752e in 7.8924ms
+2025/08/31 17:23:39 Startted GET /service/type-status from [::1]:55264
+2025/08/31 17:23:39 Requests fetched successfully
+2025/08/31 17:23:39 Completed GET /service/type-status in 8.41ms
+2025/08/31 17:23:39 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:39 Fetched feedbacks successfully
+2025/08/31 17:23:39 Completed GET /feedbacks in 8.6571ms
+2025/08/31 17:23:39 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:39 Fetched feedbacks successfully
+2025/08/31 17:23:39 Completed GET /feedbacks in 7.1853ms
+2025/08/31 17:23:39 Startted DELETE /credentials/officer from [::1]:55264
+2025/08/31 17:23:39 Officer deleted successfully
+2025/08/31 17:23:39 Completed DELETE /credentials/officer in 262.581ms
+2025/08/31 17:23:39 Startted POST /login from [::1]:55264
+2025/08/31 17:23:40 token generated for userId:20cea795-76fe-44e8-885b-8a0beb93e750
+2025/08/31 17:23:40 Completed POST /login in 101.2997ms
+2025/08/31 17:23:40 Startted DELETE /profile from [::1]:55264
+2025/08/31 17:23:40 Service request of deleted user deleted successfully
+2025/08/31 17:23:40 Completed DELETE /profile in 12.1626ms
+2025/08/31 17:23:40 Startted POST /signup from [::1]:55264
+2025/08/31 17:23:40 User created sucessfully
+2025/08/31 17:23:40 Completed POST /signup in 461.2548ms
+2025/08/31 17:23:40 Startted POST /login from [::1]:55264
+2025/08/31 17:23:40 token generated for userId:8d721d8c-f6d0-4b54-84f4-c2db6f048ef7
+2025/08/31 17:23:40 Completed POST /login in 98.6438ms
+2025/08/31 17:23:40 Startted GET /profile from [::1]:55264
+2025/08/31 17:23:40 users retrived successfully
+2025/08/31 17:23:40 Completed GET /profile in 6.043ms
+2025/08/31 17:23:41 Startted PATCH /profile/update from [::1]:55264
+2025/08/31 17:23:41 User updated successfully
+2025/08/31 17:23:41 Completed PATCH /profile/update in 7.2981ms
+2025/08/31 17:23:41 Startted PATCH /profile/password from [::1]:55264
+2025/08/31 17:23:41 User password updated successfully
+2025/08/31 17:23:41 Completed PATCH /profile/password in 637.208ms
+2025/08/31 17:23:41 Startted POST /login from [::1]:55264
+2025/08/31 17:23:41 token generated for userId:8d721d8c-f6d0-4b54-84f4-c2db6f048ef7
+2025/08/31 17:23:41 Completed POST /login in 100.1829ms
+2025/08/31 17:23:42 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:42 Time slot shown successfully
+2025/08/31 17:23:42 Completed GET /service/time-slots in 5.656ms
+2025/08/31 17:23:42 Startted POST /service from [::1]:55264
+2025/08/31 17:23:42 Service Request created successfully
+2025/08/31 17:23:42 Completed POST /service in 8.9181ms
+2025/08/31 17:23:42 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:42 Time slot shown successfully
+2025/08/31 17:23:42 Completed GET /service/time-slots in 6.4239ms
+2025/08/31 17:23:42 Startted PATCH /service/reschedule/8752b1c7-3db8-4aa1-b75f-43633496fdb1 from [::1]:55264
+2025/08/31 17:23:42 Service Request rescheduled successfully
+2025/08/31 17:23:42 Completed PATCH /service/reschedule/8752b1c7-3db8-4aa1-b75f-43633496fdb1 in 6.7434ms
+2025/08/31 17:23:42 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:42 Time slot shown successfully
+2025/08/31 17:23:42 Completed GET /service/time-slots in 5.7695ms
+2025/08/31 17:23:42 Startted POST /service from [::1]:55264
+2025/08/31 17:23:42 Service Request created successfully
+2025/08/31 17:23:42 Completed POST /service in 6.6485ms
+2025/08/31 17:23:42 Startted GET /service from [::1]:55264
+2025/08/31 17:23:42 Fetched 2 requests with status pending
+2025/08/31 17:23:42 Completed GET /service in 10.1058ms
+2025/08/31 17:23:42 Startted DELETE /service/cancel/a4ca4fcf-c83e-4441-a014-007c2994990b from [::1]:55264
+2025/08/31 17:23:42 Service Request cancelled successfully
+2025/08/31 17:23:42 Completed DELETE /service/cancel/a4ca4fcf-c83e-4441-a014-007c2994990b in 7.545ms
+2025/08/31 17:23:42 Startted GET /notices from [::1]:55264
+2025/08/31 17:23:42 Notice fetched successfully
+2025/08/31 17:23:42 Completed GET /notices in 5.9441ms
+2025/08/31 17:23:42 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:42 notices retrived successfully
+2025/08/31 17:23:42 Completed GET /notices/month-year in 6.2887ms
+2025/08/31 17:23:43 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:43 notices retrived successfully
+2025/08/31 17:23:43 Completed GET /notices/month-year in 8.3851ms
+2025/08/31 17:23:43 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:43 invoices retrived successfully
+2025/08/31 17:23:43 Completed GET /invoices/month-year in 6.4538ms
+2025/08/31 17:23:43 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:43 invoice retrived successfully
+2025/08/31 17:23:43 Completed GET /invoices/month-year in 5.5448ms
+2025/08/31 17:23:43 Startted POST /login from [::1]:55264
+2025/08/31 17:23:43 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:23:43 Completed POST /login in 384.5367ms
+2025/08/31 17:23:43 Startted POST /officers from [::1]:55264
+2025/08/31 17:23:43 Officer created successfully
+2025/08/31 17:23:43 Completed POST /officers in 95.5687ms
+2025/08/31 17:23:43 Startted GET /society/residents from [::1]:55264
+2025/08/31 17:23:43 View residents successfully executed
+2025/08/31 17:23:43 Completed GET /society/residents in 5.9793ms
+2025/08/31 17:23:44 Startted GET /society/officers from [::1]:55264
+2025/08/31 17:23:44 View officers successfully executed
+2025/08/31 17:23:44 Completed GET /society/officers in 7.4226ms
+2025/08/31 17:23:44 Startted PATCH /service/approve/8752b1c7-3db8-4aa1-b75f-43633496fdb1 from [::1]:55264
+2025/08/31 17:23:44 Service Request approved successfully
+2025/08/31 17:23:44 Completed PATCH /service/approve/8752b1c7-3db8-4aa1-b75f-43633496fdb1 in 10.4524ms
+2025/08/31 17:23:44 Startted GET /service/type-status from [::1]:55264
+2025/08/31 17:23:44 Requests fetched successfully
+2025/08/31 17:23:44 Completed GET /service/type-status in 6.2785ms
+2025/08/31 17:23:44 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:44 Fetched feedbacks successfully
+2025/08/31 17:23:44 Completed GET /feedbacks in 8.0955ms
+2025/08/31 17:23:44 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:44 Fetched feedbacks successfully
+2025/08/31 17:23:44 Completed GET /feedbacks in 11.0461ms
+2025/08/31 17:23:44 Startted DELETE /credentials/officer from [::1]:55264
+2025/08/31 17:23:44 Officer deleted successfully
+2025/08/31 17:23:44 Completed DELETE /credentials/officer in 8.3784ms
+2025/08/31 17:23:44 Startted POST /login from [::1]:55264
+2025/08/31 17:23:44 token generated for userId:8d721d8c-f6d0-4b54-84f4-c2db6f048ef7
+2025/08/31 17:23:44 Completed POST /login in 111.8018ms
+2025/08/31 17:23:44 Startted DELETE /profile from [::1]:55264
+2025/08/31 17:23:44 Service request of deleted user deleted successfully
+2025/08/31 17:23:44 Completed DELETE /profile in 6.8447ms
+2025/08/31 17:23:44 Startted POST /signup from [::1]:55264
+2025/08/31 17:23:45 User created sucessfully
+2025/08/31 17:23:45 Completed POST /signup in 467.7625ms
+2025/08/31 17:23:45 Startted POST /login from [::1]:55264
+2025/08/31 17:23:45 token generated for userId:499c184a-f6e1-4cc3-918c-01f2df998184
+2025/08/31 17:23:45 Completed POST /login in 93.7066ms
+2025/08/31 17:23:45 Startted GET /profile from [::1]:55264
+2025/08/31 17:23:45 users retrived successfully
+2025/08/31 17:23:45 Completed GET /profile in 7.1785ms
+2025/08/31 17:23:45 Startted PATCH /profile/update from [::1]:55264
+2025/08/31 17:23:45 User updated successfully
+2025/08/31 17:23:45 Completed PATCH /profile/update in 8.0716ms
+2025/08/31 17:23:45 Startted PATCH /profile/password from [::1]:55264
+2025/08/31 17:23:46 User password updated successfully
+2025/08/31 17:23:46 Completed PATCH /profile/password in 637.0962ms
+2025/08/31 17:23:46 Startted POST /login from [::1]:55264
+2025/08/31 17:23:46 token generated for userId:499c184a-f6e1-4cc3-918c-01f2df998184
+2025/08/31 17:23:46 Completed POST /login in 107.5884ms
+2025/08/31 17:23:46 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:46 Time slot shown successfully
+2025/08/31 17:23:46 Completed GET /service/time-slots in 5.3841ms
+2025/08/31 17:23:46 Startted POST /service from [::1]:55264
+2025/08/31 17:23:46 Service Request created successfully
+2025/08/31 17:23:46 Completed POST /service in 6.6778ms
+2025/08/31 17:23:46 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:47 Time slot shown successfully
+2025/08/31 17:23:47 Completed GET /service/time-slots in 259.826ms
+2025/08/31 17:23:47 Startted PATCH /service/reschedule/0e92be9f-22da-493a-ac5c-aeddb023eb35 from [::1]:55264
+2025/08/31 17:23:47 Service Request rescheduled successfully
+2025/08/31 17:23:47 Completed PATCH /service/reschedule/0e92be9f-22da-493a-ac5c-aeddb023eb35 in 9.1218ms
+2025/08/31 17:23:47 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:47 Time slot shown successfully
+2025/08/31 17:23:47 Completed GET /service/time-slots in 7.9135ms
+2025/08/31 17:23:47 Startted POST /service from [::1]:55264
+2025/08/31 17:23:47 Service Request created successfully
+2025/08/31 17:23:47 Completed POST /service in 7.1304ms
+2025/08/31 17:23:47 Startted GET /service from [::1]:55264
+2025/08/31 17:23:47 Fetched 2 requests with status pending
+2025/08/31 17:23:47 Completed GET /service in 5.6694ms
+2025/08/31 17:23:47 Startted DELETE /service/cancel/a1757ff0-c665-4024-a6fb-dd47c23b15ca from [::1]:55264
+2025/08/31 17:23:47 Service Request cancelled successfully
+2025/08/31 17:23:47 Completed DELETE /service/cancel/a1757ff0-c665-4024-a6fb-dd47c23b15ca in 7.1971ms
+2025/08/31 17:23:47 Startted GET /notices from [::1]:55264
+2025/08/31 17:23:47 Notice fetched successfully
+2025/08/31 17:23:47 Completed GET /notices in 6.9033ms
+2025/08/31 17:23:47 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:47 notices retrived successfully
+2025/08/31 17:23:47 Completed GET /notices/month-year in 5.7492ms
+2025/08/31 17:23:47 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:48 notices retrived successfully
+2025/08/31 17:23:48 Completed GET /notices/month-year in 5.4309ms
+2025/08/31 17:23:48 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:48 invoices retrived successfully
+2025/08/31 17:23:48 Completed GET /invoices/month-year in 5.867ms
+2025/08/31 17:23:48 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:48 invoice retrived successfully
+2025/08/31 17:23:48 Completed GET /invoices/month-year in 6.9007ms
+2025/08/31 17:23:48 Startted POST /login from [::1]:55264
+2025/08/31 17:23:48 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:23:48 Completed POST /login in 101.4534ms
+2025/08/31 17:23:48 Startted POST /officers from [::1]:55264
+2025/08/31 17:23:48 Officer created successfully
+2025/08/31 17:23:48 Completed POST /officers in 111.9697ms
+2025/08/31 17:23:48 Startted GET /society/residents from [::1]:55264
+2025/08/31 17:23:48 View residents successfully executed
+2025/08/31 17:23:48 Completed GET /society/residents in 7.5784ms
+2025/08/31 17:23:48 Startted GET /society/officers from [::1]:55264
+2025/08/31 17:23:48 View officers successfully executed
+2025/08/31 17:23:48 Completed GET /society/officers in 9.9265ms
+2025/08/31 17:23:48 Startted PATCH /service/approve/0e92be9f-22da-493a-ac5c-aeddb023eb35 from [::1]:55264
+2025/08/31 17:23:48 Service Request approved successfully
+2025/08/31 17:23:48 Completed PATCH /service/approve/0e92be9f-22da-493a-ac5c-aeddb023eb35 in 7.3443ms
+2025/08/31 17:23:48 Startted GET /service/type-status from [::1]:55264
+2025/08/31 17:23:48 Requests fetched successfully
+2025/08/31 17:23:48 Completed GET /service/type-status in 5.7783ms
+2025/08/31 17:23:49 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:49 Fetched feedbacks successfully
+2025/08/31 17:23:49 Completed GET /feedbacks in 6.605ms
+2025/08/31 17:23:49 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:49 Fetched feedbacks successfully
+2025/08/31 17:23:49 Completed GET /feedbacks in 5.9211ms
+2025/08/31 17:23:49 Startted DELETE /credentials/officer from [::1]:55264
+2025/08/31 17:23:49 Officer deleted successfully
+2025/08/31 17:23:49 Completed DELETE /credentials/officer in 8.155ms
+2025/08/31 17:23:49 Startted POST /login from [::1]:55264
+2025/08/31 17:23:49 token generated for userId:499c184a-f6e1-4cc3-918c-01f2df998184
+2025/08/31 17:23:49 Completed POST /login in 98.6416ms
+2025/08/31 17:23:49 Startted DELETE /profile from [::1]:55264
+2025/08/31 17:23:49 Service request of deleted user deleted successfully
+2025/08/31 17:23:49 Completed DELETE /profile in 14.7052ms
+2025/08/31 17:23:49 Startted POST /signup from [::1]:55264
+2025/08/31 17:23:50 User created sucessfully
+2025/08/31 17:23:50 Completed POST /signup in 464.5595ms
+2025/08/31 17:23:50 Startted POST /login from [::1]:55264
+2025/08/31 17:23:50 token generated for userId:72525025-5f5b-4bf7-8b54-42cfe9effa5a
+2025/08/31 17:23:50 Completed POST /login in 95.6245ms
+2025/08/31 17:23:50 Startted GET /profile from [::1]:55264
+2025/08/31 17:23:50 users retrived successfully
+2025/08/31 17:23:50 Completed GET /profile in 6.1361ms
+2025/08/31 17:23:50 Startted PATCH /profile/update from [::1]:55264
+2025/08/31 17:23:50 User updated successfully
+2025/08/31 17:23:50 Completed PATCH /profile/update in 8.1312ms
+2025/08/31 17:23:50 Startted PATCH /profile/password from [::1]:55264
+2025/08/31 17:23:51 User password updated successfully
+2025/08/31 17:23:51 Completed PATCH /profile/password in 889.5866ms
+2025/08/31 17:23:51 Startted POST /login from [::1]:55264
+2025/08/31 17:23:51 token generated for userId:72525025-5f5b-4bf7-8b54-42cfe9effa5a
+2025/08/31 17:23:51 Completed POST /login in 97.6472ms
+2025/08/31 17:23:51 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:51 Time slot shown successfully
+2025/08/31 17:23:51 Completed GET /service/time-slots in 5.5945ms
+2025/08/31 17:23:51 Startted POST /service from [::1]:55264
+2025/08/31 17:23:51 Service Request created successfully
+2025/08/31 17:23:51 Completed POST /service in 8.1065ms
+2025/08/31 17:23:51 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:51 Time slot shown successfully
+2025/08/31 17:23:51 Completed GET /service/time-slots in 6.4828ms
+2025/08/31 17:23:52 Startted PATCH /service/reschedule/b68b882c-f4c1-4ec0-8951-adf126f1a7d7 from [::1]:55264
+2025/08/31 17:23:52 Service Request rescheduled successfully
+2025/08/31 17:23:52 Completed PATCH /service/reschedule/b68b882c-f4c1-4ec0-8951-adf126f1a7d7 in 8.2998ms
+2025/08/31 17:23:52 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:52 Time slot shown successfully
+2025/08/31 17:23:52 Completed GET /service/time-slots in 6.8194ms
+2025/08/31 17:23:52 Startted POST /service from [::1]:55264
+2025/08/31 17:23:52 Service Request created successfully
+2025/08/31 17:23:52 Completed POST /service in 8.3582ms
+2025/08/31 17:23:52 Startted GET /service from [::1]:55264
+2025/08/31 17:23:52 Fetched 2 requests with status pending
+2025/08/31 17:23:52 Completed GET /service in 6.9417ms
+2025/08/31 17:23:52 Startted DELETE /service/cancel/539dafd5-1d79-442c-bf14-17ddfc5420b9 from [::1]:55264
+2025/08/31 17:23:52 Service Request cancelled successfully
+2025/08/31 17:23:52 Completed DELETE /service/cancel/539dafd5-1d79-442c-bf14-17ddfc5420b9 in 7.7264ms
+2025/08/31 17:23:52 Startted GET /notices from [::1]:55264
+2025/08/31 17:23:52 Notice fetched successfully
+2025/08/31 17:23:52 Completed GET /notices in 8.1135ms
+2025/08/31 17:23:52 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:52 notices retrived successfully
+2025/08/31 17:23:52 Completed GET /notices/month-year in 8.5532ms
+2025/08/31 17:23:52 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:52 notices retrived successfully
+2025/08/31 17:23:52 Completed GET /notices/month-year in 10.2106ms
+2025/08/31 17:23:52 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:52 invoices retrived successfully
+2025/08/31 17:23:52 Completed GET /invoices/month-year in 6.5343ms
+2025/08/31 17:23:52 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:52 invoice retrived successfully
+2025/08/31 17:23:52 Completed GET /invoices/month-year in 8.3246ms
+2025/08/31 17:23:52 Startted POST /login from [::1]:55264
+2025/08/31 17:23:53 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:23:53 Completed POST /login in 101.2419ms
+2025/08/31 17:23:53 Startted POST /officers from [::1]:55264
+2025/08/31 17:23:53 Officer created successfully
+2025/08/31 17:23:53 Completed POST /officers in 101.6375ms
+2025/08/31 17:23:53 Startted GET /society/residents from [::1]:55264
+2025/08/31 17:23:53 View residents successfully executed
+2025/08/31 17:23:53 Completed GET /society/residents in 6.0359ms
+2025/08/31 17:23:53 Startted GET /society/officers from [::1]:55264
+2025/08/31 17:23:53 View officers successfully executed
+2025/08/31 17:23:53 Completed GET /society/officers in 7.8102ms
+2025/08/31 17:23:53 Startted PATCH /service/approve/b68b882c-f4c1-4ec0-8951-adf126f1a7d7 from [::1]:55264
+2025/08/31 17:23:53 Service Request approved successfully
+2025/08/31 17:23:53 Completed PATCH /service/approve/b68b882c-f4c1-4ec0-8951-adf126f1a7d7 in 7.9475ms
+2025/08/31 17:23:53 Startted GET /service/type-status from [::1]:55264
+2025/08/31 17:23:53 Requests fetched successfully
+2025/08/31 17:23:53 Completed GET /service/type-status in 5.4376ms
+2025/08/31 17:23:53 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:53 Fetched feedbacks successfully
+2025/08/31 17:23:53 Completed GET /feedbacks in 6.795ms
+2025/08/31 17:23:53 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:53 Fetched feedbacks successfully
+2025/08/31 17:23:53 Completed GET /feedbacks in 6.2338ms
+2025/08/31 17:23:53 Startted DELETE /credentials/officer from [::1]:55264
+2025/08/31 17:23:53 Officer deleted successfully
+2025/08/31 17:23:53 Completed DELETE /credentials/officer in 7.9979ms
+2025/08/31 17:23:53 Startted POST /login from [::1]:55264
+2025/08/31 17:23:54 token generated for userId:72525025-5f5b-4bf7-8b54-42cfe9effa5a
+2025/08/31 17:23:54 Completed POST /login in 99.618ms
+2025/08/31 17:23:54 Startted DELETE /profile from [::1]:55264
+2025/08/31 17:23:54 Service request of deleted user deleted successfully
+2025/08/31 17:23:54 Completed DELETE /profile in 7.0077ms
+2025/08/31 17:23:54 Startted POST /signup from [::1]:55264
+2025/08/31 17:23:54 User created sucessfully
+2025/08/31 17:23:54 Completed POST /signup in 470.4439ms
+2025/08/31 17:23:54 Startted POST /login from [::1]:55264
+2025/08/31 17:23:54 token generated for userId:b54016b9-c0ad-4d67-94ce-0c5129f0cc80
+2025/08/31 17:23:54 Completed POST /login in 98.1972ms
+2025/08/31 17:23:55 Startted GET /profile from [::1]:55264
+2025/08/31 17:23:55 users retrived successfully
+2025/08/31 17:23:55 Completed GET /profile in 7.0238ms
+2025/08/31 17:23:55 Startted PATCH /profile/update from [::1]:55264
+2025/08/31 17:23:55 User updated successfully
+2025/08/31 17:23:55 Completed PATCH /profile/update in 6.8323ms
+2025/08/31 17:23:55 Startted PATCH /profile/password from [::1]:55264
+2025/08/31 17:23:56 User password updated successfully
+2025/08/31 17:23:56 Completed PATCH /profile/password in 913.3021ms
+2025/08/31 17:23:56 Startted POST /login from [::1]:55264
+2025/08/31 17:23:56 token generated for userId:b54016b9-c0ad-4d67-94ce-0c5129f0cc80
+2025/08/31 17:23:56 Completed POST /login in 95.5652ms
+2025/08/31 17:23:56 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:56 Time slot shown successfully
+2025/08/31 17:23:56 Completed GET /service/time-slots in 8.9908ms
+2025/08/31 17:23:56 Startted POST /service from [::1]:55264
+2025/08/31 17:23:56 Service Request created successfully
+2025/08/31 17:23:56 Completed POST /service in 9.2798ms
+2025/08/31 17:23:56 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:56 Time slot shown successfully
+2025/08/31 17:23:56 Completed GET /service/time-slots in 7.0387ms
+2025/08/31 17:23:56 Startted PATCH /service/reschedule/ffa603aa-9da9-4998-9788-013ec0b5f3c9 from [::1]:55264
+2025/08/31 17:23:56 Service Request rescheduled successfully
+2025/08/31 17:23:56 Completed PATCH /service/reschedule/ffa603aa-9da9-4998-9788-013ec0b5f3c9 in 8.8971ms
+2025/08/31 17:23:56 Startted GET /service/time-slots from [::1]:55264
+2025/08/31 17:23:56 Time slot shown successfully
+2025/08/31 17:23:56 Completed GET /service/time-slots in 5.6665ms
+2025/08/31 17:23:56 Startted POST /service from [::1]:55264
+2025/08/31 17:23:56 Service Request created successfully
+2025/08/31 17:23:56 Completed POST /service in 9.2282ms
+2025/08/31 17:23:56 Startted GET /service from [::1]:55264
+2025/08/31 17:23:56 Fetched 2 requests with status pending
+2025/08/31 17:23:57 Completed GET /service in 6.4967ms
+2025/08/31 17:23:57 Startted DELETE /service/cancel/02c81da9-f11e-4613-9313-46fc8358ff7e from [::1]:55264
+2025/08/31 17:23:57 Service Request cancelled successfully
+2025/08/31 17:23:57 Completed DELETE /service/cancel/02c81da9-f11e-4613-9313-46fc8358ff7e in 7.9021ms
+2025/08/31 17:23:57 Startted GET /notices from [::1]:55264
+2025/08/31 17:23:57 Notice fetched successfully
+2025/08/31 17:23:57 Completed GET /notices in 7.7976ms
+2025/08/31 17:23:57 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:57 notices retrived successfully
+2025/08/31 17:23:57 Completed GET /notices/month-year in 7.9876ms
+2025/08/31 17:23:57 Startted GET /notices/month-year from [::1]:55264
+2025/08/31 17:23:57 notices retrived successfully
+2025/08/31 17:23:57 Completed GET /notices/month-year in 8.8405ms
+2025/08/31 17:23:57 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:57 invoices retrived successfully
+2025/08/31 17:23:57 Completed GET /invoices/month-year in 6.6201ms
+2025/08/31 17:23:57 Startted GET /invoices/month-year from [::1]:55264
+2025/08/31 17:23:57 invoice retrived successfully
+2025/08/31 17:23:57 Completed GET /invoices/month-year in 6.962ms
+2025/08/31 17:23:57 Startted POST /login from [::1]:55264
+2025/08/31 17:23:57 token generated for userId:5e9c9e45-1a65-4f9e-ae7a-8b91cf327f04
+2025/08/31 17:23:57 Completed POST /login in 105.3711ms
+2025/08/31 17:23:57 Startted POST /officers from [::1]:55264
+2025/08/31 17:23:57 Officer created successfully
+2025/08/31 17:23:57 Completed POST /officers in 101.6672ms
+2025/08/31 17:23:58 Startted GET /society/residents from [::1]:55264
+2025/08/31 17:23:58 View residents successfully executed
+2025/08/31 17:23:58 Completed GET /society/residents in 6.3785ms
+2025/08/31 17:23:58 Startted GET /society/officers from [::1]:55264
+2025/08/31 17:23:58 View officers successfully executed
+2025/08/31 17:23:58 Completed GET /society/officers in 6.181ms
+2025/08/31 17:23:58 Startted PATCH /service/approve/ffa603aa-9da9-4998-9788-013ec0b5f3c9 from [::1]:55264
+2025/08/31 17:23:58 Service Request approved successfully
+2025/08/31 17:23:58 Completed PATCH /service/approve/ffa603aa-9da9-4998-9788-013ec0b5f3c9 in 8.5365ms
+2025/08/31 17:23:58 Startted GET /service/type-status from [::1]:55264
+2025/08/31 17:23:58 Requests fetched successfully
+2025/08/31 17:23:58 Completed GET /service/type-status in 6.7071ms
+2025/08/31 17:23:58 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:58 Fetched feedbacks successfully
+2025/08/31 17:23:58 Completed GET /feedbacks in 6.7684ms
+2025/08/31 17:23:58 Startted GET /feedbacks from [::1]:55264
+2025/08/31 17:23:58 Fetched feedbacks successfully
+2025/08/31 17:23:58 Completed GET /feedbacks in 5.8682ms
+2025/08/31 17:23:58 Startted DELETE /credentials/officer from [::1]:55264
+2025/08/31 17:23:58 Officer deleted successfully
+2025/08/31 17:23:58 Completed DELETE /credentials/officer in 8.235ms
+2025/08/31 17:23:58 Startted POST /login from [::1]:55264
+2025/08/31 17:23:58 token generated for userId:b54016b9-c0ad-4d67-94ce-0c5129f0cc80
+2025/08/31 17:23:58 Completed POST /login in 97.5359ms
+2025/08/31 17:23:58 Startted DELETE /profile from [::1]:55264
+2025/08/31 17:23:58 Service request of deleted user deleted successfully
+2025/08/31 17:23:58 Completed DELETE /profile in 9.044ms

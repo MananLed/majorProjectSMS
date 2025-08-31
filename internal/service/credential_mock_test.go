@@ -119,3 +119,22 @@ func TestDeleteResidentCredentialsUnauthorized(t *testing.T) {
 		t.Errorf("expected unauthorized error, got: %v", err)
 	}
 }
+
+func TestDeleteOfficerCredentials_Unauthorized(t *testing.T) {
+	mockRepo := &MockCredentialRepo{users: make(map[string]model.User)}
+	mockRepo.users["officer@gmail.com"] = model.User{
+		ID:   "officer@gmail.com",
+		Role: model.RoleOfficer,
+	}
+
+	service := NewCredentialService(mockRepo)
+	ctx := context.WithValue(context.Background(), utils.UserRoleKey, string(model.RoleResident))
+	ctx = context.WithValue(ctx, utils.UserEmailKey, "dsfsl")
+	ctx = context.WithValue(ctx, utils.UserFlatKey, "xxx")
+	ctx = context.WithValue(ctx, utils.UserIDKey, "dfjld")
+
+	err := service.DeleteOfficerCredentials(ctx, "officer@gmail.com")
+	if err == nil || err.Error() != "unauthorized: only admin can delete credentials" {
+		t.Errorf("expected unauthorized error, got: %v", err)
+	}
+}

@@ -125,7 +125,7 @@ func (r *ServiceRequestRepository) UpdateRequest(req *model.ServiceRequest) erro
 	`
 
 	r.mu.Lock()
-	_, err := r.db.Exec(query,
+	res , err := r.db.Exec(query,
 		req.Status, req.TimeSlot, req.StartTime, req.EndTime, req.ServiceType, req.RequestID,
 	)
 	r.mu.Unlock()
@@ -134,6 +134,19 @@ func (r *ServiceRequestRepository) UpdateRequest(req *model.ServiceRequest) erro
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return fmt.Errorf("failed to update service request: %v", err)
 	}
+
+	rowsAffected, err := res.RowsAffected()
+	
+	if err != nil {
+		logger.LogToFile(fmt.Sprintf("error: %v", err))
+		return fmt.Errorf("failed to check update result: %v", err)
+	}
+
+	if rowsAffected == 0 {
+		return fmt.Errorf("no service request found with ID %v", req.RequestID)
+	}
+
+
 	return nil
 }
 
@@ -178,6 +191,7 @@ func (r *ServiceRequestRepository) GetServiceRequestsByStatus(userID string, sta
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error : %v", err))
+		return nil
 	}
 	defer rows.Close()
 
@@ -186,7 +200,7 @@ func (r *ServiceRequestRepository) GetServiceRequestsByStatus(userID string, sta
 		var r model.ServiceRequest
 		if err := rows.Scan(&r.RequestID, &r.ResidentID, &r.Status, &r.TimeSlot, &r.StartTime, &r.EndTime, &r.ServiceType, &r.Flat); err != nil {
 			logger.LogToFile(fmt.Sprintf("error: %v", err))
-
+			return nil
 		}
 		requests = append(requests, r)
 	}

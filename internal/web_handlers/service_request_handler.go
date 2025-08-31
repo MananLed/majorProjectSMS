@@ -92,7 +92,7 @@ func (h *ServiceRequestHandler) BookServiceRequest(w http.ResponseWriter, r *htt
 	}
 
 	logger.LogToFile("Service Request created successfully")
-	response.SuccessResponse(w, nil, "Service Request created successfully", http.StatusOK)
+	response.SuccessResponse(w, request.RequestID, "Service Request created successfully", http.StatusOK)
 }
 
 func (h *ServiceRequestHandler) RescheduleServiceRequest(w http.ResponseWriter, r *http.Request) {

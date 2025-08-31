@@ -102,6 +102,6 @@ func (h *InvoiceHandler) GetInvoiceByMonthAndYear(w http.ResponseWriter, r *http
 			return
 		}
 		logger.LogToFile("invoice retrived successfully")
-		response.SuccessResponse(w, invoice, "Invoices Retrived Successfully", http.StatusOK)
+		response.SuccessResponse(w, invoice, "Invoice Retrived Successfully", http.StatusOK)
 	}
 }

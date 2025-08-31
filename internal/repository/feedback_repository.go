@@ -1,14 +1,15 @@
 package repository
 
 import (
-
 	"fmt"
 	"sync"
+
 	"database/sql"
 
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/utils"
 	"github.com/MananLed/majorProjectSMS/pkg/logger"
+	"github.com/google/uuid"
 )
 
 type FeedbackRepository struct {
@@ -27,7 +28,9 @@ func NewFeedbackRepository(db *sql.DB) *FeedbackRepository {
 }
 
 func (r *FeedbackRepository) SaveFeedback(feedback model.Feedback) error {
-	feedback.ID = utils.GenerateUUID()
+	if feedback.ID == uuid.Nil {
+		feedback.ID = utils.GenerateUUID()
+	}
 
 	query := `
 		INSERT INTO feedbacks (id, resident_id, rating, content, flat_no)
@@ -37,7 +40,9 @@ func (r *FeedbackRepository) SaveFeedback(feedback model.Feedback) error {
 	_, err := r.DB.Exec(query, feedback.ID, feedback.ResidentID, feedback.Rating, feedback.Content, feedback.Flat)
 	r.mu.Unlock()
 
-	if err != nil {logger.LogToFile(fmt.Sprintf("error: %v", err))}
+	if err != nil {
+		logger.LogToFile(fmt.Sprintf("error: %v", err))
+	}
 	return err
 }
 

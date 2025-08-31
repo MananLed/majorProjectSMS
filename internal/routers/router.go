@@ -19,12 +19,12 @@ func SetupRouter(userService service.UserService, serviceRequestService service.
 	societyHandler := web_handlers.NewSocietyHandler(&societyService)
 	invoiceHandler := web_handlers.NewInvoiceHandler(&invoiceService)
 
-	r.HandleFunc("POST /signup", userHandler.SignUp)  //Content in body
+	r.HandleFunc("POST /signup", http.HandlerFunc(userHandler.SignUp))  //Content in body
 	r.HandleFunc("POST /login", http.HandlerFunc(userHandler.Login))  //content in body
 	r.Handle("GET /profile", middleware.AuthMiddleWare(http.HandlerFunc(userHandler.ViewProfile)))          // GET
 	r.Handle("PATCH /profile/update", middleware.AuthMiddleWare(http.HandlerFunc(userHandler.UpdateProfile))) // PATCH  //update details in body
 	r.Handle("PATCH /profile/password", middleware.AuthMiddleWare(http.HandlerFunc(userHandler.ChangePassword)))
-	r.Handle("DELETE /profile/delete", middleware.AuthMiddleWare(http.HandlerFunc(userHandler.DeleteProfile))) // DELETE
+	r.Handle("DELETE /profile", middleware.AuthMiddleWare(http.HandlerFunc(userHandler.DeleteProfile))) // DELETE
 	r.Handle("POST /officers", middleware.AuthMiddleWare(http.HandlerFunc(userHandler.CreateOfficer)))     // POST  //detail of officer in body
 
 	r.Handle("POST /service", middleware.AuthMiddleWare(http.HandlerFunc(serviceRequestHandler.BookServiceRequest)))        // POST   //service details in body, type of service in query param

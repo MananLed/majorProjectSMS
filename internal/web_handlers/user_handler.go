@@ -258,7 +258,7 @@ func (h *UserHandler) DeleteProfile(w http.ResponseWriter, r *http.Request) {
         return
 	}
 	logger.LogToFile("Service request of deleted user deleted successfully")
-    response.SuccessResponse(w, nil, "", http.StatusOK)
+    response.SuccessResponse(w, nil, "Profile deleted successfully", http.StatusOK)
 }
 
 func (h *UserHandler) CreateOfficer(w http.ResponseWriter, r *http.Request) {
@@ -308,5 +308,5 @@ func (h *UserHandler) CreateOfficer(w http.ResponseWriter, r *http.Request) {
 	}
 
 	logger.LogToFile("Officer created successfully")
-    response.SuccessResponse(w, nil, "Officer created successfully", http.StatusOK)
+    response.SuccessResponse(w, newOfficer.ID, "Officer created successfully", http.StatusOK)
 }
