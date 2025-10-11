@@ -31,7 +31,7 @@ func (s *SocietyService) GetAllResidents(ctx context.Context) ([]model.User, err
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return nil, err
 	}
-	if user.Role != model.RoleAdmin {
+	if user.Role == model.RoleResident {
 		return nil, errors.New("unauthorized access: only admins can view residents")
 	}
 	return s.SocietyRepo.GetAllResidents()
@@ -43,7 +43,7 @@ func (s *SocietyService) GetAllOfficers(ctx context.Context) ([]model.User, erro
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return nil, err
 	}
-	if user.Role != model.RoleAdmin {
+	if user.Role == model.RoleResident {
 		return nil, errors.New("unauthorized access: only admins can view officers")
 	}
 	return s.SocietyRepo.GetAllOfficers()

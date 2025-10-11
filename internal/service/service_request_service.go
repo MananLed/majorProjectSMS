@@ -22,8 +22,9 @@ type ServiceRequestServiceInterface interface {
 	GetServiceTypeByID(requestID uuid.UUID) (model.ServiceType, error)
 	GetPendingRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest
 	GetApprovedRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest
-	ApproveServiceRequest(requestID uuid.UUID) error
+	ApproveServiceRequest(requestID uuid.UUID, assignedTo string) error
 	DeleteServiceRequestByID(ctx context.Context) error
+	CompleteServiceRequest(requestID uuid.UUID) error
 }
 
 type ServiceRequestService struct {
@@ -106,7 +107,7 @@ func (s *ServiceRequestService) GetApprovedRequestsByServiceType(serviceType mod
 	return s.Repo.GetApprovedRequestsByServiceType(serviceType)
 }
 
-func (s *ServiceRequestService) ApproveServiceRequest(requestID uuid.UUID) error {
+func (s *ServiceRequestService) ApproveServiceRequest(requestID uuid.UUID, assignedTo string) error {
 	req, err := s.Repo.GetRequestByID(requestID)
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -114,6 +115,20 @@ func (s *ServiceRequestService) ApproveServiceRequest(requestID uuid.UUID) error
 	}
 
 	req.Status = model.StatusApproved
+	req.AssignedTo = assignedTo
+
+	return s.Repo.UpdateRequest(req)
+}
+
+func (s *ServiceRequestService) CompleteServiceRequest(requestID uuid.UUID) error{
+	req, err := s.Repo.GetRequestByID(requestID)
+
+	if err != nil{
+		logger.LogToFile(fmt.Sprintf("error: %v", err))
+		return err
+	}
+
+	req.Status = model.StatusCompleted
 
 	return s.Repo.UpdateRequest(req)
 }

@@ -35,9 +35,9 @@ func (r *InvoiceRepository) SaveInvoice(invoice model.Invoice) error {
 		VALUES ($1, $2, $3, $4)
 	`
 
-	r.mu.Lock()
+
 	_, err := r.DB.Exec(query, invoice.ID, invoice.Month, invoice.Year, invoice.Amount)
-	r.mu.Unlock()
+
 	
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -56,9 +56,9 @@ func (r *InvoiceRepository) GetInvoiceByMonthAndYear(month time.Month, year int)
 		WHERE month = $1 AND year = $2
 	`
 
-	r.mu.Lock()
+
 	err := r.DB.QueryRow(query, int(month), year).Scan(&invoice.ID, &invoice.Month, &invoice.Year, &invoice.Amount)
-	r.mu.Unlock()
+
 
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
@@ -72,15 +72,28 @@ func (r *InvoiceRepository) GetInvoiceByMonthAndYear(month time.Month, year int)
 }
 
 func (r *InvoiceRepository) GetInvoicesByYear(year int) ([]model.Invoice, error) {
-	query := `
+	var query string
+	
+	if year == 0{
+		query = `
+		SELECT id, month, year, amount
+		FROM invoices
+	`
+	}else{
+	query = `
 		SELECT id, month, year, amount
 		FROM invoices
 		WHERE year = $1
-	`
+	`}
 
-	r.mu.Lock()
-	rows, err := r.DB.Query(query, year)
-	r.mu.Unlock()
+	var rows *sql.Rows 
+	var err error
+	if year == 0{
+		rows, err = r.DB.Query(query)
+	}else{
+		rows, err = r.DB.Query(query, year)
+	}
+
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))

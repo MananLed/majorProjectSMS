@@ -36,9 +36,9 @@ func (r *UserRepository) AddUser(newUser model.User) error {
 		INSERT INTO users (id, first_name, middle_name, last_name, mobile_number, email, password, role, flat_no)
 		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
 	`
-	r.mu.Lock()
+
 	_, err := r.db.Exec(query, newUser.ID, newUser.FirstName, newUser.MiddleName, newUser.LastName, newUser.MobileNumber, newUser.Email, newUser.Password, newUser.Role, newUser.Flat)
-	r.mu.Unlock()
+
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -55,9 +55,9 @@ func (r *UserRepository) GetUserByIDAndPassword(email string, password string) (
 		WHERE email = $1
 	`
 
-	r.mu.Lock()
+
 	rows, err := r.db.Query(query, email)
-	r.mu.Unlock()
+
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return nil, err
@@ -90,9 +90,9 @@ func (r *UserRepository) UpdateUser(updatedUser model.User) error {
 		SET first_name = $1, middle_name = $2, last_name = $3, mobile_number = $4, email = $5, password = $6, role = $7
 		WHERE id = $8
 	`
-	r.mu.Lock()
+
 	result, err := r.db.Exec(query, updatedUser.FirstName, updatedUser.MiddleName, updatedUser.LastName, updatedUser.MobileNumber, updatedUser.Email, updatedUser.Password, updatedUser.Role, updatedUser.ID)
-	r.mu.Unlock()
+
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("UpdateUser error: %v", err))
@@ -114,9 +114,9 @@ func (r *UserRepository) ChangePassword(id string, newHashedPassword string) err
 		SET password = $1
 		WHERE id = $2
 	`
-	r.mu.Lock()
+
 	result, err := r.db.Exec(query, newHashedPassword, id)
-	r.mu.Unlock()
+
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -132,12 +132,11 @@ func (r *UserRepository) ChangePassword(id string, newHashedPassword string) err
 }
 
 func (r *UserRepository) IsPasswordUnique(password string) bool {
-	
-	r.mu.Lock()
+
 	rows, err := r.db.Query(`
 		SELECT password FROM users
 	`)
-	r.mu.Unlock()
+
 
 
 	if err != nil {
@@ -165,9 +164,9 @@ func (r *UserRepository) DeleteUserByID(id string) error {
 		DELETE FROM users
 		WHERE id = $1
 	`
-	r.mu.Lock()
+
 	result, err := r.db.Exec(query, id)
-	r.mu.Unlock()
+
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -190,9 +189,9 @@ func (r *UserRepository) GetUserByID(id string) (*model.User, error) {
 		FROM users
 		WHERE id = $1
 	`
-	r.mu.Lock()
+
 	err := r.db.QueryRow(query, id).Scan(&user.ID, &user.FirstName, &user.MiddleName, &user.LastName, &user.MobileNumber, &user.Email, &user.Password, &user.Role, &user.Flat)
-	r.mu.Unlock()
+
 
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {

@@ -69,3 +69,47 @@ func (h *SocietyHandler) ViewOfficers(w http.ResponseWriter, r *http.Request) {
 	logger.LogToFile("View officers successfully executed")
 	response.SuccessResponse(w, officers, "", http.StatusOK)
 }
+
+func (h *SocietyHandler) GetResidentCount(w http.ResponseWriter, r *http.Request){
+	currentUser, err := utils.GetUserFromContext(r.Context())
+	if err != nil || (currentUser.Role == model.RoleResident) {
+		logger.LogToFile("unauthorized access to resident count")
+		response.ErrorResponse(w, http.StatusForbidden, "Unauthorized Access", 1008)
+		return
+	}
+
+	residents, err := h.SocietyService.GetAllResidents(r.Context())
+
+	if err != nil {
+		logger.LogToFile("Failed to fetch residents count")
+		response.ErrorResponse(w, http.StatusInternalServerError, "Failed to fetch residents count", 1010)
+		return
+	}
+
+	var countOfResident int = len(residents)
+
+	logger.LogToFile("Count of residents successfully executed")
+	response.SuccessResponse(w, countOfResident, "", http.StatusOK)
+}
+
+func (h *SocietyHandler) GetOfficerCount(w http.ResponseWriter, r *http.Request){
+	currentUser, err := utils.GetUserFromContext(r.Context())
+	if err != nil || (currentUser.Role == model.RoleResident) {
+		logger.LogToFile("unauthorized access to officer count")
+		response.ErrorResponse(w, http.StatusForbidden, "Unauthorized Access", 1008)
+		return
+	}
+
+	officers, err := h.SocietyService.GetAllOfficers(r.Context())
+
+	if err != nil {
+		logger.LogToFile("Failed to fetch officers count")
+		response.ErrorResponse(w, http.StatusInternalServerError, "Failed to fetch officers count", 1010)
+		return
+	}
+
+	var countOfOfficers int = len(officers)
+
+	logger.LogToFile("Count of officers successfully executed")
+	response.SuccessResponse(w, countOfOfficers, "", http.StatusOK)
+}

@@ -125,7 +125,7 @@ func (h *UserHandler) Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	logger.LogToFile(fmt.Sprintf("token generated for userId:%v", user.ID))
-	response.SuccessResponse(w, map[string]interface{}{"token": jwtTokenString}, "Token generated Successfully", http.StatusCreated)
+	response.SuccessResponse(w, map[string]interface{}{"token": jwtTokenString, "email": user.Email, "role": user.Role}, "Token generated Successfully", http.StatusCreated)
 
 }
 

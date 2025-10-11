@@ -28,13 +28,12 @@ func NewSocietyRepository(db *sql.DB) *SocietyRepository {
 func (s *SocietyRepository) GetAllResidents() ([]model.User, error) {
 
 	query := `
-		SELECT id, first_name, middle_name, last_name, mobile_number, email, password, role 
+		SELECT id, first_name, middle_name, last_name, mobile_number, email, password, role, flat_no
 		FROM users WHERE role = $1
 	`
 
-	s.mu.Lock()
 	rows, err := s.db.Query(query, string(model.RoleResident))
-	s.mu.Unlock()
+
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -45,7 +44,7 @@ func (s *SocietyRepository) GetAllResidents() ([]model.User, error) {
 	var residents []model.User
 	for rows.Next() {
 		var user model.User
-		if err := rows.Scan(&user.ID, &user.FirstName, &user.MiddleName, &user.LastName, &user.MobileNumber, &user.Email, &user.Password, &user.Role); err != nil {
+		if err := rows.Scan(&user.ID, &user.FirstName, &user.MiddleName, &user.LastName, &user.MobileNumber, &user.Email, &user.Password, &user.Role, &user.Flat); err != nil {
 			logger.LogToFile(fmt.Sprintf("error: %v", err))
 			return nil, fmt.Errorf("failed to scan resident: %w", err)
 		}
@@ -69,9 +68,9 @@ func (s *SocietyRepository) GetAllOfficers() ([]model.User, error) {
 		FROM users WHERE role = $1
 	`
 
-	s.mu.Lock()
+
 	rows, err := s.db.Query(query, string(model.RoleOfficer))
-	s.mu.Unlock()
+
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))

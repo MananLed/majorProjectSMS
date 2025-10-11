@@ -28,9 +28,9 @@ func (r *CredentialRepository) DeleteUserByIDAndRole(id string, role model.UserR
 
 	query := `SELECT EXISTS(SELECT 1 FROM users WHERE id = $1 AND role = $2)`
 
-	r.mu.Lock()
+
 	err := r.db.QueryRow(query, id, string(role)).Scan(&exists)
-	r.mu.Unlock()
+
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -44,9 +44,8 @@ func (r *CredentialRepository) DeleteUserByIDAndRole(id string, role model.UserR
 
 	query = `DELETE FROM users WHERE id = $1 AND role = $2`
 
-	r.mu.Lock()
+
 	_, err = r.db.Exec(query, id, string(role))
-	r.mu.Unlock()
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))

@@ -35,9 +35,8 @@ func (r *NoticeRepository) SaveNotice(notice model.Notice) error {
 		INSERT INTO notices (id, date_issued, content, month, year)
 		VALUES ($1, $2, $3, $4, $5)
 	`
-	r.mu.Lock()
+
 	_, err := r.DB.Exec(query, notice.ID, notice.DateIssued, notice.Content, notice.Month, notice.Year)
-	r.mu.Unlock()
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -80,9 +79,8 @@ func (r *NoticeRepository) GetNoticesByMonthYear(month time.Month, year int) ([]
 	WHERE month = $1 AND year = $2 
 	ORDER BY date_issued DESC
 	`
-	r.mu.Lock()
+
 	rows, err := r.DB.Query(query, month, year)
-	r.mu.Unlock()
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -109,9 +107,9 @@ func (r *NoticeRepository) GetNoticesByYear(year int) ([]model.Notice, error) {
 	FROM notices WHERE year = $1 
 	ORDER BY date_issued DESC
 	`
-	r.mu.Lock()
+
 	rows, err := r.DB.Query(query, year)
-	r.mu.Unlock()
+
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))

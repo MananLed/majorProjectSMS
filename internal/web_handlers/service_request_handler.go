@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/response"
@@ -73,6 +74,10 @@ func (h *ServiceRequestHandler) BookServiceRequest(w http.ResponseWriter, r *htt
 	}
 	chosenSlot := availableSlots[req.SlotID-1]
 
+	now := time.Now()
+	formattedDate := now.Format("02-01-2006")
+	fmt.Println("date: ", formattedDate)
+
 	request := model.ServiceRequest{
 		RequestID:   uuid.New(),
 		ResidentID:  currentUser.ID,
@@ -82,6 +87,7 @@ func (h *ServiceRequestHandler) BookServiceRequest(w http.ResponseWriter, r *htt
 		StartTime:   chosenSlot.StartTime,
 		EndTime:     chosenSlot.EndTime,
 		ServiceType: model.ServiceType(req.ServiceType),
+		Date:        formattedDate,
 	}
 
 	err = h.Service.BookServiceRequest(request)
@@ -234,13 +240,64 @@ func (h *ServiceRequestHandler) ApproveRequest(w http.ResponseWriter, r *http.Re
 		return
 	}
 
-	if err := h.Service.ApproveServiceRequest(reqID); err != nil {
+	type RequestProvider struct {
+		AssignedTo string `json:"assignedto"`
+	}
+
+	var req RequestProvider
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		logger.LogToFile("Invalid JSON body")
+		response.ErrorResponse(w, http.StatusBadRequest, "Invalid request body", 1001)
+		return
+	}
+
+	if err := h.Service.ApproveServiceRequest(reqID, req.AssignedTo); err != nil {
 		response.ErrorResponse(w, http.StatusInternalServerError, "Failed to approve: "+err.Error(), 1008)
 		return
 	}
 
 	logger.LogToFile("Service Request approved successfully")
 	response.SuccessResponse(w, nil, "Service Request approved successfully", http.StatusOK)
+}
+
+func (h *ServiceRequestHandler) CompleteRequest(w http.ResponseWriter, r *http.Request){
+	ctx := r.Context()
+	user, err := utils.GetUserFromContext(ctx)
+	if err != nil {
+		logger.LogToFile("user not found")
+		response.ErrorResponse(w, http.StatusUnauthorized, "User not found", 1007)
+		return
+	}
+
+	if user.Role != "admin" && user.Role != "officer" {
+		logger.LogToFile("Unauthorized Access")
+		response.ErrorResponse(w, http.StatusForbidden, "Not authorized to approve requests", 1009)
+		return
+	}
+
+	path := strings.TrimPrefix(r.URL.Path, "/service/")
+	parts := strings.Split(path, "/")
+	if len(parts) < 2 || parts[0] != "complete" {
+		logger.LogToFile("Invalid Path")
+		response.ErrorResponse(w, http.StatusBadRequest, "Invalid path format", 1001)
+		return
+	}
+
+	reqIDStr := parts[1]
+	reqID, err := uuid.Parse(reqIDStr)
+	if err != nil {
+		logger.LogToFile("Invalid Request ID")
+		response.ErrorResponse(w, http.StatusBadRequest, "Invalid request ID", 1002)
+		return
+	}
+
+	if err := h.Service.CompleteServiceRequest(reqID); err != nil {
+		response.ErrorResponse(w, http.StatusInternalServerError, "Failed to complete: "+err.Error(), 1008)
+		return
+	}
+
+	logger.LogToFile("Service Request completed successfully")
+	response.SuccessResponse(w, nil, "Service Request completed successfully", http.StatusOK)
 }
 
 func (h *ServiceRequestHandler) GetRequestsOfResident(w http.ResponseWriter, r *http.Request) {
@@ -327,4 +384,79 @@ func (h *ServiceRequestHandler) GetRequestsByServiceTypeAndStatus(w http.Respons
 
 	logger.LogToFile("Requests fetched successfully")
 	response.SuccessResponse(w, requests, "Requests fetched successfully", http.StatusOK)
+}
+
+func (h *ServiceRequestHandler) GetAllRequests(w http.ResponseWriter, r *http.Request){
+	ctx := r.Context()
+	user, err := utils.GetUserFromContext(ctx)
+	if err != nil {
+		logger.LogToFile("User not found")
+		response.ErrorResponse(w, http.StatusUnauthorized, "User not found", 1007)
+		return
+	}
+
+	if user.Role != "admin" && user.Role != "officer" {
+		logger.LogToFile("Unauthorized Access")
+		response.ErrorResponse(w, http.StatusForbidden, "Not authorized", 1008)
+		return
+	}
+
+	var pendingRequests []model.ServiceRequest
+	var approvedRequests []model.ServiceRequest
+
+	pendingRequests = h.Service.GetPendingRequestsByServiceType(model.Plumber)
+	pendingRequests = append(pendingRequests, h.Service.GetPendingRequestsByServiceType(model.Electrician)...)
+	approvedRequests = h.Service.GetApprovedRequestsByServiceType(model.Plumber)
+	approvedRequests = append(approvedRequests, h.Service.GetApprovedRequestsByServiceType(model.Electrician)...)
+
+	logger.LogToFile("All Requests fetched successfully.")
+	
+	allRequests := struct {
+		Pending []model.ServiceRequest
+		Approved []model.ServiceRequest
+	}{
+		Pending: pendingRequests,
+		Approved: approvedRequests,
+	}
+
+	response.SuccessResponse(w, allRequests, "Requests fetched successfully", http.StatusOK)
+
+}
+
+func (h *ServiceRequestHandler) GetAllRequestsOfResident(w http.ResponseWriter, r *http.Request){
+	ctx := r.Context()
+	user, err := utils.GetUserFromContext(ctx)
+	if err != nil {
+		logger.LogToFile("User not found")
+		response.ErrorResponse(w, http.StatusUnauthorized, "User not found", 1007)
+		return
+	}
+
+	if user.Role != "resident" {
+		logger.LogToFile("Unauthorized Access")
+		response.ErrorResponse(w, http.StatusForbidden, "Not authorized", 1008)
+		return
+	}
+	
+	var pendingRequests []model.ServiceRequest
+	var approvedRequests []model.ServiceRequest
+	var completedRequests []model.ServiceRequest
+
+	pendingRequests = h.Service.GetServiceRequestsByStatus(user.ID, model.StatusPending)
+	approvedRequests = h.Service.GetServiceRequestsByStatus(user.ID, model.StatusApproved)
+	completedRequests = h.Service.GetServiceRequestsByStatus(user.ID, model.StatusCompleted)
+
+	logger.LogToFile("All Requests fetched successfully.")
+	
+	allRequests := struct {
+		Pending []model.ServiceRequest
+		Approved []model.ServiceRequest
+		Completed []model.ServiceRequest
+	}{
+		Pending: pendingRequests,
+		Approved: approvedRequests,
+		Completed: completedRequests,
+	}
+
+	response.SuccessResponse(w, allRequests, "Requests fetched successfully", http.StatusOK)
 }
