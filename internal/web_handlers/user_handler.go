@@ -175,6 +175,8 @@ func (h *UserHandler) UpdateProfile(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	fmt.Println(req.FirstName,req.MiddleName,req.LastName)
+
 	if req.FirstName != "" {
 		user.FirstName = req.FirstName
 	}

@@ -55,7 +55,7 @@ func SetupRouter(userService service.UserService, serviceRequestService service.
 	r.Handle("GET /feedbacks", middleware.AuthMiddleWare(http.HandlerFunc(feedbackHandler.GetFeedbacks))) // GET Sort it out while coding
 	r.Handle("POST /feedbacks", middleware.AuthMiddleWare(http.HandlerFunc(feedbackHandler.GiveFeedback))) // POST
 	r.Handle("POST /feedbacks/request", middleware.AuthMiddleWare(http.HandlerFunc(feedbackHandler.IssueFeedbackOnRequest)))
-	r.Handle("GET /feedbacks/given", middleware.AuthMiddleWare(http.HandlerFunc(feedbackHandler.IsFeedbackGiven)))  
+	r.Handle("PATCH /feedbacks/given", middleware.AuthMiddleWare(http.HandlerFunc(feedbackHandler.IsFeedbackGiven)))  
 
 	r.Handle("DELETE /credentials/officer", middleware.AuthMiddleWare(http.HandlerFunc(credentialHandler.DeleteOfficer))) // DELETE
 	r.Handle("DELETE /credentials/resident", middleware.AuthMiddleWare(http.HandlerFunc(credentialHandler.DeleteResident))) // DELETE

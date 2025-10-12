@@ -3,6 +3,7 @@ package web_handlers
 import (
 	"encoding/json"
 	"net/http"
+	"fmt"
 
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/response"
@@ -129,7 +130,7 @@ func (h *FeedbackHandler) IssueFeedbackOnRequest(w http.ResponseWriter, r *http.
 	type FeedbackRequest struct {
 		Rating  int32  `json:"rating"`
 		Content string `json:"content"`
-		RequestID uuid.UUID `json:"requestid"`
+		RequestID string `json:"requestid"`
 	}
 
 	var req FeedbackRequest
@@ -138,6 +139,8 @@ func (h *FeedbackHandler) IssueFeedbackOnRequest(w http.ResponseWriter, r *http.
 		response.ErrorResponse(w, http.StatusBadRequest, "Invalid request body", 1001)
 		return
 	}
+
+	fmt.Println(req.Rating, req.Content, req.RequestID)
 	if req.Rating < 1 || req.Rating > 5 {
 		logger.LogToFile("Invalid rating")
 		response.ErrorResponse(w, http.StatusBadRequest, "Invalid rating", 1001)
@@ -149,7 +152,14 @@ func (h *FeedbackHandler) IssueFeedbackOnRequest(w http.ResponseWriter, r *http.
 		response.ErrorResponse(w, http.StatusBadRequest, "Content length exceeded the permitted lenght", 1001)
 	}
 
-	if err := h.Service.IssueFeedbackOnRequest(req.Content, user.ID, user.Flat, req.Rating, req.RequestID); err != nil {
+	reqID, err := uuid.Parse(req.RequestID)
+	if err != nil {
+		logger.LogToFile("Invalid Request ID")
+		response.ErrorResponse(w, http.StatusBadRequest, "Invalid request ID", 1002)
+		return
+	}
+
+	if err := h.Service.IssueFeedbackOnRequest(req.Content, user.ID, user.Flat, req.Rating, reqID); err != nil {
 		logger.LogToFile("Failed to issue feedback: " + err.Error())
 		response.ErrorResponse(w, http.StatusInternalServerError, "Failed to issue feedback", 1011)
 		return

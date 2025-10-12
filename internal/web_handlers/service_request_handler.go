@@ -251,6 +251,12 @@ func (h *ServiceRequestHandler) ApproveRequest(w http.ResponseWriter, r *http.Re
 		return
 	}
 
+	if len(req.AssignedTo) > 500{
+		logger.LogToFile("Invalid Request")
+		response.ErrorResponse(w, http.StatusBadRequest, "Invalid request", 1002)
+		return
+	}
+
 	if err := h.Service.ApproveServiceRequest(reqID, req.AssignedTo); err != nil {
 		response.ErrorResponse(w, http.StatusInternalServerError, "Failed to approve: "+err.Error(), 1008)
 		return
@@ -403,20 +409,25 @@ func (h *ServiceRequestHandler) GetAllRequests(w http.ResponseWriter, r *http.Re
 
 	var pendingRequests []model.ServiceRequest
 	var approvedRequests []model.ServiceRequest
+	var completedRequests []model.ServiceRequest
 
 	pendingRequests = h.Service.GetPendingRequestsByServiceType(model.Plumber)
 	pendingRequests = append(pendingRequests, h.Service.GetPendingRequestsByServiceType(model.Electrician)...)
 	approvedRequests = h.Service.GetApprovedRequestsByServiceType(model.Plumber)
 	approvedRequests = append(approvedRequests, h.Service.GetApprovedRequestsByServiceType(model.Electrician)...)
+	completedRequests = h.Service.GetCompletedRequestsByServiceType(model.Plumber)
+	completedRequests = append(completedRequests, h.Service.GetCompletedRequestsByServiceType(model.Electrician)...)
 
 	logger.LogToFile("All Requests fetched successfully.")
 	
 	allRequests := struct {
 		Pending []model.ServiceRequest
 		Approved []model.ServiceRequest
+		Completed []model.ServiceRequest
 	}{
 		Pending: pendingRequests,
 		Approved: approvedRequests,
+		Completed: completedRequests,
 	}
 
 	response.SuccessResponse(w, allRequests, "Requests fetched successfully", http.StatusOK)

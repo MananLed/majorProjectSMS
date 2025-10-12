@@ -34,4 +34,5 @@ type ServiceRequest struct {
 	ServiceType ServiceType `json:"service_type"`
 	Date        string      `json:"date"`
 	AssignedTo  string      `json:"assignedto"`
+	FeedbackGiven bool      `json:"feedbackgiven"`
 }

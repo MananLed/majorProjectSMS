@@ -26,6 +26,7 @@ type ServiceRequestRepositoryInterface interface {
 	GetServiceTypeByID(requestID uuid.UUID) (model.ServiceType, error)
 	GetPendingRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest
 	GetApprovedRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest
+	GetCompletedRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest
 }
 
 func NewServiceRequestRepository(db *sql.DB) *ServiceRequestRepository {
@@ -42,7 +43,7 @@ func (r *ServiceRequestRepository) CreateRequest(req *model.ServiceRequest) erro
 	err := r.db.QueryRow(
 		`SELECT EXISTS (
 		SELECT 1 FROM service_requests 
-		WHERE resident_id = $1 AND service_type = $2)`, req.ResidentID, req.ServiceType).Scan(&exists)
+		WHERE resident_id = $1 AND service_type = $2 AND date = $3)`, req.ResidentID, req.ServiceType, req.Date).Scan(&exists)
 
 	if err != nil {
 		logger.LogToFile("error checking existing request: " + err.Error())
@@ -67,7 +68,7 @@ func (r *ServiceRequestRepository) CreateRequest(req *model.ServiceRequest) erro
 
 func (r *ServiceRequestRepository) GetAllRequests() ([]model.ServiceRequest, error) {
 	query := `
-		SELECT request_id, resident_id, status, time_slot, start_time, end_time, service_type, flat_no, date, assigned_to
+		SELECT request_id, resident_id, status, time_slot, start_time, end_time, service_type, flat_no, date, assigned_to, feedback_given
 		FROM service_requests
 	`
 
@@ -83,7 +84,7 @@ func (r *ServiceRequestRepository) GetAllRequests() ([]model.ServiceRequest, err
 	var requests []model.ServiceRequest
 	for rows.Next() {
 		var req model.ServiceRequest
-		err := rows.Scan(&req.RequestID, &req.ResidentID, &req.Status, &req.TimeSlot, &req.StartTime, &req.EndTime, &req.ServiceType, &req.Flat, &req.AssignedTo)
+		err := rows.Scan(&req.RequestID, &req.ResidentID, &req.Status, &req.TimeSlot, &req.StartTime, &req.EndTime, &req.ServiceType, &req.Flat, &req.Date, &req.AssignedTo, &req.FeedbackGiven)
 		if err != nil {
 			logger.LogToFile(fmt.Sprintf("error: %v", err))
 			return nil, fmt.Errorf("failed to retrieve service request: %v", err)
@@ -95,7 +96,7 @@ func (r *ServiceRequestRepository) GetAllRequests() ([]model.ServiceRequest, err
 
 func (r *ServiceRequestRepository) GetRequestByID(requestID uuid.UUID) (*model.ServiceRequest, error) {
 	query := `
-		SELECT request_id, resident_id, status, time_slot, start_time, end_time, service_type, flat_no, date, assigned_to
+		SELECT request_id, resident_id, status, time_slot, start_time, end_time, service_type, flat_no, date, assigned_to, feedback_given
 		FROM service_requests
 		WHERE request_id = $1
 	`
@@ -104,7 +105,7 @@ func (r *ServiceRequestRepository) GetRequestByID(requestID uuid.UUID) (*model.S
 
 
 	var req model.ServiceRequest
-	err := row.Scan(&req.RequestID, &req.ResidentID, &req.Status, &req.TimeSlot, &req.StartTime, &req.EndTime, &req.ServiceType, &req.Flat, &req.Date, &req.AssignedTo)
+	err := row.Scan(&req.RequestID, &req.ResidentID, &req.Status, &req.TimeSlot, &req.StartTime, &req.EndTime, &req.ServiceType, &req.Flat, &req.Date, &req.AssignedTo, &req.FeedbackGiven)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			return nil, nil
@@ -175,7 +176,7 @@ func (r *ServiceRequestRepository) DeleteRequestsByResidentID(residentID string)
 
 func (r *ServiceRequestRepository) GetServiceRequestsByStatus(userID string, status model.Status) []model.ServiceRequest {
 	query := `
-		SELECT request_id, resident_id, status, time_slot, start_time, end_time, service_type, flat_no, date, assigned_to
+		SELECT request_id, resident_id, status, time_slot, start_time, end_time, service_type, flat_no, date, assigned_to, feedback_given
 		FROM service_requests
 		WHERE status = $1 and resident_id = $2
 	`
@@ -192,7 +193,7 @@ func (r *ServiceRequestRepository) GetServiceRequestsByStatus(userID string, sta
 	var requests []model.ServiceRequest
 	for rows.Next() {
 		var r model.ServiceRequest
-		if err := rows.Scan(&r.RequestID, &r.ResidentID, &r.Status, &r.TimeSlot, &r.StartTime, &r.EndTime, &r.ServiceType, &r.Flat, &r.Date, &r.AssignedTo); err != nil {
+		if err := rows.Scan(&r.RequestID, &r.ResidentID, &r.Status, &r.TimeSlot, &r.StartTime, &r.EndTime, &r.ServiceType, &r.Flat, &r.Date, &r.AssignedTo, &r.FeedbackGiven); err != nil {
 			logger.LogToFile(fmt.Sprintf("error: %v", err))
 			return nil
 		}
@@ -226,7 +227,7 @@ func (r *ServiceRequestRepository) GetServiceTypeByID(requestID uuid.UUID) (mode
 func (r *ServiceRequestRepository) GetPendingRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest {
 
 	query := `
-		SELECT request_id, resident_id, status, time_slot, start_time, end_time, service_type, flat_no, date, assigned_to
+		SELECT request_id, resident_id, status, time_slot, start_time, end_time, service_type, flat_no, date, assigned_to, feedback_given
 		FROM service_requests
 		WHERE status = $1 and service_type = $2
 	`
@@ -242,7 +243,7 @@ func (r *ServiceRequestRepository) GetPendingRequestsByServiceType(serviceType m
 	var requests []model.ServiceRequest
 	for rows.Next() {
 		var req model.ServiceRequest
-		err := rows.Scan(&req.RequestID, &req.ResidentID, &req.Status, &req.TimeSlot, &req.StartTime, &req.EndTime, &req.ServiceType, &req.Flat, &req.Date, &req.AssignedTo)
+		err := rows.Scan(&req.RequestID, &req.ResidentID, &req.Status, &req.TimeSlot, &req.StartTime, &req.EndTime, &req.ServiceType, &req.Flat, &req.Date, &req.AssignedTo, &req.FeedbackGiven)
 		if err != nil {
 			logger.LogToFile(fmt.Sprintf("error: %v", err))
 			return nil
@@ -255,7 +256,7 @@ func (r *ServiceRequestRepository) GetPendingRequestsByServiceType(serviceType m
 func (r *ServiceRequestRepository) GetApprovedRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest {
 
 	query := `
-		SELECT request_id, resident_id, status, time_slot, start_time, end_time, service_type, flat_no, date, assigned_to
+		SELECT request_id, resident_id, status, time_slot, start_time, end_time, service_type, flat_no, date, assigned_to, feedback_given
 		FROM service_requests
 		WHERE status = $1 and service_type = $2
 	`
@@ -273,7 +274,38 @@ func (r *ServiceRequestRepository) GetApprovedRequestsByServiceType(serviceType 
 	var requests []model.ServiceRequest
 	for rows.Next() {
 		var req model.ServiceRequest
-		err := rows.Scan(&req.RequestID, &req.ResidentID, &req.Status, &req.TimeSlot, &req.StartTime, &req.EndTime, &req.ServiceType, &req.Flat, &req.AssignedTo, &req.Date)
+		err := rows.Scan(&req.RequestID, &req.ResidentID, &req.Status, &req.TimeSlot, &req.StartTime, &req.EndTime, &req.ServiceType, &req.Flat, &req.Date, &req.AssignedTo, &req.FeedbackGiven)
+		if err != nil {
+			logger.LogToFile(fmt.Sprintf("error: %v", err))
+			return nil
+		}
+		requests = append(requests, req)
+	}
+	return requests
+}
+
+func (r *ServiceRequestRepository) GetCompletedRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest {
+
+	query := `
+		SELECT request_id, resident_id, status, time_slot, start_time, end_time, service_type, flat_no, date, assigned_to, feedback_given
+		FROM service_requests
+		WHERE status = $1 and service_type = $2
+	`
+
+
+	rows, err := r.db.Query(query, model.StatusCompleted, serviceType)
+
+
+	if err != nil {
+		logger.LogToFile(fmt.Sprintf("error: %v", err))
+		return nil
+	}
+	defer rows.Close()
+
+	var requests []model.ServiceRequest
+	for rows.Next() {
+		var req model.ServiceRequest
+		err := rows.Scan(&req.RequestID, &req.ResidentID, &req.Status, &req.TimeSlot, &req.StartTime, &req.EndTime, &req.ServiceType, &req.Flat, &req.Date, &req.AssignedTo, &req.FeedbackGiven)
 		if err != nil {
 			logger.LogToFile(fmt.Sprintf("error: %v", err))
 			return nil

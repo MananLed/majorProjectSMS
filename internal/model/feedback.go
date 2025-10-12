@@ -14,4 +14,6 @@ type Feedback struct{
 	RequestID uuid.UUID `json:"request_id"`
 	AssignedTo string `json:"assignedto"`
 	ServiceType string `json:"servicetype"`
+	Date string `json:"date"`
+	TimeSlot string `json:"timeslot"`
 }

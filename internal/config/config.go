@@ -5,7 +5,7 @@ var (
 	Host     = "localhost"
 	Port     = 5432
 	User     = "postgres"
-	Password = "root"
+	Password = "1234"
 	Dbname   = "upkeepz"
 )
 

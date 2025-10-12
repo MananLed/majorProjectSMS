@@ -58,25 +58,37 @@ func (r *FeedbackRepository) SaveFeedback(feedback model.Feedback) error {
 
 	feedback.ResidentName = name
 
+	queryForUpdatingFeedbackStatus := `
+		UPDATE service_requests set feedback_given = $1 WHERE request_id = $2
+	`
+
+	_ , err = r.DB.Exec(queryForUpdatingFeedbackStatus, true, feedback.RequestID)
+
+
+	if err != nil {
+		logger.LogToFile(fmt.Sprintf("error: %v", err))
+		return fmt.Errorf("failed to update feedback given status: %v", err)
+	}
+
 	queryForServiceDetails := `
-		SELECT assigned_to, service_type from service_requests
+		SELECT assigned_to, service_type, date, time_slot from service_requests
 		WHERE request_id = $1
 	`
 
 	row = r.DB.QueryRow(queryForServiceDetails, feedback.RequestID)
 
-	err = row.Scan(&feedback.AssignedTo, &feedback.ServiceType)
+	err = row.Scan(&feedback.AssignedTo, &feedback.ServiceType, &feedback.Date, &feedback.TimeSlot)
 
 	if err != nil{
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 	}
 
 	query := `
-		INSERT INTO feedbacks (id, resident_id, rating, content, flat_no, username, request_id, assigned_to, service_type)
-		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+		INSERT INTO feedbacks (id, resident_id, rating, content, flat_no, username, request_id, assigned_to, service_type, date, time_slot)
+		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
 	`
 
-	_, err = r.DB.Exec(query, feedback.ID, feedback.ResidentID, feedback.Rating, feedback.Content, feedback.Flat, feedback.ResidentName, feedback.RequestID, feedback.AssignedTo, feedback.ServiceType)
+	_, err = r.DB.Exec(query, feedback.ID, feedback.ResidentID, feedback.Rating, feedback.Content, feedback.Flat, feedback.ResidentName, feedback.RequestID, feedback.AssignedTo, feedback.ServiceType, feedback.Date, feedback.TimeSlot)
 
 
 	if err != nil {
@@ -87,7 +99,7 @@ func (r *FeedbackRepository) SaveFeedback(feedback model.Feedback) error {
 
 func (r *FeedbackRepository) GetFeedbacksByID(residentID string) ([]model.Feedback, error) {
 	query := `
-		SELECT id, resident_id, rating, content, flat_no, username, request_id, assigned_to, service_type
+		SELECT id, resident_id, rating, content, flat_no, username, request_id, assigned_to, service_type, date, time_slot
 		FROM feedbacks
 		WHERE resident_id = $1
 	`
@@ -106,7 +118,7 @@ func (r *FeedbackRepository) GetFeedbacksByID(residentID string) ([]model.Feedba
 	var feedbacks []model.Feedback
 	for rows.Next() {
 		var f model.Feedback
-		if err := rows.Scan(&f.ID, &f.ResidentID, &f.Rating, &f.Content, &f.Flat, &f.ResidentName, &f.AssignedTo, &f.ServiceType); err != nil {
+		if err := rows.Scan(&f.ID, &f.ResidentID, &f.Rating, &f.Content, &f.Flat, &f.ResidentName, &f.AssignedTo, &f.ServiceType, &f.Date, &f.TimeSlot); err != nil {
 			return nil, err
 		}
 		feedbacks = append(feedbacks, f)
@@ -116,7 +128,7 @@ func (r *FeedbackRepository) GetFeedbacksByID(residentID string) ([]model.Feedba
 
 func (r *FeedbackRepository) GetAllFeedbacks() ([]model.Feedback, error) {
 	query := `
-		SELECT id, resident_id, rating, content, flat_no, username, request_id, assigned_to, service_type
+		SELECT id, resident_id, rating, content, flat_no, username, request_id, assigned_to, service_type, date, time_slot
 		FROM feedbacks
 	`
 
@@ -131,7 +143,7 @@ func (r *FeedbackRepository) GetAllFeedbacks() ([]model.Feedback, error) {
 	var feedbacks []model.Feedback
 	for rows.Next() {
 		var f model.Feedback
-		if err := rows.Scan(&f.ID, &f.ResidentID, &f.Rating, &f.Content, &f.Flat, &f.ResidentName, &f.RequestID, &f.AssignedTo, &f.ServiceType); err != nil {
+		if err := rows.Scan(&f.ID, &f.ResidentID, &f.Rating, &f.Content, &f.Flat, &f.ResidentName, &f.RequestID, &f.AssignedTo, &f.ServiceType, &f.Date, &f.TimeSlot); err != nil {
 			logger.LogToFile(fmt.Sprintf("error: %v", err))
 			return nil, err
 		}

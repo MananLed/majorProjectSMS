@@ -25,6 +25,7 @@ type ServiceRequestServiceInterface interface {
 	ApproveServiceRequest(requestID uuid.UUID, assignedTo string) error
 	DeleteServiceRequestByID(ctx context.Context) error
 	CompleteServiceRequest(requestID uuid.UUID) error
+	GetCompletedRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest
 }
 
 type ServiceRequestService struct {
@@ -73,6 +74,8 @@ func (s *ServiceRequestService) GetServiceRequestsByStatus(userID string, status
 
 func (s *ServiceRequestService) GetAvailableTimeSlots(service model.ServiceType) []utils.TimeSlot {
 	booked := map[string]bool{}
+	now := time.Now()
+	formattedDate := now.Format("02-01-2006")
 
 	requests, err := s.Repo.GetAllRequests()
 	if err != nil {
@@ -81,7 +84,7 @@ func (s *ServiceRequestService) GetAvailableTimeSlots(service model.ServiceType)
 	}
 
 	for _, r := range requests {
-		if r.ServiceType == service && r.Status != model.StatusCancelled {
+		if r.ServiceType == service && r.Status != model.StatusCancelled && r.Date == formattedDate{
 			booked[r.TimeSlot] = true
 		}
 	}
@@ -105,6 +108,10 @@ func (s *ServiceRequestService) GetPendingRequestsByServiceType(serviceType mode
 
 func (s *ServiceRequestService) GetApprovedRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest {
 	return s.Repo.GetApprovedRequestsByServiceType(serviceType)
+}
+
+func (s *ServiceRequestService) GetCompletedRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest {
+	return s.Repo.GetCompletedRequestsByServiceType(serviceType)
 }
 
 func (s *ServiceRequestService) ApproveServiceRequest(requestID uuid.UUID, assignedTo string) error {
