@@ -1,0 +1,13 @@
+version = 0.1
+
+[default.deploy.parameters]
+stack_name = "sam-upkeepz-handler-deploy"
+resolve_s3 = true
+s3_prefix = "sam-upkeepz-handler-deploy"
+region = "ap-south-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = []
+
+[default.global.parameters]
+region = "ap-south-1"

@@ -3,6 +3,8 @@ package response
 import (
 	"encoding/json"
 	"net/http"
+
+	"github.com/aws/aws-lambda-go/events"
 )
 
 type response struct {
@@ -35,4 +37,15 @@ func ErrorResponse(w http.ResponseWriter,statusCode int, errMessage string, code
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(statusCode)
 	json.NewEncoder(w).Encode(response)
+}
+
+func LambdaResponse(code int, data any, message string) events.APIGatewayProxyResponse{
+	body, _ := json.Marshal(map[string]any{
+		"message": message,
+		"data": data,
+	})
+	return events.APIGatewayProxyResponse{
+		StatusCode: code,
+		Body: string(body),
+	}
 }

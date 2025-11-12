@@ -1,0 +1,46 @@
+Transform: AWS::Serverless-2016-10-31
+Globals:
+  Function:
+    Architectures:
+      - x86_64
+    Timeout: 200
+    Handler: bootstrap
+    Runtime: provided.al2023
+
+Resources:
+  Api:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: v1
+      Cors: 
+        AllowMethods: "'GET,POST,PUT,DELETE,OPTIONS,PATCH'"
+        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+        AllowOrigin: "'*'"
+
+  Login:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+    Properties:
+      CodeUri: ./cmd/aws-functions/login
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties:
+            Method: post 
+            Path: /login 
+            RestApiId: !Ref Api 
+
+  Signup:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x 
+    Properties:
+      CodeUri: ./cmd/aws-functions/signup
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties: 
+            Method: post 
+            Path: /signup 
+            RestApiId: !Ref Api
