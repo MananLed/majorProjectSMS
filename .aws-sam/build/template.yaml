@@ -30,18 +30,3 @@ Resources:
             Path: /login
             RestApiId:
               Ref: Api
-  Signup:
-    Type: AWS::Serverless::Function
-    Metadata:
-      BuildMethod: go1.x
-      SamResourceId: Signup
-    Properties:
-      CodeUri: Signup
-      Events:
-        ApiEvent:
-          Type: Api
-          Properties:
-            Method: post
-            Path: /signup
-            RestApiId:
-              Ref: Api

@@ -3,10 +3,8 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"net/http"
 
-	"github.com/MananLed/majorProjectSMS/internal/db"
 	"github.com/MananLed/majorProjectSMS/internal/dto"
 	lambdacors "github.com/MananLed/majorProjectSMS/internal/middleware/lamdba_corsmiddleware"
 	"github.com/MananLed/majorProjectSMS/internal/model"
@@ -22,12 +20,8 @@ import (
 var userService service.UserService
 
 func init() {
-	database, err := db.InitDB()
-	if err != nil {
-		panic(fmt.Sprintf("Failed to initialize DB: %v", err))
-	}
+	var userRepo repository.UserRepositoryInterface
 
-	userRepo := repository.NewUserRepository(database)
 	userService = *service.NewUserService(userRepo)
 }
 

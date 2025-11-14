@@ -16,7 +16,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 )
 
-var userService service.UserService
+var noticeService service.NoticeService
 
 func init() {
 	cfg, err := config.LoadDefaultConfig(context.TODO())
@@ -24,9 +24,8 @@ func init() {
 		log.Fatalf("failed to load SDK config, %v", err)
 	}
 	database := dynamodb.NewFromConfig(cfg)
-
-	userRepo := repository.NewUserRepository(database, "UpKeepzTable")
-	userService = *service.NewUserService(userRepo)
+	noticeRepo := repository.NewNoticeRepository(database, "UpKeepzTable")
+	noticeService = *service.NewNoticeService(noticeRepo)
 }
 
 func main() {
@@ -34,11 +33,9 @@ func main() {
 }
 
 func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	user, err := userService.GetUserByID(ctx)
-
+	notices, err := noticeService.GetNotices()
 	if err != nil {
-		return response.LambdaResponse(http.StatusNotFound, map[string]any{"errorCode": 1004}, "User not Found"), nil
+		return response.LambdaResponse(http.StatusInternalServerError, map[string]any{"errorCode": 1010}, "Server Error"), nil
 	}
-
-	return response.LambdaResponse(http.StatusOK, user, "User retrieved successfully"), nil
+	return response.LambdaResponse(http.StatusOK, notices, "Notices fetched successfully"), nil
 }

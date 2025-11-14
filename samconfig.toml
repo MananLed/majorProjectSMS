@@ -1,10 +1,9 @@
 version = 0.1
 
 [default.deploy.parameters]
-stack_name = "sam-upkeepz-handler-deploy"
+stack_name = "sam-upkeepz-login-trial"
 resolve_s3 = true
-s3_prefix = "sam-upkeepz-handler-deploy"
-region = "ap-south-1"
+s3_prefix = "sam-upkeepz-login-trial"
 confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
 image_repositories = []

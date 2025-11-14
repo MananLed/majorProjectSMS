@@ -7,6 +7,7 @@ import (
 
 	authenticationmiddleware "github.com/MananLed/majorProjectSMS/internal/middleware/lambda_authmiddleware"
 	lambdacors "github.com/MananLed/majorProjectSMS/internal/middleware/lamdba_corsmiddleware"
+	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/repository"
 	"github.com/MananLed/majorProjectSMS/internal/response"
 	"github.com/MananLed/majorProjectSMS/internal/service"
@@ -16,6 +17,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 )
 
+var societyService service.SocietyService
 var userService service.UserService
 
 func init() {
@@ -25,6 +27,8 @@ func init() {
 	}
 	database := dynamodb.NewFromConfig(cfg)
 
+	societyRepo := repository.NewSocietyRepository(database, "UpKeepzTable")
+	societyService = *service.NewSocietyService(societyRepo)
 	userRepo := repository.NewUserRepository(database, "UpKeepzTable")
 	userService = *service.NewUserService(userRepo)
 }
@@ -40,5 +44,15 @@ func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.A
 		return response.LambdaResponse(http.StatusNotFound, map[string]any{"errorCode": 1004}, "User not Found"), nil
 	}
 
-	return response.LambdaResponse(http.StatusOK, user, "User retrieved successfully"), nil
+	if err != nil || (user.Role != model.RoleAdmin) {
+		return response.LambdaResponse(http.StatusUnauthorized, map[string]any{"errorCode": 1008}, "Unauthorized access"), nil
+	}
+
+	residents, err := societyService.GetAllResidents(ctx)
+
+	if err != nil {
+		return response.LambdaResponse(http.StatusInternalServerError, map[string]any{"errorCode": 1010}, "Server Error"), nil
+	}
+
+	return response.LambdaResponse(http.StatusOK, residents, "Residents retrieved successfully"), nil
 }

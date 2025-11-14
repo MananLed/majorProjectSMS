@@ -5,13 +5,13 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"log"
 	"strings"
 
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/repository"
 	"github.com/MananLed/majorProjectSMS/internal/utils"
 	"github.com/MananLed/majorProjectSMS/pkg/logger"
-	"github.com/fatih/color"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -46,8 +46,6 @@ func (us *UserService) Login(id string, password string) (*model.User, error) {
 	user, err := us.UserRepo.GetUserByIDAndPassword(id, password)
 
 	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		color.Red("Incorrect id or password.")
 		return nil, err
 	}
 	return user, nil
@@ -94,8 +92,8 @@ func (us *UserService) DeleteProfile(ctx context.Context) error {
 func (us *UserService) GetUserByID(ctx context.Context) (*model.User, error) {
 	user, err := utils.GetUserFromContext(ctx)
 	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
+		log.Printf(fmt.Sprintf("error: %v", err))
 		return nil, err
 	}
-	return us.UserRepo.GetUserByID(user.ID)
+	return us.UserRepo.GetUserByID(user.Email)
 }

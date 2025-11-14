@@ -2,115 +2,106 @@ Transform: AWS::Serverless-2016-10-31
 Globals:
   Function:
     Architectures:
-      - x86_64
+    - x86_64
     Timeout: 200
     Handler: bootstrap
     Runtime: provided.al2023
-
 Resources:
   Api:
     Type: AWS::Serverless::Api
     Properties:
       StageName: v1
-      Cors: 
-        AllowMethods: "'GET,POST,PUT,DELETE,OPTIONS,PATCH'"
-        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-        AllowOrigin: "'*'"
-
+      Cors:
+        AllowMethods: '''GET,POST,PUT,DELETE,OPTIONS,PATCH'''
+        AllowHeaders: '''Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'''
+        AllowOrigin: '''*'''
   Login:
     Type: AWS::Serverless::Function
     Metadata:
       BuildMethod: go1.x
+      SamResourceId: Login
     Properties:
-      CodeUri: ./cmd/aws-functions/login
+      CodeUri: Login
       Events:
         ApiEvent:
-          Type: Api 
+          Type: Api
           Properties:
-            Method: post 
-            Path: /login 
-            RestApiId: !Ref Api 
-
-  # Signup:
-  #   Type: AWS::Serverless::Function
-  #   Metadata:
-  #     BuildMethod: go1.x 
-  #   Properties:
-  #     CodeUri: ./cmd/aws-functions/signup
-  #     Events:
-  #       ApiEvent:
-  #         Type: Api 
-  #         Properties: 
-  #           Method: post 
-  #           Path: /signup 
-  #           RestApiId: !Ref Api
-
+            Method: post
+            Path: /login
+            RestApiId:
+              Ref: Api
   Profile:
     Type: AWS::Serverless::Function
     Metadata:
       BuildMethod: go1.x
+      SamResourceId: Profile
     Properties:
-      CodeUri: ./cmd/aws-functions/profile
+      CodeUri: Profile
       Events:
         ApiEvent:
-          Type: Api 
+          Type: Api
           Properties:
-            Method: get 
+            Method: get
             Path: /profile
-            RestApiId: !Ref Api
-
+            RestApiId:
+              Ref: Api
   ViewResident:
     Type: AWS::Serverless::Function
     Metadata:
       BuildMethod: go1.x
+      SamResourceId: ViewResident
     Properties:
-      CodeUri: ./cmd/aws-functions/view_residents
+      CodeUri: ViewResident
       Events:
         ApiEvent:
-          Type: Api 
+          Type: Api
           Properties:
-            Method: get 
+            Method: get
             Path: /society/residents
-            RestApiId: !Ref Api
-
+            RestApiId:
+              Ref: Api
   ViewOfficers:
     Type: AWS::Serverless::Function
     Metadata:
       BuildMethod: go1.x
+      SamResourceId: ViewOfficers
     Properties:
-      CodeUri: ./cmd/aws-functions/view_officers
+      CodeUri: ViewOfficers
       Events:
         ApiEvent:
-          Type: Api 
+          Type: Api
           Properties:
-            Method: get 
+            Method: get
             Path: /society/officers
-            RestApiId: !Ref Api
-
+            RestApiId:
+              Ref: Api
   ViewNotices:
     Type: AWS::Serverless::Function
     Metadata:
       BuildMethod: go1.x
+      SamResourceId: ViewNotices
     Properties:
-      CodeUri: ./cmd/aws-functions/view_all_notices
+      CodeUri: ViewNotices
       Events:
         ApiEvent:
-          Type: Api 
+          Type: Api
           Properties:
-            Method: get 
+            Method: get
             Path: /notices
-            RestApiId: !Ref Api
-
+            RestApiId:
+              Ref: Api
   ViewNoticesMonthYear:
     Type: AWS::Serverless::Function
     Metadata:
       BuildMethod: go1.x
+      SamResourceId: ViewNoticesMonthYear
     Properties:
-      CodeUri: ./cmd/aws-functions/view_notices_month_year
+      CodeUri: ViewNoticesMonthYear
       Events:
         ApiEvent:
-          Type: Api 
+          Type: Api
           Properties:
-            Method: get 
+            Method: get
             Path: /notices/month-year
-            RestApiId: !Ref Api
+            RestApiId:
+              Ref: Api

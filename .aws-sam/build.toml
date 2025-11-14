@@ -5,6 +5,7 @@ codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\login"
 runtime = "provided.al2023"
 architecture = "x86_64"
 handler = "bootstrap"
+source_hash = "aafdcafbf20fab0dd037cccb8e9f0acd789aaae8184841ff495fc0bd3465c6b6"
 manifest_hash = ""
 packagetype = "Zip"
 functions = ["Login"]
@@ -12,16 +13,69 @@ functions = ["Login"]
 [function_build_definitions.85793722-f949-4e7a-98a6-00b18f951fdc.metadata]
 BuildMethod = "go1.x"
 
-[function_build_definitions.2e7c2fcf-e45f-4e01-9d32-6ddae40ee1ac]
-codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\signup"
+[function_build_definitions.f7907c41-5945-43ac-9529-e75f5f1bdcf3]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\profile"
 runtime = "provided.al2023"
 architecture = "x86_64"
 handler = "bootstrap"
+source_hash = "6c0ac06a4d49e4d53dc2721b4cf99ee105d7af8aad146c9507d34fb4fb2246bd"
 manifest_hash = ""
 packagetype = "Zip"
-functions = ["Signup"]
+functions = ["Profile"]
 
-[function_build_definitions.2e7c2fcf-e45f-4e01-9d32-6ddae40ee1ac.metadata]
+[function_build_definitions.f7907c41-5945-43ac-9529-e75f5f1bdcf3.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.bad4df7f-b8c9-41ee-abc6-89a6e7971965]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\view_residents"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "66b6a9a080aff2573591cc17cf36587758bdb761411fda0a10e8fd50f73a9898"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["ViewResident"]
+
+[function_build_definitions.bad4df7f-b8c9-41ee-abc6-89a6e7971965.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.e5dd961f-1a7f-45d1-8ada-1655fa2df264]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\view_officers"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "b35c81208dd09243256170f3fee77d1f4c3926efbba204eda75acfff7bee34cf"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["ViewOfficers"]
+
+[function_build_definitions.e5dd961f-1a7f-45d1-8ada-1655fa2df264.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.2a0c2811-c165-4d2b-aec4-25cc277063a2]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\view_all_notices"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "aa1071e0909a6617e6fc69ee9eb4f073582d4ea08c2820fb8901c8cf025156f5"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["ViewNotices"]
+
+[function_build_definitions.2a0c2811-c165-4d2b-aec4-25cc277063a2.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.912e0314-d937-455d-9902-22ceba66ccaa]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\view_notices_month_year"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "cdf9c004dd2b128207e87e26fca34b1bd8ae30d540b56d70c83681a0d4d9a8ff"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["ViewNoticesMonthYear"]
+
+[function_build_definitions.912e0314-d937-455d-9902-22ceba66ccaa.metadata]
 BuildMethod = "go1.x"
 
 [layer_build_definitions]
