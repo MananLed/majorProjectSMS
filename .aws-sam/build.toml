@@ -156,4 +156,43 @@ functions = ["IssueInvoice"]
 [function_build_definitions.c8e68a0c-3646-4a22-b49c-304c07cc0242.metadata]
 BuildMethod = "go1.x"
 
+[function_build_definitions.0ce7e13e-e860-4e73-ad4b-1cdcb9784563]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\get_all_requests"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "eeccd9e9d5e42f7a130e628e1eebc72fcd9fd3cd1525ac232192ebd2893c663c"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["GetAllRequests"]
+
+[function_build_definitions.0ce7e13e-e860-4e73-ad4b-1cdcb9784563.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.f40b63a7-e7e2-459c-90c1-580364ded272]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\get_all_requests_of_resident"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "c51c2b6c1888fd3d4b82961ee1761f98cf4d408cf52330801319f76b93e5bd93"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["GetAllRequestsOfResident"]
+
+[function_build_definitions.f40b63a7-e7e2-459c-90c1-580364ded272.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.c0403e2c-aa0c-4c10-80ac-aac4c2b90631]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\get_available_time_slots"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "c9b7798341d9db13578b0792fc7257d5b498154e4b644f4448813e1c0ea441c3"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["GetAvailableTimeSlots"]
+
+[function_build_definitions.c0403e2c-aa0c-4c10-80ac-aac4c2b90631.metadata]
+BuildMethod = "go1.x"
+
 [layer_build_definitions]

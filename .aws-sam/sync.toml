@@ -2,7 +2,7 @@
 
 [sync_state]
 dependency_layer = true
-latest_infra_sync_time = "2025-11-15T13:18:38.363185+00:00"
+latest_infra_sync_time = "2025-11-15T19:47:36.250764+00:00"
 
 [resource_sync_states."ZipFunctionSyncFlow:ViewResident"]
 hash = "61f7e12f01119d3bc801f7c54f75cf3afe6f4c1e54c51b2fcfc296b00eb378cb"
@@ -47,3 +47,7 @@ sync_time = "2025-11-15T11:48:49.053652+00:00"
 [resource_sync_states."ZipFunctionSyncFlow:IssueNotice"]
 hash = "5f7e9c92b17cdf83ba3077bc1492a4f4e2663081166622f893a92a844aaf0623"
 sync_time = "2025-11-15T12:54:03.748930+00:00"
+
+[resource_sync_states."ZipFunctionSyncFlow:GetAvailableTimeSlots"]
+hash = "eae87f5b7c4559b16c512dfba2c0967cfd998cf037ddbca5ac79f75595c1167b"
+sync_time = "2025-11-15T20:00:27.657408+00:00"

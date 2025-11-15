@@ -184,3 +184,46 @@ Resources:
             Method: post 
             Path: /invoices/issue
             RestApiId: !Ref Api
+
+  GetAllRequests:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x 
+    Properties:
+      CodeUri: ./cmd/aws-functions/get_all_requests
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties: 
+            Method: get 
+            Path: /service/all
+            RestApiId: !Ref Api
+
+  GetAllRequestsOfResident:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x 
+    Properties:
+      CodeUri: ./cmd/aws-functions/get_all_requests_of_resident
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties: 
+            Method: get 
+            Path: /service/resident/all
+            RestApiId: !Ref Api
+
+  GetAvailableTimeSlots:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x 
+    Properties:
+      CodeUri: ./cmd/aws-functions/get_available_time_slots
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties: 
+            Method: get 
+            Path: /service/time-slots
+            RestApiId: !Ref Api
+  

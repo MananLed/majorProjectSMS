@@ -4,6 +4,7 @@ package service
 import (
 	"context"
 	"fmt"
+	"log"
 	"time"
 
 	"github.com/MananLed/majorProjectSMS/internal/model"
@@ -17,15 +18,15 @@ type ServiceRequestServiceInterface interface {
 	BookServiceRequest(req model.ServiceRequest) error
 	RescheduleServiceRequest(userID string, requestID uuid.UUID, newSlot utils.TimeSlot, newService model.ServiceType) error
 	CancelServiceRequest(userID string, requestID uuid.UUID) error
-	GetServiceRequestsByStatus(userID string, status model.Status) []model.ServiceRequest
-	GetAvailableTimeSlots(service model.ServiceType) []utils.TimeSlot
+	GetServiceRequestsByStatus(userID string, status model.Status) ([]model.ServiceRequest, error)
+	GetAvailableTimeSlots(service model.ServiceType) ([]utils.TimeSlot, error)
 	GetServiceTypeByID(requestID uuid.UUID) (model.ServiceType, error)
-	GetPendingRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest
-	GetApprovedRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest
+	GetPendingRequestsByServiceType(serviceType model.ServiceType) ([]model.ServiceRequest, error)
+	GetApprovedRequestsByServiceType(serviceType model.ServiceType) ([]model.ServiceRequest, error)
 	ApproveServiceRequest(requestID uuid.UUID, assignedTo string) error
 	DeleteServiceRequestByID(ctx context.Context) error
 	CompleteServiceRequest(requestID uuid.UUID) error
-	GetCompletedRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest
+	GetCompletedRequestsByServiceType(serviceType model.ServiceType) ([]model.ServiceRequest, error)
 }
 
 type ServiceRequestService struct {
@@ -68,23 +69,34 @@ func (s *ServiceRequestService) CancelServiceRequest(userID string, requestID uu
 	return s.Repo.DeleteRequest(requestID)
 }
 
-func (s *ServiceRequestService) GetServiceRequestsByStatus(userID string, status model.Status) []model.ServiceRequest {
+func (s *ServiceRequestService) GetServiceRequestsByStatus(userID string, status model.Status) ([]model.ServiceRequest, error) {
 	return s.Repo.GetServiceRequestsByStatus(userID, status)
 }
 
-func (s *ServiceRequestService) GetAvailableTimeSlots(service model.ServiceType) []utils.TimeSlot {
+func (s *ServiceRequestService) GetAvailableTimeSlots(service model.ServiceType) ([]utils.TimeSlot, error) {
 	booked := map[string]bool{}
 	now := time.Now()
 	formattedDate := now.Format("02-01-2006")
 
-	requests, err := s.Repo.GetAllRequests()
+	requests, err := s.Repo.GetRequestsByServiceTypeAndStatus(service, model.StatusPending)
 	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return utils.GenerateTimeSlots()
+		return nil, err
 	}
 
+	requestsApproved, err := s.Repo.GetRequestsByServiceTypeAndStatus(service, model.StatusApproved)
+	if err != nil {
+		return nil, err
+	}
+	requests = append(requests, requestsApproved...)
+
+	requestsCompleted, err := s.Repo.GetRequestsByServiceTypeAndStatus(service, model.StatusCompleted)
+	if err != nil {
+		return nil, err
+	}
+	requests = append(requests, requestsCompleted...)
+
 	for _, r := range requests {
-		if r.ServiceType == service && r.Status != model.StatusCancelled && r.Date == formattedDate{
+		if r.Date == formattedDate{
 			booked[r.TimeSlot] = true
 		}
 	}
@@ -95,23 +107,23 @@ func (s *ServiceRequestService) GetAvailableTimeSlots(service model.ServiceType)
 			available = append(available, slot)
 		}
 	}
-	return available
+	return available, nil
 }
 
 func (s *ServiceRequestService) GetServiceTypeByID(requestID uuid.UUID) (model.ServiceType, error) {
 	return s.Repo.GetServiceTypeByID(requestID)
 }
 
-func (s *ServiceRequestService) GetPendingRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest {
-	return s.Repo.GetPendingRequestsByServiceType(serviceType)
+func (s *ServiceRequestService) GetPendingRequestsByServiceType(serviceType model.ServiceType) ([]model.ServiceRequest, error) {
+	return s.Repo.GetRequestsByServiceTypeAndStatus(serviceType, model.StatusPending)
 }
 
-func (s *ServiceRequestService) GetApprovedRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest {
-	return s.Repo.GetApprovedRequestsByServiceType(serviceType)
+func (s *ServiceRequestService) GetApprovedRequestsByServiceType(serviceType model.ServiceType) ([]model.ServiceRequest, error) {
+	return s.Repo.GetRequestsByServiceTypeAndStatus(serviceType, model.StatusApproved)
 }
 
-func (s *ServiceRequestService) GetCompletedRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest {
-	return s.Repo.GetCompletedRequestsByServiceType(serviceType)
+func (s *ServiceRequestService) GetCompletedRequestsByServiceType(serviceType model.ServiceType) ([]model.ServiceRequest, error) {
+	return s.Repo.GetRequestsByServiceTypeAndStatus(serviceType, model.StatusCompleted)
 }
 
 func (s *ServiceRequestService) ApproveServiceRequest(requestID uuid.UUID, assignedTo string) error {

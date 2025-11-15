@@ -195,3 +195,48 @@ Resources:
             Path: /invoices/issue
             RestApiId:
               Ref: Api
+  GetAllRequests:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: GetAllRequests
+    Properties:
+      CodeUri: GetAllRequests
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: get
+            Path: /service/all
+            RestApiId:
+              Ref: Api
+  GetAllRequestsOfResident:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: GetAllRequestsOfResident
+    Properties:
+      CodeUri: GetAllRequestsOfResident
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: get
+            Path: /service/resident/all
+            RestApiId:
+              Ref: Api
+  GetAvailableTimeSlots:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: GetAvailableTimeSlots
+    Properties:
+      CodeUri: GetAvailableTimeSlots
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: get
+            Path: /service/time-slots
+            RestApiId:
+              Ref: Api
