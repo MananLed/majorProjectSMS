@@ -41,18 +41,18 @@ func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.A
 	user, err := userService.GetUserByID(ctx)
 
 	if err != nil {
-		return response.LambdaResponse(http.StatusNotFound, map[string]any{"errorCode": 1004}, "User not Found"), nil
+		return response.ErrorResponse(http.StatusNotFound, "User not Found", 1004), nil
 	}
 
-	if err != nil || (user.Role != model.RoleAdmin) {
-		return response.LambdaResponse(http.StatusUnauthorized, map[string]any{"errorCode": 1008}, "Unauthorized access"), nil
+	if (user.Role != model.RoleAdmin) {
+		return response.ErrorResponse(http.StatusUnauthorized, "Unauthorized access", 1008), nil
 	}
 
 	officers, err := societyService.GetAllOfficers(ctx)
 
 	if err != nil {
-		return response.LambdaResponse(http.StatusInternalServerError, map[string]any{"errorCode": 1010}, "Server Error"), nil
+		return response.ErrorResponse(http.StatusInternalServerError, "Server Error", 1010), nil
 	}
 
-	return response.LambdaResponse(http.StatusOK, officers, "Officers retrieved successfully"), nil
+	return response.SuccessResponse(officers, "Officers retrieved successfully", http.StatusOK), nil
 }

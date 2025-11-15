@@ -30,6 +30,21 @@ Resources:
             Path: /login
             RestApiId:
               Ref: Api
+  Signup:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: Signup
+    Properties:
+      CodeUri: Signup
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: post
+            Path: /signup
+            RestApiId:
+              Ref: Api
   Profile:
     Type: AWS::Serverless::Function
     Metadata:
@@ -103,5 +118,80 @@ Resources:
           Properties:
             Method: get
             Path: /notices/month-year
+            RestApiId:
+              Ref: Api
+  ViewInvoicesMonthYear:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: ViewInvoicesMonthYear
+    Properties:
+      CodeUri: ViewInvoicesMonthYear
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: get
+            Path: /invoices/month-year
+            RestApiId:
+              Ref: Api
+  DeleteOfficer:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: DeleteOfficer
+    Properties:
+      CodeUri: DeleteOfficer
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: delete
+            Path: /credentials/officer
+            RestApiId:
+              Ref: Api
+  DeleteResident:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: DeleteResident
+    Properties:
+      CodeUri: DeleteResident
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: delete
+            Path: /credentials/resident
+            RestApiId:
+              Ref: Api
+  IssueNotice:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: IssueNotice
+    Properties:
+      CodeUri: IssueNotice
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: post
+            Path: /notices/issue
+            RestApiId:
+              Ref: Api
+  IssueInvoice:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: IssueInvoice
+    Properties:
+      CodeUri: IssueInvoice
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: post
+            Path: /invoices/issue
             RestApiId:
               Ref: Api

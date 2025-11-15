@@ -68,19 +68,60 @@ func NewUserRepository(ddbClient *dynamodb.Client, tableName string) *UserReposi
 
 func (r *UserRepository) AddUser(newUser model.User) error {
 
-	query := `
-		INSERT INTO users (id, first_name, middle_name, last_name, mobile_number, email, password, role, flat_no)
-		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-	`
+	// query := `
+	// 	INSERT INTO users (id, first_name, middle_name, last_name, mobile_number, email, password, role, flat_no)
+	// 	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+	// `
 
-	_, err := r.db.Exec(query, newUser.ID, newUser.FirstName, newUser.MiddleName, newUser.LastName, newUser.MobileNumber, newUser.Email, newUser.Password, newUser.Role, newUser.Flat)
+	// _, err := r.db.Exec(query, newUser.ID, newUser.FirstName, newUser.MiddleName, newUser.LastName, newUser.MobileNumber, newUser.Email, newUser.Password, newUser.Role, newUser.Flat)
+
+	// if err != nil {
+	// 	logger.LogToFile(fmt.Sprintf("error: %v", err))
+	// 	return err
+	// }
+
+	// return nil
+	statement := "INSERT INTO " + r.TableName + " VALUE {'PK': ?, 'SK': ?, 'email': ?, 'first_name': ?, 'flat': ?, 'id': ?, 'middle_name': ?, 'last_name': ?, 'mobile_number': ?, 'password': ?, 'role': ?}"
+
+	_, err := r.DynamoDbClient.ExecuteStatement(context.Background(), &dynamodb.ExecuteStatementInput{
+        Statement: &statement,
+        Parameters: []types.AttributeValue{
+            &types.AttributeValueMemberS{Value: "USERS"},
+            &types.AttributeValueMemberS{Value: (newUser.Email + "#" + newUser.ID)},
+            &types.AttributeValueMemberS{Value: newUser.Email},
+            &types.AttributeValueMemberS{Value: newUser.FirstName},
+            &types.AttributeValueMemberS{Value: newUser.Flat},
+            &types.AttributeValueMemberS{Value: newUser.ID},
+            &types.AttributeValueMemberS{Value: newUser.MiddleName},
+            &types.AttributeValueMemberS{Value: newUser.LastName},
+			&types.AttributeValueMemberS{Value: newUser.MobileNumber},
+			&types.AttributeValueMemberS{Value: newUser.Password},
+			&types.AttributeValueMemberS{Value: string(newUser.Role)},
+        },
+    })
 
 	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return err
+		return err 
 	}
 
-	return nil
+	_, err = r.DynamoDbClient.ExecuteStatement(context.Background(), &dynamodb.ExecuteStatementInput{
+        Statement: &statement,
+        Parameters: []types.AttributeValue{
+            &types.AttributeValueMemberS{Value: ("ROLE#" + string(newUser.Role))},
+            &types.AttributeValueMemberS{Value: newUser.ID},
+            &types.AttributeValueMemberS{Value: newUser.Email},
+            &types.AttributeValueMemberS{Value: newUser.FirstName},
+            &types.AttributeValueMemberS{Value: newUser.Flat},
+            &types.AttributeValueMemberS{Value: newUser.ID},
+            &types.AttributeValueMemberS{Value: newUser.MiddleName},
+            &types.AttributeValueMemberS{Value: newUser.LastName},
+			&types.AttributeValueMemberS{Value: newUser.MobileNumber},
+			&types.AttributeValueMemberS{Value: newUser.Password},
+			&types.AttributeValueMemberS{Value: string(newUser.Role)},
+        },
+    })
+
+	return err
 }
 
 func (r *UserRepository) GetUserByIDAndPassword(email string, password string) (*model.User, error) {
@@ -135,16 +176,23 @@ func (r *UserRepository) GetUserByIDAndPassword(email string, password string) (
 	if err != nil {
 		return nil, err
 	} else {
-		err = attributevalue.UnmarshalMap(response.Items[0], &user)
 		err = attributevalue.UnmarshalMap(response.Items[0], &userDetails)
-		log.Print(response.Items)
-		log.Print(userDetails)
 		if err != nil {
 			return nil, err
 		}
 	}
-	return &user, err
 
+	user.ID = userDetails.ID
+	user.Email = userDetails.Email
+	user.FirstName = userDetails.FirstName
+	user.LastName = userDetails.LastName
+	user.MiddleName = userDetails.MiddleName
+	user.MobileNumber = userDetails.MobileNumber
+	user.Password = userDetails.Password
+	user.Role = model.UserRole(userDetails.Role)
+	user.Flat = userDetails.Flat
+
+	return &user, err
 }
 
 func (r *UserRepository) UpdateUser(updatedUser model.User) error {

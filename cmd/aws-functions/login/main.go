@@ -39,26 +39,21 @@ func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.A
 	var req dto.LoginRequestDTO
 
 	if err := json.Unmarshal([]byte(event.Body), &req); err != nil {
-		return response.LambdaResponse(http.StatusBadRequest, map[string]any{"errorCode": 1001}, "Invalid Request Body"), nil
+		return response.ErrorResponse(http.StatusBadRequest, "Invalid Request Body", 1001), nil
 	}
-
-	log.Print(req.Email)
-	log.Print(req.Password)
 
 	user, err := userService.Login(req.Email, req.Password)
 
 	if err != nil {
-		return response.LambdaResponse(http.StatusUnauthorized, map[string]any{"errorCode": 1002}, "Invalid Credentials, " + err.Error()), nil
+		return response.ErrorResponse(http.StatusUnauthorized, "Invalid Credentials", 1002), nil
 	}
-
-	log.Print(user)
 
 	var jwtTokenString string
 	jwtTokenString, err = utils.GenerateJWT(user.ID, string(user.Role), user.Email, user.Flat)
 
 	if err != nil {
-		return response.LambdaResponse(http.StatusInternalServerError, map[string]any{"errorCode": 1010}, "Server Error"), nil
+		return response.ErrorResponse(http.StatusInternalServerError, "Server Error", 1010), nil
 	}
 
-	return response.LambdaResponse(http.StatusOK, map[string]any{"successCode": 1000, "token": jwtTokenString, "email": user.Email, "role": user.Role}, "Login Successful"), nil
+	return response.SuccessResponse(map[string]any{"token": jwtTokenString, "email": user.Email, "role": user.Role}, "Login Successful", http.StatusCreated), nil
 }

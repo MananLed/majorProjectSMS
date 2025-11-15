@@ -48,6 +48,12 @@ func (us *UserService) Login(id string, password string) (*model.User, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password))
+	if err != nil {
+		return nil, errors.New("invalid credentials")
+	}
+
 	return user, nil
 }
 

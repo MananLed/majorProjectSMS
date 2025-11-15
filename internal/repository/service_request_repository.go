@@ -146,7 +146,7 @@ func (r *ServiceRequestRepository) UpdateRequest(req *model.ServiceRequest) erro
 
 	return nil
 }
-
+//***********************************************************************************
 func (r *ServiceRequestRepository) DeleteRequest(requestID uuid.UUID) error {
 	query := `DELETE FROM service_requests WHERE request_id = $1`
 
@@ -160,7 +160,7 @@ func (r *ServiceRequestRepository) DeleteRequest(requestID uuid.UUID) error {
 	}
 	return nil
 }
-
+//**************************************************************************************
 func (r *ServiceRequestRepository) DeleteRequestsByResidentID(residentID string) error {
 	query := `DELETE FROM service_requests WHERE resident_id = $1`
 
@@ -173,7 +173,7 @@ func (r *ServiceRequestRepository) DeleteRequestsByResidentID(residentID string)
 	}
 	return nil
 }
-
+// ***************************************************************************************
 func (r *ServiceRequestRepository) GetServiceRequestsByStatus(userID string, status model.Status) []model.ServiceRequest {
 	query := `
 		SELECT request_id, resident_id, status, time_slot, start_time, end_time, service_type, flat_no, date, assigned_to, feedback_given
@@ -223,7 +223,7 @@ func (r *ServiceRequestRepository) GetServiceTypeByID(requestID uuid.UUID) (mode
 	return servicetype, nil
 
 }
-
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 func (r *ServiceRequestRepository) GetPendingRequestsByServiceType(serviceType model.ServiceType) []model.ServiceRequest {
 
 	query := `
@@ -314,3 +314,4 @@ func (r *ServiceRequestRepository) GetCompletedRequestsByServiceType(serviceType
 	}
 	return requests
 }
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

@@ -37,8 +37,8 @@ func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.A
 	user, err := userService.GetUserByID(ctx)
 
 	if err != nil {
-		return response.LambdaResponse(http.StatusNotFound, map[string]any{"errorCode": 1004}, "User not Found"), nil
+		return response.ErrorResponse(http.StatusNotFound, "User not Found", 1004), nil
 	}
 
-	return response.LambdaResponse(http.StatusOK, user, "User retrieved successfully"), nil
+	return response.SuccessResponse(user, "User retrieved successfully", http.StatusOK), nil
 }

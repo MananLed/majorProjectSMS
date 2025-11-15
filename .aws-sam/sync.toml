@@ -2,20 +2,48 @@
 
 [sync_state]
 dependency_layer = true
-latest_infra_sync_time = "2025-11-13T22:05:38.180407+00:00"
+latest_infra_sync_time = "2025-11-15T13:18:38.363185+00:00"
 
-[resource_sync_states."ZipFunctionSyncFlow:Login"]
-hash = "cfce8e54444c760ed75cf119b4b57ffae2330e1632987f41c38f9d98b6a0ad04"
-sync_time = "2025-11-13T12:23:28.701115+00:00"
+[resource_sync_states."ZipFunctionSyncFlow:ViewResident"]
+hash = "61f7e12f01119d3bc801f7c54f75cf3afe6f4c1e54c51b2fcfc296b00eb378cb"
+sync_time = "2025-11-15T10:35:56.500602+00:00"
 
 [resource_sync_states."ZipFunctionSyncFlow:Profile"]
-hash = "c803d3ce045f5f4ecde721eb7d469b823efccc3301e76f7c77ae6498bc51fdef"
-sync_time = "2025-11-13T19:54:48.541836+00:00"
+hash = "82c56ba354d58403a5c4934e51cd45c04151bec86d8650c6d7206df8a4c31695"
+sync_time = "2025-11-15T10:36:10.813534+00:00"
+
+[resource_sync_states."ZipFunctionSyncFlow:ViewOfficers"]
+hash = "cf797022d286c8a4fce1ed2bcd8f49f93024f2a36a279b6cf7d396993065de7a"
+sync_time = "2025-11-15T10:36:07.524372+00:00"
 
 [resource_sync_states."ZipFunctionSyncFlow:ViewNotices"]
-hash = "399a20bd6f39d76b812ed3f8fd1cf58ce26d234555cd2199a16f72872257908d"
-sync_time = "2025-11-13T22:44:38.446016+00:00"
+hash = "4e6546330a2a7d6f385ccb6fa40861996162712ce81ffc691125c5241f4c6b17"
+sync_time = "2025-11-15T10:36:07.955198+00:00"
+
+[resource_sync_states."ZipFunctionSyncFlow:Login"]
+hash = "7c64d6eaafc361cbd69cbf0ab12f7be2669d184f9aee841046d08bd37b98e13e"
+sync_time = "2025-11-15T10:42:03.849851+00:00"
 
 [resource_sync_states."ZipFunctionSyncFlow:ViewNoticesMonthYear"]
-hash = "6b960119632f12a13e32441dd53e8611e6c99ec81c55c8141cdf52c9600d2947"
-sync_time = "2025-11-13T22:46:31.120273+00:00"
+hash = "595f3bac7b5b237520db3ffeab84993799196b38833ced87c04bf2a9de0429e1"
+sync_time = "2025-11-15T10:36:06.944044+00:00"
+
+[resource_sync_states."ZipFunctionSyncFlow:Signup"]
+hash = "d041c30c01b975c654d0f073f07296b98952b5f91de713377964d8cfecbfe476"
+sync_time = "2025-11-15T10:35:59.261975+00:00"
+
+[resource_sync_states."ZipFunctionSyncFlow:ViewInvoicesMonthYear"]
+hash = "ed6fb8337b1c3e0ae0d152f0b74217242a113eb0973d330fc42cc4b4253f72e0"
+sync_time = "2025-11-15T10:36:07.708268+00:00"
+
+[resource_sync_states."ZipFunctionSyncFlow:DeleteResident"]
+hash = "3cef2e99e39a860c9e94a5cb8b7a8b7b892c472f223eb4b5b8341215f9da54f7"
+sync_time = "2025-11-15T11:48:47.463020+00:00"
+
+[resource_sync_states."ZipFunctionSyncFlow:DeleteOfficer"]
+hash = "208b835824a791ea6925dd5eb3033f1660d942936e0c87729fba8912b5853077"
+sync_time = "2025-11-15T11:48:49.053652+00:00"
+
+[resource_sync_states."ZipFunctionSyncFlow:IssueNotice"]
+hash = "5f7e9c92b17cdf83ba3077bc1492a4f4e2663081166622f893a92a844aaf0623"
+sync_time = "2025-11-15T12:54:03.748930+00:00"

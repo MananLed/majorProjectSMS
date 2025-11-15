@@ -35,7 +35,7 @@ func main() {
 func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	notices, err := noticeService.GetNotices()
 	if err != nil {
-		return response.LambdaResponse(http.StatusInternalServerError, map[string]any{"errorCode": 1010}, "Server Error"), nil
+		return response.ErrorResponse(http.StatusInternalServerError, "Server Error", 1010), nil
 	}
-	return response.LambdaResponse(http.StatusOK, notices, "Notices fetched successfully"), nil
+	return response.SuccessResponse(notices, "Notices fetched successfully", http.StatusOK), nil
 }

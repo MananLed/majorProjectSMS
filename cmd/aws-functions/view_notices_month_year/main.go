@@ -39,28 +39,28 @@ func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.A
 	yearStr := event.QueryStringParameters["year"]
 
 	if yearStr == "" && monthStr == "" || yearStr == "" && monthStr != "" {
-		return response.LambdaResponse(http.StatusBadRequest, map[string]any{"errorCode": 1001}, "Invalid Request"), nil
+		return response.ErrorResponse(http.StatusBadRequest, "Invalid Request", 1001), nil
 	} else if yearStr != "" && monthStr == "" {
 		year, err := strconv.Atoi(yearStr)
 		if err != nil {
-			return response.LambdaResponse(http.StatusBadRequest, map[string]any{"errorCode": 1001}, "Invalid Request"), nil
+			return response.ErrorResponse(http.StatusBadRequest, "Invalid Request", 1001), nil
 		}
 		notices, err := noticeService.GetNoticesByYear(year)
 		if err != nil {
-			return response.LambdaResponse(http.StatusInternalServerError, map[string]any{"errorCode": 1010}, "Server error"), nil
+			return response.ErrorResponse(http.StatusInternalServerError, "Server error", 1010), nil
 		}
-		return response.LambdaResponse(http.StatusOK, notices, "Notices retrieved successfully!!"), nil
+		return response.SuccessResponse(notices, "Notices retrieved successfully", http.StatusOK), nil
 	} else {
 		year, err1 := strconv.Atoi(yearStr)
 		monthInt, err2 := strconv.Atoi(monthStr)
 		if err1 != nil || err2 != nil || monthInt < 1 || monthInt > 12 {
-			return response.LambdaResponse(http.StatusBadRequest, map[string]any{"errorCode": 1001}, "Invalid Request"), nil
+			return response.ErrorResponse(http.StatusBadRequest, "Invalid Request", 1001), nil
 		}
 		month := time.Month(monthInt)
 		notices, err := noticeService.GetNoticesByMonthYear(month, year)
 		if err != nil {
-			return response.LambdaResponse(http.StatusInternalServerError, map[string]any{"errorCode": 1010}, "Server Error"), nil
+			return response.ErrorResponse(http.StatusInternalServerError, "Server Error", 1010), nil
 		}
-		return response.LambdaResponse(http.StatusOK, notices, "Notices retrieved successfully"), nil
+		return response.SuccessResponse(notices, "Notices retrieved successfully", http.StatusOK), nil
 	}
 }

@@ -2,15 +2,12 @@ package repository
 
 import (
 	"context"
-	"database/sql"
 	"fmt"
 	"strconv"
-	"sync"
 	"time"
 
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/utils"
-	"github.com/MananLed/majorProjectSMS/pkg/logger"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
@@ -26,8 +23,6 @@ type NoticeRepositoryInterface interface {
 }
 
 type NoticeRepository struct {
-	DB             *sql.DB
-	mu             sync.Mutex
 	DynamoDbClient *dynamodb.Client
 	TableName      string
 }
@@ -38,19 +33,43 @@ func NewNoticeRepository(ddbClient *dynamodb.Client, tableName string) *NoticeRe
 
 func (r *NoticeRepository) SaveNotice(notice model.Notice) error {
 
+	
+	// query := `
+	// 	INSERT INTO notices (id, date_issued, content, month, year)
+	// 	VALUES ($1, $2, $3, $4, $5)
+	// `
+	
+	// _, err := r.DB.Exec(query, notice.ID, notice.DateIssued, notice.Content, notice.Month, notice.Year)
+
+	// if err != nil {
+		// 	logger.LogToFile(fmt.Sprintf("error: %v", err))
+	// 	return err
+	// }
+	// return nil
+	
 	notice.ID = utils.GenerateUUID()
+	const customLayout = "2006-01-02 15:04:05.999999"
+	formattedDate := notice.DateIssued.Format(customLayout)
 
-	query := `
-		INSERT INTO notices (id, date_issued, content, month, year)
-		VALUES ($1, $2, $3, $4, $5)
-	`
-
-	_, err := r.DB.Exec(query, notice.ID, notice.DateIssued, notice.Content, notice.Month, notice.Year)
+	statement := "INSERT INTO " + r.TableName + " VALUE {'PK': ?, 'SK': ?, 'date_issued': ?, 'id': ?, 'content': ?, 'month': ?, 'year': ?}"
+	
+	_, err := r.DynamoDbClient.ExecuteStatement(context.Background(), &dynamodb.ExecuteStatementInput{
+        Statement: &statement,
+        Parameters: []types.AttributeValue{
+            &types.AttributeValueMemberS{Value: "NOTICES"},
+            &types.AttributeValueMemberS{Value: (strconv.Itoa(notice.Year) + "#" + fmt.Sprintf("%d", int(notice.Month)) + "#" + notice.ID.String())},
+            &types.AttributeValueMemberS{Value: formattedDate},
+            &types.AttributeValueMemberS{Value: notice.ID.String()},
+            &types.AttributeValueMemberS{Value: notice.Content},
+            &types.AttributeValueMemberS{Value: fmt.Sprintf("%d", int(notice.Month))},
+            &types.AttributeValueMemberN{Value: strconv.Itoa(notice.Year)},
+        },
+    })
 
 	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return err
+		return err 
 	}
+
 	return nil
 }
 

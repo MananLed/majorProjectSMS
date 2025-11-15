@@ -14,39 +14,39 @@ func AuthorizedInvoke(fn func(ctx context.Context, req events.APIGatewayProxyReq
 	return func(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 		authHeader := req.Headers["Authorization"]
 		if authHeader == "" {
-			return response.LambdaResponse(http.StatusUnauthorized, map[string]any{"errorCode": 1003}, "Unauthorized"),nil
+			return response.ErrorResponse(http.StatusUnauthorized, "Unauthorized", 1003), nil
 		}
 
 		tokenString := authHeader[len("Bearer "):]
 		token, err := utils.VerifyJwt(tokenString)
 		if err != nil{
-			return response.LambdaResponse(http.StatusUnauthorized, map[string]any{"errorCode": 1003}, "Unauthorized"),nil
+			return response.ErrorResponse(http.StatusUnauthorized, "Unauthorized", 1003), nil
 		}
 
 
 		claims, ok := token.Claims.(jwt.MapClaims)
 		if !ok || !token.Valid {
-			return response.LambdaResponse(http.StatusUnauthorized, map[string]any{"errorCode": 1003}, "Unauthorized"),nil
+			return response.ErrorResponse(http.StatusUnauthorized, "Unauthorized", 1003), nil
 		}
 
 		userID, ok := claims["user_id"].(string)
 		if !ok {
-			return response.LambdaResponse(http.StatusUnauthorized, map[string]any{"errorCode": 1003}, "Unauthorized"),nil
+			return response.ErrorResponse(http.StatusUnauthorized, "Unauthorized", 1003), nil
 		}
 
 		role, ok := claims["role"].(string)
 		if !ok {
-			return response.LambdaResponse(http.StatusUnauthorized, map[string]any{"errorCode": 1003}, "Unauthorized"),nil
+			return response.ErrorResponse(http.StatusUnauthorized, "Unauthorized", 1003), nil
 		}
 
 		email, ok := claims["email"].(string)
 		if !ok {
-			return response.LambdaResponse(http.StatusUnauthorized, map[string]any{"errorCode": 1003}, "Unauthorized"),nil
+			return response.ErrorResponse(http.StatusUnauthorized, "Unauthorized", 1003), nil
 		}
 
 		flat, ok := claims["flat"].(string)
 		if !ok {
-			return response.LambdaResponse(http.StatusUnauthorized, map[string]any{"errorCode": 1003}, "Unauthorized"),nil
+			return response.ErrorResponse(http.StatusUnauthorized, "Unauthorized", 1003), nil
 		}
 
 		ctx = context.WithValue(ctx, utils.UserIDKey, userID)

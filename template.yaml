@@ -31,19 +31,19 @@ Resources:
             Path: /login 
             RestApiId: !Ref Api 
 
-  # Signup:
-  #   Type: AWS::Serverless::Function
-  #   Metadata:
-  #     BuildMethod: go1.x 
-  #   Properties:
-  #     CodeUri: ./cmd/aws-functions/signup
-  #     Events:
-  #       ApiEvent:
-  #         Type: Api 
-  #         Properties: 
-  #           Method: post 
-  #           Path: /signup 
-  #           RestApiId: !Ref Api
+  Signup:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x 
+    Properties:
+      CodeUri: ./cmd/aws-functions/signup
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties: 
+            Method: post 
+            Path: /signup 
+            RestApiId: !Ref Api
 
   Profile:
     Type: AWS::Serverless::Function
@@ -113,4 +113,74 @@ Resources:
           Properties:
             Method: get 
             Path: /notices/month-year
+            RestApiId: !Ref Api
+
+  ViewInvoicesMonthYear:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+    Properties:
+      CodeUri: ./cmd/aws-functions/view_invoices_month_year
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties:
+            Method: get 
+            Path: /invoices/month-year
+            RestApiId: !Ref Api
+
+  DeleteOfficer:
+    Type: AWS::Serverless::Function 
+    Metadata: 
+      BuildMethod: go1.x 
+    Properties:
+      CodeUri: ./cmd/aws-functions/delete_officer
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties:
+            Method: delete 
+            Path: /credentials/officer
+            RestApiId: !Ref Api 
+
+  DeleteResident:
+    Type: AWS::Serverless::Function 
+    Metadata: 
+      BuildMethod: go1.x 
+    Properties:
+      CodeUri: ./cmd/aws-functions/delete_resident
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties:
+            Method: delete 
+            Path: /credentials/resident
+            RestApiId: !Ref Api 
+
+  IssueNotice:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x 
+    Properties:
+      CodeUri: ./cmd/aws-functions/issue_notice
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties: 
+            Method: post 
+            Path: /notices/issue
+            RestApiId: !Ref Api
+
+  IssueInvoice:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x 
+    Properties:
+      CodeUri: ./cmd/aws-functions/issue_invoice
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties: 
+            Method: post 
+            Path: /invoices/issue
             RestApiId: !Ref Api

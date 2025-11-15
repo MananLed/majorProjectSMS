@@ -2,7 +2,6 @@ package response
 
 import (
 	"encoding/json"
-	"net/http"
 
 	"github.com/aws/aws-lambda-go/events"
 )
@@ -11,10 +10,10 @@ type response struct {
 	Status    string      `json:"status"`
 	Message   string      `json:"message"`
 	ErrorCode int         `json:"errorcode,omitempty"`
-	Data      any `json:"data,omitempty"`
+	Data      any         `json:"data,omitempty"`
 }
 
-func SuccessResponse(w http.ResponseWriter, data any , message string, code int){
+func SuccessResponse(data any , message string, code int) events.APIGatewayProxyResponse{
 
 	response:= response{
 		Status: "Success",
@@ -22,30 +21,44 @@ func SuccessResponse(w http.ResponseWriter, data any , message string, code int)
 		Data: data,
 	}
 
-	w.Header().Set("content-Type","application/json")
-	w.WriteHeader(code)
-	json.NewEncoder(w).Encode(response)
+	// w.Header().Set("content-Type","application/json")
+	// w.WriteHeader(code)
+	// json.NewEncoder(w).Encode(response)
+
+	body, _ := json.Marshal(response)
+
+	return events.APIGatewayProxyResponse{
+		StatusCode: code,
+		Body: string(body),
+	}
 }
 
-func ErrorResponse(w http.ResponseWriter,statusCode int, errMessage string, code int){
+func ErrorResponse(statusCode int, errMessage string, code int) events.APIGatewayProxyResponse{
 	response:=response{
 		Status: "fail",
 		Message: errMessage,
 		ErrorCode: code,
 	}
 
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(statusCode)
-	json.NewEncoder(w).Encode(response)
-}
+	// w.Header().Set("Content-Type", "application/json")
+	// w.WriteHeader(statusCode)
+	// json.NewEncoder(w).Encode(response)
 
-func LambdaResponse(code int, data any, message string) events.APIGatewayProxyResponse{
-	body, _ := json.Marshal(map[string]any{
-		"message": message,
-		"data": data,
-	})
+	body, _ := json.Marshal(response)
+
 	return events.APIGatewayProxyResponse{
-		StatusCode: code,
+		StatusCode: statusCode,
 		Body: string(body),
 	}
 }
+
+// func LambdaResponse(code int, data any, message string) events.APIGatewayProxyResponse{
+// 	body, _ := json.Marshal(map[string]any{
+// 		"message": message,
+// 		"data": data,
+// 	})
+// 	return events.APIGatewayProxyResponse{
+// 		StatusCode: code,
+// 		Body: string(body),
+// 	}
+// }
