@@ -43,34 +43,28 @@ func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.A
 		return response.ErrorResponse(http.StatusUnauthorized, "User not found", 1007), nil
 	}
 
-	var pendingRequests []model.ServiceRequest
-	var approvedRequests []model.ServiceRequest
-	var completedRequests []model.ServiceRequest
+	status := event.QueryStringParameters["status"]
+	serviceType := event.QueryStringParameters["serviceType"]
+	if status == "" || serviceType == "" {
+		return response.ErrorResponse(http.StatusBadRequest, "Missing status or serviceType parameter", 1001), nil
+	}
 
-	pendingRequests, err = serviceRequestService.GetServiceRequestsByStatus(user.ID, model.StatusPending)
-	if err != nil{
+	var requests []model.ServiceRequest
+
+	switch {
+	case serviceType == "plumber" && status == "pending":
+		requests, err = serviceRequestService.GetPendingRequestsByServiceType(user, model.Plumber)
+	case serviceType == "plumber" && status == "approved":
+		requests, err = serviceRequestService.GetApprovedRequestsByServiceType(user, model.Plumber)
+	case serviceType == "electrician" && status == "pending":
+		requests, err = serviceRequestService.GetPendingRequestsByServiceType(user, model.Electrician)
+	case serviceType == "electrician" && status == "approved":
+		requests, err = serviceRequestService.GetApprovedRequestsByServiceType(user, model.Electrician)
+	}
+
+	if err != nil {
 		return response.ErrorResponse(http.StatusInternalServerError, "Failed to fetch requests", 1010), nil
 	}
 
-	approvedRequests, err = serviceRequestService.GetServiceRequestsByStatus(user.ID, model.StatusApproved)
-	if err != nil{
-		return response.ErrorResponse(http.StatusInternalServerError, "Failed to fetch requests", 1010), nil
-	}
-
-	completedRequests, err = serviceRequestService.GetServiceRequestsByStatus(user.ID, model.StatusCompleted)
-	if err != nil{
-		return response.ErrorResponse(http.StatusInternalServerError, "Failed to fetch requests", 1010), nil
-	}
-
-	allRequests := struct {
-		Pending   []model.ServiceRequest
-		Approved  []model.ServiceRequest
-		Completed []model.ServiceRequest
-	}{
-		Pending:   pendingRequests,
-		Approved:  approvedRequests,
-		Completed: completedRequests,
-	}
-
-	return response.SuccessResponse(allRequests, "Requests fetched successfully!!", http.StatusOK), nil
+	return response.SuccessResponse(requests, "Requests fetched successfully!!", http.StatusOK), nil
 }

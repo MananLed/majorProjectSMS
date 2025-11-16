@@ -240,3 +240,138 @@ Resources:
             Path: /service/time-slots
             RestApiId:
               Ref: Api
+  OfficerCount:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: OfficerCount
+    Properties:
+      CodeUri: OfficerCount
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: get
+            Path: /society/officers/count
+            RestApiId:
+              Ref: Api
+  ResidentCount:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: ResidentCount
+    Properties:
+      CodeUri: ResidentCount
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: get
+            Path: /society/residents/count
+            RestApiId:
+              Ref: Api
+  GetRequestsByTypeAndStatus:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: GetRequestsByTypeAndStatus
+    Properties:
+      CodeUri: GetRequestsByTypeAndStatus
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: get
+            Path: /service/type-status
+            RestApiId:
+              Ref: Api
+  BookRequest:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: BookRequest
+    Properties:
+      CodeUri: BookRequest
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: post
+            Path: /service
+            RestApiId:
+              Ref: Api
+  DeleteRequest:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: DeleteRequest
+    Properties:
+      CodeUri: DeleteRequest
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: delete
+            Path: /service/cancel/{id}
+            RestApiId:
+              Ref: Api
+  RescheduleReqeust:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: RescheduleReqeust
+    Properties:
+      CodeUri: RescheduleReqeust
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: patch
+            Path: /service/reschedule/{id}
+            RestApiId:
+              Ref: Api
+  ApproveRequest:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: ApproveRequest
+    Properties:
+      CodeUri: ApproveRequest
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: patch
+            Path: /service/approve/{id}
+            RestApiId:
+              Ref: Api
+  CompleteRequest:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: CompleteRequest
+    Properties:
+      CodeUri: CompleteRequest
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: patch
+            Path: /service/complete/{id}
+            RestApiId:
+              Ref: Api
+  GetAllFeedbacks:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: GetAllFeedbacks
+    Properties:
+      CodeUri: GetAllFeedbacks
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: get
+            Path: /feedbacks
+            RestApiId:
+              Ref: Api

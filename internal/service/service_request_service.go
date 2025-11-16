@@ -4,13 +4,11 @@ package service
 import (
 	"context"
 	"fmt"
-	"log"
 	"time"
 
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/repository"
 	"github.com/MananLed/majorProjectSMS/internal/utils"
-	"github.com/MananLed/majorProjectSMS/pkg/logger"
 	"github.com/google/uuid"
 )
 
@@ -78,18 +76,18 @@ func (s *ServiceRequestService) GetAvailableTimeSlots(service model.ServiceType)
 	now := time.Now()
 	formattedDate := now.Format("02-01-2006")
 
-	requests, err := s.Repo.GetRequestsByServiceTypeAndStatus(service, model.StatusPending)
+	requests, err := s.Repo.GetRequestsByServiceTypeAndStatus(nil, service, model.StatusPending)
 	if err != nil {
 		return nil, err
 	}
 
-	requestsApproved, err := s.Repo.GetRequestsByServiceTypeAndStatus(service, model.StatusApproved)
+	requestsApproved, err := s.Repo.GetRequestsByServiceTypeAndStatus(nil, service, model.StatusApproved)
 	if err != nil {
 		return nil, err
 	}
 	requests = append(requests, requestsApproved...)
 
-	requestsCompleted, err := s.Repo.GetRequestsByServiceTypeAndStatus(service, model.StatusCompleted)
+	requestsCompleted, err := s.Repo.GetRequestsByServiceTypeAndStatus(nil, service, model.StatusCompleted)
 	if err != nil {
 		return nil, err
 	}
@@ -114,41 +112,34 @@ func (s *ServiceRequestService) GetServiceTypeByID(requestID uuid.UUID) (model.S
 	return s.Repo.GetServiceTypeByID(requestID)
 }
 
-func (s *ServiceRequestService) GetPendingRequestsByServiceType(serviceType model.ServiceType) ([]model.ServiceRequest, error) {
-	return s.Repo.GetRequestsByServiceTypeAndStatus(serviceType, model.StatusPending)
+func (s *ServiceRequestService) GetPendingRequestsByServiceType(user *model.User, serviceType model.ServiceType) ([]model.ServiceRequest, error) {
+	return s.Repo.GetRequestsByServiceTypeAndStatus(user, serviceType, model.StatusPending)
 }
 
-func (s *ServiceRequestService) GetApprovedRequestsByServiceType(serviceType model.ServiceType) ([]model.ServiceRequest, error) {
-	return s.Repo.GetRequestsByServiceTypeAndStatus(serviceType, model.StatusApproved)
+func (s *ServiceRequestService) GetApprovedRequestsByServiceType(user *model.User, serviceType model.ServiceType) ([]model.ServiceRequest, error) {
+	return s.Repo.GetRequestsByServiceTypeAndStatus(user, serviceType, model.StatusApproved)
 }
 
-func (s *ServiceRequestService) GetCompletedRequestsByServiceType(serviceType model.ServiceType) ([]model.ServiceRequest, error) {
-	return s.Repo.GetRequestsByServiceTypeAndStatus(serviceType, model.StatusCompleted)
+func (s *ServiceRequestService) GetCompletedRequestsByServiceType(user *model.User, serviceType model.ServiceType) ([]model.ServiceRequest, error) {
+	return s.Repo.GetRequestsByServiceTypeAndStatus(user, serviceType, model.StatusCompleted)
 }
 
 func (s *ServiceRequestService) ApproveServiceRequest(requestID uuid.UUID, assignedTo string) error {
-	req, err := s.Repo.GetRequestByID(requestID)
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return err
-	}
 
-	req.Status = model.StatusApproved
-	req.AssignedTo = assignedTo
+	req := &model.ServiceRequest{
+		RequestID: requestID,
+		Status: model.StatusApproved,
+		AssignedTo: assignedTo,
+	}
 
 	return s.Repo.UpdateRequest(req)
 }
 
 func (s *ServiceRequestService) CompleteServiceRequest(requestID uuid.UUID) error{
-	req, err := s.Repo.GetRequestByID(requestID)
-
-	if err != nil{
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return err
+	req := &model.ServiceRequest{
+		RequestID: requestID,
+		Status: model.StatusCompleted,
 	}
-
-	req.Status = model.StatusCompleted
-
 	return s.Repo.UpdateRequest(req)
 }
 

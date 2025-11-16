@@ -51,31 +51,31 @@ func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.A
 	var approvedRequests []model.ServiceRequest
 	var completedRequests []model.ServiceRequest
 
-	pendingRequests, err = serviceRequestService.GetPendingRequestsByServiceType(model.Plumber)
+	pendingRequests, err = serviceRequestService.GetPendingRequestsByServiceType(user, model.Plumber)
 	if err != nil{
 		return response.ErrorResponse(http.StatusInternalServerError, "Failed to fetch requests", 1010), nil
 	}
-	pendingRequestElectrician, err := serviceRequestService.GetPendingRequestsByServiceType(model.Electrician)
+	pendingRequestElectrician, err := serviceRequestService.GetPendingRequestsByServiceType(user, model.Electrician)
 	if err != nil{
 		return response.ErrorResponse(http.StatusInternalServerError, "Failed to fetch requests", 1010), nil
 	}
 	pendingRequests = append(pendingRequests, pendingRequestElectrician...)
 
-	approvedRequests, err = serviceRequestService.GetApprovedRequestsByServiceType(model.Plumber)
+	approvedRequests, err = serviceRequestService.GetApprovedRequestsByServiceType(user, model.Plumber)
 	if err != nil{
 		return response.ErrorResponse(http.StatusInternalServerError, "Failed to fetch requests", 1010), nil
 	}
-	approvedRequestsElectrician, err := serviceRequestService.GetApprovedRequestsByServiceType(model.Electrician)
+	approvedRequestsElectrician, err := serviceRequestService.GetApprovedRequestsByServiceType(user, model.Electrician)
 	if err != nil{
 		return response.ErrorResponse(http.StatusInternalServerError, "Failed to fetch requests", 1010), nil
 	}
 	approvedRequests = append(approvedRequests, approvedRequestsElectrician...)
 
-	completedRequests, err = serviceRequestService.GetCompletedRequestsByServiceType(model.Plumber)
+	completedRequests, err = serviceRequestService.GetCompletedRequestsByServiceType(user, model.Plumber)
 	if err != nil{
 		return response.ErrorResponse(http.StatusInternalServerError, "Failed to fetch requests", 1010), nil
 	}
-	completedRequestsElectrician, err := serviceRequestService.GetCompletedRequestsByServiceType(model.Electrician)
+	completedRequestsElectrician, err := serviceRequestService.GetCompletedRequestsByServiceType(user, model.Electrician)
 	if err != nil{
 		return response.ErrorResponse(http.StatusInternalServerError, "Failed to fetch requests", 1010), nil
 	}
@@ -91,5 +91,5 @@ func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.A
 		Completed: completedRequests,
 	}
 
-	return response.SuccessResponse(allRequests, "Requests fetched successfully", http.StatusOK), nil
+	return response.SuccessResponse(allRequests, "Requests fetched successfully!!", http.StatusOK), nil
 }

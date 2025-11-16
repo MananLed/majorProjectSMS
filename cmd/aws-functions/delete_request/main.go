@@ -4,10 +4,10 @@ import (
 	"context"
 	"log"
 	"net/http"
+	"strings"
 
 	authenticationmiddleware "github.com/MananLed/majorProjectSMS/internal/middleware/lambda_authmiddleware"
 	lambdacors "github.com/MananLed/majorProjectSMS/internal/middleware/lamdba_corsmiddleware"
-	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/repository"
 	"github.com/MananLed/majorProjectSMS/internal/response"
 	"github.com/MananLed/majorProjectSMS/internal/service"
@@ -16,6 +16,7 @@ import (
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
+	"github.com/google/uuid"
 )
 
 var serviceRequestService service.ServiceRequestService
@@ -38,39 +39,26 @@ func main() {
 func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 
 	user, err := utils.GetUserFromContext(ctx)
-
 	if err != nil {
 		return response.ErrorResponse(http.StatusUnauthorized, "User not found", 1007), nil
 	}
 
-	var pendingRequests []model.ServiceRequest
-	var approvedRequests []model.ServiceRequest
-	var completedRequests []model.ServiceRequest
+	path := strings.TrimPrefix(event.Path, "/service/")
+	parts := strings.Split(path, "/")
 
-	pendingRequests, err = serviceRequestService.GetServiceRequestsByStatus(user.ID, model.StatusPending)
-	if err != nil{
-		return response.ErrorResponse(http.StatusInternalServerError, "Failed to fetch requests", 1010), nil
+	if len(parts) < 2 || parts[0] != "cancel" {
+		return response.ErrorResponse(http.StatusBadRequest, "Missing request ID", 1001), nil
 	}
 
-	approvedRequests, err = serviceRequestService.GetServiceRequestsByStatus(user.ID, model.StatusApproved)
-	if err != nil{
-		return response.ErrorResponse(http.StatusInternalServerError, "Failed to fetch requests", 1010), nil
+	reqIDStr := parts[1]
+	reqID, err := uuid.Parse(reqIDStr)
+	if err != nil {
+		return response.ErrorResponse(http.StatusBadRequest, "Invalid request ID", 1002), nil
 	}
 
-	completedRequests, err = serviceRequestService.GetServiceRequestsByStatus(user.ID, model.StatusCompleted)
-	if err != nil{
-		return response.ErrorResponse(http.StatusInternalServerError, "Failed to fetch requests", 1010), nil
+	if err := serviceRequestService.CancelServiceRequest(user.ID, reqID); err != nil {
+		return response.ErrorResponse(http.StatusInternalServerError, "Failed to cancel request", 1008), nil
 	}
 
-	allRequests := struct {
-		Pending   []model.ServiceRequest
-		Approved  []model.ServiceRequest
-		Completed []model.ServiceRequest
-	}{
-		Pending:   pendingRequests,
-		Approved:  approvedRequests,
-		Completed: completedRequests,
-	}
-
-	return response.SuccessResponse(allRequests, "Requests fetched successfully!!", http.StatusOK), nil
+	return response.SuccessResponse(nil, "Service Request cancelled successfully", http.StatusOK), nil
 }

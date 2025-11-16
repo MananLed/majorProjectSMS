@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"context"
 	"fmt"
 	"sync"
 
@@ -9,12 +10,18 @@ import (
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/utils"
 	"github.com/MananLed/majorProjectSMS/pkg/logger"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue"
+	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
+	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 	"github.com/google/uuid"
 )
 
 type FeedbackRepository struct {
-	mu sync.Mutex
-	DB *sql.DB
+	mu             sync.Mutex
+	DB             *sql.DB
+	DynamoDbClient *dynamodb.Client
+	TableName      string
 }
 
 type FeedbackRepositoryInterface interface {
@@ -24,8 +31,8 @@ type FeedbackRepositoryInterface interface {
 	IsFeedbackPresent(requestID uuid.UUID) (bool, error)
 }
 
-func NewFeedbackRepository(db *sql.DB) *FeedbackRepository {
-	return &FeedbackRepository{DB: db}
+func NewFeedbackRepository(ddbClient *dynamodb.Client, tableName string) *FeedbackRepository {
+	return &FeedbackRepository{DynamoDbClient: ddbClient, TableName: tableName}
 }
 
 func (r *FeedbackRepository) SaveFeedback(feedback model.Feedback) error {
@@ -44,7 +51,7 @@ func (r *FeedbackRepository) SaveFeedback(feedback model.Feedback) error {
 
 	err := row.Scan(&user.FirstName, &user.MiddleName, &user.LastName)
 
-	if err != nil{
+	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 	}
 
@@ -62,8 +69,7 @@ func (r *FeedbackRepository) SaveFeedback(feedback model.Feedback) error {
 		UPDATE service_requests set feedback_given = $1 WHERE request_id = $2
 	`
 
-	_ , err = r.DB.Exec(queryForUpdatingFeedbackStatus, true, feedback.RequestID)
-
+	_, err = r.DB.Exec(queryForUpdatingFeedbackStatus, true, feedback.RequestID)
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -79,7 +85,7 @@ func (r *FeedbackRepository) SaveFeedback(feedback model.Feedback) error {
 
 	err = row.Scan(&feedback.AssignedTo, &feedback.ServiceType, &feedback.Date, &feedback.TimeSlot)
 
-	if err != nil{
+	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
 	}
 
@@ -89,7 +95,6 @@ func (r *FeedbackRepository) SaveFeedback(feedback model.Feedback) error {
 	`
 
 	_, err = r.DB.Exec(query, feedback.ID, feedback.ResidentID, feedback.Rating, feedback.Content, feedback.Flat, feedback.ResidentName, feedback.RequestID, feedback.AssignedTo, feedback.ServiceType, feedback.Date, feedback.TimeSlot)
-
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -104,9 +109,7 @@ func (r *FeedbackRepository) GetFeedbacksByID(residentID string) ([]model.Feedba
 		WHERE resident_id = $1
 	`
 
-
 	rows, err := r.DB.Query(query, residentID)
-
 
 	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
@@ -127,42 +130,104 @@ func (r *FeedbackRepository) GetFeedbacksByID(residentID string) ([]model.Feedba
 }
 
 func (r *FeedbackRepository) GetAllFeedbacks() ([]model.Feedback, error) {
-	query := `
-		SELECT id, resident_id, rating, content, flat_no, username, request_id, assigned_to, service_type, date, time_slot
-		FROM feedbacks
-	`
+	// query := `
+	// 	SELECT id, resident_id, rating, content, flat_no, username, request_id, assigned_to, service_type, date, time_slot
+	// 	FROM feedbacks
+	// `
 
-	rows, err := r.DB.Query(query)
+	// rows, err := r.DB.Query(query)
 
+	// if err != nil {
+	// 	logger.LogToFile(fmt.Sprintf("error: %v", err))
+	// 	return nil, err
+	// }
+	// defer rows.Close()
+
+	// var feedbacks []model.Feedback
+	// for rows.Next() {
+	// 	var f model.Feedback
+	// 	if err := rows.Scan(&f.ID, &f.ResidentID, &f.Rating, &f.Content, &f.Flat, &f.ResidentName, &f.RequestID, &f.AssignedTo, &f.ServiceType, &f.Date, &f.TimeSlot); err != nil {
+	// 		logger.LogToFile(fmt.Sprintf("error: %v", err))
+	// 		return nil, err
+	// 	}
+	// 	feedbacks = append(feedbacks, f)
+	// }
+	// return feedbacks, nil
+
+	var feedback model.Feedback
+	var feedbacks []model.Feedback
+
+	input := &dynamodb.QueryInput{
+		TableName:              aws.String(r.TableName),
+		KeyConditionExpression: aws.String("PK = :pkValue"),
+		ExpressionAttributeValues: map[string]types.AttributeValue{
+			":pkValue": &types.AttributeValueMemberS{Value: "FEEDBACKS"},
+		},
+	}
+
+	ctx := context.TODO()
+	response, err := r.DynamoDbClient.Query(ctx, input)
 	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return nil, err
 	}
-	defer rows.Close()
 
-	var feedbacks []model.Feedback
-	for rows.Next() {
-		var f model.Feedback
-		if err := rows.Scan(&f.ID, &f.ResidentID, &f.Rating, &f.Content, &f.Flat, &f.ResidentName, &f.RequestID, &f.AssignedTo, &f.ServiceType, &f.Date, &f.TimeSlot); err != nil {
-			logger.LogToFile(fmt.Sprintf("error: %v", err))
-			return nil, err
-		}
-		feedbacks = append(feedbacks, f)
+	type Feedback struct {
+		PK          string `dynamodbav:"PK"`
+		SK          string `dynamodbav:"SK"`
+		AssignedTo  string `dynamodbav:"assigned_to"`
+		Content     string `dynamodbav:"content"`
+		Date        string `dynamodbav:"date"`
+		Flat        string `dynamodbav:"flat_no"`
+		ID          string `dynamodbav:"id"`
+		Rating      int32  `dynamodbav:"rating"`
+		RequestID   string `dynamodbav:"request_id"`
+		ResidentID  string `dynamodbav:"resident_id"`
+		ServiceType string `dynamodbav:"service_type"`
+		TimeSlot    string `dynamodbav:"time_slot"`
+		UserName    string `dynamodbav:"username"`
 	}
+
+	var feedbackDetails Feedback
+
+	if err != nil {
+		return nil, err
+	} else {
+		for _, n := range response.Items {
+			err = attributevalue.UnmarshalMap(n, &feedbackDetails)
+			if err != nil {
+				return nil, err
+			}
+
+			feedback.ID, _ = uuid.Parse(feedbackDetails.ID)
+			feedback.ResidentID = feedbackDetails.ResidentID
+			feedback.Flat = feedbackDetails.Flat
+			feedback.Rating = feedbackDetails.Rating
+			feedback.Content = feedbackDetails.Content
+			feedback.ResidentName = feedbackDetails.UserName
+			feedback.RequestID, _ = uuid.Parse(feedbackDetails.RequestID)
+			feedback.AssignedTo = feedbackDetails.AssignedTo
+			feedback.ServiceType = feedbackDetails.ServiceType
+			feedback.Date = feedbackDetails.Date
+			feedback.TimeSlot = feedbackDetails.TimeSlot
+
+			feedbacks = append(feedbacks, feedback)
+		}
+	}
+
 	return feedbacks, nil
 }
 
-func (r *FeedbackRepository) IsFeedbackPresent(requestID uuid.UUID) (bool, error){
+func (r *FeedbackRepository) IsFeedbackPresent(requestID uuid.UUID) (bool, error) {
 
-	var exists bool 
+	var exists bool
 
 	query := `SELECT EXISTS (SELECT 1 FROM feedbacks WHERE request_id = $1);`
 
 	err := r.DB.QueryRow(query, requestID).Scan(&exists)
 
-	if(err != nil){
+	if err != nil {
 		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return false, err 
+		return false, err
 	}
 
 	return exists, nil

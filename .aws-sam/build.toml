@@ -161,7 +161,7 @@ codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\get_all_req
 runtime = "provided.al2023"
 architecture = "x86_64"
 handler = "bootstrap"
-source_hash = "eeccd9e9d5e42f7a130e628e1eebc72fcd9fd3cd1525ac232192ebd2893c663c"
+source_hash = "54b730c5e586180d46b8c8fe7cc0fac69b1bfaacb6a0c2456a8372095e931d49"
 manifest_hash = ""
 packagetype = "Zip"
 functions = ["GetAllRequests"]
@@ -174,7 +174,7 @@ codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\get_all_req
 runtime = "provided.al2023"
 architecture = "x86_64"
 handler = "bootstrap"
-source_hash = "c51c2b6c1888fd3d4b82961ee1761f98cf4d408cf52330801319f76b93e5bd93"
+source_hash = "673624984cd5debd96e24ab123874513e23fc8718f75e4de24b1cadb4da9571e"
 manifest_hash = ""
 packagetype = "Zip"
 functions = ["GetAllRequestsOfResident"]
@@ -182,17 +182,134 @@ functions = ["GetAllRequestsOfResident"]
 [function_build_definitions.f40b63a7-e7e2-459c-90c1-580364ded272.metadata]
 BuildMethod = "go1.x"
 
-[function_build_definitions.c0403e2c-aa0c-4c10-80ac-aac4c2b90631]
+[function_build_definitions.d460817d-df98-4f2b-903c-b85465b9617e]
 codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\get_available_time_slots"
 runtime = "provided.al2023"
 architecture = "x86_64"
 handler = "bootstrap"
-source_hash = "c9b7798341d9db13578b0792fc7257d5b498154e4b644f4448813e1c0ea441c3"
+source_hash = "f17e233b9c713965f0ef197594131ea52bd0491d1a40deee84f6c38b297a4866"
 manifest_hash = ""
 packagetype = "Zip"
 functions = ["GetAvailableTimeSlots"]
 
-[function_build_definitions.c0403e2c-aa0c-4c10-80ac-aac4c2b90631.metadata]
+[function_build_definitions.d460817d-df98-4f2b-903c-b85465b9617e.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.0bd9e7b1-8927-4427-8e9a-c5d1c3fc54ef]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\officer_count"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "4c7d74c4e47ad474c6bec2b03c941a73bc738d65fa3ec0772ed19dd11584f56a"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["OfficerCount"]
+
+[function_build_definitions.0bd9e7b1-8927-4427-8e9a-c5d1c3fc54ef.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.6c28a3c2-7f24-4703-87aa-82be65988bec]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\resident_count"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "c28e22fb7039b15eb49dd5a3bdfd1687841e229ced674c82d57721024d00acc2"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["ResidentCount"]
+
+[function_build_definitions.6c28a3c2-7f24-4703-87aa-82be65988bec.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.4dfa3f4c-b297-4be1-beae-a3e90b483071]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\get_request_type_status"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "55de6b71e8bab86e7543135624efe80a7f22a00f3d1e18e259fa7aab3560bb18"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["GetRequestsByTypeAndStatus"]
+
+[function_build_definitions.4dfa3f4c-b297-4be1-beae-a3e90b483071.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.3cd9b2c2-7428-43b7-afaf-cd78d3a9c952]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\book_request"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "323db6b407e46fe04db7a86c92bb064a3d591252450d7cdf951a9456b5432d5e"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["BookRequest"]
+
+[function_build_definitions.3cd9b2c2-7428-43b7-afaf-cd78d3a9c952.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.ebc9765b-c574-49d0-9c63-24775cb26745]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\delete_request"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "a85df4a2ba598dc1df2b83b874bcafe51ae5c95ce33cab204aaafe31c0dbd781"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["DeleteRequest"]
+
+[function_build_definitions.ebc9765b-c574-49d0-9c63-24775cb26745.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.125ae789-c426-4625-b3ca-bab438cd11eb]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\reschedule_request"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "cc6be2fcda20f9ea9f0056ad7260cd2250ca52711959ba3d414c881ff4da39eb"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["RescheduleReqeust"]
+
+[function_build_definitions.125ae789-c426-4625-b3ca-bab438cd11eb.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.bd7fc30d-63d0-4c05-bb57-0f016a9c0d16]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\approve_request"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "182e444b31268950857a807393c1d7528af9625b3a7dd807fc0d9cc5850e6976"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["ApproveRequest"]
+
+[function_build_definitions.bd7fc30d-63d0-4c05-bb57-0f016a9c0d16.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.2027b332-aabb-493c-bba0-e26fe869cd72]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\complete_request"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "6d25496d567c3d48924f5d7eb90eacbb3778e4c16596572c34d19ca1216d95b7"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["CompleteRequest"]
+
+[function_build_definitions.2027b332-aabb-493c-bba0-e26fe869cd72.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.96bbc44d-76b9-4403-ab54-f33c6650b058]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\get_feedbacks"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "cfca4455bc6c1109306f39e7fadae01f970021da6d706956e59ea4130d4a9313"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["GetAllFeedbacks"]
+
+[function_build_definitions.96bbc44d-76b9-4403-ab54-f33c6650b058.metadata]
 BuildMethod = "go1.x"
 
 [layer_build_definitions]

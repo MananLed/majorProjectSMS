@@ -2,12 +2,14 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"log"
 	"net/http"
+	"strings"
 
+	"github.com/MananLed/majorProjectSMS/internal/dto"
 	authenticationmiddleware "github.com/MananLed/majorProjectSMS/internal/middleware/lambda_authmiddleware"
 	lambdacors "github.com/MananLed/majorProjectSMS/internal/middleware/lamdba_corsmiddleware"
-	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/repository"
 	"github.com/MananLed/majorProjectSMS/internal/response"
 	"github.com/MananLed/majorProjectSMS/internal/service"
@@ -16,6 +18,7 @@ import (
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
+	"github.com/google/uuid"
 )
 
 var serviceRequestService service.ServiceRequestService
@@ -36,41 +39,41 @@ func main() {
 }
 
 func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-
 	user, err := utils.GetUserFromContext(ctx)
-
 	if err != nil {
 		return response.ErrorResponse(http.StatusUnauthorized, "User not found", 1007), nil
 	}
 
-	var pendingRequests []model.ServiceRequest
-	var approvedRequests []model.ServiceRequest
-	var completedRequests []model.ServiceRequest
-
-	pendingRequests, err = serviceRequestService.GetServiceRequestsByStatus(user.ID, model.StatusPending)
-	if err != nil{
-		return response.ErrorResponse(http.StatusInternalServerError, "Failed to fetch requests", 1010), nil
+	if user.Role != "admin" && user.Role != "officer" {
+		return response.ErrorResponse(http.StatusForbidden, "Not authorized to approve requests", 1009), nil
 	}
 
-	approvedRequests, err = serviceRequestService.GetServiceRequestsByStatus(user.ID, model.StatusApproved)
-	if err != nil{
-		return response.ErrorResponse(http.StatusInternalServerError, "Failed to fetch requests", 1010), nil
+	path := strings.TrimPrefix(event.Path, "/service/")
+	parts := strings.Split(path, "/")
+
+	if len(parts) < 2 || parts[0] != "approve" {
+		return response.ErrorResponse(http.StatusBadRequest, "Invalid path format", 1001), nil
 	}
 
-	completedRequests, err = serviceRequestService.GetServiceRequestsByStatus(user.ID, model.StatusCompleted)
-	if err != nil{
-		return response.ErrorResponse(http.StatusInternalServerError, "Failed to fetch requests", 1010), nil
+	reqIDStr := parts[1]
+	reqID, err := uuid.Parse(reqIDStr)
+	if err != nil {
+		return response.ErrorResponse(http.StatusBadRequest, "Invalid request ID", 1002), nil
 	}
 
-	allRequests := struct {
-		Pending   []model.ServiceRequest
-		Approved  []model.ServiceRequest
-		Completed []model.ServiceRequest
-	}{
-		Pending:   pendingRequests,
-		Approved:  approvedRequests,
-		Completed: completedRequests,
+	var req dto.RequestProvider
+
+	if err := json.Unmarshal([]byte(event.Body), &req); err != nil {
+		return response.ErrorResponse(http.StatusBadRequest, "Invalid Request Body", 1001), nil
 	}
 
-	return response.SuccessResponse(allRequests, "Requests fetched successfully!!", http.StatusOK), nil
+	if len(req.AssignedTo) > 500 {
+		return response.ErrorResponse(http.StatusBadRequest, "Invalid request", 1002), nil
+	}
+
+	if err := serviceRequestService.ApproveServiceRequest(reqID, req.AssignedTo); err != nil {
+		return response.ErrorResponse(http.StatusInternalServerError, "Failed to approve: "+err.Error(), 1008), nil
+	}
+
+	return response.SuccessResponse(nil, "Service Request approved successfully", http.StatusOK), nil
 }
