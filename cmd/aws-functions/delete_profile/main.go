@@ -10,10 +10,10 @@ import (
 	"github.com/MananLed/majorProjectSMS/internal/dto"
 	authenticationmiddleware "github.com/MananLed/majorProjectSMS/internal/middleware/lambda_authmiddleware"
 	lambdacors "github.com/MananLed/majorProjectSMS/internal/middleware/lamdba_corsmiddleware"
-	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/repository"
 	"github.com/MananLed/majorProjectSMS/internal/response"
 	"github.com/MananLed/majorProjectSMS/internal/service"
+	"github.com/MananLed/majorProjectSMS/internal/utils"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -22,7 +22,6 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/sqs"
 )
 
-var credentialService service.CredentialService
 var userService service.UserService
 var sqsClient *sqs.Client
 var queueURL string
@@ -38,14 +37,12 @@ func init() {
 
 	queueURL = os.Getenv("QUEUE_URL")
 
-	if queueURL == "" {
+	if queueURL == ""{
 		panic("QUEUE_URL is not set")
 	}
 
 	userRepo := repository.NewUserRepository(database, "UpKeepzTable")
 	userService = *service.NewUserService(userRepo)
-	credentialRepo := repository.NewCredentialRepository(database, "UpKeepzTable")
-	credentialService = *service.NewCredentialService(credentialRepo)
 }
 
 func main() {
@@ -53,24 +50,13 @@ func main() {
 }
 
 func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	user, err := userService.GetUserByID(ctx)
-
+	user, err := utils.GetUserFromContext(ctx)
 	if err != nil {
-		return response.ErrorResponse(http.StatusNotFound, "User not Found", 1004), nil
-	}
-
-	if user.Role != model.RoleAdmin {
-		return response.ErrorResponse(http.StatusUnauthorized, "Unauthorized access", 1008), nil
-	}
-
-	id := event.QueryStringParameters["id"]
-
-	if id == "" {
-		return response.ErrorResponse(http.StatusBadRequest, "Invalid request", 1001), nil
+		return response.ErrorResponse(http.StatusUnauthorized, "User not found", 1007), nil
 	}
 
 	msgBody := dto.DeleteRequestMessage{
-		UserID: id,
+		UserID: user.ID,
 	}
 
 	msgBodyBytes, err := json.Marshal(msgBody)
@@ -79,15 +65,16 @@ func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.A
 	}
 
 	_, err = sqsClient.SendMessage(context.TODO(), &sqs.SendMessageInput{
-		QueueUrl:    aws.String(queueURL),
+		QueueUrl: aws.String(queueURL),
 		MessageBody: aws.String(string(msgBodyBytes)),
 	})
 	if err != nil {
 		return response.ErrorResponse(http.StatusInternalServerError, "Failed to send message to queue", 1010), nil
 	}
 
-	if err := credentialService.DeleteResidentCredentials(ctx, id); err != nil {
-		return response.ErrorResponse(http.StatusInternalServerError, "Error deleting officer", 1010), nil
+	err = userService.DeleteProfile(ctx)
+	if err != nil {
+		return response.ErrorResponse(http.StatusInternalServerError, "Error deleting user", 1010), nil
 	}
-	return response.SuccessResponse(nil, "Resident deleted successfully!!", http.StatusOK), nil
+	return response.SuccessResponse(nil, "Profile deleted successfully", http.StatusOK), nil
 }

@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-	"os"
 
 	"github.com/MananLed/majorProjectSMS/internal/dto"
 	authenticationmiddleware "github.com/MananLed/majorProjectSMS/internal/middleware/lambda_authmiddleware"
@@ -14,18 +13,15 @@ import (
 	"github.com/MananLed/majorProjectSMS/internal/repository"
 	"github.com/MananLed/majorProjectSMS/internal/response"
 	"github.com/MananLed/majorProjectSMS/internal/service"
+	"github.com/MananLed/majorProjectSMS/internal/utils"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
-	"github.com/aws/aws-sdk-go-v2/service/sqs"
+	"golang.org/x/crypto/bcrypt"
 )
 
-var credentialService service.CredentialService
 var userService service.UserService
-var sqsClient *sqs.Client
-var queueURL string
 
 func init() {
 	cfg, err := config.LoadDefaultConfig(context.TODO())
@@ -34,18 +30,8 @@ func init() {
 	}
 	database := dynamodb.NewFromConfig(cfg)
 
-	sqsClient = sqs.NewFromConfig(cfg)
-
-	queueURL = os.Getenv("QUEUE_URL")
-
-	if queueURL == "" {
-		panic("QUEUE_URL is not set")
-	}
-
 	userRepo := repository.NewUserRepository(database, "UpKeepzTable")
 	userService = *service.NewUserService(userRepo)
-	credentialRepo := repository.NewCredentialRepository(database, "UpKeepzTable")
-	credentialService = *service.NewCredentialService(credentialRepo)
 }
 
 func main() {
@@ -53,7 +39,8 @@ func main() {
 }
 
 func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	user, err := userService.GetUserByID(ctx)
+
+	user, err := utils.GetUserFromContext(ctx)
 
 	if err != nil {
 		return response.ErrorResponse(http.StatusNotFound, "User not Found", 1004), nil
@@ -63,31 +50,31 @@ func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.A
 		return response.ErrorResponse(http.StatusUnauthorized, "Unauthorized access", 1008), nil
 	}
 
-	id := event.QueryStringParameters["id"]
+	var req dto.OfficerDetails
 
-	if id == "" {
-		return response.ErrorResponse(http.StatusBadRequest, "Invalid request", 1001), nil
+	if err := json.Unmarshal([]byte(event.Body), &req); err != nil {
+		return response.ErrorResponse(http.StatusBadRequest, "Invalid Request Body", 1001), nil
 	}
 
-	msgBody := dto.DeleteRequestMessage{
-		UserID: id,
-	}
-
-	msgBodyBytes, err := json.Marshal(msgBody)
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.DefaultCost)
 	if err != nil {
-		return response.ErrorResponse(http.StatusInternalServerError, "Failed to marshal body", 1010), nil
+		return response.ErrorResponse(http.StatusInternalServerError, "Failed to hash password", 1010), nil
 	}
 
-	_, err = sqsClient.SendMessage(context.TODO(), &sqs.SendMessageInput{
-		QueueUrl:    aws.String(queueURL),
-		MessageBody: aws.String(string(msgBodyBytes)),
-	})
-	if err != nil {
-		return response.ErrorResponse(http.StatusInternalServerError, "Failed to send message to queue", 1010), nil
+	newOfficer := model.User{
+		Email:        req.Email,
+		ID:           utils.GenerateUUID().String(),
+		Password:     string(hashedPassword),
+		Role:         model.RoleOfficer,
+		FirstName:    "********",
+		LastName:     "*******",
+		MobileNumber: "**********",
+		Flat:         "xxx",
 	}
 
-	if err := credentialService.DeleteResidentCredentials(ctx, id); err != nil {
-		return response.ErrorResponse(http.StatusInternalServerError, "Error deleting officer", 1010), nil
+	if err := userService.SignUp(newOfficer); err != nil {
+		return response.ErrorResponse(http.StatusInternalServerError, "Failed to create officer", 1010), nil
 	}
-	return response.SuccessResponse(nil, "Resident deleted successfully!!", http.StatusOK), nil
+
+	return response.SuccessResponse(newOfficer.ID, "Officer created successfully", http.StatusOK), nil
 }

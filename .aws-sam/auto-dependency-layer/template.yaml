@@ -157,6 +157,10 @@ Resources:
       SamResourceId: DeleteResident
     Properties:
       CodeUri: DeleteResident
+      Environment:
+        Variables:
+          QUEUE_URL:
+            Ref: DeleteRequestsQueue
       Events:
         ApiEvent:
           Type: Api
@@ -375,3 +379,112 @@ Resources:
             Path: /feedbacks
             RestApiId:
               Ref: Api
+  AddOfficer:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: AddOfficer
+    Properties:
+      CodeUri: AddOfficer
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: post
+            Path: /officers
+            RestApiId:
+              Ref: Api
+  PostFeedback:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: PostFeedback
+    Properties:
+      CodeUri: PostFeedback
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: post
+            Path: /feedbacks/request
+            RestApiId:
+              Ref: Api
+  ChangePassword:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: ChangePassword
+    Properties:
+      CodeUri: ChangePassword
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: patch
+            Path: /profile/password
+            RestApiId:
+              Ref: Api
+  UpdateProfile:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: UpdateProfile
+    Properties:
+      CodeUri: UpdateProfile
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: patch
+            Path: /profile/update
+            RestApiId:
+              Ref: Api
+  DeleteRequestsQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: delete-requests-queue
+      VisibilityTimeout: 250
+      RedrivePolicy:
+        deadLetterTargetArn:
+          Fn::GetAtt:
+          - DeleteRequestsDLQ
+          - Arn
+        maxReceiveCount: 3
+  DeleteRequestsDLQ:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: delete-requests-dlq
+  DeleteProfile:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: DeleteProfile
+    Properties:
+      CodeUri: DeleteProfile
+      Environment:
+        Variables:
+          QUEUE_URL:
+            Ref: DeleteRequestsQueue
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Method: delete
+            Path: /profile
+            RestApiId:
+              Ref: Api
+  DeleteRequests:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: DeleteRequests
+    Properties:
+      CodeUri: DeleteRequests
+      Events:
+        SQSTrigger:
+          Type: SQS
+          Properties:
+            Queue:
+              Fn::GetAtt:
+              - DeleteRequestsQueue
+              - Arn

@@ -11,7 +11,6 @@ import (
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/repository"
 	"github.com/MananLed/majorProjectSMS/internal/utils"
-	"github.com/MananLed/majorProjectSMS/pkg/logger"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -57,29 +56,23 @@ func (us *UserService) Login(id string, password string) (*model.User, error) {
 	return user, nil
 }
 
-func (us *UserService) UpdateProfile(user model.User) error {
-	return us.UserRepo.UpdateUser(user)
+func (us *UserService) UpdateProfile(user model.User, previousEmail string) error {
+	return us.UserRepo.UpdateUser(user, previousEmail)
 }
 
 func (us *UserService) ChangePassword(user *model.User, currentPassword string, newPassword string) error {
 
 	err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(currentPassword))
 	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return errors.New("current password is incorrect")
 	}
 
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(newPassword), bcrypt.DefaultCost)
 	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return err
 	}
 
-	if !us.UserRepo.IsPasswordUnique(string(hashedPassword)) {
-		return errors.New("password is already used by another user")
-	}
-
-	return us.UserRepo.ChangePassword(user.ID, string(hashedPassword))
+	return us.UserRepo.ChangePassword(user.ID, user.Role, user.Email, string(hashedPassword))
 }
 
 func (us *UserService) IsPasswordUnique(Password string) bool {
@@ -89,10 +82,9 @@ func (us *UserService) IsPasswordUnique(Password string) bool {
 func (us *UserService) DeleteProfile(ctx context.Context) error {
 	user, err := utils.GetUserFromContext(ctx)
 	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return err
 	}
-	return us.UserRepo.DeleteUserByID(user.ID)
+	return us.UserRepo.DeleteUserByID(user.ID, user.Role, user.Email)
 }
 
 func (us *UserService) GetUserByID(ctx context.Context) (*model.User, error) {

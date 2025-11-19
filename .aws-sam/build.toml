@@ -122,7 +122,7 @@ codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\delete_resi
 runtime = "provided.al2023"
 architecture = "x86_64"
 handler = "bootstrap"
-source_hash = "4505f5bb51ccc09d3ef4dee21589e90fc74afb43805d0bc1836be38ae534f408"
+source_hash = "3662e841e8ae405bf862596d7aafee71ef1003b6879332f89a6ac578e94b9edc"
 manifest_hash = ""
 packagetype = "Zip"
 functions = ["DeleteResident"]
@@ -310,6 +310,84 @@ packagetype = "Zip"
 functions = ["GetAllFeedbacks"]
 
 [function_build_definitions.96bbc44d-76b9-4403-ab54-f33c6650b058.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.1ea6cc74-8f9f-4a3b-9f9e-68c1599018d0]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\add_officer"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "0adbefb4d48038504e06fb91358fde4adee2426da8302fdb644f73613379cf19"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["AddOfficer"]
+
+[function_build_definitions.1ea6cc74-8f9f-4a3b-9f9e-68c1599018d0.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.c0d63a50-1b9c-48f7-944f-2fb4f5c0c571]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\post_feedback"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "963c7bd6dedaa92d512f047c92d71675d58fea2537c65c786a0e2a6f35bb2856"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["PostFeedback"]
+
+[function_build_definitions.c0d63a50-1b9c-48f7-944f-2fb4f5c0c571.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.410fc0e4-9e10-482d-a7c2-521228bfa70a]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\change_password"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "fe2b0e241ccb1a66e46cbef3b81e71d937cc7ed0f247f1d78b53faf9c95994d7"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["ChangePassword"]
+
+[function_build_definitions.410fc0e4-9e10-482d-a7c2-521228bfa70a.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.3db8933e-3b22-46d7-80f0-e8a6054eae10]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\update_profile"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "cdb3021b54505fc022662025a15151f774835aa8cb150913dd4922e7da6ad5d2"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["UpdateProfile"]
+
+[function_build_definitions.3db8933e-3b22-46d7-80f0-e8a6054eae10.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.44047a0b-f92d-47bd-a5f3-2e4103e0f741]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\delete_profile"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "a863114adaebdd3e67d0a5a7c7a80a54764ad59c5bd150b5246286b211d57c5a"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["DeleteProfile"]
+
+[function_build_definitions.44047a0b-f92d-47bd-a5f3-2e4103e0f741.metadata]
+BuildMethod = "go1.x"
+
+[function_build_definitions.66916e87-6b93-4258-8b16-ea43b294f426]
+codeuri = "C:\\Users\\mledwani\\majorProjectSMS\\cmd\\aws-functions\\delete_requests_of_resident"
+runtime = "provided.al2023"
+architecture = "x86_64"
+handler = "bootstrap"
+source_hash = "05501fb72fe19bc0393a3bd7163646650de6eb13cb9ccfc34039971a3381f24d"
+manifest_hash = ""
+packagetype = "Zip"
+functions = ["DeleteRequests"]
+
+[function_build_definitions.66916e87-6b93-4258-8b16-ea43b294f426.metadata]
 BuildMethod = "go1.x"
 
 [layer_build_definitions]

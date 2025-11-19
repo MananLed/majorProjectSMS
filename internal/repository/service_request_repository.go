@@ -281,7 +281,7 @@ func (r *ServiceRequestRepository) UpdateRequest(req *model.ServiceRequest) erro
 		return err
 	}
 
-	if req.Status == model.StatusCompleted{
+	if req.Status == model.StatusCompleted {
 		req.AssignedTo = request.AssignedTo
 	}
 
@@ -473,13 +473,144 @@ func (r *ServiceRequestRepository) DeleteRequest(requestID uuid.UUID) error {
 
 // **************************************************************************************
 func (r *ServiceRequestRepository) DeleteRequestsByResidentID(residentID string) error {
-	query := `DELETE FROM service_requests WHERE resident_id = $1`
+	// query := `DELETE FROM service_requests WHERE resident_id = $1`
 
-	_, err := r.db.Exec(query, residentID)
+	// _, err := r.db.Exec(query, residentID)
+
+	// if err != nil {
+	// 	logger.LogToFile(fmt.Sprintf("error : %v", err))
+	// 	return fmt.Errorf("failed to delete service request: %v", err)
+	// }
+	// return nil
+
+	fetchRequestStatement := "SELECT * FROM " + r.TableName + " WHERE PK = ? AND begins_with(SK, ?)"
+
+	result, err := r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+		Statement: aws.String(fetchRequestStatement),
+		Parameters: []types.AttributeValue{
+			&types.AttributeValueMemberS{Value: "REQUESTS"},
+			&types.AttributeValueMemberS{Value: string(model.StatusPending) + "#" + string(model.Electrician) + "#" + residentID},
+		},
+	})
 
 	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error : %v", err))
-		return fmt.Errorf("failed to delete service request: %v", err)
+		return err
+	}
+
+	result1, err := r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+		Statement: aws.String(fetchRequestStatement),
+		Parameters: []types.AttributeValue{
+			&types.AttributeValueMemberS{Value: "REQUESTS"},
+			&types.AttributeValueMemberS{Value: string(model.StatusApproved) + "#" + string(model.Electrician) + "#" + residentID},
+		},
+	})
+
+	if err != nil {
+		return err
+	}
+
+	result2, err := r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+		Statement: aws.String(fetchRequestStatement),
+		Parameters: []types.AttributeValue{
+			&types.AttributeValueMemberS{Value: "REQUESTS"},
+			&types.AttributeValueMemberS{Value: string(model.StatusCompleted) + "#" + string(model.Electrician) + "#" + residentID},
+		},
+	})
+
+	if err != nil {
+		return err
+	}
+
+	result3, err := r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+		Statement: aws.String(fetchRequestStatement),
+		Parameters: []types.AttributeValue{
+			&types.AttributeValueMemberS{Value: "REQUESTS"},
+			&types.AttributeValueMemberS{Value: string(model.StatusPending) + "#" + string(model.Plumber) + "#" + residentID},
+		},
+	})
+
+	if err != nil {
+		return err
+	}
+
+	result4, err := r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+		Statement: aws.String(fetchRequestStatement),
+		Parameters: []types.AttributeValue{
+			&types.AttributeValueMemberS{Value: "REQUESTS"},
+			&types.AttributeValueMemberS{Value: string(model.StatusApproved) + "#" + string(model.Plumber) + "#" + residentID},
+		},
+	})
+
+	if err != nil {
+		return err
+	}
+
+	result5, err := r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+		Statement: aws.String(fetchRequestStatement),
+		Parameters: []types.AttributeValue{
+			&types.AttributeValueMemberS{Value: "REQUESTS"},
+			&types.AttributeValueMemberS{Value: string(model.StatusCompleted) + "#" + string(model.Plumber) + "#" + residentID},
+		},
+	})
+
+	if err != nil {
+		return err
+	}
+
+	result.Items = append(result.Items, result1.Items...)
+	result.Items = append(result.Items, result2.Items...)
+	result.Items = append(result.Items, result3.Items...)
+	result.Items = append(result.Items, result4.Items...)
+	result.Items = append(result.Items, result5.Items...)
+
+	if len(result.Items) == 0 {
+		return errors.New("no such request exist")
+	}
+
+	type Request struct {
+		PK            string `dynamobdav:"PK"`
+		SK            string `dynamobdav:"SK"`
+		AssignedTo    string `dynamodbav:"assigned_to"`
+		Date          string `dynamodbav:"date"`
+		FeedbackGiven bool   `dynamodbav:"feedback_given"`
+		Flat          string `dynamodbav:"flat_no"`
+		ID            string `dynamodbav:"id"`
+		ResidentID    string `dynamodbav:"resident_id"`
+		ServiceType   string `dynamodbav:"service_type"`
+		Status        string `dynamodbav:"status"`
+		TimeSlot      string `dynamodbav:"time_slot"`
+	}
+
+	var request Request
+
+	deleteRequestStatement := "DELETE FROM " + r.TableName + " WHERE PK = ? AND SK = ?"
+
+	for _, u := range result.Items {
+		err = attributevalue.UnmarshalMap(u, &request)
+		if err != nil {
+			return err
+		}
+		_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+			Statement: aws.String(deleteRequestStatement),
+			Parameters: []types.AttributeValue{
+				&types.AttributeValueMemberS{Value: request.ID},
+				&types.AttributeValueMemberS{Value: request.ID},
+			},
+		})
+		if err != nil {
+			return fmt.Errorf("failed to delete request: %v", err)
+		}
+
+		_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+			Statement: aws.String(deleteRequestStatement),
+			Parameters: []types.AttributeValue{
+				&types.AttributeValueMemberS{Value: "REQUESTS"},
+				&types.AttributeValueMemberS{Value: request.Status + "#" + request.ServiceType + "#" + request.ResidentID + "#" + request.Date + "#" + request.ID},
+			},
+		})
+		if err != nil {
+			return fmt.Errorf("failed to delete request: %v", err)
+		}
 	}
 	return nil
 }

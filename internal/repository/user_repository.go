@@ -55,10 +55,10 @@ type UserRepository struct {
 type UserRepositoryInterface interface {
 	AddUser(user model.User) error
 	GetUserByIDAndPassword(id string, password string) (*model.User, error)
-	UpdateUser(user model.User) error
-	ChangePassword(id string, newHashedPassword string) error
+	UpdateUser(user model.User, previousEmail string) error
+	ChangePassword(id string, role model.UserRole, email string, newHashedPassword string) error
 	IsPasswordUnique(hashedPassword string) bool
-	DeleteUserByID(id string) error
+	DeleteUserByID(id string, role model.UserRole, email string) error
 	GetUserByID(id string) (*model.User, error)
 }
 
@@ -84,42 +84,42 @@ func (r *UserRepository) AddUser(newUser model.User) error {
 	statement := "INSERT INTO " + r.TableName + " VALUE {'PK': ?, 'SK': ?, 'email': ?, 'first_name': ?, 'flat': ?, 'id': ?, 'middle_name': ?, 'last_name': ?, 'mobile_number': ?, 'password': ?, 'role': ?}"
 
 	_, err := r.DynamoDbClient.ExecuteStatement(context.Background(), &dynamodb.ExecuteStatementInput{
-        Statement: &statement,
-        Parameters: []types.AttributeValue{
-            &types.AttributeValueMemberS{Value: "USERS"},
-            &types.AttributeValueMemberS{Value: (newUser.Email + "#" + newUser.ID)},
-            &types.AttributeValueMemberS{Value: newUser.Email},
-            &types.AttributeValueMemberS{Value: newUser.FirstName},
-            &types.AttributeValueMemberS{Value: newUser.Flat},
-            &types.AttributeValueMemberS{Value: newUser.ID},
-            &types.AttributeValueMemberS{Value: newUser.MiddleName},
-            &types.AttributeValueMemberS{Value: newUser.LastName},
+		Statement: &statement,
+		Parameters: []types.AttributeValue{
+			&types.AttributeValueMemberS{Value: "USERS"},
+			&types.AttributeValueMemberS{Value: (newUser.Email + "#" + newUser.ID)},
+			&types.AttributeValueMemberS{Value: newUser.Email},
+			&types.AttributeValueMemberS{Value: newUser.FirstName},
+			&types.AttributeValueMemberS{Value: newUser.Flat},
+			&types.AttributeValueMemberS{Value: newUser.ID},
+			&types.AttributeValueMemberS{Value: newUser.MiddleName},
+			&types.AttributeValueMemberS{Value: newUser.LastName},
 			&types.AttributeValueMemberS{Value: newUser.MobileNumber},
 			&types.AttributeValueMemberS{Value: newUser.Password},
 			&types.AttributeValueMemberS{Value: string(newUser.Role)},
-        },
-    })
+		},
+	})
 
 	if err != nil {
-		return err 
+		return err
 	}
 
 	_, err = r.DynamoDbClient.ExecuteStatement(context.Background(), &dynamodb.ExecuteStatementInput{
-        Statement: &statement,
-        Parameters: []types.AttributeValue{
-            &types.AttributeValueMemberS{Value: ("ROLE#" + string(newUser.Role))},
-            &types.AttributeValueMemberS{Value: newUser.ID},
-            &types.AttributeValueMemberS{Value: newUser.Email},
-            &types.AttributeValueMemberS{Value: newUser.FirstName},
-            &types.AttributeValueMemberS{Value: newUser.Flat},
-            &types.AttributeValueMemberS{Value: newUser.ID},
-            &types.AttributeValueMemberS{Value: newUser.MiddleName},
-            &types.AttributeValueMemberS{Value: newUser.LastName},
+		Statement: &statement,
+		Parameters: []types.AttributeValue{
+			&types.AttributeValueMemberS{Value: ("ROLE#" + string(newUser.Role))},
+			&types.AttributeValueMemberS{Value: newUser.ID},
+			&types.AttributeValueMemberS{Value: newUser.Email},
+			&types.AttributeValueMemberS{Value: newUser.FirstName},
+			&types.AttributeValueMemberS{Value: newUser.Flat},
+			&types.AttributeValueMemberS{Value: newUser.ID},
+			&types.AttributeValueMemberS{Value: newUser.MiddleName},
+			&types.AttributeValueMemberS{Value: newUser.LastName},
 			&types.AttributeValueMemberS{Value: newUser.MobileNumber},
 			&types.AttributeValueMemberS{Value: newUser.Password},
 			&types.AttributeValueMemberS{Value: string(newUser.Role)},
-        },
-    })
+		},
+	})
 
 	return err
 }
@@ -158,17 +158,17 @@ func (r *UserRepository) GetUserByIDAndPassword(email string, password string) (
 	}
 
 	type User struct {
-		PK           string  `dynamodbav:"PK"`
-		SK           string  `dynamodbav:"SK"`
-		ID           string  `dynamodbav:"id"` 
-		Email        string  `dynamodbav:"email"`
-		FirstName    string  `dynamodbav:"first_name"`
-		LastName     string  `dynamodbav:"last_name"`
+		PK           string `dynamodbav:"PK"`
+		SK           string `dynamodbav:"SK"`
+		ID           string `dynamodbav:"id"`
+		Email        string `dynamodbav:"email"`
+		FirstName    string `dynamodbav:"first_name"`
+		LastName     string `dynamodbav:"last_name"`
 		MiddleName   string `dynamodbav:"middle_name"`
 		MobileNumber string `dynamodbav:"mobile_number"`
-		Password     string  `dynamodbav:"password"`
-		Role         string  `dynamodbav:"role"`
-		Flat         string `dynamodbav:"flat"` 
+		Password     string `dynamodbav:"password"`
+		Role         string `dynamodbav:"role"`
+		Flat         string `dynamodbav:"flat"`
 	}
 
 	var userDetails User
@@ -195,47 +195,168 @@ func (r *UserRepository) GetUserByIDAndPassword(email string, password string) (
 	return &user, err
 }
 
-func (r *UserRepository) UpdateUser(updatedUser model.User) error {
+func (r *UserRepository) UpdateUser(updatedUser model.User, previousEmail string) error {
 
-	query := `
-		UPDATE users
-		SET first_name = $1, middle_name = $2, last_name = $3, mobile_number = $4, email = $5, password = $6, role = $7
-		WHERE id = $8
-	`
+	// query := `
+	// 	UPDATE users
+	// 	SET first_name = $1, middle_name = $2, last_name = $3, mobile_number = $4, email = $5, password = $6, role = $7
+	// 	WHERE id = $8
+	// `
 
-	result, err := r.db.Exec(query, updatedUser.FirstName, updatedUser.MiddleName, updatedUser.LastName, updatedUser.MobileNumber, updatedUser.Email, updatedUser.Password, updatedUser.Role, updatedUser.ID)
+	// result, err := r.db.Exec(query, updatedUser.FirstName, updatedUser.MiddleName, updatedUser.LastName, updatedUser.MobileNumber, updatedUser.Email, updatedUser.Password, updatedUser.Role, updatedUser.ID)
 
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("UpdateUser error: %v", err))
-		return err
+	// if err != nil {
+	// 	logger.LogToFile(fmt.Sprintf("UpdateUser error: %v", err))
+	// 	return err
+	// }
+
+	// rows, _ := result.RowsAffected()
+	// if rows == 0 {
+	// 	return errors.New("user not found")
+	// }
+
+	// return nil
+
+	if previousEmail == "" {
+		updateRequestStatement := "UPDATE " + r.TableName + " SET first_name = ?, middle_name = ?, last_name = ?, mobile_number = ? WHERE PK = ? AND SK = ?"
+
+		_, err := r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+			Statement: aws.String(updateRequestStatement),
+			Parameters: []types.AttributeValue{
+				&types.AttributeValueMemberS{Value: updatedUser.FirstName},
+				&types.AttributeValueMemberS{Value: updatedUser.MiddleName},
+				&types.AttributeValueMemberS{Value: updatedUser.LastName},
+				&types.AttributeValueMemberS{Value: updatedUser.MobileNumber},
+				&types.AttributeValueMemberS{Value: "USERS"},
+				&types.AttributeValueMemberS{Value: (updatedUser.Email + "#" + updatedUser.ID)},
+			},
+		})
+
+		if err != nil {
+			return err
+		}
+
+		_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+			Statement: aws.String(updateRequestStatement),
+			Parameters: []types.AttributeValue{
+				&types.AttributeValueMemberS{Value: updatedUser.FirstName},
+				&types.AttributeValueMemberS{Value: updatedUser.MiddleName},
+				&types.AttributeValueMemberS{Value: updatedUser.LastName},
+				&types.AttributeValueMemberS{Value: updatedUser.MobileNumber},
+				&types.AttributeValueMemberS{Value: ("ROLE#" + string(updatedUser.Role))},
+				&types.AttributeValueMemberS{Value: updatedUser.ID},
+			},
+		})
+
+		if err != nil {
+			return err
+		}
+	} else {
+		deleteRequestStatement := "DELETE FROM " + r.TableName + " WHERE PK = ? AND SK = ?"
+		updateRequestStatement := "UPDATE " + r.TableName + " SET first_name = ?, middle_name = ?, last_name = ?, mobile_number = ?, email = ? WHERE PK = ? AND SK = ?"
+		insertRequestStatement := "INSERT INTO " + r.TableName + " VALUE {'PK': ?, 'SK': ?, 'email': ?, 'first_name': ?, 'flat': ?, 'id': ?, 'middle_name': ?, 'last_name': ?, 'mobile_number': ?, 'password': ?, 'role': ?}"
+
+		_, err := r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+			Statement: aws.String(deleteRequestStatement),
+			Parameters: []types.AttributeValue{
+				&types.AttributeValueMemberS{Value: "USERS"},
+				&types.AttributeValueMemberS{Value: previousEmail + "#" + updatedUser.ID},
+			},
+		})
+
+		if err != nil {
+			return err
+		}
+
+		_, err = r.DynamoDbClient.ExecuteStatement(context.Background(), &dynamodb.ExecuteStatementInput{
+			Statement: &insertRequestStatement,
+			Parameters: []types.AttributeValue{
+				&types.AttributeValueMemberS{Value: "USERS"},
+				&types.AttributeValueMemberS{Value: (updatedUser.Email + "#" + updatedUser.ID)},
+				&types.AttributeValueMemberS{Value: updatedUser.Email},
+				&types.AttributeValueMemberS{Value: updatedUser.FirstName},
+				&types.AttributeValueMemberS{Value: updatedUser.Flat},
+				&types.AttributeValueMemberS{Value: updatedUser.ID},
+				&types.AttributeValueMemberS{Value: updatedUser.MiddleName},
+				&types.AttributeValueMemberS{Value: updatedUser.LastName},
+				&types.AttributeValueMemberS{Value: updatedUser.MobileNumber},
+				&types.AttributeValueMemberS{Value: updatedUser.Password},
+				&types.AttributeValueMemberS{Value: string(updatedUser.Role)},
+			},
+		})
+
+		if err != nil {
+			return err
+		}
+
+		_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+			Statement: aws.String(updateRequestStatement),
+			Parameters: []types.AttributeValue{
+				&types.AttributeValueMemberS{Value: updatedUser.FirstName},
+				&types.AttributeValueMemberS{Value: updatedUser.MiddleName},
+				&types.AttributeValueMemberS{Value: updatedUser.LastName},
+				&types.AttributeValueMemberS{Value: updatedUser.MobileNumber},
+				&types.AttributeValueMemberS{Value: updatedUser.Email},
+				&types.AttributeValueMemberS{Value: ("ROLE#" + string(updatedUser.Role))},
+				&types.AttributeValueMemberS{Value: updatedUser.ID},
+			},
+		})
+
+		if err != nil {
+			return err
+		}
 	}
-
-	rows, _ := result.RowsAffected()
-	if rows == 0 {
-		return errors.New("user not found")
-	}
-
 	return nil
 }
 
-func (r *UserRepository) ChangePassword(id string, newHashedPassword string) error {
+func (r *UserRepository) ChangePassword(id string, role model.UserRole, email string, newHashedPassword string) error {
 
-	query := `
-		UPDATE users
-		SET password = $1
-		WHERE id = $2
-	`
+	// query := `
+	// 	UPDATE users
+	// 	SET password = $1
+	// 	WHERE id = $2
+	// `
 
-	result, err := r.db.Exec(query, newHashedPassword, id)
+	// result, err := r.db.Exec(query, newHashedPassword, id)
+
+	// if err != nil {
+	// 	logger.LogToFile(fmt.Sprintf("error: %v", err))
+	// 	return err
+	// }
+
+	// rows, _ := result.RowsAffected()
+	// if rows == 0 {
+	// 	return errors.New("user not found")
+	// }
+
+	// return nil
+
+	updateRequestStatement := "UPDATE " + r.TableName + " SET password = ? WHERE PK = ? AND SK = ?"
+
+	_, err := r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+		Statement: aws.String(updateRequestStatement),
+		Parameters: []types.AttributeValue{
+			&types.AttributeValueMemberS{Value: (newHashedPassword)},
+			&types.AttributeValueMemberS{Value: "ROLE#" + string(role)},
+			&types.AttributeValueMemberS{Value: id},
+		},
+	})
 
 	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return err
 	}
 
-	rows, _ := result.RowsAffected()
-	if rows == 0 {
-		return errors.New("user not found")
+	_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+		Statement: aws.String(updateRequestStatement),
+		Parameters: []types.AttributeValue{
+			&types.AttributeValueMemberS{Value: (newHashedPassword)},
+			&types.AttributeValueMemberS{Value: "USERS"},
+			&types.AttributeValueMemberS{Value: email + "#" + id},
+		},
+	})
+
+	if err != nil {
+		return err
 	}
 
 	return nil
@@ -266,25 +387,52 @@ func (r *UserRepository) IsPasswordUnique(password string) bool {
 	return true
 }
 
-func (r *UserRepository) DeleteUserByID(id string) error {
+func (r *UserRepository) DeleteUserByID(id string, role model.UserRole, email string) error {
 
-	query := `
-		DELETE FROM users
-		WHERE id = $1
-	`
+	// query := `
+	// 	DELETE FROM users
+	// 	WHERE id = $1
+	// `
 
-	result, err := r.db.Exec(query, id)
+	// result, err := r.db.Exec(query, id)
+
+	// if err != nil {
+	// 	logger.LogToFile(fmt.Sprintf("error: %v", err))
+	// 	return err
+	// }
+
+	// rows, _ := result.RowsAffected()
+
+	// if rows == 0 {
+	// 	return errors.New("user not found")
+	// }
+	// return nil
+
+	deleteUserStatement := "DELETE FROM " + r.TableName + " WHERE PK = ? AND SK = ?"
+
+	_, err := r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+		Statement: aws.String(deleteUserStatement),
+		Parameters: []types.AttributeValue{
+			&types.AttributeValueMemberS{Value: "ROLE#" + string(role)},
+			&types.AttributeValueMemberS{Value: id},
+		},
+	})
+	if err != nil {
+		return fmt.Errorf("failed to delete user: %v", err)
+	}
+
+	_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
+		Statement: aws.String(deleteUserStatement),
+		Parameters: []types.AttributeValue{
+			&types.AttributeValueMemberS{Value: "USERS"},
+			&types.AttributeValueMemberS{Value: (email + "#" + id)},
+		},
+	})
 
 	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return err
+		return fmt.Errorf("failed to delete user: %v", err)
 	}
 
-	rows, _ := result.RowsAffected()
-
-	if rows == 0 {
-		return errors.New("user not found")
-	}
 	return nil
 }
 
@@ -326,17 +474,17 @@ func (r *UserRepository) GetUserByID(id string) (*model.User, error) {
 	}
 
 	type User struct {
-		PK           string  `dynamodbav:"PK"`
-		SK           string  `dynamodbav:"SK"`
-		ID           string  `dynamodbav:"id"` 
-		Email        string  `dynamodbav:"email"`
-		FirstName    string  `dynamodbav:"first_name"`
-		LastName     string  `dynamodbav:"last_name"`
+		PK           string `dynamodbav:"PK"`
+		SK           string `dynamodbav:"SK"`
+		ID           string `dynamodbav:"id"`
+		Email        string `dynamodbav:"email"`
+		FirstName    string `dynamodbav:"first_name"`
+		LastName     string `dynamodbav:"last_name"`
 		MiddleName   string `dynamodbav:"middle_name"`
 		MobileNumber string `dynamodbav:"mobile_number"`
-		Password     string  `dynamodbav:"password"`
-		Role         string  `dynamodbav:"role"`
-		Flat         string `dynamodbav:"flat"` 
+		Password     string `dynamodbav:"password"`
+		Role         string `dynamodbav:"role"`
+		Flat         string `dynamodbav:"flat"`
 	}
 
 	var userDetails User

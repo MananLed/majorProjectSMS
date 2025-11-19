@@ -149,6 +149,9 @@ Resources:
       BuildMethod: go1.x 
     Properties:
       CodeUri: ./cmd/aws-functions/delete_resident
+      Environment:
+        Variables:
+          QUEUE_URL: !Ref DeleteRequestsQueue
       Events:
         ApiEvent:
           Type: Api 
@@ -352,4 +355,108 @@ Resources:
             Method: get
             Path: /feedbacks
             RestApiId: !Ref Api
+
+  AddOfficer:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x 
+    Properties:
+      CodeUri: ./cmd/aws-functions/add_officer
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties: 
+            Method: post
+            Path: /officers
+            RestApiId: !Ref Api
+
+  PostFeedback:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x 
+    Properties:
+      CodeUri: ./cmd/aws-functions/post_feedback
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties: 
+            Method: post
+            Path: /feedbacks/request
+            RestApiId: !Ref Api
+
+  ChangePassword:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x 
+    Properties:
+      CodeUri: ./cmd/aws-functions/change_password
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties: 
+            Method: patch
+            Path: /profile/password
+            RestApiId: !Ref Api 
+
+  UpdateProfile:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x 
+    Properties:
+      CodeUri: ./cmd/aws-functions/update_profile
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties: 
+            Method: patch
+            Path: /profile/update
+            RestApiId: !Ref Api
+
+
+  DeleteRequestsQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: delete-requests-queue
+      VisibilityTimeout: 250
+      RedrivePolicy:
+        deadLetterTargetArn:
+          Fn::GetAtt:
+            - 'DeleteRequestsDLQ'
+            - 'Arn'
+        maxReceiveCount: 3
+      
+
+  DeleteRequestsDLQ:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: delete-requests-dlq 
+
+  DeleteProfile:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x 
+    Properties:
+      CodeUri: ./cmd/aws-functions/delete_profile
+      Environment:
+        Variables:
+          QUEUE_URL: !Ref DeleteRequestsQueue
+      Events:
+        ApiEvent:
+          Type: Api 
+          Properties: 
+            Method: delete
+            Path: /profile
+            RestApiId: !Ref Api   
+
+  DeleteRequests: 
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x 
+    Properties:
+      CodeUri: ./cmd/aws-functions/delete_requests_of_resident
+      Events:
+        SQSTrigger:
+          Type: SQS 
+          Properties:
+            Queue: !GetAtt DeleteRequestsQueue.Arn 
   

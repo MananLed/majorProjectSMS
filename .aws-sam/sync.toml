@@ -2,7 +2,7 @@
 
 [sync_state]
 dependency_layer = true
-latest_infra_sync_time = "2025-11-16T17:48:53.274895+00:00"
+latest_infra_sync_time = "2025-11-18T11:09:08.411606+00:00"
 
 [resource_sync_states."ZipFunctionSyncFlow:ViewResident"]
 hash = "61f7e12f01119d3bc801f7c54f75cf3afe6f4c1e54c51b2fcfc296b00eb378cb"
@@ -67,3 +67,15 @@ sync_time = "2025-11-16T13:36:54.368070+00:00"
 [resource_sync_states."ZipFunctionSyncFlow:CompleteRequest"]
 hash = "dcd7d529130c7099cdd379c3b54e1499188547447840277021701d44a97eb76d"
 sync_time = "2025-11-16T15:02:07.240060+00:00"
+
+[resource_sync_states."ZipFunctionSyncFlow:AddOfficer"]
+hash = "02a4af422d561f0d0be6d6cf945a84cb7fc5babf6920c1ce2bb6daf15fc817f0"
+sync_time = "2025-11-16T19:00:13.205706+00:00"
+
+[resource_sync_states."ZipFunctionSyncFlow:PostFeedback"]
+hash = "7a1677fb539eda4732d5528ccabe4eb0650623318d751906251efa9e6adfa1ca"
+sync_time = "2025-11-17T07:27:48.576297+00:00"
+
+[resource_sync_states."ZipFunctionSyncFlow:ChangePassword"]
+hash = "44ca0a7229dc747452eae2ce1f51d9aa9fcb0950b6cfc0ff53d051c7080c00e5"
+sync_time = "2025-11-17T09:41:00.198353+00:00"

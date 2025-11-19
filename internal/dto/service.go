@@ -12,3 +12,7 @@ type RescheduleServiceRequest struct {
 type RequestProvider struct{
 	AssignedTo string `json:"assignedto"`
 }
+
+type DeleteRequestMessage struct{
+	UserID string `json:"userId"`
+}

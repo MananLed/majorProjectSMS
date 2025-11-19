@@ -143,7 +143,6 @@ func (s *ServiceRequestService) CompleteServiceRequest(requestID uuid.UUID) erro
 	return s.Repo.UpdateRequest(req)
 }
 
-func (s *ServiceRequestService) DeleteServiceRequestByID(ctx context.Context) error {
-	residentID := ctx.Value(utils.UserIDKey).(string)
-	return s.Repo.DeleteRequestsByResidentID(residentID)
+func (s *ServiceRequestService) DeleteServiceRequestByID(userId string) error {
+	return s.Repo.DeleteRequestsByResidentID(userId)
 }

@@ -15,4 +15,20 @@ type SignUpRequestDTO struct {
 	Flat       string `json:"flat"`
 }
 
+type OfficerDetails struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
 
+type ChangePassword struct {
+	OldPassword string `json:"oldPassword"`
+	NewPassword string `json:"newPassword"`
+}
+
+type UpdateProfile struct {
+	FirstName    string `json:"firstName"`
+	MiddleName   string `json:"middleName"`
+	LastName     string `json:"lastName"`
+	Email        string `json:"email"`
+	MobileNumber string `json:"mobilenumber"`
+}
