@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/MananLed/majorProjectSMS/internal/dto"
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue"
@@ -150,21 +151,7 @@ func (r *ServiceRequestRepository) UpdateRequest(req *model.ServiceRequest) erro
 		return errors.New("no such request exist")
 	}
 
-	type Request struct {
-		PK            string `dynamobdav:"PK"`
-		SK            string `dynamobdav:"SK"`
-		AssignedTo    string `dynamodbav:"assigned_to"`
-		Date          string `dynamodbav:"date"`
-		FeedbackGiven bool   `dynamodbav:"feedback_given"`
-		Flat          string `dynamodbav:"flat_no"`
-		ID            string `dynamodbav:"id"`
-		ResidentID    string `dynamodbav:"resident_id"`
-		ServiceType   string `dynamodbav:"service_type"`
-		Status        string `dynamodbav:"status"`
-		TimeSlot      string `dynamodbav:"time_slot"`
-	}
-
-	var request Request
+	var request dto.Request
 
 	err = attributevalue.UnmarshalMap(result.Items[0], &request)
 	if err != nil {
@@ -299,21 +286,7 @@ func (r *ServiceRequestRepository) DeleteRequest(requestID uuid.UUID) error {
 		return errors.New("no such request exist")
 	}
 
-	type Request struct {
-		PK            string `dynamobdav:"PK"`
-		SK            string `dynamobdav:"SK"`
-		AssignedTo    string `dynamodbav:"assigned_to"`
-		Date          string `dynamodbav:"date"`
-		FeedbackGiven bool   `dynamodbav:"feedback_given"`
-		Flat          string `dynamodbav:"flat_no"`
-		ID            string `dynamodbav:"id"`
-		ResidentID    string `dynamodbav:"resident_id"`
-		ServiceType   string `dynamodbav:"service_type"`
-		Status        string `dynamodbav:"status"`
-		TimeSlot      string `dynamodbav:"time_slot"`
-	}
-
-	var request Request
+	var request dto.Request
 
 	err = attributevalue.UnmarshalMap(result.Items[0], &request)
 	if err != nil {
@@ -437,21 +410,7 @@ func (r *ServiceRequestRepository) DeleteRequestsByResidentID(residentID string)
 		return errors.New("no such request exist")
 	}
 
-	type Request struct {
-		PK            string `dynamobdav:"PK"`
-		SK            string `dynamobdav:"SK"`
-		AssignedTo    string `dynamodbav:"assigned_to"`
-		Date          string `dynamodbav:"date"`
-		FeedbackGiven bool   `dynamodbav:"feedback_given"`
-		Flat          string `dynamodbav:"flat_no"`
-		ID            string `dynamodbav:"id"`
-		ResidentID    string `dynamodbav:"resident_id"`
-		ServiceType   string `dynamodbav:"service_type"`
-		Status        string `dynamodbav:"status"`
-		TimeSlot      string `dynamodbav:"time_slot"`
-	}
-
-	var request Request
+	var request dto.Request
 
 	deleteRequestStatement := "DELETE FROM " + r.TableName + " WHERE PK = ? AND SK = ?"
 
@@ -502,24 +461,10 @@ func (r *ServiceRequestRepository) GetServiceRequestsByStatus(userID string, sta
 		return nil, err
 	}
 
-	type Request struct {
-		PK            string `dynamobdav:"PK"`
-		SK            string `dynamobdav:"SK"`
-		AssignedTo    string `dynamodbav:"assigned_to"`
-		Date          string `dynamodbav:"date"`
-		FeedbackGiven bool   `dynamodbav:"feedback_given"`
-		Flat          string `dynamodbav:"flat_no"`
-		ID            string `dynamodbav:"id"`
-		ResidentID    string `dynamodbav:"resident_id"`
-		ServiceType   string `dynamodbav:"service_type"`
-		Status        string `dynamodbav:"status"`
-		TimeSlot      string `dynamodbav:"time_slot"`
-	}
-
 	var serviceRequests []model.ServiceRequest
 
 	for _, r := range response.Items {
-		var request Request
+		var request dto.Request
 		var serviceRequest model.ServiceRequest
 
 		err = attributevalue.UnmarshalMap(r, &request)
@@ -555,7 +500,7 @@ func (r *ServiceRequestRepository) GetServiceRequestsByStatus(userID string, sta
 	}
 
 	for _, r := range response.Items {
-		var request Request
+		var request dto.Request
 		var serviceRequest model.ServiceRequest
 
 		err = attributevalue.UnmarshalMap(r, &request)
@@ -599,21 +544,7 @@ func (r *ServiceRequestRepository) GetServiceTypeByID(requestID uuid.UUID) (mode
 		return "", errors.New("no such request exist")
 	}
 
-	type Request struct {
-		PK            string `dynamobdav:"PK"`
-		SK            string `dynamobdav:"SK"`
-		AssignedTo    string `dynamodbav:"assigned_to"`
-		Date          string `dynamodbav:"date"`
-		FeedbackGiven bool   `dynamodbav:"feedback_given"`
-		Flat          string `dynamodbav:"flat_no"`
-		ID            string `dynamodbav:"id"`
-		ResidentID    string `dynamodbav:"resident_id"`
-		ServiceType   string `dynamodbav:"service_type"`
-		Status        string `dynamodbav:"status"`
-		TimeSlot      string `dynamodbav:"time_slot"`
-	}
-
-	var request Request
+	var request dto.Request
 
 	err = attributevalue.UnmarshalMap(result.Items[0], &request)
 	if err != nil {
@@ -652,24 +583,10 @@ func (r *ServiceRequestRepository) GetRequestsByServiceTypeAndStatus(user *model
 		return nil, err
 	}
 
-	type Request struct {
-		PK            string `dynamobdav:"PK"`
-		SK            string `dynamobdav:"SK"`
-		AssignedTo    string `dynamodbav:"assigned_to"`
-		Date          string `dynamodbav:"date"`
-		FeedbackGiven bool   `dynamodbav:"feedback_given"`
-		Flat          string `dynamodbav:"flat_no"`
-		ID            string `dynamodbav:"id"`
-		ResidentID    string `dynamodbav:"resident_id"`
-		ServiceType   string `dynamodbav:"service_type"`
-		Status        string `dynamodbav:"status"`
-		TimeSlot      string `dynamodbav:"time_slot"`
-	}
-
 	var serviceRequests []model.ServiceRequest
 
 	for _, r := range response.Items {
-		var request Request
+		var request dto.Request
 		var serviceRequest model.ServiceRequest
 
 		err = attributevalue.UnmarshalMap(r, &request)

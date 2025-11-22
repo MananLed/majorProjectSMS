@@ -110,21 +110,7 @@ func (r *UserRepository) GetUserByIDAndPassword(email string, password string) (
 		return nil, err
 	}
 
-	type User struct {
-		PK           string `dynamodbav:"PK"`
-		SK           string `dynamodbav:"SK"`
-		ID           string `dynamodbav:"id"`
-		Email        string `dynamodbav:"email"`
-		FirstName    string `dynamodbav:"first_name"`
-		LastName     string `dynamodbav:"last_name"`
-		MiddleName   string `dynamodbav:"middle_name"`
-		MobileNumber string `dynamodbav:"mobile_number"`
-		Password     string `dynamodbav:"password"`
-		Role         string `dynamodbav:"role"`
-		Flat         string `dynamodbav:"flat"`
-	}
-
-	var userDetails User
+	var userDetails dto.User
 
 	if err != nil {
 		return nil, err
@@ -328,21 +314,7 @@ func (r *UserRepository) GetUserByID(id string) (*model.User, error) {
 		return nil, nil
 	}
 
-	type User struct {
-		PK           string `dynamodbav:"PK"`
-		SK           string `dynamodbav:"SK"`
-		ID           string `dynamodbav:"id"`
-		Email        string `dynamodbav:"email"`
-		FirstName    string `dynamodbav:"first_name"`
-		LastName     string `dynamodbav:"last_name"`
-		MiddleName   string `dynamodbav:"middle_name"`
-		MobileNumber string `dynamodbav:"mobile_number"`
-		Password     string `dynamodbav:"password"`
-		Role         string `dynamodbav:"role"`
-		Flat         string `dynamodbav:"flat"`
-	}
-
-	var userDetails User
+	var userDetails dto.User
 
 	if err != nil {
 		return nil, err

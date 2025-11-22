@@ -3,6 +3,7 @@ package repository
 import (
 	"context"
 
+	"github.com/MananLed/majorProjectSMS/internal/dto"
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue"
@@ -43,21 +44,7 @@ func (s *SocietyRepository) GetAllResidents() ([]model.User, error) {
 		return nil, err
 	}
 
-	type User struct {
-		PK           string `dynamodbav:"PK"`
-		SK           string `dynamodbav:"SK"`
-		ID           string `dynamodbav:"id"`
-		Email        string `dynamodbav:"email"`
-		FirstName    string `dynamodbav:"first_name"`
-		LastName     string `dynamodbav:"last_name"`
-		MiddleName   string `dynamodbav:"middle_name"`
-		MobileNumber string `dynamodbav:"mobile_number"`
-		Password     string `dynamodbav:"password"`
-		Role         string `dynamodbav:"role"`
-		Flat         string `dynamodbav:"flat"`
-	}
-
-	var userDetails User
+	var userDetails dto.User
 
 	if err != nil {
 		return nil, err
@@ -102,21 +89,7 @@ func (s *SocietyRepository) GetAllOfficers() ([]model.User, error) {
 		return nil, err
 	}
 
-	type User struct {
-		PK           string `dynamodbav:"PK"`
-		SK           string `dynamodbav:"SK"`
-		ID           string `dynamodbav:"id"`
-		Email        string `dynamodbav:"email"`
-		FirstName    string `dynamodbav:"first_name"`
-		LastName     string `dynamodbav:"last_name"`
-		MiddleName   string `dynamodbav:"middle_name"`
-		MobileNumber string `dynamodbav:"mobile_number"`
-		Password     string `dynamodbav:"password"`
-		Role         string `dynamodbav:"role"`
-		Flat         string `dynamodbav:"flat"`
-	}
-
-	var userDetails User
+	var userDetails dto.User
 
 	if err != nil {
 		return nil, err

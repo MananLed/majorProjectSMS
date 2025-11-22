@@ -6,7 +6,7 @@ import (
 	"errors"
 	"fmt"
 
-
+	"github.com/MananLed/majorProjectSMS/internal/dto"
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue"
@@ -47,21 +47,7 @@ func (r *CredentialRepository) DeleteUserByIDAndRole(id string, role model.UserR
 		return errors.New("user not found")
 	}
 
-	type User struct {
-		PK           string `dynamodbav:"PK"`
-		SK           string `dynamodbav:"SK"`
-		ID           string `dynamodbav:"id"`
-		Email        string `dynamodbav:"email"`
-		FirstName    string `dynamodbav:"first_name"`
-		LastName     string `dynamodbav:"last_name"`
-		MiddleName   string `dynamodbav:"middle_name"`
-		MobileNumber string `dynamodbav:"mobile_number"`
-		Password     string `dynamodbav:"password"`
-		Role         string `dynamodbav:"role"`
-		Flat         string `dynamodbav:"flat"`
-	}
-
-	var userDetails User
+	var userDetails dto.User
 
 	err = attributevalue.UnmarshalMap(result.Items[0], &userDetails)
 	if err != nil {

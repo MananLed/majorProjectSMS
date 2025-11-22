@@ -32,3 +32,17 @@ type UpdateProfile struct {
 	Email        string `json:"email"`
 	MobileNumber string `json:"mobilenumber"`
 }
+
+type User struct {
+	PK           string `dynamodbav:"PK"`
+	SK           string `dynamodbav:"SK"`
+	ID           string `dynamodbav:"id"`
+	Email        string `dynamodbav:"email"`
+	FirstName    string `dynamodbav:"first_name"`
+	LastName     string `dynamodbav:"last_name"`
+	MiddleName   string `dynamodbav:"middle_name"`
+	MobileNumber string `dynamodbav:"mobile_number"`
+	Password     string `dynamodbav:"password"`
+	Role         string `dynamodbav:"role"`
+	Flat         string `dynamodbav:"flat"`
+}

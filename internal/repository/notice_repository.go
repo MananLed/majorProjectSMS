@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/MananLed/majorProjectSMS/internal/dto"
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/utils"
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -78,17 +79,7 @@ func (r *NoticeRepository) GetAllNotices() ([]model.Notice, error) {
 		return nil, err
 	}
 
-	type Notice struct {
-		PK          string `dynamodbav:"PK"`
-		SK          string `dynamodbav:"SK"`
-		ID          string `dynamodbav:"id"`
-		Content     string `dynamodbav:"content"`
-		Date_Issued string `dynamodbav:"date_issued"`
-		Month       string `dynamodbav:"month"`
-		Year        int    `dynamodbav:"year"`
-	}
-
-	var noticeDetails Notice
+	var noticeDetails dto.Notice
 
 	if err != nil {
 		return nil, err
@@ -135,17 +126,7 @@ func (r *NoticeRepository) GetNoticesByMonthYear(month time.Month, year int) ([]
 		return nil, err
 	}
 
-	type Notice struct {
-		PK          string     `dynamodbav:"PK"`
-		SK          string     `dynamodbav:"SK"`
-		ID          string  `dynamodbav:"id"`
-		Content     string     `dynamodbav:"content"`
-		Date_Issued string  `dynamodbav:"date_issued"`
-		Month       string `dynamodbav:"month"`
-		Year        int        `dynamodbav:"year"`
-	}
-
-	var noticeDetails Notice
+	var noticeDetails dto.Notice
 
 	if err != nil {
 		return nil, err
@@ -191,17 +172,7 @@ func (r *NoticeRepository) GetNoticesByYear(year int) ([]model.Notice, error) {
 		return nil, err
 	}
 
-	type Notice struct {
-		PK          string     `dynamodbav:"PK"`
-		SK          string     `dynamodbav:"SK"`
-		ID          string  `dynamodbav:"id"`
-		Content     string     `dynamodbav:"content"`
-		Date_Issued string  `dynamodbav:"date_issued"`
-		Month       string `dynamodbav:"month"`
-		Year        int        `dynamodbav:"year"`
-	}
-
-	var noticeDetails Notice
+	var noticeDetails dto.Notice
 
 	if err != nil {
 		return nil, err

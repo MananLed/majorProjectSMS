@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/MananLed/majorProjectSMS/internal/dto"
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/utils"
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -49,21 +50,7 @@ func (r *FeedbackRepository) SaveFeedback(feedback model.Feedback) error {
 		return err
 	}
 
-	type User struct {
-		PK           string `dynamodbav:"PK"`
-		SK           string `dynamodbav:"SK"`
-		ID           string `dynamodbav:"id"`
-		Email        string `dynamodbav:"email"`
-		FirstName    string `dynamodbav:"first_name"`
-		LastName     string `dynamodbav:"last_name"`
-		MiddleName   string `dynamodbav:"middle_name"`
-		MobileNumber string `dynamodbav:"mobile_number"`
-		Password     string `dynamodbav:"password"`
-		Role         string `dynamodbav:"role"`
-		Flat         string `dynamodbav:"flat"`
-	}
-
-	var userDetails User
+	var userDetails dto.User
 
 	err = attributevalue.UnmarshalMap(response.Items[0], &userDetails)
 	if err != nil {
@@ -98,21 +85,7 @@ func (r *FeedbackRepository) SaveFeedback(feedback model.Feedback) error {
 		return errors.New("no such request exist")
 	}
 
-	type Request struct {
-		PK            string `dynamobdav:"PK"`
-		SK            string `dynamobdav:"SK"`
-		AssignedTo    string `dynamodbav:"assigned_to"`
-		Date          string `dynamodbav:"date"`
-		FeedbackGiven bool   `dynamodbav:"feedback_given"`
-		Flat          string `dynamodbav:"flat_no"`
-		ID            string `dynamodbav:"id"`
-		ResidentID    string `dynamodbav:"resident_id"`
-		ServiceType   string `dynamodbav:"service_type"`
-		Status        string `dynamodbav:"status"`
-		TimeSlot      string `dynamodbav:"time_slot"`
-	}
-
-	var request Request
+	var request dto.Request
 
 	err = attributevalue.UnmarshalMap(result.Items[0], &request)
 	if err != nil {
@@ -194,24 +167,8 @@ func (r *FeedbackRepository) GetAllFeedbacks() ([]model.Feedback, error) {
 	if err != nil {
 		return nil, err
 	}
-
-	type Feedback struct {
-		PK          string `dynamodbav:"PK"`
-		SK          string `dynamodbav:"SK"`
-		AssignedTo  string `dynamodbav:"assigned_to"`
-		Content     string `dynamodbav:"content"`
-		Date        string `dynamodbav:"date"`
-		Flat        string `dynamodbav:"flat_no"`
-		ID          string `dynamodbav:"id"`
-		Rating      int32  `dynamodbav:"rating"`
-		RequestID   string `dynamodbav:"request_id"`
-		ResidentID  string `dynamodbav:"resident_id"`
-		ServiceType string `dynamodbav:"service_type"`
-		TimeSlot    string `dynamodbav:"time_slot"`
-		UserName    string `dynamodbav:"username"`
-	}
-
-	var feedbackDetails Feedback
+	
+	var feedbackDetails dto.FeedbackDDB
 
 	if err != nil {
 		return nil, err

@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/MananLed/majorProjectSMS/internal/dto"
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/utils"
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -74,16 +75,7 @@ func (r *InvoiceRepository) GetInvoiceByMonthAndYear(month time.Month, year int)
 		return nil, err
 	}
 
-	type Invoice struct {
-		PK     string  `dynamodbav:"PK"`
-		SK     string  `dynamodbav:"SK"`
-		ID     string  `dynamodbav:"id"`
-		Amount float64 `dynamodbav:"amount"`
-		Month  string  `dynamodbav:"month"`
-		Year   int     `dynamodbav:"year"`
-	}
-
-	var invoiceDetails Invoice
+	var invoiceDetails dto.InvoiceDDB
 
 	if err != nil {
 		return nil, err
@@ -123,16 +115,7 @@ func (r *InvoiceRepository) GetInvoicesByYear(year int) ([]model.Invoice, error)
 			return nil, err
 		}
 
-		type Invoice struct {
-			PK     string  `dynamodbav:"PK"`
-			SK     string  `dynamodbav:"SK"`
-			ID     string  `dynamodbav:"id"`
-			Amount float64 `dynamodbav:"amount"`
-			Month  string  `dynamodbav:"month"`
-			Year   int     `dynamodbav:"year"`
-		}
-
-		var invoiceDetails Invoice
+		var invoiceDetails dto.InvoiceDDB
 
 		if err != nil {
 			return nil, err
@@ -169,16 +152,7 @@ func (r *InvoiceRepository) GetInvoicesByYear(year int) ([]model.Invoice, error)
 		return nil, err
 	}
 
-	type Invoice struct {
-		PK     string  `dynamodbav:"PK"`
-		SK     string  `dynamodbav:"SK"`
-		ID     string  `dynamodbav:"id"`
-		Amount float64 `dynamodbav:"amount"`
-		Month  string  `dynamodbav:"month"`
-		Year   int     `dynamodbav:"year"`
-	}
-
-	var invoiceDetails Invoice
+	var invoiceDetails dto.InvoiceDDB
 
 	if err != nil {
 		return nil, err
