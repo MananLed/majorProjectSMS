@@ -34,9 +34,9 @@ func ValidateMobileNumber(mobile string) bool {
 }
 
 func ValidateEmail(email string) bool {
+	email = strings.TrimSpace(email)
 	re := regexp.MustCompile(`^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$`)
 	if !re.MatchString(email) {
-		color.Red("Invalid email format.")
 		return false
 	}
 	return true
@@ -44,9 +44,9 @@ func ValidateEmail(email string) bool {
 
 func ValidatePassword(password string) bool {
 	var hasLower, hasDigit, hasSpecial bool
+	password = strings.TrimSpace(password)
 
 	if len(password) < 12 {
-		color.Red("Password must be at least 12 characters long.")
 		return false
 	}
 
@@ -62,7 +62,6 @@ func ValidatePassword(password string) bool {
 	}
 
 	if !hasLower || !hasDigit || !hasSpecial {
-		color.Red("Password must contain at least one lowercase letter, one digit, and one special character.")
 		return false
 	}
 
@@ -70,6 +69,7 @@ func ValidatePassword(password string) bool {
 }
 
 func ValidateFlatNumber(flat string) bool {
+	flat = strings.TrimSpace(flat)
 	pattern := `^[0-8]0[1-4]$`
 	matched, _ := regexp.MatchString(pattern, flat)
 	return matched

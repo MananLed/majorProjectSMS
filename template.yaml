@@ -37,6 +37,9 @@ Resources:
       BuildMethod: go1.x 
     Properties:
       CodeUri: ./cmd/aws-functions/signup
+      Environment:
+        Variables:
+          INVOICE_EMAIL_TOPIC_ARN: !Ref InvoiceEmailTopic 
       Events:
         ApiEvent:
           Type: Api 
@@ -180,6 +183,9 @@ Resources:
       BuildMethod: go1.x 
     Properties:
       CodeUri: ./cmd/aws-functions/issue_invoice
+      Environment:
+        Variables:
+          INVOICE_EMAIL_TOPIC_ARN: !Ref InvoiceEmailTopic
       Events:
         ApiEvent:
           Type: Api 
@@ -458,5 +464,10 @@ Resources:
         SQSTrigger:
           Type: SQS 
           Properties:
-            Queue: !GetAtt DeleteRequestsQueue.Arn 
+            Queue: !GetAtt DeleteRequestsQueue.Arn
+
+  InvoiceEmailTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: invoice-email-topic 
   

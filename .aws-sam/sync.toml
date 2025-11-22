@@ -2,7 +2,7 @@
 
 [sync_state]
 dependency_layer = true
-latest_infra_sync_time = "2025-11-18T11:09:08.411606+00:00"
+latest_infra_sync_time = "2025-11-20T06:36:27.289121+00:00"
 
 [resource_sync_states."ZipFunctionSyncFlow:ViewResident"]
 hash = "61f7e12f01119d3bc801f7c54f75cf3afe6f4c1e54c51b2fcfc296b00eb378cb"

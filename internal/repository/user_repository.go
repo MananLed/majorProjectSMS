@@ -473,6 +473,10 @@ func (r *UserRepository) GetUserByID(id string) (*model.User, error) {
 		return nil, err
 	}
 
+	if len(response.Items) == 0{
+		return nil, nil
+	}
+
 	type User struct {
 		PK           string `dynamodbav:"PK"`
 		SK           string `dynamodbav:"SK"`

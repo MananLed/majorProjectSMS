@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/MananLed/majorProjectSMS/internal/dto"
 	lambdacors "github.com/MananLed/majorProjectSMS/internal/middleware/lamdba_corsmiddleware"
@@ -42,7 +43,7 @@ func handler(ctx context.Context, event events.APIGatewayProxyRequest) (events.A
 		return response.ErrorResponse(http.StatusBadRequest, "Invalid Request Body", 1001), nil
 	}
 
-	user, err := userService.Login(req.Email, req.Password)
+	user, err := userService.Login(strings.ToLower(strings.TrimSpace(req.Email)), req.Password)
 
 	if err != nil {
 		return response.ErrorResponse(http.StatusUnauthorized, "Invalid Credentials", 1002), nil

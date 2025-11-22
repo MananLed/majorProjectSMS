@@ -37,6 +37,10 @@ Resources:
       SamResourceId: Signup
     Properties:
       CodeUri: Signup
+      Environment:
+        Variables:
+          INVOICE_EMAIL_TOPIC_ARN:
+            Ref: InvoiceEmailTopic
       Events:
         ApiEvent:
           Type: Api
@@ -191,6 +195,10 @@ Resources:
       SamResourceId: IssueInvoice
     Properties:
       CodeUri: IssueInvoice
+      Environment:
+        Variables:
+          INVOICE_EMAIL_TOPIC_ARN:
+            Ref: InvoiceEmailTopic
       Events:
         ApiEvent:
           Type: Api
@@ -488,3 +496,7 @@ Resources:
               Fn::GetAtt:
               - DeleteRequestsQueue
               - Arn
+  InvoiceEmailTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: invoice-email-topic
