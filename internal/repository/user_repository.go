@@ -2,52 +2,19 @@ package repository
 
 import (
 	"context"
-	"database/sql"
 	"errors"
 	"fmt"
 	"log"
-	"sync"
 
 	"github.com/MananLed/majorProjectSMS/internal/dto"
 	"github.com/MananLed/majorProjectSMS/internal/model"
-	"github.com/MananLed/majorProjectSMS/pkg/logger"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
-	"golang.org/x/crypto/bcrypt"
 )
 
-// type TableBasics struct {
-// 	DynamoDbClient *dynamodb.Client
-// 	TableName      string
-// }
-
-// func (basics *TableBasics) GetUserByIDAndPassword(email string, password string) (*model.User, error){
-// 	loginCredentials := dto.LoginRequestDTO{Email: email, Password: password}
-
-// 	emailDDB, err := attributevalue.Marshal(loginCredentials.Email)
-// 	if err != nil {
-// 		return nil, errors.New("Internal Server Error")
-// 	}
-
-// 	passwordDDB, err := attributevalue.Marshal(loginCredentials.Password)
-// 	if err != nil {
-// 		return nil, errors.New("Internal Server Error")
-// 	}
-
-// 	keyMap := map[string]types.AttributeValue{"email": emailDDB, "password":passwordDDB}
-
-// 	ctx := context.TODO()
-
-// 	response, err := basics.DynamoDbClient.GetItem(ctx, &dynamodb.GetItemInput{
-// 		Key: keyMap, TableName: aws.String(basics.TableName),
-// 	})
-// }
-
 type UserRepository struct {
-	mu             sync.Mutex
-	db             *sql.DB
 	DynamoDbClient *dynamodb.Client
 	TableName      string
 }
@@ -57,7 +24,6 @@ type UserRepositoryInterface interface {
 	GetUserByIDAndPassword(id string, password string) (*model.User, error)
 	UpdateUser(user model.User, previousEmail string) error
 	ChangePassword(id string, role model.UserRole, email string, newHashedPassword string) error
-	IsPasswordUnique(hashedPassword string) bool
 	DeleteUserByID(id string, role model.UserRole, email string) error
 	GetUserByID(id string) (*model.User, error)
 }
@@ -68,19 +34,6 @@ func NewUserRepository(ddbClient *dynamodb.Client, tableName string) *UserReposi
 
 func (r *UserRepository) AddUser(newUser model.User) error {
 
-	// query := `
-	// 	INSERT INTO users (id, first_name, middle_name, last_name, mobile_number, email, password, role, flat_no)
-	// 	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-	// `
-
-	// _, err := r.db.Exec(query, newUser.ID, newUser.FirstName, newUser.MiddleName, newUser.LastName, newUser.MobileNumber, newUser.Email, newUser.Password, newUser.Role, newUser.Flat)
-
-	// if err != nil {
-	// 	logger.LogToFile(fmt.Sprintf("error: %v", err))
-	// 	return err
-	// }
-
-	// return nil
 	statement := "INSERT INTO " + r.TableName + " VALUE {'PK': ?, 'SK': ?, 'email': ?, 'first_name': ?, 'flat': ?, 'id': ?, 'middle_name': ?, 'last_name': ?, 'mobile_number': ?, 'password': ?, 'role': ?}"
 
 	_, err := r.DynamoDbClient.ExecuteStatement(context.Background(), &dynamodb.ExecuteStatementInput{
@@ -197,26 +150,6 @@ func (r *UserRepository) GetUserByIDAndPassword(email string, password string) (
 
 func (r *UserRepository) UpdateUser(updatedUser model.User, previousEmail string) error {
 
-	// query := `
-	// 	UPDATE users
-	// 	SET first_name = $1, middle_name = $2, last_name = $3, mobile_number = $4, email = $5, password = $6, role = $7
-	// 	WHERE id = $8
-	// `
-
-	// result, err := r.db.Exec(query, updatedUser.FirstName, updatedUser.MiddleName, updatedUser.LastName, updatedUser.MobileNumber, updatedUser.Email, updatedUser.Password, updatedUser.Role, updatedUser.ID)
-
-	// if err != nil {
-	// 	logger.LogToFile(fmt.Sprintf("UpdateUser error: %v", err))
-	// 	return err
-	// }
-
-	// rows, _ := result.RowsAffected()
-	// if rows == 0 {
-	// 	return errors.New("user not found")
-	// }
-
-	// return nil
-
 	if previousEmail == "" {
 		updateRequestStatement := "UPDATE " + r.TableName + " SET first_name = ?, middle_name = ?, last_name = ?, mobile_number = ? WHERE PK = ? AND SK = ?"
 
@@ -311,26 +244,6 @@ func (r *UserRepository) UpdateUser(updatedUser model.User, previousEmail string
 
 func (r *UserRepository) ChangePassword(id string, role model.UserRole, email string, newHashedPassword string) error {
 
-	// query := `
-	// 	UPDATE users
-	// 	SET password = $1
-	// 	WHERE id = $2
-	// `
-
-	// result, err := r.db.Exec(query, newHashedPassword, id)
-
-	// if err != nil {
-	// 	logger.LogToFile(fmt.Sprintf("error: %v", err))
-	// 	return err
-	// }
-
-	// rows, _ := result.RowsAffected()
-	// if rows == 0 {
-	// 	return errors.New("user not found")
-	// }
-
-	// return nil
-
 	updateRequestStatement := "UPDATE " + r.TableName + " SET password = ? WHERE PK = ? AND SK = ?"
 
 	_, err := r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
@@ -362,51 +275,7 @@ func (r *UserRepository) ChangePassword(id string, role model.UserRole, email st
 	return nil
 }
 
-func (r *UserRepository) IsPasswordUnique(password string) bool {
-
-	rows, err := r.db.Query(`
-		SELECT password FROM users
-	`)
-
-	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
-		return false
-	}
-
-	defer rows.Close()
-
-	for rows.Next() {
-		var hashed string
-		if err := rows.Scan(&hashed); err != nil {
-			return false
-		}
-		if bcrypt.CompareHashAndPassword([]byte(hashed), []byte(password)) == nil {
-			return false
-		}
-	}
-	return true
-}
-
 func (r *UserRepository) DeleteUserByID(id string, role model.UserRole, email string) error {
-
-	// query := `
-	// 	DELETE FROM users
-	// 	WHERE id = $1
-	// `
-
-	// result, err := r.db.Exec(query, id)
-
-	// if err != nil {
-	// 	logger.LogToFile(fmt.Sprintf("error: %v", err))
-	// 	return err
-	// }
-
-	// rows, _ := result.RowsAffected()
-
-	// if rows == 0 {
-	// 	return errors.New("user not found")
-	// }
-	// return nil
 
 	deleteUserStatement := "DELETE FROM " + r.TableName + " WHERE PK = ? AND SK = ?"
 
@@ -437,25 +306,7 @@ func (r *UserRepository) DeleteUserByID(id string, role model.UserRole, email st
 }
 
 func (r *UserRepository) GetUserByID(id string) (*model.User, error) {
-	// var user model.User
 
-	// query := `
-	// 	SELECT id, first_name, middle_name, last_name, mobile_number, email, password, role, flat_no
-	// 	FROM users
-	// 	WHERE id = $1
-	// `
-
-	// err := r.db.QueryRow(query, id).Scan(&user.ID, &user.FirstName, &user.MiddleName, &user.LastName, &user.MobileNumber, &user.Email, &user.Password, &user.Role, &user.Flat)
-
-	// if err != nil {
-	// 	if errors.Is(err, sql.ErrNoRows) {
-	// 		return nil, errors.New("user not found")
-	// 	}
-	// 	logger.LogToFile(fmt.Sprintf("error fetching user: %v", err))
-	// 	return nil, err
-	// }
-
-	// return &user, nil
 	var user model.User
 
 	input := &dynamodb.QueryInput{
@@ -473,7 +324,7 @@ func (r *UserRepository) GetUserByID(id string) (*model.User, error) {
 		return nil, err
 	}
 
-	if len(response.Items) == 0{
+	if len(response.Items) == 0 {
 		return nil, nil
 	}
 

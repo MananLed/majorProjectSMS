@@ -21,10 +21,6 @@ func SuccessResponse(data any , message string, code int) events.APIGatewayProxy
 		Data: data,
 	}
 
-	// w.Header().Set("content-Type","application/json")
-	// w.WriteHeader(code)
-	// json.NewEncoder(w).Encode(response)
-
 	body, _ := json.Marshal(response)
 
 	return events.APIGatewayProxyResponse{
@@ -40,10 +36,6 @@ func ErrorResponse(statusCode int, errMessage string, code int) events.APIGatewa
 		ErrorCode: code,
 	}
 
-	// w.Header().Set("Content-Type", "application/json")
-	// w.WriteHeader(statusCode)
-	// json.NewEncoder(w).Encode(response)
-
 	body, _ := json.Marshal(response)
 
 	return events.APIGatewayProxyResponse{
@@ -51,14 +43,3 @@ func ErrorResponse(statusCode int, errMessage string, code int) events.APIGatewa
 		Body: string(body),
 	}
 }
-
-// func LambdaResponse(code int, data any, message string) events.APIGatewayProxyResponse{
-// 	body, _ := json.Marshal(map[string]any{
-// 		"message": message,
-// 		"data": data,
-// 	})
-// 	return events.APIGatewayProxyResponse{
-// 		StatusCode: code,
-// 		Body: string(body),
-// 	}
-// }

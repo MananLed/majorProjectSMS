@@ -32,20 +32,6 @@ func NewInvoiceRepository(ddbClient *dynamodb.Client, tableName string) *Invoice
 
 func (r *InvoiceRepository) SaveInvoice(invoice model.Invoice) error {
 	
-	// query := `
-	// 	INSERT INTO invoices (id, month, year, amount)
-	// 	VALUES ($1, $2, $3, $4)
-	// `
-	
-	// _, err := r.DB.Exec(query, invoice.ID, invoice.Month, invoice.Year, invoice.Amount)
-
-	// if err != nil {
-		// 	logger.LogToFile(fmt.Sprintf("error: %v", err))
-		// 	return err
-	// }
-	
-	// return nil
-	
 	invoice.ID = utils.GenerateUUID()
 
 	statement := "INSERT INTO " + r.TableName + " VALUE {'PK': ?, 'SK': ?, 'id': ?, 'amount': ?, 'month': ?, 'year': ?}"
@@ -70,25 +56,6 @@ func (r *InvoiceRepository) SaveInvoice(invoice model.Invoice) error {
 }
 
 func (r *InvoiceRepository) GetInvoiceByMonthAndYear(month time.Month, year int) (*model.Invoice, error) {
-	// var invoice model.Invoice
-
-	// query := `
-	// 	SELECT id, month, year, amount
-	// 	FROM invoices
-	// 	WHERE month = $1 AND year = $2
-	// `
-
-	// err := r.DB.QueryRow(query, int(month), year).Scan(&invoice.ID, &invoice.Month, &invoice.Year, &invoice.Amount)
-
-	// if err != nil {
-	// 	if errors.Is(err, sql.ErrNoRows) {
-	// 		return nil, errors.New("invoice not found")
-	// 	}
-	// 	logger.LogToFile(fmt.Sprintf("error fetching invoice: %v", err))
-	// 	return nil, err
-	// }
-
-	// return &invoice, nil
 
 	var invoice model.Invoice
 
@@ -137,46 +104,7 @@ func (r *InvoiceRepository) GetInvoiceByMonthAndYear(month time.Month, year int)
 }
 
 func (r *InvoiceRepository) GetInvoicesByYear(year int) ([]model.Invoice, error) {
-	// var query string
 
-	// if year == 0 {
-	// 	query = `
-	// 	SELECT id, month, year, amount
-	// 	FROM invoices
-	// `
-	// } else {
-	// 	query = `
-	// 	SELECT id, month, year, amount
-	// 	FROM invoices
-	// 	WHERE year = $1
-	// `
-	// }
-
-	// var rows *sql.Rows
-	// var err error
-	// if year == 0 {
-	// 	rows, err = r.DB.Query(query)
-	// } else {
-	// 	rows, err = r.DB.Query(query, year)
-	// }
-
-	// if err != nil {
-	// 	logger.LogToFile(fmt.Sprintf("error: %v", err))
-	// 	return nil, err
-	// }
-	// defer rows.Close()
-
-	// var invoices []model.Invoice
-	// for rows.Next() {
-	// 	var inv model.Invoice
-	// 	if err := rows.Scan(&inv.ID, &inv.Month, &inv.Year, &inv.Amount); err != nil {
-	// 		logger.LogToFile(fmt.Sprintf("error scanning invoice row: %v", err))
-	// 		return nil, err
-	// 	}
-	// 	invoices = append(invoices, inv)
-	// }
-
-	// return invoices, nil
 	var invoice model.Invoice
 	var invoices []model.Invoice
 

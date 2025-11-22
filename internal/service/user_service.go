@@ -4,8 +4,6 @@ package service
 import (
 	"context"
 	"errors"
-	"fmt"
-	"log"
 	"strings"
 
 	"github.com/MananLed/majorProjectSMS/internal/model"
@@ -75,10 +73,6 @@ func (us *UserService) ChangePassword(user *model.User, currentPassword string, 
 	return us.UserRepo.ChangePassword(user.ID, user.Role, user.Email, string(hashedPassword))
 }
 
-func (us *UserService) IsPasswordUnique(Password string) bool {
-	return us.UserRepo.IsPasswordUnique(Password)
-}
-
 func (us *UserService) DeleteProfile(ctx context.Context) error {
 	user, err := utils.GetUserFromContext(ctx)
 	if err != nil {
@@ -90,7 +84,6 @@ func (us *UserService) DeleteProfile(ctx context.Context) error {
 func (us *UserService) GetUserByID(ctx context.Context) (*model.User, error) {
 	user, err := utils.GetUserFromContext(ctx)
 	if err != nil {
-		log.Printf(fmt.Sprintf("error: %v", err))
 		return nil, err
 	}
 	return us.UserRepo.GetUserByID(user.Email)

@@ -8,7 +8,6 @@ import (
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/repository"
 	"github.com/MananLed/majorProjectSMS/internal/utils"
-	"github.com/MananLed/majorProjectSMS/pkg/logger"
 )
 
 type CredentialServiceInterface interface {
@@ -40,7 +39,6 @@ func (s *CredentialService) DeleteResidentCredentials(ctx context.Context, resid
 	user, err := utils.GetUserFromContext(ctx)
 
 	if err != nil || user.Role != model.RoleAdmin {
-		logger.LogToFile("only admin can delete credentials")
 		return errors.New("unauthorized: only admin can delete credentials")
 	}
 

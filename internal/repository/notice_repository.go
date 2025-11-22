@@ -32,20 +32,6 @@ func NewNoticeRepository(ddbClient *dynamodb.Client, tableName string) *NoticeRe
 }
 
 func (r *NoticeRepository) SaveNotice(notice model.Notice) error {
-
-	
-	// query := `
-	// 	INSERT INTO notices (id, date_issued, content, month, year)
-	// 	VALUES ($1, $2, $3, $4, $5)
-	// `
-	
-	// _, err := r.DB.Exec(query, notice.ID, notice.DateIssued, notice.Content, notice.Month, notice.Year)
-
-	// if err != nil {
-		// 	logger.LogToFile(fmt.Sprintf("error: %v", err))
-	// 	return err
-	// }
-	// return nil
 	
 	notice.ID = utils.GenerateUUID()
 	const customLayout = "2006-01-02 15:04:05.999999"
@@ -74,30 +60,6 @@ func (r *NoticeRepository) SaveNotice(notice model.Notice) error {
 }
 
 func (r *NoticeRepository) GetAllNotices() ([]model.Notice, error) {
-	// query := `
-	// SELECT id, date_issued, content, month, year
-	// FROM notices
-	// ORDER BY date_issued DESC
-	// `
-
-	// rows, err := r.DB.Query(query)
-	// if err != nil {
-	// 	logger.LogToFile(fmt.Sprintf("error: %v", err))
-	// 	return nil, err
-	// }
-	// defer rows.Close()
-
-	// var notices []model.Notice
-	// for rows.Next() {
-	// 	var n model.Notice
-	// 	if err := rows.Scan(&n.ID, &n.DateIssued, &n.Content, &n.Month, &n.Year); err != nil {
-	// 		logger.LogToFile(fmt.Sprintf("error: %v", err))
-	// 		return nil, err
-	// 	}
-	// 	notices = append(notices, n)
-	// }
-
-	// return notices, nil
 
 	var notice model.Notice
 	var notices []model.Notice
@@ -154,32 +116,7 @@ func (r *NoticeRepository) GetAllNotices() ([]model.Notice, error) {
 }
 
 func (r *NoticeRepository) GetNoticesByMonthYear(month time.Month, year int) ([]model.Notice, error) {
-	// query := `
-	// SELECT id, date_issued, content, month, year
-	// FROM notices
-	// WHERE month = $1 AND year = $2
-	// ORDER BY date_issued DESC
-	// `
 
-	// rows, err := r.DB.Query(query, month, year)
-
-	// if err != nil {
-	// 	logger.LogToFile(fmt.Sprintf("error: %v", err))
-	// 	return nil, err
-	// }
-	// defer rows.Close()
-
-	// var notices []model.Notice
-	// for rows.Next() {
-	// 	var n model.Notice
-	// 	if err := rows.Scan(&n.ID, &n.DateIssued, &n.Content, &n.Month, &n.Year); err != nil {
-	// 		logger.LogToFile(fmt.Sprintf("error: %v", err))
-	// 		return nil, err
-	// 	}
-	// 	notices = append(notices, n)
-	// }
-
-	// return notices, nil
 	var notice model.Notice
 	var notices []model.Notice
 

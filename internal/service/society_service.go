@@ -4,12 +4,10 @@ package service
 import (
 	"context"
 	"errors"
-	"fmt"
 
 	"github.com/MananLed/majorProjectSMS/internal/model"
 	"github.com/MananLed/majorProjectSMS/internal/repository"
 	"github.com/MananLed/majorProjectSMS/internal/utils"
-	"github.com/MananLed/majorProjectSMS/pkg/logger"
 )
 
 type SocietyServiceInterface interface{
@@ -28,7 +26,6 @@ func NewSocietyService(repo repository.SocietyRepositoryInterface) *SocietyServi
 func (s *SocietyService) GetAllResidents(ctx context.Context) ([]model.User, error) {
 	user, err := utils.GetUserFromContext(ctx)
 	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return nil, err
 	}
 	if user.Role == model.RoleResident {
@@ -40,7 +37,6 @@ func (s *SocietyService) GetAllResidents(ctx context.Context) ([]model.User, err
 func (s *SocietyService) GetAllOfficers(ctx context.Context) ([]model.User, error) {
 	user, err := utils.GetUserFromContext(ctx)
 	if err != nil {
-		logger.LogToFile(fmt.Sprintf("error: %v", err))
 		return nil, err
 	}
 	if user.Role == model.RoleResident {

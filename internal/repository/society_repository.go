@@ -26,38 +26,6 @@ func NewSocietyRepository(ddbClient *dynamodb.Client, tableName string) *Society
 
 func (s *SocietyRepository) GetAllResidents() ([]model.User, error) {
 
-	// query := `
-	// 	SELECT id, first_name, middle_name, last_name, mobile_number, email, password, role, flat_no
-	// 	FROM users WHERE role = $1
-	// `
-
-	// rows, err := s.db.Query(query, string(model.RoleResident))
-
-	// if err != nil {
-	// 	logger.LogToFile(fmt.Sprintf("error: %v", err))
-	// 	return nil, fmt.Errorf("failed to fetch residents: %w", err)
-	// }
-	// defer rows.Close()
-
-	// var residents []model.User
-	// for rows.Next() {
-	// 	var user model.User
-	// 	if err := rows.Scan(&user.ID, &user.FirstName, &user.MiddleName, &user.LastName, &user.MobileNumber, &user.Email, &user.Password, &user.Role, &user.Flat); err != nil {
-	// 		logger.LogToFile(fmt.Sprintf("error: %v", err))
-	// 		return nil, fmt.Errorf("failed to scan resident: %w", err)
-	// 	}
-	// 	residents = append(residents, user)
-	// }
-
-	// if len(residents) > 0 {
-	// 	fmt.Print(color.YellowString("Total Residents: "), len(residents))
-	// } else {
-	// 	fmt.Print("There are no residents currently.")
-	// }
-	// fmt.Println()
-
-	// return residents, nil
-
 	var user model.User
 	var users []model.User
 
@@ -116,38 +84,6 @@ func (s *SocietyRepository) GetAllResidents() ([]model.User, error) {
 }
 
 func (s *SocietyRepository) GetAllOfficers() ([]model.User, error) {
-
-	// query := `
-	// 	SELECT id, first_name, middle_name, last_name, mobile_number, email, password, role 
-	// 	FROM users WHERE role = $1
-	// `
-
-	// rows, err := s.db.Query(query, string(model.RoleOfficer))
-
-	// if err != nil {
-	// 	logger.LogToFile(fmt.Sprintf("error: %v", err))
-	// 	return nil, fmt.Errorf("failed to fetch officers: %v", err)
-	// }
-	// defer rows.Close()
-
-	// var officers []model.User
-	// for rows.Next() {
-	// 	var user model.User
-	// 	if err := rows.Scan(&user.ID, &user.FirstName, &user.MiddleName, &user.LastName, &user.MobileNumber, &user.Email, &user.Password, &user.Role); err != nil {
-	// 		logger.LogToFile(fmt.Sprintf("error: %v", err))
-	// 		return nil, fmt.Errorf("failed to scan resident: %w", err)
-	// 	}
-	// 	officers = append(officers, user)
-	// }
-
-	// if len(officers) > 0 {
-	// 	fmt.Print(color.YellowString("Total Officers: "), len(officers))
-	// } else {
-	// 	fmt.Print("There are no officers currently.")
-	// }
-	// fmt.Println()
-
-	// return officers, nil
 
 	var user model.User
 	var users []model.User

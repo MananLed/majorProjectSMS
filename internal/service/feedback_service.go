@@ -49,11 +49,3 @@ func (s *FeedbackService) IssueFeedbackOnRequest(content string, residentID stri
 func (s *FeedbackService) GetFeedbacks() ([]model.Feedback, error) {
 	return s.FeedbackRepo.GetAllFeedbacks()
 }
-
-func (s *FeedbackService) GetFeedbackByID(id string) ([]model.Feedback, error){
-	return s.FeedbackRepo.GetFeedbacksByID(id)
-}
-
-func (s *FeedbackService) IsFeedbackGiven(requestID uuid.UUID) (bool, error){
-	return s.FeedbackRepo.IsFeedbackPresent(requestID);
-}
