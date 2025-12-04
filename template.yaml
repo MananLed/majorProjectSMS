@@ -25,7 +25,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/login
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -42,7 +42,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/signup
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
         - SNSCrudPolicy:
             TopicName: !Ref InvoiceEmailTopic
       Environment:
@@ -64,7 +64,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/profile
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -81,7 +81,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/view_residents
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -98,7 +98,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/view_officers
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -115,7 +115,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/view_all_notices
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -132,7 +132,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/view_notices_month_year
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -149,7 +149,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/view_invoices_month_year
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -166,7 +166,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/delete_officer
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -183,7 +183,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/delete_resident
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
         - AmazonSQSFullAccess:
             QueueName: !Ref DeleteRequestsQueue
       Environment:
@@ -205,7 +205,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/issue_notice
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -222,7 +222,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/issue_invoice
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
         - SNSCrudPolicy:
             TopicName: !Ref InvoiceEmailTopic
       Environment:
@@ -244,7 +244,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/get_all_requests
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -261,7 +261,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/get_all_requests_of_resident
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -278,7 +278,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/get_available_time_slots
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -295,7 +295,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/officer_count
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -312,7 +312,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/resident_count
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -329,7 +329,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/get_request_type_status
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -346,7 +346,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/book_request
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -363,7 +363,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/delete_request
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -380,7 +380,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/reschedule_request
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -397,7 +397,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/approve_request
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -414,7 +414,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/complete_request
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -431,7 +431,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/get_feedbacks
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -448,7 +448,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/add_officer
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -465,7 +465,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/post_feedback
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -482,7 +482,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/change_password
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -499,7 +499,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/update_profile
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         ApiEvent:
           Type: Api 
@@ -535,7 +535,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/delete_profile
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
         - AmazonSQSFullAccess:
             QueueName: !Ref DeleteRequestsQueue
       Environment:
@@ -557,7 +557,7 @@ Resources:
       CodeUri: ./cmd/aws-functions/delete_requests_of_resident
       Policies: 
         - DynamoDBCrudPolicy:
-            TableName: !Ref UpKeepzTable
+            TableName: UpKeepzTable
       Events:
         SQSTrigger:
           Type: SQS 
