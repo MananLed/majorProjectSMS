@@ -4,7 +4,6 @@ import (
 	"context"
 
 	"errors"
-	"fmt"
 
 	"github.com/MananLed/majorProjectSMS/internal/dto"
 	"github.com/MananLed/majorProjectSMS/internal/model"
@@ -56,28 +55,26 @@ func (r *CredentialRepository) DeleteUserByIDAndRole(id string, role model.UserR
 
 	deleteUserStatement := "DELETE FROM " + r.TableName + " WHERE PK = ? AND SK = ?"
 
-	_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-		Statement: aws.String(deleteUserStatement),
-		Parameters: []types.AttributeValue{
-			&types.AttributeValueMemberS{Value: "ROLE#" + string(role)},
-			&types.AttributeValueMemberS{Value: id},
+	input := &dynamodb.ExecuteTransactionInput{
+		TransactStatements: []types.ParameterizedStatement{
+			{
+				Statement: aws.String(deleteUserStatement),
+				Parameters: []types.AttributeValue{
+					&types.AttributeValueMemberS{Value: "ROLE#" + string(role)},
+					&types.AttributeValueMemberS{Value: id},
+				},
+			},
+			{
+				Statement: aws.String(deleteUserStatement),
+				Parameters: []types.AttributeValue{
+					&types.AttributeValueMemberS{Value: "USERS"},
+					&types.AttributeValueMemberS{Value: (userDetails.Email + "#" + id)},
+				},
+			},
 		},
-	})
-	if err != nil {
-		return fmt.Errorf("failed to delete user: %v", err)
 	}
 
-	_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-		Statement: aws.String(deleteUserStatement),
-		Parameters: []types.AttributeValue{
-			&types.AttributeValueMemberS{Value: "USERS"},
-			&types.AttributeValueMemberS{Value: (userDetails.Email + "#" + id)},
-		},
-	})
+	_, err = r.DynamoDbClient.ExecuteTransaction(context.TODO(), input)
 
-	if err != nil {
-		return fmt.Errorf("failed to delete user: %v", err)
-	}
-
-	return nil
+	return err
 }

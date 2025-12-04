@@ -3,7 +3,6 @@ package repository
 import (
 	"context"
 	"errors"
-	"fmt"
 
 	"github.com/MananLed/majorProjectSMS/internal/dto"
 	"github.com/MananLed/majorProjectSMS/internal/model"
@@ -86,45 +85,46 @@ func (r *ServiceRequestRepository) CreateRequest(req *model.ServiceRequest) erro
 
 	statement := "INSERT INTO " + r.TableName + " VALUE {'PK': ?, 'SK': ?, 'assigned_to': ?, 'date': ?, 'feedback_given': ?, 'flat_no': ?, 'id': ?, 'resident_id': ?, 'service_type': ?, 'status': ?, 'time_slot': ?}"
 
-	_, err = r.DynamoDbClient.ExecuteStatement(context.Background(), &dynamodb.ExecuteStatementInput{
-		Statement: &statement,
-		Parameters: []types.AttributeValue{
-			&types.AttributeValueMemberS{Value: "REQUESTS"},
-			&types.AttributeValueMemberS{Value: (string(req.Status) + "#" + string(req.ServiceType) + "#" + req.ResidentID + "#" + req.Date + "#" + req.RequestID.String())},
-			&types.AttributeValueMemberS{Value: req.AssignedTo},
-			&types.AttributeValueMemberS{Value: req.Date},
-			&types.AttributeValueMemberBOOL{Value: req.FeedbackGiven},
-			&types.AttributeValueMemberS{Value: req.Flat},
-			&types.AttributeValueMemberS{Value: req.RequestID.String()},
-			&types.AttributeValueMemberS{Value: req.ResidentID},
-			&types.AttributeValueMemberS{Value: string(req.ServiceType)},
-			&types.AttributeValueMemberS{Value: string(req.Status)},
-			&types.AttributeValueMemberS{Value: req.TimeSlot},
+	input := &dynamodb.ExecuteTransactionInput{
+		TransactStatements: []types.ParameterizedStatement{
+			{
+				Statement: aws.String(statement),
+				Parameters: []types.AttributeValue{
+					&types.AttributeValueMemberS{Value: "REQUESTS"},
+					&types.AttributeValueMemberS{Value: (string(req.Status) + "#" + string(req.ServiceType) + "#" + req.ResidentID + "#" + req.Date + "#" + req.RequestID.String())},
+					&types.AttributeValueMemberS{Value: req.AssignedTo},
+					&types.AttributeValueMemberS{Value: req.Date},
+					&types.AttributeValueMemberBOOL{Value: req.FeedbackGiven},
+					&types.AttributeValueMemberS{Value: req.Flat},
+					&types.AttributeValueMemberS{Value: req.RequestID.String()},
+					&types.AttributeValueMemberS{Value: req.ResidentID},
+					&types.AttributeValueMemberS{Value: string(req.ServiceType)},
+					&types.AttributeValueMemberS{Value: string(req.Status)},
+					&types.AttributeValueMemberS{Value: req.TimeSlot},
+				},
+			},
+			{
+				Statement: aws.String(statement),
+				Parameters: []types.AttributeValue{
+					&types.AttributeValueMemberS{Value: req.RequestID.String()},
+					&types.AttributeValueMemberS{Value: req.RequestID.String()},
+					&types.AttributeValueMemberS{Value: req.AssignedTo},
+					&types.AttributeValueMemberS{Value: req.Date},
+					&types.AttributeValueMemberBOOL{Value: req.FeedbackGiven},
+					&types.AttributeValueMemberS{Value: req.Flat},
+					&types.AttributeValueMemberS{Value: req.RequestID.String()},
+					&types.AttributeValueMemberS{Value: req.ResidentID},
+					&types.AttributeValueMemberS{Value: string(req.ServiceType)},
+					&types.AttributeValueMemberS{Value: string(req.Status)},
+					&types.AttributeValueMemberS{Value: req.TimeSlot},
+				},
+			},
 		},
-	})
-
-	if err != nil {
-		return err
 	}
 
-	_, err = r.DynamoDbClient.ExecuteStatement(context.Background(), &dynamodb.ExecuteStatementInput{
-		Statement: &statement,
-		Parameters: []types.AttributeValue{
-			&types.AttributeValueMemberS{Value: req.RequestID.String()},
-			&types.AttributeValueMemberS{Value: req.RequestID.String()},
-			&types.AttributeValueMemberS{Value: req.AssignedTo},
-			&types.AttributeValueMemberS{Value: req.Date},
-			&types.AttributeValueMemberBOOL{Value: req.FeedbackGiven},
-			&types.AttributeValueMemberS{Value: req.Flat},
-			&types.AttributeValueMemberS{Value: req.RequestID.String()},
-			&types.AttributeValueMemberS{Value: req.ResidentID},
-			&types.AttributeValueMemberS{Value: string(req.ServiceType)},
-			&types.AttributeValueMemberS{Value: string(req.Status)},
-			&types.AttributeValueMemberS{Value: req.TimeSlot},
-		},
-	})
+	_, err = r.DynamoDbClient.ExecuteTransaction(context.TODO(), input)
 
-	if err != nil {
+	if err != nil{
 		return err
 	}
 
@@ -165,101 +165,106 @@ func (r *ServiceRequestRepository) UpdateRequest(req *model.ServiceRequest) erro
 	updateRequestStatement := "UPDATE " + r.TableName + " SET time_slot = ?, status = ?, assigned_to = ? WHERE PK = ? AND SK = ?"
 
 	if req.TimeSlot != request.TimeSlot && req.TimeSlot != "" {
-		_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-			Statement: aws.String(updateRequestStatement),
-			Parameters: []types.AttributeValue{
-				&types.AttributeValueMemberS{Value: req.TimeSlot},
-				&types.AttributeValueMemberS{Value: string(req.Status)},
-				&types.AttributeValueMemberS{Value: req.AssignedTo},
-				&types.AttributeValueMemberS{Value: req.RequestID.String()},
-				&types.AttributeValueMemberS{Value: req.RequestID.String()},
+		input := &dynamodb.ExecuteTransactionInput{
+			TransactStatements: []types.ParameterizedStatement{
+				{
+					Statement: aws.String(updateRequestStatement),
+					Parameters: []types.AttributeValue{
+						&types.AttributeValueMemberS{Value: req.TimeSlot},
+						&types.AttributeValueMemberS{Value: string(req.Status)},
+						&types.AttributeValueMemberS{Value: req.AssignedTo},
+						&types.AttributeValueMemberS{Value: req.RequestID.String()},
+						&types.AttributeValueMemberS{Value: req.RequestID.String()},
+					},
+				},
+				{
+					Statement: aws.String(updateRequestStatement),
+					Parameters: []types.AttributeValue{
+						&types.AttributeValueMemberS{Value: req.TimeSlot},
+						&types.AttributeValueMemberS{Value: string(req.Status)},
+						&types.AttributeValueMemberS{Value: req.AssignedTo},
+						&types.AttributeValueMemberS{Value: "REQUESTS"},
+						&types.AttributeValueMemberS{Value: request.Status + "#" + request.ServiceType + "#" + request.ResidentID + "#" + request.Date + "#" + request.ID},
+					},
+				},
 			},
-		})
-
-		if err != nil {
-			return err
 		}
 
-		_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-			Statement: aws.String(updateRequestStatement),
-			Parameters: []types.AttributeValue{
-				&types.AttributeValueMemberS{Value: req.TimeSlot},
-				&types.AttributeValueMemberS{Value: string(req.Status)},
-				&types.AttributeValueMemberS{Value: req.AssignedTo},
-				&types.AttributeValueMemberS{Value: "REQUESTS"},
-				&types.AttributeValueMemberS{Value: request.Status + "#" + request.ServiceType + "#" + request.ResidentID + "#" + request.Date + "#" + request.ID},
-			},
-		})
+		_ , err = r.DynamoDbClient.ExecuteTransaction(context.TODO(), input)
 
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	} else {
 		deleteRequestStatement := "DELETE FROM " + r.TableName + " WHERE PK = ? AND SK = ?"
 
-		_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-			Statement: aws.String(deleteRequestStatement),
-			Parameters: []types.AttributeValue{
-				&types.AttributeValueMemberS{Value: req.RequestID.String()},
-				&types.AttributeValueMemberS{Value: req.RequestID.String()},
+		input := &dynamodb.ExecuteTransactionInput{
+			TransactStatements: []types.ParameterizedStatement{
+				{
+					Statement: aws.String(deleteRequestStatement),
+					Parameters: []types.AttributeValue{
+						&types.AttributeValueMemberS{Value: req.RequestID.String()},
+						&types.AttributeValueMemberS{Value: req.RequestID.String()},
+					},
+				},
+				{
+					Statement: aws.String(deleteRequestStatement),
+					Parameters: []types.AttributeValue{
+						&types.AttributeValueMemberS{Value: "REQUESTS"},
+						&types.AttributeValueMemberS{Value: request.Status + "#" + request.ServiceType + "#" + request.ResidentID + "#" + request.Date + "#" + request.ID},
+					},
+				},
 			},
-		})
-		if err != nil {
-			return fmt.Errorf("failed to delete request: %v", err)
 		}
 
-		_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-			Statement: aws.String(deleteRequestStatement),
-			Parameters: []types.AttributeValue{
-				&types.AttributeValueMemberS{Value: "REQUESTS"},
-				&types.AttributeValueMemberS{Value: request.Status + "#" + request.ServiceType + "#" + request.ResidentID + "#" + request.Date + "#" + request.ID},
-			},
-		})
-		if err != nil {
-			return fmt.Errorf("failed to delete request: %v", err)
+		_, err = r.DynamoDbClient.ExecuteTransaction(context.TODO(), input)
+
+		if err != nil{
+			return err
 		}
 
 		statement := "INSERT INTO " + r.TableName + " VALUE {'PK': ?, 'SK': ?, 'assigned_to': ?, 'date': ?, 'feedback_given': ?, 'flat_no': ?, 'id': ?, 'resident_id': ?, 'service_type': ?, 'status': ?, 'time_slot': ?}"
 
-		_, err = r.DynamoDbClient.ExecuteStatement(context.Background(), &dynamodb.ExecuteStatementInput{
-			Statement: &statement,
-			Parameters: []types.AttributeValue{
-				&types.AttributeValueMemberS{Value: "REQUESTS"},
-				&types.AttributeValueMemberS{Value: (string(req.Status) + "#" + string(request.ServiceType) + "#" + request.ResidentID + "#" + request.Date + "#" + request.ID)},
-				&types.AttributeValueMemberS{Value: req.AssignedTo},
-				&types.AttributeValueMemberS{Value: request.Date},
-				&types.AttributeValueMemberBOOL{Value: request.FeedbackGiven},
-				&types.AttributeValueMemberS{Value: request.Flat},
-				&types.AttributeValueMemberS{Value: request.ID},
-				&types.AttributeValueMemberS{Value: request.ResidentID},
-				&types.AttributeValueMemberS{Value: request.ServiceType},
-				&types.AttributeValueMemberS{Value: string(req.Status)},
-				&types.AttributeValueMemberS{Value: request.TimeSlot},
+		insertInput := &dynamodb.ExecuteTransactionInput{
+			TransactStatements: []types.ParameterizedStatement{
+				{
+					Statement: aws.String(statement),
+					Parameters: []types.AttributeValue{
+						&types.AttributeValueMemberS{Value: "REQUESTS"},
+						&types.AttributeValueMemberS{Value: (string(req.Status) + "#" + string(request.ServiceType) + "#" + request.ResidentID + "#" + request.Date + "#" + request.ID)},
+						&types.AttributeValueMemberS{Value: req.AssignedTo},
+						&types.AttributeValueMemberS{Value: request.Date},
+						&types.AttributeValueMemberBOOL{Value: request.FeedbackGiven},
+						&types.AttributeValueMemberS{Value: request.Flat},
+						&types.AttributeValueMemberS{Value: request.ID},
+						&types.AttributeValueMemberS{Value: request.ResidentID},
+						&types.AttributeValueMemberS{Value: request.ServiceType},
+						&types.AttributeValueMemberS{Value: string(req.Status)},
+						&types.AttributeValueMemberS{Value: request.TimeSlot},
+					},
+				},
+				{
+					Statement: aws.String(statement),
+					Parameters: []types.AttributeValue{
+						&types.AttributeValueMemberS{Value: request.ID},
+						&types.AttributeValueMemberS{Value: request.ID},
+						&types.AttributeValueMemberS{Value: req.AssignedTo},
+						&types.AttributeValueMemberS{Value: request.Date},
+						&types.AttributeValueMemberBOOL{Value: request.FeedbackGiven},
+						&types.AttributeValueMemberS{Value: request.Flat},
+						&types.AttributeValueMemberS{Value: request.ID},
+						&types.AttributeValueMemberS{Value: request.ResidentID},
+						&types.AttributeValueMemberS{Value: request.ServiceType},
+						&types.AttributeValueMemberS{Value: string(req.Status)},
+						&types.AttributeValueMemberS{Value: request.TimeSlot},
+					},
+				},
 			},
-		})
-
-		if err != nil {
-			return err
 		}
 
-		_, err = r.DynamoDbClient.ExecuteStatement(context.Background(), &dynamodb.ExecuteStatementInput{
-			Statement: &statement,
-			Parameters: []types.AttributeValue{
-				&types.AttributeValueMemberS{Value: request.ID},
-				&types.AttributeValueMemberS{Value: request.ID},
-				&types.AttributeValueMemberS{Value: req.AssignedTo},
-				&types.AttributeValueMemberS{Value: request.Date},
-				&types.AttributeValueMemberBOOL{Value: request.FeedbackGiven},
-				&types.AttributeValueMemberS{Value: request.Flat},
-				&types.AttributeValueMemberS{Value: request.ID},
-				&types.AttributeValueMemberS{Value: request.ResidentID},
-				&types.AttributeValueMemberS{Value: request.ServiceType},
-				&types.AttributeValueMemberS{Value: string(req.Status)},
-				&types.AttributeValueMemberS{Value: request.TimeSlot},
-			},
-		})
+		_, err = r.DynamoDbClient.ExecuteTransaction(context.TODO(), insertInput)
 
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -299,26 +304,29 @@ func (r *ServiceRequestRepository) DeleteRequest(requestID uuid.UUID) error {
 
 	deleteRequestStatement := "DELETE FROM " + r.TableName + " WHERE PK = ? AND SK = ?"
 
-	_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-		Statement: aws.String(deleteRequestStatement),
-		Parameters: []types.AttributeValue{
-			&types.AttributeValueMemberS{Value: requestID.String()},
-			&types.AttributeValueMemberS{Value: requestID.String()},
+	input := &dynamodb.ExecuteTransactionInput{
+		TransactStatements: []types.ParameterizedStatement{
+			{
+				Statement: aws.String(deleteRequestStatement),
+				Parameters: []types.AttributeValue{
+					&types.AttributeValueMemberS{Value: requestID.String()},
+					&types.AttributeValueMemberS{Value: requestID.String()},
+				},
+			},
+			{
+				Statement: aws.String(deleteRequestStatement),
+				Parameters: []types.AttributeValue{
+					&types.AttributeValueMemberS{Value: "REQUESTS"},
+					&types.AttributeValueMemberS{Value: request.Status + "#" + request.ServiceType + "#" + request.ResidentID + "#" + request.Date + "#" + request.ID},
+				},
+			},
 		},
-	})
-	if err != nil {
-		return fmt.Errorf("failed to delete request: %v", err)
 	}
 
-	_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-		Statement: aws.String(deleteRequestStatement),
-		Parameters: []types.AttributeValue{
-			&types.AttributeValueMemberS{Value: "REQUESTS"},
-			&types.AttributeValueMemberS{Value: request.Status + "#" + request.ServiceType + "#" + request.ResidentID + "#" + request.Date + "#" + request.ID},
-		},
-	})
-	if err != nil {
-		return fmt.Errorf("failed to delete request: %v", err)
+	_, err = r.DynamoDbClient.ExecuteTransaction(context.TODO(), input)
+
+	if err != nil{
+		return err
 	}
 
 	return nil
@@ -419,26 +427,30 @@ func (r *ServiceRequestRepository) DeleteRequestsByResidentID(residentID string)
 		if err != nil {
 			return err
 		}
-		_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-			Statement: aws.String(deleteRequestStatement),
-			Parameters: []types.AttributeValue{
-				&types.AttributeValueMemberS{Value: request.ID},
-				&types.AttributeValueMemberS{Value: request.ID},
+
+		input := &dynamodb.ExecuteTransactionInput{
+			TransactStatements: []types.ParameterizedStatement{
+				{
+					Statement: aws.String(deleteRequestStatement),
+					Parameters: []types.AttributeValue{
+						&types.AttributeValueMemberS{Value: request.ID},
+						&types.AttributeValueMemberS{Value: request.ID},
+					},
+				},
+				{
+					Statement: aws.String(deleteRequestStatement),
+					Parameters: []types.AttributeValue{
+						&types.AttributeValueMemberS{Value: "REQUESTS"},
+						&types.AttributeValueMemberS{Value: request.Status + "#" + request.ServiceType + "#" + request.ResidentID + "#" + request.Date + "#" + request.ID},
+					},
+				},
 			},
-		})
-		if err != nil {
-			return fmt.Errorf("failed to delete request: %v", err)
 		}
 
-		_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-			Statement: aws.String(deleteRequestStatement),
-			Parameters: []types.AttributeValue{
-				&types.AttributeValueMemberS{Value: "REQUESTS"},
-				&types.AttributeValueMemberS{Value: request.Status + "#" + request.ServiceType + "#" + request.ResidentID + "#" + request.Date + "#" + request.ID},
-			},
-		})
-		if err != nil {
-			return fmt.Errorf("failed to delete request: %v", err)
+		_, err = r.DynamoDbClient.ExecuteTransaction(context.TODO(), input)
+
+		if err != nil{
+			return err
 		}
 	}
 	return nil

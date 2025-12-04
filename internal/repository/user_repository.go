@@ -3,7 +3,6 @@ package repository
 import (
 	"context"
 	"errors"
-	"fmt"
 	"log"
 
 	"github.com/MananLed/majorProjectSMS/internal/dto"
@@ -36,43 +35,44 @@ func (r *UserRepository) AddUser(newUser model.User) error {
 
 	statement := "INSERT INTO " + r.TableName + " VALUE {'PK': ?, 'SK': ?, 'email': ?, 'first_name': ?, 'flat': ?, 'id': ?, 'middle_name': ?, 'last_name': ?, 'mobile_number': ?, 'password': ?, 'role': ?}"
 
-	_, err := r.DynamoDbClient.ExecuteStatement(context.Background(), &dynamodb.ExecuteStatementInput{
-		Statement: &statement,
-		Parameters: []types.AttributeValue{
-			&types.AttributeValueMemberS{Value: "USERS"},
-			&types.AttributeValueMemberS{Value: (newUser.Email + "#" + newUser.ID)},
-			&types.AttributeValueMemberS{Value: newUser.Email},
-			&types.AttributeValueMemberS{Value: newUser.FirstName},
-			&types.AttributeValueMemberS{Value: newUser.Flat},
-			&types.AttributeValueMemberS{Value: newUser.ID},
-			&types.AttributeValueMemberS{Value: newUser.MiddleName},
-			&types.AttributeValueMemberS{Value: newUser.LastName},
-			&types.AttributeValueMemberS{Value: newUser.MobileNumber},
-			&types.AttributeValueMemberS{Value: newUser.Password},
-			&types.AttributeValueMemberS{Value: string(newUser.Role)},
+	input := &dynamodb.ExecuteTransactionInput{
+		TransactStatements: []types.ParameterizedStatement{
+			{
+				Statement: aws.String(statement),
+				Parameters: []types.AttributeValue{
+					&types.AttributeValueMemberS{Value: "USERS"},
+					&types.AttributeValueMemberS{Value: (newUser.Email + "#" + newUser.ID)},
+					&types.AttributeValueMemberS{Value: newUser.Email},
+					&types.AttributeValueMemberS{Value: newUser.FirstName},
+					&types.AttributeValueMemberS{Value: newUser.Flat},
+					&types.AttributeValueMemberS{Value: newUser.ID},
+					&types.AttributeValueMemberS{Value: newUser.MiddleName},
+					&types.AttributeValueMemberS{Value: newUser.LastName},
+					&types.AttributeValueMemberS{Value: newUser.MobileNumber},
+					&types.AttributeValueMemberS{Value: newUser.Password},
+					&types.AttributeValueMemberS{Value: string(newUser.Role)},
+				},
+			},
+			{
+				Statement: aws.String(statement),
+				Parameters: []types.AttributeValue{
+					&types.AttributeValueMemberS{Value: ("ROLE#" + string(newUser.Role))},
+					&types.AttributeValueMemberS{Value: newUser.ID},
+					&types.AttributeValueMemberS{Value: newUser.Email},
+					&types.AttributeValueMemberS{Value: newUser.FirstName},
+					&types.AttributeValueMemberS{Value: newUser.Flat},
+					&types.AttributeValueMemberS{Value: newUser.ID},
+					&types.AttributeValueMemberS{Value: newUser.MiddleName},
+					&types.AttributeValueMemberS{Value: newUser.LastName},
+					&types.AttributeValueMemberS{Value: newUser.MobileNumber},
+					&types.AttributeValueMemberS{Value: newUser.Password},
+					&types.AttributeValueMemberS{Value: string(newUser.Role)},
+				},
+			},
 		},
-	})
-
-	if err != nil {
-		return err
 	}
 
-	_, err = r.DynamoDbClient.ExecuteStatement(context.Background(), &dynamodb.ExecuteStatementInput{
-		Statement: &statement,
-		Parameters: []types.AttributeValue{
-			&types.AttributeValueMemberS{Value: ("ROLE#" + string(newUser.Role))},
-			&types.AttributeValueMemberS{Value: newUser.ID},
-			&types.AttributeValueMemberS{Value: newUser.Email},
-			&types.AttributeValueMemberS{Value: newUser.FirstName},
-			&types.AttributeValueMemberS{Value: newUser.Flat},
-			&types.AttributeValueMemberS{Value: newUser.ID},
-			&types.AttributeValueMemberS{Value: newUser.MiddleName},
-			&types.AttributeValueMemberS{Value: newUser.LastName},
-			&types.AttributeValueMemberS{Value: newUser.MobileNumber},
-			&types.AttributeValueMemberS{Value: newUser.Password},
-			&types.AttributeValueMemberS{Value: string(newUser.Role)},
-		},
-	})
+	_ , err := r.DynamoDbClient.ExecuteTransaction(context.TODO(), input)
 
 	return err
 }
@@ -83,12 +83,12 @@ func (r *UserRepository) GetUserByIDAndPassword(email string, password string) (
 
 	primaryKey, err := attributevalue.Marshal("USERS")
 	if err != nil {
-		return nil, errors.New("Internal Server Error")
+		return nil, errors.New("internal server error")
 	}
 
 	sortKey, err := attributevalue.Marshal(loginCredentials.Email)
 	if err != nil {
-		return nil, errors.New("Internal Server Error")
+		return nil, errors.New("internal server error")
 	}
 
 	keyMap := map[string]types.AttributeValue{"PK": primaryKey, "SK": sortKey}
@@ -139,35 +139,36 @@ func (r *UserRepository) UpdateUser(updatedUser model.User, previousEmail string
 	if previousEmail == "" {
 		updateRequestStatement := "UPDATE " + r.TableName + " SET first_name = ?, middle_name = ?, last_name = ?, mobile_number = ? WHERE PK = ? AND SK = ?"
 
-		_, err := r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-			Statement: aws.String(updateRequestStatement),
-			Parameters: []types.AttributeValue{
-				&types.AttributeValueMemberS{Value: updatedUser.FirstName},
-				&types.AttributeValueMemberS{Value: updatedUser.MiddleName},
-				&types.AttributeValueMemberS{Value: updatedUser.LastName},
-				&types.AttributeValueMemberS{Value: updatedUser.MobileNumber},
-				&types.AttributeValueMemberS{Value: "USERS"},
-				&types.AttributeValueMemberS{Value: (updatedUser.Email + "#" + updatedUser.ID)},
+		input := &dynamodb.ExecuteTransactionInput{
+			TransactStatements: []types.ParameterizedStatement{
+				{
+					Statement: aws.String(updateRequestStatement),
+					Parameters: []types.AttributeValue{
+						&types.AttributeValueMemberS{Value: updatedUser.FirstName},
+						&types.AttributeValueMemberS{Value: updatedUser.MiddleName},
+						&types.AttributeValueMemberS{Value: updatedUser.LastName},
+						&types.AttributeValueMemberS{Value: updatedUser.MobileNumber},
+						&types.AttributeValueMemberS{Value: "USERS"},
+						&types.AttributeValueMemberS{Value: (updatedUser.Email + "#" + updatedUser.ID)},
+					},
+				},
+				{
+					Statement: aws.String(updateRequestStatement),
+					Parameters: []types.AttributeValue{
+						&types.AttributeValueMemberS{Value: updatedUser.FirstName},
+						&types.AttributeValueMemberS{Value: updatedUser.MiddleName},
+						&types.AttributeValueMemberS{Value: updatedUser.LastName},
+						&types.AttributeValueMemberS{Value: updatedUser.MobileNumber},
+						&types.AttributeValueMemberS{Value: ("ROLE#" + string(updatedUser.Role))},
+						&types.AttributeValueMemberS{Value: updatedUser.ID},
+					},
+				},
 			},
-		})
-
-		if err != nil {
-			return err
 		}
 
-		_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-			Statement: aws.String(updateRequestStatement),
-			Parameters: []types.AttributeValue{
-				&types.AttributeValueMemberS{Value: updatedUser.FirstName},
-				&types.AttributeValueMemberS{Value: updatedUser.MiddleName},
-				&types.AttributeValueMemberS{Value: updatedUser.LastName},
-				&types.AttributeValueMemberS{Value: updatedUser.MobileNumber},
-				&types.AttributeValueMemberS{Value: ("ROLE#" + string(updatedUser.Role))},
-				&types.AttributeValueMemberS{Value: updatedUser.ID},
-			},
-		})
+		_ , err := r.DynamoDbClient.ExecuteTransaction(context.TODO(), input)
 
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	} else {
@@ -175,53 +176,49 @@ func (r *UserRepository) UpdateUser(updatedUser model.User, previousEmail string
 		updateRequestStatement := "UPDATE " + r.TableName + " SET first_name = ?, middle_name = ?, last_name = ?, mobile_number = ?, email = ? WHERE PK = ? AND SK = ?"
 		insertRequestStatement := "INSERT INTO " + r.TableName + " VALUE {'PK': ?, 'SK': ?, 'email': ?, 'first_name': ?, 'flat': ?, 'id': ?, 'middle_name': ?, 'last_name': ?, 'mobile_number': ?, 'password': ?, 'role': ?}"
 
-		_, err := r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-			Statement: aws.String(deleteRequestStatement),
-			Parameters: []types.AttributeValue{
-				&types.AttributeValueMemberS{Value: "USERS"},
-				&types.AttributeValueMemberS{Value: previousEmail + "#" + updatedUser.ID},
+		input := &dynamodb.ExecuteTransactionInput{
+			TransactStatements: []types.ParameterizedStatement{
+				{
+					Statement: aws.String(deleteRequestStatement),
+					Parameters: []types.AttributeValue{
+						&types.AttributeValueMemberS{Value: "USERS"},
+						&types.AttributeValueMemberS{Value: previousEmail + "#" + updatedUser.ID},
+					},
+				},
+				{
+					Statement: aws.String(insertRequestStatement),
+					Parameters: []types.AttributeValue{
+						&types.AttributeValueMemberS{Value: "USERS"},
+						&types.AttributeValueMemberS{Value: (updatedUser.Email + "#" + updatedUser.ID)},
+						&types.AttributeValueMemberS{Value: updatedUser.Email},
+						&types.AttributeValueMemberS{Value: updatedUser.FirstName},
+						&types.AttributeValueMemberS{Value: updatedUser.Flat},
+						&types.AttributeValueMemberS{Value: updatedUser.ID},
+						&types.AttributeValueMemberS{Value: updatedUser.MiddleName},
+						&types.AttributeValueMemberS{Value: updatedUser.LastName},
+						&types.AttributeValueMemberS{Value: updatedUser.MobileNumber},
+						&types.AttributeValueMemberS{Value: updatedUser.Password},
+						&types.AttributeValueMemberS{Value: string(updatedUser.Role)},
+					},
+				},
+				{
+					Statement: aws.String(updateRequestStatement),
+					Parameters: []types.AttributeValue{
+						&types.AttributeValueMemberS{Value: updatedUser.FirstName},
+						&types.AttributeValueMemberS{Value: updatedUser.MiddleName},
+						&types.AttributeValueMemberS{Value: updatedUser.LastName},
+						&types.AttributeValueMemberS{Value: updatedUser.MobileNumber},
+						&types.AttributeValueMemberS{Value: updatedUser.Email},
+						&types.AttributeValueMemberS{Value: ("ROLE#" + string(updatedUser.Role))},
+						&types.AttributeValueMemberS{Value: updatedUser.ID},
+					},
+				},
 			},
-		})
-
-		if err != nil {
-			return err
 		}
 
-		_, err = r.DynamoDbClient.ExecuteStatement(context.Background(), &dynamodb.ExecuteStatementInput{
-			Statement: &insertRequestStatement,
-			Parameters: []types.AttributeValue{
-				&types.AttributeValueMemberS{Value: "USERS"},
-				&types.AttributeValueMemberS{Value: (updatedUser.Email + "#" + updatedUser.ID)},
-				&types.AttributeValueMemberS{Value: updatedUser.Email},
-				&types.AttributeValueMemberS{Value: updatedUser.FirstName},
-				&types.AttributeValueMemberS{Value: updatedUser.Flat},
-				&types.AttributeValueMemberS{Value: updatedUser.ID},
-				&types.AttributeValueMemberS{Value: updatedUser.MiddleName},
-				&types.AttributeValueMemberS{Value: updatedUser.LastName},
-				&types.AttributeValueMemberS{Value: updatedUser.MobileNumber},
-				&types.AttributeValueMemberS{Value: updatedUser.Password},
-				&types.AttributeValueMemberS{Value: string(updatedUser.Role)},
-			},
-		})
+		_ , err := r.DynamoDbClient.ExecuteTransaction(context.TODO(), input)
 
-		if err != nil {
-			return err
-		}
-
-		_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-			Statement: aws.String(updateRequestStatement),
-			Parameters: []types.AttributeValue{
-				&types.AttributeValueMemberS{Value: updatedUser.FirstName},
-				&types.AttributeValueMemberS{Value: updatedUser.MiddleName},
-				&types.AttributeValueMemberS{Value: updatedUser.LastName},
-				&types.AttributeValueMemberS{Value: updatedUser.MobileNumber},
-				&types.AttributeValueMemberS{Value: updatedUser.Email},
-				&types.AttributeValueMemberS{Value: ("ROLE#" + string(updatedUser.Role))},
-				&types.AttributeValueMemberS{Value: updatedUser.ID},
-			},
-		})
-
-		if err != nil {
+		if err != nil{
 			return err
 		}
 	}
@@ -232,63 +229,58 @@ func (r *UserRepository) ChangePassword(id string, role model.UserRole, email st
 
 	updateRequestStatement := "UPDATE " + r.TableName + " SET password = ? WHERE PK = ? AND SK = ?"
 
-	_, err := r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-		Statement: aws.String(updateRequestStatement),
-		Parameters: []types.AttributeValue{
-			&types.AttributeValueMemberS{Value: (newHashedPassword)},
-			&types.AttributeValueMemberS{Value: "ROLE#" + string(role)},
-			&types.AttributeValueMemberS{Value: id},
+	input := &dynamodb.ExecuteTransactionInput{
+		TransactStatements: []types.ParameterizedStatement{
+			{
+				Statement: aws.String(updateRequestStatement),
+				Parameters: []types.AttributeValue{
+					&types.AttributeValueMemberS{Value: (newHashedPassword)},
+					&types.AttributeValueMemberS{Value: "ROLE#" + string(role)},
+					&types.AttributeValueMemberS{Value: id},
+				},
+			},
+			{
+				Statement: aws.String(updateRequestStatement),
+				Parameters: []types.AttributeValue{
+					&types.AttributeValueMemberS{Value: (newHashedPassword)},
+					&types.AttributeValueMemberS{Value: "USERS"},
+					&types.AttributeValueMemberS{Value: email + "#" + id},
+				},
+			},
 		},
-	})
-
-	if err != nil {
-		return err
 	}
 
-	_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-		Statement: aws.String(updateRequestStatement),
-		Parameters: []types.AttributeValue{
-			&types.AttributeValueMemberS{Value: (newHashedPassword)},
-			&types.AttributeValueMemberS{Value: "USERS"},
-			&types.AttributeValueMemberS{Value: email + "#" + id},
-		},
-	})
+	_ , err := r.DynamoDbClient.ExecuteTransaction(context.TODO(), input)
 
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return err
 }
 
 func (r *UserRepository) DeleteUserByID(id string, role model.UserRole, email string) error {
 
 	deleteUserStatement := "DELETE FROM " + r.TableName + " WHERE PK = ? AND SK = ?"
 
-	_, err := r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-		Statement: aws.String(deleteUserStatement),
-		Parameters: []types.AttributeValue{
-			&types.AttributeValueMemberS{Value: "ROLE#" + string(role)},
-			&types.AttributeValueMemberS{Value: id},
+	input := &dynamodb.ExecuteTransactionInput{
+		TransactStatements: []types.ParameterizedStatement{
+			{
+				Statement: aws.String(deleteUserStatement),
+				Parameters: []types.AttributeValue{
+					&types.AttributeValueMemberS{Value: "ROLE#" + string(role)},
+					&types.AttributeValueMemberS{Value: id},
+				},
+			},
+			{
+				Statement: aws.String(deleteUserStatement),
+				Parameters: []types.AttributeValue{
+					&types.AttributeValueMemberS{Value: "USERS"},
+					&types.AttributeValueMemberS{Value: (email + "#" + id)},
+				},
+			},
 		},
-	})
-	if err != nil {
-		return fmt.Errorf("failed to delete user: %v", err)
 	}
 
-	_, err = r.DynamoDbClient.ExecuteStatement(context.TODO(), &dynamodb.ExecuteStatementInput{
-		Statement: aws.String(deleteUserStatement),
-		Parameters: []types.AttributeValue{
-			&types.AttributeValueMemberS{Value: "USERS"},
-			&types.AttributeValueMemberS{Value: (email + "#" + id)},
-		},
-	})
+	_ , err := r.DynamoDbClient.ExecuteTransaction(context.TODO(), input)
 
-	if err != nil {
-		return fmt.Errorf("failed to delete user: %v", err)
-	}
-
-	return nil
+	return err
 }
 
 func (r *UserRepository) GetUserByID(id string) (*model.User, error) {
